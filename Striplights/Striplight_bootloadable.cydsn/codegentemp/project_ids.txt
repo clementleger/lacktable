@@ -1,0 +1,9 @@
+C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn\Striplight_bootloadable.cyprj|67afe927-5639-416b-b2e0-a4ae19154616
+C:\Users\vangelis\Striplights\StripLightLib.cylib\StripLightLib.cyprj|b46a2c54-b74a-400e-936e-9179167796dd
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|250f394b-e17e-48e5-9416-f6c58505c573
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|bd2e095c-4848-4e3b-802c-27eed0ebf023
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|c293fea5-02be-4b9e-8167-81bb907b853d
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|d73f4e0f-4e32-4235-9cbd-278f97dd2970
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|d49ff430-af62-4474-b4e0-59b72f5423b5
+C:\Users\vangelis\Striplights\UART_Bootloader.cydsn\UART_Bootloader.cyprj|85255872-6bc1-4054-aa9c-c4b273be5b91
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\dev\psoc4\PSoC4AnalogDevice\psoc4arch.cydsn\psoc4arch.cyprj|30730e38-cf66-477b-8468-5bd183be2ff4

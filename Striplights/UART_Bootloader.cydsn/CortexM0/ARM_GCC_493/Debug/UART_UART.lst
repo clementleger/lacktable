@@ -1,0 +1,2480 @@
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"UART_UART.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.UART_UartInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	UART_UartInit
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	UART_UartInit, %function
+  23              	UART_UartInit:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\UART_UART.c"
+   1:.\Generated_Source\PSoC4/UART_UART.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/UART_UART.c **** * File Name: UART_UART.c
+   3:.\Generated_Source\PSoC4/UART_UART.c **** * Version 2.0
+   4:.\Generated_Source\PSoC4/UART_UART.c **** *
+   5:.\Generated_Source\PSoC4/UART_UART.c **** * Description:
+   6:.\Generated_Source\PSoC4/UART_UART.c **** *  This file provides the source code to the API for the SCB Component in
+   7:.\Generated_Source\PSoC4/UART_UART.c **** *  UART mode.
+   8:.\Generated_Source\PSoC4/UART_UART.c **** *
+   9:.\Generated_Source\PSoC4/UART_UART.c **** * Note:
+  10:.\Generated_Source\PSoC4/UART_UART.c **** *
+  11:.\Generated_Source\PSoC4/UART_UART.c **** *******************************************************************************
+  12:.\Generated_Source\PSoC4/UART_UART.c **** * Copyright 2013-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC4/UART_UART.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:.\Generated_Source\PSoC4/UART_UART.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:.\Generated_Source\PSoC4/UART_UART.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC4/UART_UART.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC4/UART_UART.c **** 
+  18:.\Generated_Source\PSoC4/UART_UART.c **** #include "UART_PVT.h"
+  19:.\Generated_Source\PSoC4/UART_UART.c **** #include "UART_SPI_UART_PVT.h"
+  20:.\Generated_Source\PSoC4/UART_UART.c **** 
+  21:.\Generated_Source\PSoC4/UART_UART.c **** 
+  22:.\Generated_Source\PSoC4/UART_UART.c **** #if(UART_SCB_MODE_UNCONFIG_CONST_CFG)
+  23:.\Generated_Source\PSoC4/UART_UART.c **** 
+  24:.\Generated_Source\PSoC4/UART_UART.c ****     /***************************************
+  25:.\Generated_Source\PSoC4/UART_UART.c ****     *  Configuration Structure Initialization
+  26:.\Generated_Source\PSoC4/UART_UART.c ****     ***************************************/
+  27:.\Generated_Source\PSoC4/UART_UART.c **** 
+  28:.\Generated_Source\PSoC4/UART_UART.c ****     const UART_UART_INIT_STRUCT UART_configUart =
+  29:.\Generated_Source\PSoC4/UART_UART.c ****     {
+  30:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_SUB_MODE,
+  31:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_DIRECTION,
+  32:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_DATA_BITS_NUM,
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_PARITY_TYPE,
+  34:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_STOP_BITS_NUM,
+  35:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_OVS_FACTOR,
+  36:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_IRDA_LOW_POWER,
+  37:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_MEDIAN_FILTER_ENABLE,
+  38:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_RETRY_ON_NACK,
+  39:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_IRDA_POLARITY,
+  40:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_DROP_ON_PARITY_ERR,
+  41:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_DROP_ON_FRAME_ERR,
+  42:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_WAKE_ENABLE,
+  43:.\Generated_Source\PSoC4/UART_UART.c ****         0u,
+  44:.\Generated_Source\PSoC4/UART_UART.c ****         NULL,
+  45:.\Generated_Source\PSoC4/UART_UART.c ****         0u,
+  46:.\Generated_Source\PSoC4/UART_UART.c ****         NULL,
+  47:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_MP_MODE_ENABLE,
+  48:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_MP_ACCEPT_ADDRESS,
+  49:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_MP_RX_ADDRESS,
+  50:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_MP_RX_ADDRESS_MASK,
+  51:.\Generated_Source\PSoC4/UART_UART.c ****         (uint32) UART_SCB_IRQ_INTERNAL,
+  52:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_INTR_RX_MASK,
+  53:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_RX_TRIGGER_LEVEL,
+  54:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_INTR_TX_MASK,
+  55:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_TX_TRIGGER_LEVEL,
+  56:.\Generated_Source\PSoC4/UART_UART.c ****         (uint8) UART_UART_BYTE_MODE_ENABLE,
+  57:.\Generated_Source\PSoC4/UART_UART.c ****         (uint8) UART_UART_CTS_ENABLE,
+  58:.\Generated_Source\PSoC4/UART_UART.c ****         (uint8) UART_UART_CTS_POLARITY,
+  59:.\Generated_Source\PSoC4/UART_UART.c ****         (uint8) UART_UART_RTS_POLARITY,
+  60:.\Generated_Source\PSoC4/UART_UART.c ****         (uint8) UART_UART_RTS_FIFO_LEVEL
+  61:.\Generated_Source\PSoC4/UART_UART.c ****     };
+  62:.\Generated_Source\PSoC4/UART_UART.c **** 
+  63:.\Generated_Source\PSoC4/UART_UART.c **** 
+  64:.\Generated_Source\PSoC4/UART_UART.c ****     /*******************************************************************************
+  65:.\Generated_Source\PSoC4/UART_UART.c ****     * Function Name: UART_UartInit
+  66:.\Generated_Source\PSoC4/UART_UART.c ****     ********************************************************************************
+  67:.\Generated_Source\PSoC4/UART_UART.c ****     *
+  68:.\Generated_Source\PSoC4/UART_UART.c ****     * Summary:
+  69:.\Generated_Source\PSoC4/UART_UART.c ****     *  Configures the SCB for the UART operation.
+  70:.\Generated_Source\PSoC4/UART_UART.c ****     *
+  71:.\Generated_Source\PSoC4/UART_UART.c ****     * Parameters:
+  72:.\Generated_Source\PSoC4/UART_UART.c ****     *  config:  Pointer to a structure that contains the following ordered list of
+  73:.\Generated_Source\PSoC4/UART_UART.c ****     *           fields. These fields match the selections available in the
+  74:.\Generated_Source\PSoC4/UART_UART.c ****     *           customizer.
+  75:.\Generated_Source\PSoC4/UART_UART.c ****     *
+  76:.\Generated_Source\PSoC4/UART_UART.c ****     * Return:
+  77:.\Generated_Source\PSoC4/UART_UART.c ****     *  None
+  78:.\Generated_Source\PSoC4/UART_UART.c ****     *
+  79:.\Generated_Source\PSoC4/UART_UART.c ****     *******************************************************************************/
+  80:.\Generated_Source\PSoC4/UART_UART.c ****     void UART_UartInit(const UART_UART_INIT_STRUCT *config)
+  81:.\Generated_Source\PSoC4/UART_UART.c ****     {
+  82:.\Generated_Source\PSoC4/UART_UART.c ****         uint32 pinsConfig;
+  83:.\Generated_Source\PSoC4/UART_UART.c **** 
+  84:.\Generated_Source\PSoC4/UART_UART.c ****         if(NULL == config)
+  85:.\Generated_Source\PSoC4/UART_UART.c ****         {
+  86:.\Generated_Source\PSoC4/UART_UART.c ****             CYASSERT(0u != 0u); /* Halt execution due to bad function parameter */
+  87:.\Generated_Source\PSoC4/UART_UART.c ****         }
+  88:.\Generated_Source\PSoC4/UART_UART.c ****         else
+  89:.\Generated_Source\PSoC4/UART_UART.c ****         {
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 3
+
+
+  90:.\Generated_Source\PSoC4/UART_UART.c ****             /* Get direction to configure UART pins: TX, RX or TX+RX */
+  91:.\Generated_Source\PSoC4/UART_UART.c ****             pinsConfig  = config->direction;
+  92:.\Generated_Source\PSoC4/UART_UART.c **** 
+  93:.\Generated_Source\PSoC4/UART_UART.c ****         #if !(UART_CY_SCBIP_V0 || UART_CY_SCBIP_V1)
+  94:.\Generated_Source\PSoC4/UART_UART.c ****             /* Add RTS and CTS pins to configure */
+  95:.\Generated_Source\PSoC4/UART_UART.c ****             pinsConfig |= (0u != config->rtsRxFifoLevel) ? (UART_UART_RTS_PIN_ENABLE) : (0u);
+  96:.\Generated_Source\PSoC4/UART_UART.c ****             pinsConfig |= (0u != config->enableCts)         ? (UART_UART_CTS_PIN_ENABLE) : (0u);
+  97:.\Generated_Source\PSoC4/UART_UART.c ****         #endif /* !(UART_CY_SCBIP_V0 || UART_CY_SCBIP_V1) */
+  98:.\Generated_Source\PSoC4/UART_UART.c **** 
+  99:.\Generated_Source\PSoC4/UART_UART.c ****             /* Configure pins */
+ 100:.\Generated_Source\PSoC4/UART_UART.c ****             UART_SetPins(UART_SCB_MODE_UART, config->mode, pinsConfig);
+ 101:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 102:.\Generated_Source\PSoC4/UART_UART.c ****             /* Store internal configuration */
+ 103:.\Generated_Source\PSoC4/UART_UART.c ****             UART_scbMode       = (uint8) UART_SCB_MODE_UART;
+ 104:.\Generated_Source\PSoC4/UART_UART.c ****             UART_scbEnableWake = (uint8) config->enableWake;
+ 105:.\Generated_Source\PSoC4/UART_UART.c ****             UART_scbEnableIntr = (uint8) config->enableInterrupt;
+ 106:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 107:.\Generated_Source\PSoC4/UART_UART.c ****             /* Set RX direction internal variables */
+ 108:.\Generated_Source\PSoC4/UART_UART.c ****             UART_rxBuffer      =         config->rxBuffer;
+ 109:.\Generated_Source\PSoC4/UART_UART.c ****             UART_rxDataBits    = (uint8) config->dataBits;
+ 110:.\Generated_Source\PSoC4/UART_UART.c ****             UART_rxBufferSize  = (uint8) config->rxBufferSize;
+ 111:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 112:.\Generated_Source\PSoC4/UART_UART.c ****             /* Set TX direction internal variables */
+ 113:.\Generated_Source\PSoC4/UART_UART.c ****             UART_txBuffer      =         config->txBuffer;
+ 114:.\Generated_Source\PSoC4/UART_UART.c ****             UART_txDataBits    = (uint8) config->dataBits;
+ 115:.\Generated_Source\PSoC4/UART_UART.c ****             UART_txBufferSize  = (uint8) config->txBufferSize;
+ 116:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 117:.\Generated_Source\PSoC4/UART_UART.c ****             /* Configure UART interface */
+ 118:.\Generated_Source\PSoC4/UART_UART.c ****             if(UART_UART_MODE_IRDA == config->mode)
+ 119:.\Generated_Source\PSoC4/UART_UART.c ****             {
+ 120:.\Generated_Source\PSoC4/UART_UART.c ****                 /* OVS settings: IrDA */
+ 121:.\Generated_Source\PSoC4/UART_UART.c ****                 UART_CTRL_REG  = ((0u != config->enableIrdaLowPower) ?
+ 122:.\Generated_Source\PSoC4/UART_UART.c ****                                                 (UART_UART_GET_CTRL_OVS_IRDA_LP(config->oversample)
+ 123:.\Generated_Source\PSoC4/UART_UART.c ****                                                 (UART_CTRL_OVS_IRDA_OVS16));
+ 124:.\Generated_Source\PSoC4/UART_UART.c ****             }
+ 125:.\Generated_Source\PSoC4/UART_UART.c ****             else
+ 126:.\Generated_Source\PSoC4/UART_UART.c ****             {
+ 127:.\Generated_Source\PSoC4/UART_UART.c ****                 /* OVS settings: UART and SmartCard */
+ 128:.\Generated_Source\PSoC4/UART_UART.c ****                 UART_CTRL_REG  = UART_GET_CTRL_OVS(config->oversample);
+ 129:.\Generated_Source\PSoC4/UART_UART.c ****             }
+ 130:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 131:.\Generated_Source\PSoC4/UART_UART.c ****             UART_CTRL_REG     |= UART_GET_CTRL_BYTE_MODE  (config->enableByteMode)      |
+ 132:.\Generated_Source\PSoC4/UART_UART.c ****                                              UART_GET_CTRL_ADDR_ACCEPT(config->multiprocAcceptAddr)
+ 133:.\Generated_Source\PSoC4/UART_UART.c ****                                              UART_CTRL_UART;
+ 134:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 135:.\Generated_Source\PSoC4/UART_UART.c ****             /* Configure sub-mode: UART, SmartCard or IrDA */
+ 136:.\Generated_Source\PSoC4/UART_UART.c ****             UART_UART_CTRL_REG = UART_GET_UART_CTRL_MODE(config->mode);
+ 137:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 138:.\Generated_Source\PSoC4/UART_UART.c ****             /* Configure RX direction */
+ 139:.\Generated_Source\PSoC4/UART_UART.c ****             UART_UART_RX_CTRL_REG = UART_GET_UART_RX_CTRL_MODE(config->stopBits)              |
+ 140:.\Generated_Source\PSoC4/UART_UART.c ****                                         UART_GET_UART_RX_CTRL_POLARITY(config->enableInvertedRx)   
+ 141:.\Generated_Source\PSoC4/UART_UART.c ****                                         UART_GET_UART_RX_CTRL_MP_MODE(config->enableMultiproc)     
+ 142:.\Generated_Source\PSoC4/UART_UART.c ****                                         UART_GET_UART_RX_CTRL_DROP_ON_PARITY_ERR(config->dropOnPari
+ 143:.\Generated_Source\PSoC4/UART_UART.c ****                                         UART_GET_UART_RX_CTRL_DROP_ON_FRAME_ERR(config->dropOnFrame
+ 144:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 145:.\Generated_Source\PSoC4/UART_UART.c ****             if(UART_UART_PARITY_NONE != config->parity)
+ 146:.\Generated_Source\PSoC4/UART_UART.c ****             {
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 4
+
+
+ 147:.\Generated_Source\PSoC4/UART_UART.c ****                UART_UART_RX_CTRL_REG |= UART_GET_UART_RX_CTRL_PARITY(config->parity) |
+ 148:.\Generated_Source\PSoC4/UART_UART.c ****                                                     UART_UART_RX_CTRL_PARITY_ENABLED;
+ 149:.\Generated_Source\PSoC4/UART_UART.c ****             }
+ 150:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 151:.\Generated_Source\PSoC4/UART_UART.c ****             UART_RX_CTRL_REG      = UART_GET_RX_CTRL_DATA_WIDTH(config->dataBits)       |
+ 152:.\Generated_Source\PSoC4/UART_UART.c ****                                                 UART_GET_RX_CTRL_MEDIAN(config->enableMedianFilter)
+ 153:.\Generated_Source\PSoC4/UART_UART.c ****                                                 UART_GET_UART_RX_CTRL_ENABLED(config->direction);
+ 154:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 155:.\Generated_Source\PSoC4/UART_UART.c ****             UART_RX_FIFO_CTRL_REG = UART_GET_RX_FIFO_CTRL_TRIGGER_LEVEL(config->rxTriggerLevel);
+ 156:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 157:.\Generated_Source\PSoC4/UART_UART.c ****             /* Configure MP address */
+ 158:.\Generated_Source\PSoC4/UART_UART.c ****             UART_RX_MATCH_REG     = UART_GET_RX_MATCH_ADDR(config->multiprocAddr) |
+ 159:.\Generated_Source\PSoC4/UART_UART.c ****                                                 UART_GET_RX_MATCH_MASK(config->multiprocAddrMask);
+ 160:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 161:.\Generated_Source\PSoC4/UART_UART.c ****             /* Configure RX direction */
+ 162:.\Generated_Source\PSoC4/UART_UART.c ****             UART_UART_TX_CTRL_REG = UART_GET_UART_TX_CTRL_MODE(config->stopBits) |
+ 163:.\Generated_Source\PSoC4/UART_UART.c ****                                                 UART_GET_UART_TX_CTRL_RETRY_NACK(config->enableRetr
+ 164:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 165:.\Generated_Source\PSoC4/UART_UART.c ****             if(UART_UART_PARITY_NONE != config->parity)
+ 166:.\Generated_Source\PSoC4/UART_UART.c ****             {
+ 167:.\Generated_Source\PSoC4/UART_UART.c ****                UART_UART_TX_CTRL_REG |= UART_GET_UART_TX_CTRL_PARITY(config->parity) |
+ 168:.\Generated_Source\PSoC4/UART_UART.c ****                                                     UART_UART_TX_CTRL_PARITY_ENABLED;
+ 169:.\Generated_Source\PSoC4/UART_UART.c ****             }
+ 170:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 171:.\Generated_Source\PSoC4/UART_UART.c ****             UART_TX_CTRL_REG      = UART_GET_TX_CTRL_DATA_WIDTH(config->dataBits)    |
+ 172:.\Generated_Source\PSoC4/UART_UART.c ****                                                 UART_GET_UART_TX_CTRL_ENABLED(config->direction);
+ 173:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 174:.\Generated_Source\PSoC4/UART_UART.c ****             UART_TX_FIFO_CTRL_REG = UART_GET_TX_FIFO_CTRL_TRIGGER_LEVEL(config->txTriggerLevel);
+ 175:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 176:.\Generated_Source\PSoC4/UART_UART.c ****         #if !(UART_CY_SCBIP_V0 || UART_CY_SCBIP_V1)
+ 177:.\Generated_Source\PSoC4/UART_UART.c ****             UART_UART_FLOW_CTRL_REG = UART_GET_UART_FLOW_CTRL_CTS_ENABLE(config->enableCts) | \
+ 178:.\Generated_Source\PSoC4/UART_UART.c ****                                             UART_GET_UART_FLOW_CTRL_CTS_POLARITY (config->ctsPolari
+ 179:.\Generated_Source\PSoC4/UART_UART.c ****                                             UART_GET_UART_FLOW_CTRL_RTS_POLARITY(config->rtsPolarit
+ 180:.\Generated_Source\PSoC4/UART_UART.c ****                                             UART_GET_UART_FLOW_CTRL_TRIGGER_LEVEL(config->rtsRxFifo
+ 181:.\Generated_Source\PSoC4/UART_UART.c ****         #endif /* !(UART_CY_SCBIP_V0 || UART_CY_SCBIP_V1) */
+ 182:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 183:.\Generated_Source\PSoC4/UART_UART.c ****             /* Configure interrupt with UART handler but do not enable it */
+ 184:.\Generated_Source\PSoC4/UART_UART.c ****             CyIntDisable    (UART_ISR_NUMBER);
+ 185:.\Generated_Source\PSoC4/UART_UART.c ****             CyIntSetPriority(UART_ISR_NUMBER, UART_ISR_PRIORITY);
+ 186:.\Generated_Source\PSoC4/UART_UART.c ****             (void) CyIntSetVector(UART_ISR_NUMBER, &UART_SPI_UART_ISR);
+ 187:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 188:.\Generated_Source\PSoC4/UART_UART.c ****             /* Configure WAKE interrupt */
+ 189:.\Generated_Source\PSoC4/UART_UART.c ****         #if(UART_UART_RX_WAKEUP_IRQ)
+ 190:.\Generated_Source\PSoC4/UART_UART.c ****             CyIntDisable    (UART_RX_WAKE_ISR_NUMBER);
+ 191:.\Generated_Source\PSoC4/UART_UART.c ****             CyIntSetPriority(UART_RX_WAKE_ISR_NUMBER, UART_RX_WAKE_ISR_PRIORITY);
+ 192:.\Generated_Source\PSoC4/UART_UART.c ****             (void) CyIntSetVector(UART_RX_WAKE_ISR_NUMBER, &UART_UART_WAKEUP_ISR);
+ 193:.\Generated_Source\PSoC4/UART_UART.c ****         #endif /* (UART_UART_RX_WAKEUP_IRQ) */
+ 194:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 195:.\Generated_Source\PSoC4/UART_UART.c ****             /* Configure interrupt sources */
+ 196:.\Generated_Source\PSoC4/UART_UART.c ****             UART_INTR_I2C_EC_MASK_REG = UART_NO_INTR_SOURCES;
+ 197:.\Generated_Source\PSoC4/UART_UART.c ****             UART_INTR_SPI_EC_MASK_REG = UART_NO_INTR_SOURCES;
+ 198:.\Generated_Source\PSoC4/UART_UART.c ****             UART_INTR_SLAVE_MASK_REG  = UART_NO_INTR_SOURCES;
+ 199:.\Generated_Source\PSoC4/UART_UART.c ****             UART_INTR_MASTER_MASK_REG = UART_NO_INTR_SOURCES;
+ 200:.\Generated_Source\PSoC4/UART_UART.c ****             UART_INTR_RX_MASK_REG     = config->rxInterruptMask;
+ 201:.\Generated_Source\PSoC4/UART_UART.c ****             UART_INTR_TX_MASK_REG     = config->txInterruptMask;
+ 202:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 203:.\Generated_Source\PSoC4/UART_UART.c ****             /* Clear RX buffer indexes */
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 5
+
+
+ 204:.\Generated_Source\PSoC4/UART_UART.c ****             UART_rxBufferHead     = 0u;
+ 205:.\Generated_Source\PSoC4/UART_UART.c ****             UART_rxBufferTail     = 0u;
+ 206:.\Generated_Source\PSoC4/UART_UART.c ****             UART_rxBufferOverflow = 0u;
+ 207:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 208:.\Generated_Source\PSoC4/UART_UART.c ****             /* Clear TX buffer indexes */
+ 209:.\Generated_Source\PSoC4/UART_UART.c ****             UART_txBufferHead = 0u;
+ 210:.\Generated_Source\PSoC4/UART_UART.c ****             UART_txBufferTail = 0u;
+ 211:.\Generated_Source\PSoC4/UART_UART.c ****         }
+ 212:.\Generated_Source\PSoC4/UART_UART.c ****     }
+ 213:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 214:.\Generated_Source\PSoC4/UART_UART.c **** #else
+ 215:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 216:.\Generated_Source\PSoC4/UART_UART.c ****     /*******************************************************************************
+ 217:.\Generated_Source\PSoC4/UART_UART.c ****     * Function Name: UART_UartInit
+ 218:.\Generated_Source\PSoC4/UART_UART.c ****     ********************************************************************************
+ 219:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 220:.\Generated_Source\PSoC4/UART_UART.c ****     * Summary:
+ 221:.\Generated_Source\PSoC4/UART_UART.c ****     *  Configures the SCB for the UART operation.
+ 222:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 223:.\Generated_Source\PSoC4/UART_UART.c ****     * Parameters:
+ 224:.\Generated_Source\PSoC4/UART_UART.c ****     *  None
+ 225:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 226:.\Generated_Source\PSoC4/UART_UART.c ****     * Return:
+ 227:.\Generated_Source\PSoC4/UART_UART.c ****     *  None
+ 228:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 229:.\Generated_Source\PSoC4/UART_UART.c ****     *******************************************************************************/
+ 230:.\Generated_Source\PSoC4/UART_UART.c ****     void UART_UartInit(void)
+ 231:.\Generated_Source\PSoC4/UART_UART.c ****     {
+  26              		.loc 1 231 0
+  27              		.cfi_startproc
+  28 0000 10B5     		push	{r4, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 4, -8
+  31              		.cfi_offset 14, -4
+ 232:.\Generated_Source\PSoC4/UART_UART.c ****         /* Configure UART interface */
+ 233:.\Generated_Source\PSoC4/UART_UART.c ****         UART_CTRL_REG = UART_UART_DEFAULT_CTRL;
+  32              		.loc 1 233 0
+  33 0002 1D4A     		ldr	r2, .L2
+ 234:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 235:.\Generated_Source\PSoC4/UART_UART.c ****         /* Configure sub-mode: UART, SmartCard or IrDA */
+ 236:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_CTRL_REG = UART_UART_DEFAULT_UART_CTRL;
+  34              		.loc 1 236 0
+  35 0004 0024     		mov	r4, #0
+ 233:.\Generated_Source\PSoC4/UART_UART.c **** 
+  36              		.loc 1 233 0
+  37 0006 1D4B     		ldr	r3, .L2+4
+ 237:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 238:.\Generated_Source\PSoC4/UART_UART.c ****         /* Configure RX direction */
+ 239:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_RX_CTRL_REG = UART_UART_DEFAULT_UART_RX_CTRL;
+ 240:.\Generated_Source\PSoC4/UART_UART.c ****         UART_RX_CTRL_REG      = UART_UART_DEFAULT_RX_CTRL;
+ 241:.\Generated_Source\PSoC4/UART_UART.c ****         UART_RX_FIFO_CTRL_REG = UART_UART_DEFAULT_RX_FIFO_CTRL;
+  38              		.loc 1 241 0
+  39 0008 0720     		mov	r0, #7
+ 233:.\Generated_Source\PSoC4/UART_UART.c **** 
+  40              		.loc 1 233 0
+  41 000a 1A60     		str	r2, [r3]
+ 239:.\Generated_Source\PSoC4/UART_UART.c ****         UART_RX_CTRL_REG      = UART_UART_DEFAULT_RX_CTRL;
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 6
+
+
+  42              		.loc 1 239 0
+  43 000c 0122     		mov	r2, #1
+ 236:.\Generated_Source\PSoC4/UART_UART.c **** 
+  44              		.loc 1 236 0
+  45 000e 1C4B     		ldr	r3, .L2+8
+ 240:.\Generated_Source\PSoC4/UART_UART.c ****         UART_RX_FIFO_CTRL_REG = UART_UART_DEFAULT_RX_FIFO_CTRL;
+  46              		.loc 1 240 0
+  47 0010 1C49     		ldr	r1, .L2+12
+ 236:.\Generated_Source\PSoC4/UART_UART.c **** 
+  48              		.loc 1 236 0
+  49 0012 1C60     		str	r4, [r3]
+ 239:.\Generated_Source\PSoC4/UART_UART.c ****         UART_RX_CTRL_REG      = UART_UART_DEFAULT_RX_CTRL;
+  50              		.loc 1 239 0
+  51 0014 1C4B     		ldr	r3, .L2+16
+ 242:.\Generated_Source\PSoC4/UART_UART.c ****         UART_RX_MATCH_REG     = UART_UART_DEFAULT_RX_MATCH_REG;
+ 243:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 244:.\Generated_Source\PSoC4/UART_UART.c ****         /* Configure TX direction */
+ 245:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_TX_CTRL_REG = UART_UART_DEFAULT_UART_TX_CTRL;
+ 246:.\Generated_Source\PSoC4/UART_UART.c ****         UART_TX_CTRL_REG      = UART_UART_DEFAULT_TX_CTRL;
+ 247:.\Generated_Source\PSoC4/UART_UART.c ****         UART_TX_FIFO_CTRL_REG = UART_UART_DEFAULT_TX_FIFO_CTRL;
+ 248:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 249:.\Generated_Source\PSoC4/UART_UART.c ****     #if !(UART_CY_SCBIP_V0 || UART_CY_SCBIP_V1)
+ 250:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UART_FLOW_CTRL_REG = UART_UART_DEFAULT_FLOW_CTRL;
+ 251:.\Generated_Source\PSoC4/UART_UART.c ****     #endif /* !(UART_CY_SCBIP_V0 || UART_CY_SCBIP_V1) */
+ 252:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 253:.\Generated_Source\PSoC4/UART_UART.c ****         /* Configure interrupt with UART handler but do not enable it */
+ 254:.\Generated_Source\PSoC4/UART_UART.c ****     #if(UART_SCB_IRQ_INTERNAL)
+ 255:.\Generated_Source\PSoC4/UART_UART.c ****         CyIntDisable    (UART_ISR_NUMBER);
+ 256:.\Generated_Source\PSoC4/UART_UART.c ****         CyIntSetPriority(UART_ISR_NUMBER, UART_ISR_PRIORITY);
+ 257:.\Generated_Source\PSoC4/UART_UART.c ****         (void) CyIntSetVector(UART_ISR_NUMBER, &UART_SPI_UART_ISR);
+ 258:.\Generated_Source\PSoC4/UART_UART.c ****     #endif /* (UART_SCB_IRQ_INTERNAL) */
+ 259:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 260:.\Generated_Source\PSoC4/UART_UART.c ****         /* Configure WAKE interrupt */
+ 261:.\Generated_Source\PSoC4/UART_UART.c ****     #if(UART_UART_RX_WAKEUP_IRQ)
+ 262:.\Generated_Source\PSoC4/UART_UART.c ****         CyIntDisable    (UART_RX_WAKE_ISR_NUMBER);
+ 263:.\Generated_Source\PSoC4/UART_UART.c ****         CyIntSetPriority(UART_RX_WAKE_ISR_NUMBER, UART_RX_WAKE_ISR_PRIORITY);
+ 264:.\Generated_Source\PSoC4/UART_UART.c ****         (void) CyIntSetVector(UART_RX_WAKE_ISR_NUMBER, &UART_UART_WAKEUP_ISR);
+ 265:.\Generated_Source\PSoC4/UART_UART.c ****     #endif /* (UART_UART_RX_WAKEUP_IRQ) */
+ 266:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 267:.\Generated_Source\PSoC4/UART_UART.c ****         /* Configure interrupt sources */
+ 268:.\Generated_Source\PSoC4/UART_UART.c ****         UART_INTR_I2C_EC_MASK_REG = UART_UART_DEFAULT_INTR_I2C_EC_MASK;
+ 269:.\Generated_Source\PSoC4/UART_UART.c ****         UART_INTR_SPI_EC_MASK_REG = UART_UART_DEFAULT_INTR_SPI_EC_MASK;
+ 270:.\Generated_Source\PSoC4/UART_UART.c ****         UART_INTR_SLAVE_MASK_REG  = UART_UART_DEFAULT_INTR_SLAVE_MASK;
+ 271:.\Generated_Source\PSoC4/UART_UART.c ****         UART_INTR_MASTER_MASK_REG = UART_UART_DEFAULT_INTR_MASTER_MASK;
+ 272:.\Generated_Source\PSoC4/UART_UART.c ****         UART_INTR_RX_MASK_REG     = UART_UART_DEFAULT_INTR_RX_MASK;
+ 273:.\Generated_Source\PSoC4/UART_UART.c ****         UART_INTR_TX_MASK_REG     = UART_UART_DEFAULT_INTR_TX_MASK;
+ 274:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 275:.\Generated_Source\PSoC4/UART_UART.c ****     #if(UART_INTERNAL_RX_SW_BUFFER_CONST)
+ 276:.\Generated_Source\PSoC4/UART_UART.c ****         UART_rxBufferHead     = 0u;
+ 277:.\Generated_Source\PSoC4/UART_UART.c ****         UART_rxBufferTail     = 0u;
+ 278:.\Generated_Source\PSoC4/UART_UART.c ****         UART_rxBufferOverflow = 0u;
+ 279:.\Generated_Source\PSoC4/UART_UART.c ****     #endif /* (UART_INTERNAL_RX_SW_BUFFER_CONST) */
+ 280:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 281:.\Generated_Source\PSoC4/UART_UART.c ****     #if(UART_INTERNAL_TX_SW_BUFFER_CONST)
+ 282:.\Generated_Source\PSoC4/UART_UART.c ****         UART_txBufferHead = 0u;
+ 283:.\Generated_Source\PSoC4/UART_UART.c ****         UART_txBufferTail = 0u;
+ 284:.\Generated_Source\PSoC4/UART_UART.c ****     #endif /* (UART_INTERNAL_TX_SW_BUFFER_CONST) */
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 7
+
+
+ 285:.\Generated_Source\PSoC4/UART_UART.c ****     }
+  52              		.loc 1 285 0
+  53              		@ sp needed
+ 239:.\Generated_Source\PSoC4/UART_UART.c ****         UART_RX_CTRL_REG      = UART_UART_DEFAULT_RX_CTRL;
+  54              		.loc 1 239 0
+  55 0016 1A60     		str	r2, [r3]
+ 240:.\Generated_Source\PSoC4/UART_UART.c ****         UART_RX_FIFO_CTRL_REG = UART_UART_DEFAULT_RX_FIFO_CTRL;
+  56              		.loc 1 240 0
+  57 0018 1C4B     		ldr	r3, .L2+20
+  58 001a 0B60     		str	r3, [r1]
+ 241:.\Generated_Source\PSoC4/UART_UART.c ****         UART_RX_MATCH_REG     = UART_UART_DEFAULT_RX_MATCH_REG;
+  59              		.loc 1 241 0
+  60 001c 1C49     		ldr	r1, .L2+24
+  61 001e 0860     		str	r0, [r1]
+ 242:.\Generated_Source\PSoC4/UART_UART.c ****         UART_RX_MATCH_REG     = UART_UART_DEFAULT_RX_MATCH_REG;
+  62              		.loc 1 242 0
+  63 0020 1C49     		ldr	r1, .L2+28
+ 255:.\Generated_Source\PSoC4/UART_UART.c ****         CyIntSetPriority(UART_ISR_NUMBER, UART_ISR_PRIORITY);
+  64              		.loc 1 255 0
+  65 0022 0330     		add	r0, r0, #3
+ 242:.\Generated_Source\PSoC4/UART_UART.c **** 
+  66              		.loc 1 242 0
+  67 0024 0C60     		str	r4, [r1]
+ 245:.\Generated_Source\PSoC4/UART_UART.c ****         UART_TX_CTRL_REG      = UART_UART_DEFAULT_TX_CTRL;
+  68              		.loc 1 245 0
+  69 0026 1C49     		ldr	r1, .L2+32
+  70 0028 0A60     		str	r2, [r1]
+ 246:.\Generated_Source\PSoC4/UART_UART.c ****         UART_TX_FIFO_CTRL_REG = UART_UART_DEFAULT_TX_FIFO_CTRL;
+  71              		.loc 1 246 0
+  72 002a 1C4A     		ldr	r2, .L2+36
+  73 002c 1360     		str	r3, [r2]
+ 247:.\Generated_Source\PSoC4/UART_UART.c **** 
+  74              		.loc 1 247 0
+  75 002e 1C4B     		ldr	r3, .L2+40
+  76 0030 1C60     		str	r4, [r3]
+ 255:.\Generated_Source\PSoC4/UART_UART.c ****         CyIntSetPriority(UART_ISR_NUMBER, UART_ISR_PRIORITY);
+  77              		.loc 1 255 0
+  78 0032 FFF7FEFF 		bl	CyIntDisable
+  79              	.LVL0:
+ 256:.\Generated_Source\PSoC4/UART_UART.c ****         (void) CyIntSetVector(UART_ISR_NUMBER, &UART_SPI_UART_ISR);
+  80              		.loc 1 256 0
+  81 0036 0A20     		mov	r0, #10
+  82 0038 0321     		mov	r1, #3
+  83 003a FFF7FEFF 		bl	CyIntSetPriority
+  84              	.LVL1:
+ 257:.\Generated_Source\PSoC4/UART_UART.c ****     #endif /* (UART_SCB_IRQ_INTERNAL) */
+  85              		.loc 1 257 0
+  86 003e 1949     		ldr	r1, .L2+44
+  87 0040 0A20     		mov	r0, #10
+  88 0042 FFF7FEFF 		bl	CyIntSetVector
+  89              	.LVL2:
+ 272:.\Generated_Source\PSoC4/UART_UART.c ****         UART_INTR_TX_MASK_REG     = UART_UART_DEFAULT_INTR_TX_MASK;
+  90              		.loc 1 272 0
+  91 0046 0422     		mov	r2, #4
+ 268:.\Generated_Source\PSoC4/UART_UART.c ****         UART_INTR_SPI_EC_MASK_REG = UART_UART_DEFAULT_INTR_SPI_EC_MASK;
+  92              		.loc 1 268 0
+  93 0048 174B     		ldr	r3, .L2+48
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 8
+
+
+  94 004a 1C60     		str	r4, [r3]
+ 269:.\Generated_Source\PSoC4/UART_UART.c ****         UART_INTR_SLAVE_MASK_REG  = UART_UART_DEFAULT_INTR_SLAVE_MASK;
+  95              		.loc 1 269 0
+  96 004c 174B     		ldr	r3, .L2+52
+  97 004e 1C60     		str	r4, [r3]
+ 270:.\Generated_Source\PSoC4/UART_UART.c ****         UART_INTR_MASTER_MASK_REG = UART_UART_DEFAULT_INTR_MASTER_MASK;
+  98              		.loc 1 270 0
+  99 0050 174B     		ldr	r3, .L2+56
+ 100 0052 1C60     		str	r4, [r3]
+ 271:.\Generated_Source\PSoC4/UART_UART.c ****         UART_INTR_RX_MASK_REG     = UART_UART_DEFAULT_INTR_RX_MASK;
+ 101              		.loc 1 271 0
+ 102 0054 174B     		ldr	r3, .L2+60
+ 103 0056 1C60     		str	r4, [r3]
+ 272:.\Generated_Source\PSoC4/UART_UART.c ****         UART_INTR_TX_MASK_REG     = UART_UART_DEFAULT_INTR_TX_MASK;
+ 104              		.loc 1 272 0
+ 105 0058 174B     		ldr	r3, .L2+64
+ 106 005a 1A60     		str	r2, [r3]
+ 273:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 107              		.loc 1 273 0
+ 108 005c 174B     		ldr	r3, .L2+68
+ 109 005e 1C60     		str	r4, [r3]
+ 276:.\Generated_Source\PSoC4/UART_UART.c ****         UART_rxBufferTail     = 0u;
+ 110              		.loc 1 276 0
+ 111 0060 174B     		ldr	r3, .L2+72
+ 112 0062 1C60     		str	r4, [r3]
+ 277:.\Generated_Source\PSoC4/UART_UART.c ****         UART_rxBufferOverflow = 0u;
+ 113              		.loc 1 277 0
+ 114 0064 174B     		ldr	r3, .L2+76
+ 115 0066 1C60     		str	r4, [r3]
+ 278:.\Generated_Source\PSoC4/UART_UART.c ****     #endif /* (UART_INTERNAL_RX_SW_BUFFER_CONST) */
+ 116              		.loc 1 278 0
+ 117 0068 174B     		ldr	r3, .L2+80
+ 118 006a 1C70     		strb	r4, [r3]
+ 282:.\Generated_Source\PSoC4/UART_UART.c ****         UART_txBufferTail = 0u;
+ 119              		.loc 1 282 0
+ 120 006c 174B     		ldr	r3, .L2+84
+ 121 006e 1C60     		str	r4, [r3]
+ 283:.\Generated_Source\PSoC4/UART_UART.c ****     #endif /* (UART_INTERNAL_TX_SW_BUFFER_CONST) */
+ 122              		.loc 1 283 0
+ 123 0070 174B     		ldr	r3, .L2+88
+ 124 0072 1C60     		str	r4, [r3]
+ 125              		.loc 1 285 0
+ 126 0074 10BD     		pop	{r4, pc}
+ 127              	.L3:
+ 128 0076 C046     		.align	2
+ 129              	.L2:
+ 130 0078 0B000002 		.word	33554443
+ 131 007c 00000640 		.word	1074135040
+ 132 0080 40000640 		.word	1074135104
+ 133 0084 00030640 		.word	1074135808
+ 134 0088 48000640 		.word	1074135112
+ 135 008c 07000080 		.word	-2147483641
+ 136 0090 04030640 		.word	1074135812
+ 137 0094 10030640 		.word	1074135824
+ 138 0098 44000640 		.word	1074135108
+ 139 009c 00020640 		.word	1074135552
+ 140 00a0 04020640 		.word	1074135556
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 9
+
+
+ 141 00a4 00000000 		.word	UART_SPI_UART_ISR
+ 142 00a8 880E0640 		.word	1074138760
+ 143 00ac C80E0640 		.word	1074138824
+ 144 00b0 480F0640 		.word	1074138952
+ 145 00b4 080F0640 		.word	1074138888
+ 146 00b8 C80F0640 		.word	1074139080
+ 147 00bc 880F0640 		.word	1074139016
+ 148 00c0 00000000 		.word	UART_rxBufferHead
+ 149 00c4 00000000 		.word	UART_rxBufferTail
+ 150 00c8 00000000 		.word	UART_rxBufferOverflow
+ 151 00cc 00000000 		.word	UART_txBufferHead
+ 152 00d0 00000000 		.word	UART_txBufferTail
+ 153              		.cfi_endproc
+ 154              	.LFE0:
+ 155              		.size	UART_UartInit, .-UART_UartInit
+ 156              		.section	.text.UART_UartSetRxAddress,"ax",%progbits
+ 157              		.align	1
+ 158              		.global	UART_UartSetRxAddress
+ 159              		.code	16
+ 160              		.thumb_func
+ 161              		.type	UART_UartSetRxAddress, %function
+ 162              	UART_UartSetRxAddress:
+ 163              	.LFB1:
+ 286:.\Generated_Source\PSoC4/UART_UART.c **** #endif /* (UART_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 287:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 288:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 289:.\Generated_Source\PSoC4/UART_UART.c **** /*******************************************************************************
+ 290:.\Generated_Source\PSoC4/UART_UART.c **** * Function Name: UART_UartSetRxAddress
+ 291:.\Generated_Source\PSoC4/UART_UART.c **** ********************************************************************************
+ 292:.\Generated_Source\PSoC4/UART_UART.c **** *
+ 293:.\Generated_Source\PSoC4/UART_UART.c **** * Summary:
+ 294:.\Generated_Source\PSoC4/UART_UART.c **** *  Sets the hardware detectable receiver address for the UART in the
+ 295:.\Generated_Source\PSoC4/UART_UART.c **** *  Multiprocessor mode.
+ 296:.\Generated_Source\PSoC4/UART_UART.c **** *
+ 297:.\Generated_Source\PSoC4/UART_UART.c **** * Parameters:
+ 298:.\Generated_Source\PSoC4/UART_UART.c **** *  address: Address for hardware address detection.
+ 299:.\Generated_Source\PSoC4/UART_UART.c **** *
+ 300:.\Generated_Source\PSoC4/UART_UART.c **** * Return:
+ 301:.\Generated_Source\PSoC4/UART_UART.c **** *  None
+ 302:.\Generated_Source\PSoC4/UART_UART.c **** *
+ 303:.\Generated_Source\PSoC4/UART_UART.c **** *******************************************************************************/
+ 304:.\Generated_Source\PSoC4/UART_UART.c **** void UART_UartSetRxAddress(uint32 address)
+ 305:.\Generated_Source\PSoC4/UART_UART.c **** {
+ 164              		.loc 1 305 0
+ 165              		.cfi_startproc
+ 166              	.LVL3:
+ 306:.\Generated_Source\PSoC4/UART_UART.c ****      uint32 matchReg;
+ 307:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 308:.\Generated_Source\PSoC4/UART_UART.c ****     matchReg = UART_RX_MATCH_REG;
+ 309:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 310:.\Generated_Source\PSoC4/UART_UART.c ****     matchReg &= ((uint32) ~UART_RX_MATCH_ADDR_MASK); /* Clear address bits */
+ 167              		.loc 1 310 0
+ 168 0000 FF22     		mov	r2, #255
+ 308:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 169              		.loc 1 308 0
+ 170 0002 0349     		ldr	r1, .L5
+ 311:.\Generated_Source\PSoC4/UART_UART.c ****     matchReg |= ((uint32)  (address & UART_RX_MATCH_ADDR_MASK)); /* Set address  */
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 10
+
+
+ 171              		.loc 1 311 0
+ 172 0004 1040     		and	r0, r2
+ 173              	.LVL4:
+ 308:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 174              		.loc 1 308 0
+ 175 0006 0B68     		ldr	r3, [r1]
+ 176              	.LVL5:
+ 312:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 313:.\Generated_Source\PSoC4/UART_UART.c ****     UART_RX_MATCH_REG = matchReg;
+ 314:.\Generated_Source\PSoC4/UART_UART.c **** }
+ 177              		.loc 1 314 0
+ 178              		@ sp needed
+ 310:.\Generated_Source\PSoC4/UART_UART.c ****     matchReg |= ((uint32)  (address & UART_RX_MATCH_ADDR_MASK)); /* Set address  */
+ 179              		.loc 1 310 0
+ 180 0008 9343     		bic	r3, r2
+ 181              	.LVL6:
+ 311:.\Generated_Source\PSoC4/UART_UART.c ****     matchReg |= ((uint32)  (address & UART_RX_MATCH_ADDR_MASK)); /* Set address  */
+ 182              		.loc 1 311 0
+ 183 000a 1843     		orr	r0, r3
+ 184              	.LVL7:
+ 313:.\Generated_Source\PSoC4/UART_UART.c **** }
+ 185              		.loc 1 313 0
+ 186 000c 0860     		str	r0, [r1]
+ 187              		.loc 1 314 0
+ 188 000e 7047     		bx	lr
+ 189              	.L6:
+ 190              		.align	2
+ 191              	.L5:
+ 192 0010 10030640 		.word	1074135824
+ 193              		.cfi_endproc
+ 194              	.LFE1:
+ 195              		.size	UART_UartSetRxAddress, .-UART_UartSetRxAddress
+ 196              		.section	.text.UART_UartSetRxAddressMask,"ax",%progbits
+ 197              		.align	1
+ 198              		.global	UART_UartSetRxAddressMask
+ 199              		.code	16
+ 200              		.thumb_func
+ 201              		.type	UART_UartSetRxAddressMask, %function
+ 202              	UART_UartSetRxAddressMask:
+ 203              	.LFB2:
+ 315:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 316:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 317:.\Generated_Source\PSoC4/UART_UART.c **** /*******************************************************************************
+ 318:.\Generated_Source\PSoC4/UART_UART.c **** * Function Name: UART_UartSetRxAddressMask
+ 319:.\Generated_Source\PSoC4/UART_UART.c **** ********************************************************************************
+ 320:.\Generated_Source\PSoC4/UART_UART.c **** *
+ 321:.\Generated_Source\PSoC4/UART_UART.c **** * Summary:
+ 322:.\Generated_Source\PSoC4/UART_UART.c **** *  Sets the hardware address mask for the UART in the Multiprocessor mode.
+ 323:.\Generated_Source\PSoC4/UART_UART.c **** *
+ 324:.\Generated_Source\PSoC4/UART_UART.c **** * Parameters:
+ 325:.\Generated_Source\PSoC4/UART_UART.c **** *  addressMask: Address mask.
+ 326:.\Generated_Source\PSoC4/UART_UART.c **** *   0 - address bit does not care while comparison.
+ 327:.\Generated_Source\PSoC4/UART_UART.c **** *   1 - address bit is significant while comparison.
+ 328:.\Generated_Source\PSoC4/UART_UART.c **** *
+ 329:.\Generated_Source\PSoC4/UART_UART.c **** * Return:
+ 330:.\Generated_Source\PSoC4/UART_UART.c **** *  None
+ 331:.\Generated_Source\PSoC4/UART_UART.c **** *
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 11
+
+
+ 332:.\Generated_Source\PSoC4/UART_UART.c **** *******************************************************************************/
+ 333:.\Generated_Source\PSoC4/UART_UART.c **** void UART_UartSetRxAddressMask(uint32 addressMask)
+ 334:.\Generated_Source\PSoC4/UART_UART.c **** {
+ 204              		.loc 1 334 0
+ 205              		.cfi_startproc
+ 206              	.LVL8:
+ 335:.\Generated_Source\PSoC4/UART_UART.c ****     uint32 matchReg;
+ 336:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 337:.\Generated_Source\PSoC4/UART_UART.c ****     matchReg = UART_RX_MATCH_REG;
+ 207              		.loc 1 337 0
+ 208 0000 034A     		ldr	r2, .L8
+ 338:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 339:.\Generated_Source\PSoC4/UART_UART.c ****     matchReg &= ((uint32) ~UART_RX_MATCH_MASK_MASK); /* Clear address mask bits */
+ 209              		.loc 1 339 0
+ 210 0002 044B     		ldr	r3, .L8+4
+ 337:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 211              		.loc 1 337 0
+ 212 0004 1168     		ldr	r1, [r2]
+ 213              	.LVL9:
+ 340:.\Generated_Source\PSoC4/UART_UART.c ****     matchReg |= ((uint32) (addressMask << UART_RX_MATCH_MASK_POS));
+ 214              		.loc 1 340 0
+ 215 0006 0004     		lsl	r0, r0, #16
+ 216              	.LVL10:
+ 339:.\Generated_Source\PSoC4/UART_UART.c ****     matchReg |= ((uint32) (addressMask << UART_RX_MATCH_MASK_POS));
+ 217              		.loc 1 339 0
+ 218 0008 0B40     		and	r3, r1
+ 219              	.LVL11:
+ 220              		.loc 1 340 0
+ 221 000a 1843     		orr	r0, r3
+ 222              	.LVL12:
+ 341:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 342:.\Generated_Source\PSoC4/UART_UART.c ****     UART_RX_MATCH_REG = matchReg;
+ 223              		.loc 1 342 0
+ 224 000c 1060     		str	r0, [r2]
+ 343:.\Generated_Source\PSoC4/UART_UART.c **** }
+ 225              		.loc 1 343 0
+ 226              		@ sp needed
+ 227 000e 7047     		bx	lr
+ 228              	.L9:
+ 229              		.align	2
+ 230              	.L8:
+ 231 0010 10030640 		.word	1074135824
+ 232 0014 FFFF00FF 		.word	-16711681
+ 233              		.cfi_endproc
+ 234              	.LFE2:
+ 235              		.size	UART_UartSetRxAddressMask, .-UART_UartSetRxAddressMask
+ 236              		.section	.text.UART_UartGetChar,"ax",%progbits
+ 237              		.align	1
+ 238              		.global	UART_UartGetChar
+ 239              		.code	16
+ 240              		.thumb_func
+ 241              		.type	UART_UartGetChar, %function
+ 242              	UART_UartGetChar:
+ 243              	.LFB3:
+ 344:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 345:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 346:.\Generated_Source\PSoC4/UART_UART.c **** #if(UART_UART_RX_DIRECTION)
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 12
+
+
+ 347:.\Generated_Source\PSoC4/UART_UART.c ****     /*******************************************************************************
+ 348:.\Generated_Source\PSoC4/UART_UART.c ****     * Function Name: UART_UartGetChar
+ 349:.\Generated_Source\PSoC4/UART_UART.c ****     ********************************************************************************
+ 350:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 351:.\Generated_Source\PSoC4/UART_UART.c ****     * Summary:
+ 352:.\Generated_Source\PSoC4/UART_UART.c ****     *  Retrieves the next data element from the receive buffer.
+ 353:.\Generated_Source\PSoC4/UART_UART.c ****     *  This function is designed for ASCII characters and returns a char
+ 354:.\Generated_Source\PSoC4/UART_UART.c ****     *  where 1 to 255 are valid characters and 0 indicates an error occurred or
+ 355:.\Generated_Source\PSoC4/UART_UART.c ****     *  no data present.
+ 356:.\Generated_Source\PSoC4/UART_UART.c ****     *  - The RX software buffer is disabled: returns the data element
+ 357:.\Generated_Source\PSoC4/UART_UART.c ****     *    retrieved from the RX FIFO.
+ 358:.\Generated_Source\PSoC4/UART_UART.c ****     *    Undefined data will be returned if the RX FIFO is empty.
+ 359:.\Generated_Source\PSoC4/UART_UART.c ****     *  - The RX software buffer is enabled: returns the data element from
+ 360:.\Generated_Source\PSoC4/UART_UART.c ****     *    the software receive buffer.
+ 361:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 362:.\Generated_Source\PSoC4/UART_UART.c ****     * Parameters:
+ 363:.\Generated_Source\PSoC4/UART_UART.c ****     *  None
+ 364:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 365:.\Generated_Source\PSoC4/UART_UART.c ****     * Return:
+ 366:.\Generated_Source\PSoC4/UART_UART.c ****     *  The next data element from the receive buffer.
+ 367:.\Generated_Source\PSoC4/UART_UART.c ****     *  ASCII character values from 1 to 255 are valid.
+ 368:.\Generated_Source\PSoC4/UART_UART.c ****     *  A returned zero signifies an error condition or no data available.
+ 369:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 370:.\Generated_Source\PSoC4/UART_UART.c ****     * Side Effects:
+ 371:.\Generated_Source\PSoC4/UART_UART.c ****     *  The errors bits may not correspond with reading characters due to RX FIFO
+ 372:.\Generated_Source\PSoC4/UART_UART.c ****     *  and software buffer usage.
+ 373:.\Generated_Source\PSoC4/UART_UART.c ****     *  RX software buffer is enabled: The internal software buffer overflow
+ 374:.\Generated_Source\PSoC4/UART_UART.c ****     *  does not treat as an error condition.
+ 375:.\Generated_Source\PSoC4/UART_UART.c ****     *  Check SCB_rxBufferOverflow to capture that error condition.
+ 376:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 377:.\Generated_Source\PSoC4/UART_UART.c ****     *******************************************************************************/
+ 378:.\Generated_Source\PSoC4/UART_UART.c ****     uint32 UART_UartGetChar(void)
+ 379:.\Generated_Source\PSoC4/UART_UART.c ****     {
+ 244              		.loc 1 379 0
+ 245              		.cfi_startproc
+ 246              	.LVL13:
+ 247 0000 08B5     		push	{r3, lr}
+ 248              		.cfi_def_cfa_offset 8
+ 249              		.cfi_offset 3, -8
+ 250              		.cfi_offset 14, -4
+ 380:.\Generated_Source\PSoC4/UART_UART.c ****         uint32 rxData = 0u;
+ 381:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 382:.\Generated_Source\PSoC4/UART_UART.c ****         /* Reads data only if there is data to read */
+ 383:.\Generated_Source\PSoC4/UART_UART.c ****         if(0u != UART_SpiUartGetRxBufferSize())
+ 251              		.loc 1 383 0
+ 252 0002 FFF7FEFF 		bl	UART_SpiUartGetRxBufferSize
+ 253              	.LVL14:
+ 254 0006 031C     		mov	r3, r0
+ 380:.\Generated_Source\PSoC4/UART_UART.c ****         uint32 rxData = 0u;
+ 255              		.loc 1 380 0
+ 256 0008 0020     		mov	r0, #0
+ 257              		.loc 1 383 0
+ 258 000a 8342     		cmp	r3, r0
+ 259 000c 01D0     		beq	.L11
+ 384:.\Generated_Source\PSoC4/UART_UART.c ****         {
+ 385:.\Generated_Source\PSoC4/UART_UART.c ****             rxData = UART_SpiUartReadRxData();
+ 260              		.loc 1 385 0
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 13
+
+
+ 261 000e FFF7FEFF 		bl	UART_SpiUartReadRxData
+ 262              	.LVL15:
+ 263              	.L11:
+ 386:.\Generated_Source\PSoC4/UART_UART.c ****         }
+ 387:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 388:.\Generated_Source\PSoC4/UART_UART.c ****         if(UART_CHECK_INTR_RX(UART_INTR_RX_ERR))
+ 264              		.loc 1 388 0
+ 265 0012 D822     		mov	r2, #216
+ 266 0014 034B     		ldr	r3, .L19
+ 267 0016 9200     		lsl	r2, r2, #2
+ 268 0018 1968     		ldr	r1, [r3]
+ 269 001a 1142     		tst	r1, r2
+ 270 001c 01D0     		beq	.L12
+ 271              	.LVL16:
+ 389:.\Generated_Source\PSoC4/UART_UART.c ****         {
+ 390:.\Generated_Source\PSoC4/UART_UART.c ****             rxData = 0u; /* Error occurred: returns zero */
+ 272              		.loc 1 390 0
+ 273 001e 0020     		mov	r0, #0
+ 391:.\Generated_Source\PSoC4/UART_UART.c ****             UART_ClearRxInterruptSource(UART_INTR_RX_ERR);
+ 274              		.loc 1 391 0
+ 275 0020 1A60     		str	r2, [r3]
+ 276              	.LVL17:
+ 277              	.L12:
+ 392:.\Generated_Source\PSoC4/UART_UART.c ****         }
+ 393:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 394:.\Generated_Source\PSoC4/UART_UART.c ****         return(rxData);
+ 395:.\Generated_Source\PSoC4/UART_UART.c ****     }
+ 278              		.loc 1 395 0
+ 279              		@ sp needed
+ 280 0022 08BD     		pop	{r3, pc}
+ 281              	.L20:
+ 282              		.align	2
+ 283              	.L19:
+ 284 0024 C00F0640 		.word	1074139072
+ 285              		.cfi_endproc
+ 286              	.LFE3:
+ 287              		.size	UART_UartGetChar, .-UART_UartGetChar
+ 288              		.section	.text.UART_UartGetByte,"ax",%progbits
+ 289              		.align	1
+ 290              		.global	UART_UartGetByte
+ 291              		.code	16
+ 292              		.thumb_func
+ 293              		.type	UART_UartGetByte, %function
+ 294              	UART_UartGetByte:
+ 295              	.LFB4:
+ 396:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 397:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 398:.\Generated_Source\PSoC4/UART_UART.c ****     /*******************************************************************************
+ 399:.\Generated_Source\PSoC4/UART_UART.c ****     * Function Name: UART_UartGetByte
+ 400:.\Generated_Source\PSoC4/UART_UART.c ****     ********************************************************************************
+ 401:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 402:.\Generated_Source\PSoC4/UART_UART.c ****     * Summary:
+ 403:.\Generated_Source\PSoC4/UART_UART.c ****     *  Retrieves the next data element from the receive buffer, returns the
+ 404:.\Generated_Source\PSoC4/UART_UART.c ****     *  received byte and error condition.
+ 405:.\Generated_Source\PSoC4/UART_UART.c ****     *   - The RX software buffer is disabled: returns the data element retrieved
+ 406:.\Generated_Source\PSoC4/UART_UART.c ****     *     from the RX FIFO. Undefined data will be returned if the RX FIFO is
+ 407:.\Generated_Source\PSoC4/UART_UART.c ****     *     empty.
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 14
+
+
+ 408:.\Generated_Source\PSoC4/UART_UART.c ****     *   - The RX software buffer is enabled: returns data element from the
+ 409:.\Generated_Source\PSoC4/UART_UART.c ****     *     software receive buffer.
+ 410:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 411:.\Generated_Source\PSoC4/UART_UART.c ****     * Parameters:
+ 412:.\Generated_Source\PSoC4/UART_UART.c ****     *  None
+ 413:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 414:.\Generated_Source\PSoC4/UART_UART.c ****     * Return:
+ 415:.\Generated_Source\PSoC4/UART_UART.c ****     *  Bits 7-0 contain the next data element from the receive buffer and
+ 416:.\Generated_Source\PSoC4/UART_UART.c ****     *  other bits contain the error condition.
+ 417:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 418:.\Generated_Source\PSoC4/UART_UART.c ****     * Side Effects:
+ 419:.\Generated_Source\PSoC4/UART_UART.c ****     *  The errors bits may not correspond with reading characters due to RX FIFO
+ 420:.\Generated_Source\PSoC4/UART_UART.c ****     *  and software buffer usage.
+ 421:.\Generated_Source\PSoC4/UART_UART.c ****     *  RX software buffer is disabled: The internal software buffer overflow
+ 422:.\Generated_Source\PSoC4/UART_UART.c ****     *  is not returned as status by this function.
+ 423:.\Generated_Source\PSoC4/UART_UART.c ****     *  Check SCB_rxBufferOverflow to capture that error condition.
+ 424:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 425:.\Generated_Source\PSoC4/UART_UART.c ****     *******************************************************************************/
+ 426:.\Generated_Source\PSoC4/UART_UART.c ****     uint32 UART_UartGetByte(void)
+ 427:.\Generated_Source\PSoC4/UART_UART.c ****     {
+ 296              		.loc 1 427 0
+ 297              		.cfi_startproc
+ 298 0000 10B5     		push	{r4, lr}
+ 299              		.cfi_def_cfa_offset 8
+ 300              		.cfi_offset 4, -8
+ 301              		.cfi_offset 14, -4
+ 428:.\Generated_Source\PSoC4/UART_UART.c ****         uint32 rxData;
+ 429:.\Generated_Source\PSoC4/UART_UART.c ****         uint32 tmpStatus;
+ 430:.\Generated_Source\PSoC4/UART_UART.c ****         uint32 intSourceMask;
+ 431:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 432:.\Generated_Source\PSoC4/UART_UART.c ****         intSourceMask = UART_SpiUartDisableIntRx();
+ 302              		.loc 1 432 0
+ 303 0002 FFF7FEFF 		bl	UART_SpiUartDisableIntRx
+ 304              	.LVL18:
+ 305 0006 041C     		mov	r4, r0
+ 306              	.LVL19:
+ 433:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 434:.\Generated_Source\PSoC4/UART_UART.c ****         if(0u != UART_SpiUartGetRxBufferSize())
+ 307              		.loc 1 434 0
+ 308 0008 FFF7FEFF 		bl	UART_SpiUartGetRxBufferSize
+ 309              	.LVL20:
+ 310 000c 094B     		ldr	r3, .L24
+ 311 000e 0028     		cmp	r0, #0
+ 312 0010 03D0     		beq	.L22
+ 435:.\Generated_Source\PSoC4/UART_UART.c ****         {
+ 436:.\Generated_Source\PSoC4/UART_UART.c ****             /* Enables interrupt to receive more bytes: at least one byte is in
+ 437:.\Generated_Source\PSoC4/UART_UART.c ****             * buffer.
+ 438:.\Generated_Source\PSoC4/UART_UART.c ****             */
+ 439:.\Generated_Source\PSoC4/UART_UART.c ****             UART_SpiUartEnableIntRx(intSourceMask);
+ 313              		.loc 1 439 0
+ 314 0012 1C60     		str	r4, [r3]
+ 440:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 441:.\Generated_Source\PSoC4/UART_UART.c ****             /* Get received byte */
+ 442:.\Generated_Source\PSoC4/UART_UART.c ****             rxData = UART_SpiUartReadRxData();
+ 315              		.loc 1 442 0
+ 316 0014 FFF7FEFF 		bl	UART_SpiUartReadRxData
+ 317              	.LVL21:
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 15
+
+
+ 318 0018 02E0     		b	.L23
+ 319              	.LVL22:
+ 320              	.L22:
+ 443:.\Generated_Source\PSoC4/UART_UART.c ****         }
+ 444:.\Generated_Source\PSoC4/UART_UART.c ****         else
+ 445:.\Generated_Source\PSoC4/UART_UART.c ****         {
+ 446:.\Generated_Source\PSoC4/UART_UART.c ****             /* Reads a byte directly from RX FIFO: underflow is raised in the case
+ 447:.\Generated_Source\PSoC4/UART_UART.c ****             * of empty. Otherwise the first received byte will be read.
+ 448:.\Generated_Source\PSoC4/UART_UART.c ****             */
+ 449:.\Generated_Source\PSoC4/UART_UART.c ****             rxData = UART_RX_FIFO_RD_REG;
+ 321              		.loc 1 449 0
+ 322 001a 074A     		ldr	r2, .L24+4
+ 323 001c 1068     		ldr	r0, [r2]
+ 324              	.LVL23:
+ 450:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 451:.\Generated_Source\PSoC4/UART_UART.c ****             /* Enables interrupt to receive more bytes.
+ 452:.\Generated_Source\PSoC4/UART_UART.c ****             * The RX_NOT_EMPTY interrupt is cleared by the interrupt routine
+ 453:.\Generated_Source\PSoC4/UART_UART.c ****             * in case the byte was received and read by code above.
+ 454:.\Generated_Source\PSoC4/UART_UART.c ****             */
+ 455:.\Generated_Source\PSoC4/UART_UART.c ****             UART_SpiUartEnableIntRx(intSourceMask);
+ 325              		.loc 1 455 0
+ 326 001e 1C60     		str	r4, [r3]
+ 327              	.L23:
+ 456:.\Generated_Source\PSoC4/UART_UART.c ****         }
+ 457:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 458:.\Generated_Source\PSoC4/UART_UART.c ****         /* Get and clear RX error mask */
+ 459:.\Generated_Source\PSoC4/UART_UART.c ****         tmpStatus = (UART_GetRxInterruptSource() & UART_INTR_RX_ERR);
+ 460:.\Generated_Source\PSoC4/UART_UART.c ****         UART_ClearRxInterruptSource(UART_INTR_RX_ERR);
+ 328              		.loc 1 460 0
+ 329 0020 D823     		mov	r3, #216
+ 459:.\Generated_Source\PSoC4/UART_UART.c ****         UART_ClearRxInterruptSource(UART_INTR_RX_ERR);
+ 330              		.loc 1 459 0
+ 331 0022 064A     		ldr	r2, .L24+8
+ 332              		.loc 1 460 0
+ 333 0024 9B00     		lsl	r3, r3, #2
+ 459:.\Generated_Source\PSoC4/UART_UART.c ****         UART_ClearRxInterruptSource(UART_INTR_RX_ERR);
+ 334              		.loc 1 459 0
+ 335 0026 1168     		ldr	r1, [r2]
+ 336              	.LVL24:
+ 337              		.loc 1 460 0
+ 338 0028 1360     		str	r3, [r2]
+ 339              	.LVL25:
+ 459:.\Generated_Source\PSoC4/UART_UART.c ****         UART_ClearRxInterruptSource(UART_INTR_RX_ERR);
+ 340              		.loc 1 459 0
+ 341 002a 0B40     		and	r3, r1
+ 461:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 462:.\Generated_Source\PSoC4/UART_UART.c ****         /* Puts together data and error status:
+ 463:.\Generated_Source\PSoC4/UART_UART.c ****         * MP mode and accept address: 9th bit is set to notify mark.
+ 464:.\Generated_Source\PSoC4/UART_UART.c ****         */
+ 465:.\Generated_Source\PSoC4/UART_UART.c ****         rxData |= ((uint32) (tmpStatus << 8u));
+ 342              		.loc 1 465 0
+ 343 002c 1B02     		lsl	r3, r3, #8
+ 344 002e 1843     		orr	r0, r3
+ 345              	.LVL26:
+ 466:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 467:.\Generated_Source\PSoC4/UART_UART.c ****         return(rxData);
+ 468:.\Generated_Source\PSoC4/UART_UART.c ****     }
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 16
+
+
+ 346              		.loc 1 468 0
+ 347              		@ sp needed
+ 348              	.LVL27:
+ 349 0030 10BD     		pop	{r4, pc}
+ 350              	.L25:
+ 351 0032 C046     		.align	2
+ 352              	.L24:
+ 353 0034 C80F0640 		.word	1074139080
+ 354 0038 40030640 		.word	1074135872
+ 355 003c C00F0640 		.word	1074139072
+ 356              		.cfi_endproc
+ 357              	.LFE4:
+ 358              		.size	UART_UartGetByte, .-UART_UartGetByte
+ 359              		.section	.text.UART_UartPutString,"ax",%progbits
+ 360              		.align	1
+ 361              		.global	UART_UartPutString
+ 362              		.code	16
+ 363              		.thumb_func
+ 364              		.type	UART_UartPutString, %function
+ 365              	UART_UartPutString:
+ 366              	.LFB5:
+ 469:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 470:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 471:.\Generated_Source\PSoC4/UART_UART.c ****     #if !(UART_CY_SCBIP_V0 || UART_CY_SCBIP_V1)
+ 472:.\Generated_Source\PSoC4/UART_UART.c ****         /*******************************************************************************
+ 473:.\Generated_Source\PSoC4/UART_UART.c ****         * Function Name: UART_UartSetRtsPolarity
+ 474:.\Generated_Source\PSoC4/UART_UART.c ****         ********************************************************************************
+ 475:.\Generated_Source\PSoC4/UART_UART.c ****         *
+ 476:.\Generated_Source\PSoC4/UART_UART.c ****         * Summary:
+ 477:.\Generated_Source\PSoC4/UART_UART.c ****         *  Sets active polarity of RTS output signal.
+ 478:.\Generated_Source\PSoC4/UART_UART.c ****         *
+ 479:.\Generated_Source\PSoC4/UART_UART.c ****         * Parameters:
+ 480:.\Generated_Source\PSoC4/UART_UART.c ****         *  polarity: Active polarity of RTS output signal.
+ 481:.\Generated_Source\PSoC4/UART_UART.c ****         *   UART_UART_RTS_ACTIVE_LOW  - RTS signal is active low.
+ 482:.\Generated_Source\PSoC4/UART_UART.c ****         *   UART_UART_RTS_ACTIVE_HIGH - RTS signal is active high.
+ 483:.\Generated_Source\PSoC4/UART_UART.c ****         *
+ 484:.\Generated_Source\PSoC4/UART_UART.c ****         * Return:
+ 485:.\Generated_Source\PSoC4/UART_UART.c ****         *  None
+ 486:.\Generated_Source\PSoC4/UART_UART.c ****         *
+ 487:.\Generated_Source\PSoC4/UART_UART.c ****         *******************************************************************************/
+ 488:.\Generated_Source\PSoC4/UART_UART.c ****         void UART_UartSetRtsPolarity(uint32 polarity)
+ 489:.\Generated_Source\PSoC4/UART_UART.c ****         {
+ 490:.\Generated_Source\PSoC4/UART_UART.c ****             if(0u != polarity)
+ 491:.\Generated_Source\PSoC4/UART_UART.c ****             {
+ 492:.\Generated_Source\PSoC4/UART_UART.c ****                 UART_UART_FLOW_CTRL_REG |= (uint32)  UART_UART_FLOW_CTRL_RTS_POLARITY;
+ 493:.\Generated_Source\PSoC4/UART_UART.c ****             }
+ 494:.\Generated_Source\PSoC4/UART_UART.c ****             else
+ 495:.\Generated_Source\PSoC4/UART_UART.c ****             {
+ 496:.\Generated_Source\PSoC4/UART_UART.c ****                 UART_UART_FLOW_CTRL_REG &= (uint32) ~UART_UART_FLOW_CTRL_RTS_POLARITY;
+ 497:.\Generated_Source\PSoC4/UART_UART.c ****             }
+ 498:.\Generated_Source\PSoC4/UART_UART.c ****         }
+ 499:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 500:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 501:.\Generated_Source\PSoC4/UART_UART.c ****         /*******************************************************************************
+ 502:.\Generated_Source\PSoC4/UART_UART.c ****         * Function Name: UART_UartSetRtsFifoLevel
+ 503:.\Generated_Source\PSoC4/UART_UART.c ****         ********************************************************************************
+ 504:.\Generated_Source\PSoC4/UART_UART.c ****         *
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 17
+
+
+ 505:.\Generated_Source\PSoC4/UART_UART.c ****         * Summary:
+ 506:.\Generated_Source\PSoC4/UART_UART.c ****         *  Sets level in the RX FIFO for RTS signal activation.
+ 507:.\Generated_Source\PSoC4/UART_UART.c ****         *  While the RX FIFO has fewer entries than the RX FIFO level the RTS signal
+ 508:.\Generated_Source\PSoC4/UART_UART.c ****         *  remains active, otherwise the RTS signal becomes inactive.
+ 509:.\Generated_Source\PSoC4/UART_UART.c ****         *
+ 510:.\Generated_Source\PSoC4/UART_UART.c ****         * Parameters:
+ 511:.\Generated_Source\PSoC4/UART_UART.c ****         *  level: Level in the RX FIFO for RTS signal activation.
+ 512:.\Generated_Source\PSoC4/UART_UART.c ****         *         The range of valid level values is between 0 and RX FIFO depth - 1.
+ 513:.\Generated_Source\PSoC4/UART_UART.c ****         *         Setting level value to 0 disables RTS signal activation.
+ 514:.\Generated_Source\PSoC4/UART_UART.c ****         *
+ 515:.\Generated_Source\PSoC4/UART_UART.c ****         * Return:
+ 516:.\Generated_Source\PSoC4/UART_UART.c ****         *  None
+ 517:.\Generated_Source\PSoC4/UART_UART.c ****         *
+ 518:.\Generated_Source\PSoC4/UART_UART.c ****         *******************************************************************************/
+ 519:.\Generated_Source\PSoC4/UART_UART.c ****         void UART_UartSetRtsFifoLevel(uint32 level)
+ 520:.\Generated_Source\PSoC4/UART_UART.c ****         {
+ 521:.\Generated_Source\PSoC4/UART_UART.c ****             uint32 uartFlowCtrl;
+ 522:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 523:.\Generated_Source\PSoC4/UART_UART.c ****             uartFlowCtrl = UART_UART_FLOW_CTRL_REG;
+ 524:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 525:.\Generated_Source\PSoC4/UART_UART.c ****             uartFlowCtrl &= ((uint32) ~UART_UART_FLOW_CTRL_TRIGGER_LEVEL_MASK); /* Clear level mask
+ 526:.\Generated_Source\PSoC4/UART_UART.c ****             uartFlowCtrl |= ((uint32) (UART_UART_FLOW_CTRL_TRIGGER_LEVEL_MASK & level));
+ 527:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 528:.\Generated_Source\PSoC4/UART_UART.c ****             UART_UART_FLOW_CTRL_REG = uartFlowCtrl;
+ 529:.\Generated_Source\PSoC4/UART_UART.c ****         }
+ 530:.\Generated_Source\PSoC4/UART_UART.c ****     #endif /* !(UART_CY_SCBIP_V0 || UART_CY_SCBIP_V1) */
+ 531:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 532:.\Generated_Source\PSoC4/UART_UART.c **** #endif /* (UART_UART_RX_DIRECTION) */
+ 533:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 534:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 535:.\Generated_Source\PSoC4/UART_UART.c **** #if(UART_UART_TX_DIRECTION)
+ 536:.\Generated_Source\PSoC4/UART_UART.c ****     /*******************************************************************************
+ 537:.\Generated_Source\PSoC4/UART_UART.c ****     * Function Name: UART_UartPutString
+ 538:.\Generated_Source\PSoC4/UART_UART.c ****     ********************************************************************************
+ 539:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 540:.\Generated_Source\PSoC4/UART_UART.c ****     * Summary:
+ 541:.\Generated_Source\PSoC4/UART_UART.c ****     *  Places a NULL terminated string in the transmit buffer to be sent at the
+ 542:.\Generated_Source\PSoC4/UART_UART.c ****     *  next available bus time.
+ 543:.\Generated_Source\PSoC4/UART_UART.c ****     *  This function is blocking and waits until there is space available to put
+ 544:.\Generated_Source\PSoC4/UART_UART.c ****     *  all the requested data into the  transmit buffer.
+ 545:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 546:.\Generated_Source\PSoC4/UART_UART.c ****     * Parameters:
+ 547:.\Generated_Source\PSoC4/UART_UART.c ****     *  string: pointer to the null terminated string array to be placed in the
+ 548:.\Generated_Source\PSoC4/UART_UART.c ****     *          transmit buffer.
+ 549:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 550:.\Generated_Source\PSoC4/UART_UART.c ****     * Return:
+ 551:.\Generated_Source\PSoC4/UART_UART.c ****     *  None
+ 552:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 553:.\Generated_Source\PSoC4/UART_UART.c ****     *******************************************************************************/
+ 554:.\Generated_Source\PSoC4/UART_UART.c ****     void UART_UartPutString(const char8 string[])
+ 555:.\Generated_Source\PSoC4/UART_UART.c ****     {
+ 367              		.loc 1 555 0
+ 368              		.cfi_startproc
+ 369              	.LVL28:
+ 370 0000 10B5     		push	{r4, lr}
+ 371              		.cfi_def_cfa_offset 8
+ 372              		.cfi_offset 4, -8
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 18
+
+
+ 373              		.cfi_offset 14, -4
+ 374 0002 041C     		mov	r4, r0
+ 375              	.LVL29:
+ 376              	.L27:
+ 377 0004 0134     		add	r4, r4, #1
+ 378              	.LVL30:
+ 379 0006 631E     		sub	r3, r4, #1
+ 556:.\Generated_Source\PSoC4/UART_UART.c ****         uint32 bufIndex;
+ 557:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 558:.\Generated_Source\PSoC4/UART_UART.c ****         bufIndex = 0u;
+ 559:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 560:.\Generated_Source\PSoC4/UART_UART.c ****         /* Blocks the control flow until all data has been sent */
+ 561:.\Generated_Source\PSoC4/UART_UART.c ****         while(string[bufIndex] != ((char8) 0))
+ 380              		.loc 1 561 0
+ 381 0008 1878     		ldrb	r0, [r3]
+ 382 000a 0028     		cmp	r0, #0
+ 383 000c 02D0     		beq	.L29
+ 562:.\Generated_Source\PSoC4/UART_UART.c ****         {
+ 563:.\Generated_Source\PSoC4/UART_UART.c ****             UART_UartPutChar((uint32) string[bufIndex]);
+ 384              		.loc 1 563 0
+ 385 000e FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 386              	.LVL31:
+ 387 0012 F7E7     		b	.L27
+ 388              	.LVL32:
+ 389              	.L29:
+ 564:.\Generated_Source\PSoC4/UART_UART.c ****             bufIndex++;
+ 565:.\Generated_Source\PSoC4/UART_UART.c ****         }
+ 566:.\Generated_Source\PSoC4/UART_UART.c ****     }
+ 390              		.loc 1 566 0
+ 391              		@ sp needed
+ 392              	.LVL33:
+ 393 0014 10BD     		pop	{r4, pc}
+ 394              		.cfi_endproc
+ 395              	.LFE5:
+ 396              		.size	UART_UartPutString, .-UART_UartPutString
+ 397              		.section	.text.UART_UartPutCRLF,"ax",%progbits
+ 398              		.align	1
+ 399              		.global	UART_UartPutCRLF
+ 400              		.code	16
+ 401              		.thumb_func
+ 402              		.type	UART_UartPutCRLF, %function
+ 403              	UART_UartPutCRLF:
+ 404              	.LFB6:
+ 567:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 568:.\Generated_Source\PSoC4/UART_UART.c **** 
+ 569:.\Generated_Source\PSoC4/UART_UART.c ****     /*******************************************************************************
+ 570:.\Generated_Source\PSoC4/UART_UART.c ****     * Function Name: UART_UartPutCRLF
+ 571:.\Generated_Source\PSoC4/UART_UART.c ****     ********************************************************************************
+ 572:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 573:.\Generated_Source\PSoC4/UART_UART.c ****     * Summary:
+ 574:.\Generated_Source\PSoC4/UART_UART.c ****     *  Places a byte of data followed by a carriage return (0x0D) and
+ 575:.\Generated_Source\PSoC4/UART_UART.c ****     *  line feed (0x0A) into the transmit buffer.
+ 576:.\Generated_Source\PSoC4/UART_UART.c ****     *  This function is blocking and waits until there is space available to put
+ 577:.\Generated_Source\PSoC4/UART_UART.c ****     *  all the requested data into the  transmit buffer.
+ 578:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 579:.\Generated_Source\PSoC4/UART_UART.c ****     * Parameters:
+ 580:.\Generated_Source\PSoC4/UART_UART.c ****     *  txDataByte : the data to be transmitted.
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 19
+
+
+ 581:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 582:.\Generated_Source\PSoC4/UART_UART.c ****     * Return:
+ 583:.\Generated_Source\PSoC4/UART_UART.c ****     *  None
+ 584:.\Generated_Source\PSoC4/UART_UART.c ****     *
+ 585:.\Generated_Source\PSoC4/UART_UART.c ****     *******************************************************************************/
+ 586:.\Generated_Source\PSoC4/UART_UART.c ****     void UART_UartPutCRLF(uint32 txDataByte)
+ 587:.\Generated_Source\PSoC4/UART_UART.c ****     {
+ 405              		.loc 1 587 0
+ 406              		.cfi_startproc
+ 407              	.LVL34:
+ 408 0000 08B5     		push	{r3, lr}
+ 409              		.cfi_def_cfa_offset 8
+ 410              		.cfi_offset 3, -8
+ 411              		.cfi_offset 14, -4
+ 588:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UartPutChar(txDataByte);  /* Blocks control flow until all data has been sent */
+ 412              		.loc 1 588 0
+ 413 0002 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 414              	.LVL35:
+ 589:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UartPutChar(0x0Du);       /* Blocks control flow until all data has been sent */
+ 415              		.loc 1 589 0
+ 416 0006 0D20     		mov	r0, #13
+ 417 0008 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 418              	.LVL36:
+ 590:.\Generated_Source\PSoC4/UART_UART.c ****         UART_UartPutChar(0x0Au);       /* Blocks control flow until all data has been sent */
+ 419              		.loc 1 590 0
+ 420 000c 0A20     		mov	r0, #10
+ 421 000e FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 422              	.LVL37:
+ 591:.\Generated_Source\PSoC4/UART_UART.c ****     }
+ 423              		.loc 1 591 0
+ 424              		@ sp needed
+ 425 0012 08BD     		pop	{r3, pc}
+ 426              		.cfi_endproc
+ 427              	.LFE6:
+ 428              		.size	UART_UartPutCRLF, .-UART_UartPutCRLF
+ 429              		.text
+ 430              	.Letext0:
+ 431              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 432              		.file 3 ".\\Generated_Source\\PSoC4\\UART_SPI_UART_PVT.h"
+ 433              		.file 4 "Generated_Source\\PSoC4/CyLib.h"
+ 434              		.file 5 ".\\Generated_Source\\PSoC4\\UART_SPI_UART.h"
+ 435              		.section	.debug_info,"",%progbits
+ 436              	.Ldebug_info0:
+ 437 0000 85030000 		.4byte	0x385
+ 438 0004 0400     		.2byte	0x4
+ 439 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 440 000a 04       		.byte	0x4
+ 441 000b 01       		.uleb128 0x1
+ 442 000c 14000000 		.4byte	.LASF44
+ 443 0010 01       		.byte	0x1
+ 444 0011 9D020000 		.4byte	.LASF45
+ 445 0015 CB000000 		.4byte	.LASF46
+ 446 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 447 001d 00000000 		.4byte	0
+ 448 0021 00000000 		.4byte	.Ldebug_line0
+ 449 0025 02       		.uleb128 0x2
+ 450 0026 01       		.byte	0x1
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 20
+
+
+ 451 0027 06       		.byte	0x6
+ 452 0028 3C030000 		.4byte	.LASF0
+ 453 002c 02       		.uleb128 0x2
+ 454 002d 01       		.byte	0x1
+ 455 002e 08       		.byte	0x8
+ 456 002f 4F010000 		.4byte	.LASF1
+ 457 0033 02       		.uleb128 0x2
+ 458 0034 02       		.byte	0x2
+ 459 0035 05       		.byte	0x5
+ 460 0036 F9020000 		.4byte	.LASF2
+ 461 003a 02       		.uleb128 0x2
+ 462 003b 02       		.byte	0x2
+ 463 003c 07       		.byte	0x7
+ 464 003d FF000000 		.4byte	.LASF3
+ 465 0041 02       		.uleb128 0x2
+ 466 0042 04       		.byte	0x4
+ 467 0043 05       		.byte	0x5
+ 468 0044 1A030000 		.4byte	.LASF4
+ 469 0048 02       		.uleb128 0x2
+ 470 0049 04       		.byte	0x4
+ 471 004a 07       		.byte	0x7
+ 472 004b 75010000 		.4byte	.LASF5
+ 473 004f 02       		.uleb128 0x2
+ 474 0050 08       		.byte	0x8
+ 475 0051 05       		.byte	0x5
+ 476 0052 00000000 		.4byte	.LASF6
+ 477 0056 02       		.uleb128 0x2
+ 478 0057 08       		.byte	0x8
+ 479 0058 07       		.byte	0x7
+ 480 0059 24020000 		.4byte	.LASF7
+ 481 005d 03       		.uleb128 0x3
+ 482 005e 04       		.byte	0x4
+ 483 005f 05       		.byte	0x5
+ 484 0060 696E7400 		.ascii	"int\000"
+ 485 0064 02       		.uleb128 0x2
+ 486 0065 04       		.byte	0x4
+ 487 0066 07       		.byte	0x7
+ 488 0067 17010000 		.4byte	.LASF8
+ 489 006b 04       		.uleb128 0x4
+ 490 006c 87010000 		.4byte	.LASF9
+ 491 0070 02       		.byte	0x2
+ 492 0071 A1       		.byte	0xa1
+ 493 0072 2C000000 		.4byte	0x2c
+ 494 0076 04       		.uleb128 0x4
+ 495 0077 E0010000 		.4byte	.LASF10
+ 496 007b 02       		.byte	0x2
+ 497 007c A3       		.byte	0xa3
+ 498 007d 48000000 		.4byte	0x48
+ 499 0081 02       		.uleb128 0x2
+ 500 0082 04       		.byte	0x4
+ 501 0083 04       		.byte	0x4
+ 502 0084 36030000 		.4byte	.LASF11
+ 503 0088 02       		.uleb128 0x2
+ 504 0089 08       		.byte	0x8
+ 505 008a 04       		.byte	0x4
+ 506 008b B1010000 		.4byte	.LASF12
+ 507 008f 04       		.uleb128 0x4
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 21
+
+
+ 508 0090 6F010000 		.4byte	.LASF13
+ 509 0094 02       		.byte	0x2
+ 510 0095 B2       		.byte	0xb2
+ 511 0096 9A000000 		.4byte	0x9a
+ 512 009a 02       		.uleb128 0x2
+ 513 009b 01       		.byte	0x1
+ 514 009c 08       		.byte	0x8
+ 515 009d 12010000 		.4byte	.LASF14
+ 516 00a1 05       		.uleb128 0x5
+ 517 00a2 6B000000 		.4byte	0x6b
+ 518 00a6 06       		.uleb128 0x6
+ 519 00a7 0E000000 		.4byte	.LASF15
+ 520 00ab 02       		.byte	0x2
+ 521 00ac 4D01     		.2byte	0x14d
+ 522 00ae B2000000 		.4byte	0xb2
+ 523 00b2 05       		.uleb128 0x5
+ 524 00b3 76000000 		.4byte	0x76
+ 525 00b7 06       		.uleb128 0x6
+ 526 00b8 62020000 		.4byte	.LASF16
+ 527 00bc 02       		.byte	0x2
+ 528 00bd 5D01     		.2byte	0x15d
+ 529 00bf C3000000 		.4byte	0xc3
+ 530 00c3 07       		.uleb128 0x7
+ 531 00c4 04       		.byte	0x4
+ 532 00c5 C9000000 		.4byte	0xc9
+ 533 00c9 08       		.uleb128 0x8
+ 534 00ca 02       		.uleb128 0x2
+ 535 00cb 04       		.byte	0x4
+ 536 00cc 07       		.byte	0x7
+ 537 00cd 89020000 		.4byte	.LASF17
+ 538 00d1 09       		.uleb128 0x9
+ 539 00d2 0E020000 		.4byte	.LASF18
+ 540 00d6 01       		.byte	0x1
+ 541 00d7 E6       		.byte	0xe6
+ 542 00d8 00000000 		.4byte	.LFB0
+ 543 00dc D4000000 		.4byte	.LFE0-.LFB0
+ 544 00e0 01       		.uleb128 0x1
+ 545 00e1 9C       		.byte	0x9c
+ 546 00e2 21010000 		.4byte	0x121
+ 547 00e6 0A       		.uleb128 0xa
+ 548 00e7 36000000 		.4byte	.LVL0
+ 549 00eb 16030000 		.4byte	0x316
+ 550 00ef F9000000 		.4byte	0xf9
+ 551 00f3 0B       		.uleb128 0xb
+ 552 00f4 01       		.uleb128 0x1
+ 553 00f5 50       		.byte	0x50
+ 554 00f6 01       		.uleb128 0x1
+ 555 00f7 3A       		.byte	0x3a
+ 556 00f8 00       		.byte	0
+ 557 00f9 0A       		.uleb128 0xa
+ 558 00fa 3E000000 		.4byte	.LVL1
+ 559 00fe 27030000 		.4byte	0x327
+ 560 0102 11010000 		.4byte	0x111
+ 561 0106 0B       		.uleb128 0xb
+ 562 0107 01       		.uleb128 0x1
+ 563 0108 51       		.byte	0x51
+ 564 0109 01       		.uleb128 0x1
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 22
+
+
+ 565 010a 33       		.byte	0x33
+ 566 010b 0B       		.uleb128 0xb
+ 567 010c 01       		.uleb128 0x1
+ 568 010d 50       		.byte	0x50
+ 569 010e 01       		.uleb128 0x1
+ 570 010f 3A       		.byte	0x3a
+ 571 0110 00       		.byte	0
+ 572 0111 0C       		.uleb128 0xc
+ 573 0112 46000000 		.4byte	.LVL2
+ 574 0116 3D030000 		.4byte	0x33d
+ 575 011a 0B       		.uleb128 0xb
+ 576 011b 01       		.uleb128 0x1
+ 577 011c 50       		.byte	0x50
+ 578 011d 01       		.uleb128 0x1
+ 579 011e 3A       		.byte	0x3a
+ 580 011f 00       		.byte	0
+ 581 0120 00       		.byte	0
+ 582 0121 0D       		.uleb128 0xd
+ 583 0122 B8010000 		.4byte	.LASF19
+ 584 0126 01       		.byte	0x1
+ 585 0127 3001     		.2byte	0x130
+ 586 0129 00000000 		.4byte	.LFB1
+ 587 012d 14000000 		.4byte	.LFE1-.LFB1
+ 588 0131 01       		.uleb128 0x1
+ 589 0132 9C       		.byte	0x9c
+ 590 0133 58010000 		.4byte	0x158
+ 591 0137 0E       		.uleb128 0xe
+ 592 0138 1C020000 		.4byte	.LASF21
+ 593 013c 01       		.byte	0x1
+ 594 013d 3001     		.2byte	0x130
+ 595 013f 76000000 		.4byte	0x76
+ 596 0143 00000000 		.4byte	.LLST0
+ 597 0147 0F       		.uleb128 0xf
+ 598 0148 2D030000 		.4byte	.LASF23
+ 599 014c 01       		.byte	0x1
+ 600 014d 3201     		.2byte	0x132
+ 601 014f 76000000 		.4byte	0x76
+ 602 0153 21000000 		.4byte	.LLST1
+ 603 0157 00       		.byte	0
+ 604 0158 0D       		.uleb128 0xd
+ 605 0159 A2000000 		.4byte	.LASF20
+ 606 015d 01       		.byte	0x1
+ 607 015e 4D01     		.2byte	0x14d
+ 608 0160 00000000 		.4byte	.LFB2
+ 609 0164 18000000 		.4byte	.LFE2-.LFB2
+ 610 0168 01       		.uleb128 0x1
+ 611 0169 9C       		.byte	0x9c
+ 612 016a 8F010000 		.4byte	0x18f
+ 613 016e 0E       		.uleb128 0xe
+ 614 016f A5010000 		.4byte	.LASF22
+ 615 0173 01       		.byte	0x1
+ 616 0174 4D01     		.2byte	0x14d
+ 617 0176 76000000 		.4byte	0x76
+ 618 017a 3F000000 		.4byte	.LLST2
+ 619 017e 0F       		.uleb128 0xf
+ 620 017f 2D030000 		.4byte	.LASF23
+ 621 0183 01       		.byte	0x1
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 23
+
+
+ 622 0184 4F01     		.2byte	0x14f
+ 623 0186 76000000 		.4byte	0x76
+ 624 018a 60000000 		.4byte	.LLST3
+ 625 018e 00       		.byte	0
+ 626 018f 10       		.uleb128 0x10
+ 627 0190 78020000 		.4byte	.LASF25
+ 628 0194 01       		.byte	0x1
+ 629 0195 7A01     		.2byte	0x17a
+ 630 0197 76000000 		.4byte	0x76
+ 631 019b 00000000 		.4byte	.LFB3
+ 632 019f 28000000 		.4byte	.LFE3-.LFB3
+ 633 01a3 01       		.uleb128 0x1
+ 634 01a4 9C       		.byte	0x9c
+ 635 01a5 CC010000 		.4byte	0x1cc
+ 636 01a9 0F       		.uleb128 0xf
+ 637 01aa 9E010000 		.4byte	.LASF24
+ 638 01ae 01       		.byte	0x1
+ 639 01af 7C01     		.2byte	0x17c
+ 640 01b1 76000000 		.4byte	0x76
+ 641 01b5 89000000 		.4byte	.LLST4
+ 642 01b9 11       		.uleb128 0x11
+ 643 01ba 06000000 		.4byte	.LVL14
+ 644 01be 57030000 		.4byte	0x357
+ 645 01c2 11       		.uleb128 0x11
+ 646 01c3 12000000 		.4byte	.LVL15
+ 647 01c7 63030000 		.4byte	0x363
+ 648 01cb 00       		.byte	0
+ 649 01cc 10       		.uleb128 0x10
+ 650 01cd 3E010000 		.4byte	.LASF26
+ 651 01d1 01       		.byte	0x1
+ 652 01d2 AA01     		.2byte	0x1aa
+ 653 01d4 76000000 		.4byte	0x76
+ 654 01d8 00000000 		.4byte	.LFB4
+ 655 01dc 40000000 		.4byte	.LFE4-.LFB4
+ 656 01e0 01       		.uleb128 0x1
+ 657 01e1 9C       		.byte	0x9c
+ 658 01e2 36020000 		.4byte	0x236
+ 659 01e6 0F       		.uleb128 0xf
+ 660 01e7 9E010000 		.4byte	.LASF24
+ 661 01eb 01       		.byte	0x1
+ 662 01ec AC01     		.2byte	0x1ac
+ 663 01ee 76000000 		.4byte	0x76
+ 664 01f2 BF000000 		.4byte	.LLST5
+ 665 01f6 12       		.uleb128 0x12
+ 666 01f7 23030000 		.4byte	.LASF27
+ 667 01fb 01       		.byte	0x1
+ 668 01fc AD01     		.2byte	0x1ad
+ 669 01fe 76000000 		.4byte	0x76
+ 670 0202 07       		.uleb128 0x7
+ 671 0203 71       		.byte	0x71
+ 672 0204 00       		.sleb128 0
+ 673 0205 0A       		.byte	0xa
+ 674 0206 6003     		.2byte	0x360
+ 675 0208 1A       		.byte	0x1a
+ 676 0209 9F       		.byte	0x9f
+ 677 020a 0F       		.uleb128 0xf
+ 678 020b 00020000 		.4byte	.LASF28
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 24
+
+
+ 679 020f 01       		.byte	0x1
+ 680 0210 AE01     		.2byte	0x1ae
+ 681 0212 76000000 		.4byte	0x76
+ 682 0216 F3000000 		.4byte	.LLST6
+ 683 021a 11       		.uleb128 0x11
+ 684 021b 06000000 		.4byte	.LVL18
+ 685 021f 6F030000 		.4byte	0x36f
+ 686 0223 11       		.uleb128 0x11
+ 687 0224 0C000000 		.4byte	.LVL20
+ 688 0228 57030000 		.4byte	0x357
+ 689 022c 11       		.uleb128 0x11
+ 690 022d 18000000 		.4byte	.LVL21
+ 691 0231 63030000 		.4byte	0x363
+ 692 0235 00       		.byte	0
+ 693 0236 0D       		.uleb128 0xd
+ 694 0237 2B010000 		.4byte	.LASF29
+ 695 023b 01       		.byte	0x1
+ 696 023c 2A02     		.2byte	0x22a
+ 697 023e 00000000 		.4byte	.LFB5
+ 698 0242 16000000 		.4byte	.LFE5-.LFB5
+ 699 0246 01       		.uleb128 0x1
+ 700 0247 9C       		.byte	0x9c
+ 701 0248 76020000 		.4byte	0x276
+ 702 024c 0E       		.uleb128 0xe
+ 703 024d 24010000 		.4byte	.LASF30
+ 704 0251 01       		.byte	0x1
+ 705 0252 2A02     		.2byte	0x22a
+ 706 0254 76020000 		.4byte	0x276
+ 707 0258 11010000 		.4byte	.LLST7
+ 708 025c 0F       		.uleb128 0xf
+ 709 025d 6F020000 		.4byte	.LASF31
+ 710 0261 01       		.byte	0x1
+ 711 0262 2C02     		.2byte	0x22c
+ 712 0264 76000000 		.4byte	0x76
+ 713 0268 32010000 		.4byte	.LLST8
+ 714 026c 11       		.uleb128 0x11
+ 715 026d 12000000 		.4byte	.LVL31
+ 716 0271 7A030000 		.4byte	0x37a
+ 717 0275 00       		.byte	0
+ 718 0276 07       		.uleb128 0x7
+ 719 0277 04       		.byte	0x4
+ 720 0278 7C020000 		.4byte	0x27c
+ 721 027c 13       		.uleb128 0x13
+ 722 027d 8F000000 		.4byte	0x8f
+ 723 0281 0D       		.uleb128 0xd
+ 724 0282 8D010000 		.4byte	.LASF32
+ 725 0286 01       		.byte	0x1
+ 726 0287 4A02     		.2byte	0x24a
+ 727 0289 00000000 		.4byte	.LFB6
+ 728 028d 14000000 		.4byte	.LFE6-.LFB6
+ 729 0291 01       		.uleb128 0x1
+ 730 0292 9C       		.byte	0x9c
+ 731 0293 DF020000 		.4byte	0x2df
+ 732 0297 0E       		.uleb128 0xe
+ 733 0298 92020000 		.4byte	.LASF33
+ 734 029c 01       		.byte	0x1
+ 735 029d 4A02     		.2byte	0x24a
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 25
+
+
+ 736 029f 76000000 		.4byte	0x76
+ 737 02a3 91010000 		.4byte	.LLST9
+ 738 02a7 0A       		.uleb128 0xa
+ 739 02a8 06000000 		.4byte	.LVL35
+ 740 02ac 7A030000 		.4byte	0x37a
+ 741 02b0 BC020000 		.4byte	0x2bc
+ 742 02b4 0B       		.uleb128 0xb
+ 743 02b5 01       		.uleb128 0x1
+ 744 02b6 50       		.byte	0x50
+ 745 02b7 03       		.uleb128 0x3
+ 746 02b8 F3       		.byte	0xf3
+ 747 02b9 01       		.uleb128 0x1
+ 748 02ba 50       		.byte	0x50
+ 749 02bb 00       		.byte	0
+ 750 02bc 0A       		.uleb128 0xa
+ 751 02bd 0C000000 		.4byte	.LVL36
+ 752 02c1 7A030000 		.4byte	0x37a
+ 753 02c5 CF020000 		.4byte	0x2cf
+ 754 02c9 0B       		.uleb128 0xb
+ 755 02ca 01       		.uleb128 0x1
+ 756 02cb 50       		.byte	0x50
+ 757 02cc 01       		.uleb128 0x1
+ 758 02cd 3D       		.byte	0x3d
+ 759 02ce 00       		.byte	0
+ 760 02cf 0C       		.uleb128 0xc
+ 761 02d0 12000000 		.4byte	.LVL37
+ 762 02d4 7A030000 		.4byte	0x37a
+ 763 02d8 0B       		.uleb128 0xb
+ 764 02d9 01       		.uleb128 0x1
+ 765 02da 50       		.byte	0x50
+ 766 02db 01       		.uleb128 0x1
+ 767 02dc 3A       		.byte	0x3a
+ 768 02dd 00       		.byte	0
+ 769 02de 00       		.byte	0
+ 770 02df 14       		.uleb128 0x14
+ 771 02e0 64030000 		.4byte	.LASF34
+ 772 02e4 03       		.byte	0x3
+ 773 02e5 1E       		.byte	0x1e
+ 774 02e6 B2000000 		.4byte	0xb2
+ 775 02ea 14       		.uleb128 0x14
+ 776 02eb 5D010000 		.4byte	.LASF35
+ 777 02ef 03       		.byte	0x3
+ 778 02f0 1F       		.byte	0x1f
+ 779 02f1 B2000000 		.4byte	0xb2
+ 780 02f5 14       		.uleb128 0x14
+ 781 02f6 4C020000 		.4byte	.LASF36
+ 782 02fa 03       		.byte	0x3
+ 783 02fb 20       		.byte	0x20
+ 784 02fc A1000000 		.4byte	0xa1
+ 785 0300 14       		.uleb128 0x14
+ 786 0301 DA020000 		.4byte	.LASF37
+ 787 0305 03       		.byte	0x3
+ 788 0306 24       		.byte	0x24
+ 789 0307 B2000000 		.4byte	0xb2
+ 790 030b 14       		.uleb128 0x14
+ 791 030c CE010000 		.4byte	.LASF38
+ 792 0310 03       		.byte	0x3
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 26
+
+
+ 793 0311 25       		.byte	0x25
+ 794 0312 B2000000 		.4byte	0xb2
+ 795 0316 15       		.uleb128 0x15
+ 796 0317 EC020000 		.4byte	.LASF39
+ 797 031b 04       		.byte	0x4
+ 798 031c 72       		.byte	0x72
+ 799 031d 27030000 		.4byte	0x327
+ 800 0321 16       		.uleb128 0x16
+ 801 0322 6B000000 		.4byte	0x6b
+ 802 0326 00       		.byte	0
+ 803 0327 15       		.uleb128 0x15
+ 804 0328 3B020000 		.4byte	.LASF40
+ 805 032c 04       		.byte	0x4
+ 806 032d 6D       		.byte	0x6d
+ 807 032e 3D030000 		.4byte	0x33d
+ 808 0332 16       		.uleb128 0x16
+ 809 0333 6B000000 		.4byte	0x6b
+ 810 0337 16       		.uleb128 0x16
+ 811 0338 6B000000 		.4byte	0x6b
+ 812 033c 00       		.byte	0
+ 813 033d 17       		.uleb128 0x17
+ 814 033e BC000000 		.4byte	.LASF47
+ 815 0342 04       		.byte	0x4
+ 816 0343 6A       		.byte	0x6a
+ 817 0344 B7000000 		.4byte	0xb7
+ 818 0348 57030000 		.4byte	0x357
+ 819 034c 16       		.uleb128 0x16
+ 820 034d 6B000000 		.4byte	0x6b
+ 821 0351 16       		.uleb128 0x16
+ 822 0352 B7000000 		.4byte	0xb7
+ 823 0356 00       		.byte	0
+ 824 0357 18       		.uleb128 0x18
+ 825 0358 48030000 		.4byte	.LASF41
+ 826 035c 05       		.byte	0x5
+ 827 035d 7701     		.2byte	0x177
+ 828 035f 76000000 		.4byte	0x76
+ 829 0363 18       		.uleb128 0x18
+ 830 0364 03030000 		.4byte	.LASF42
+ 831 0368 05       		.byte	0x5
+ 832 0369 7601     		.2byte	0x176
+ 833 036b 76000000 		.4byte	0x76
+ 834 036f 19       		.uleb128 0x19
+ 835 0370 E7010000 		.4byte	.LASF43
+ 836 0374 03       		.byte	0x3
+ 837 0375 51       		.byte	0x51
+ 838 0376 76000000 		.4byte	0x76
+ 839 037a 1A       		.uleb128 0x1a
+ 840 037b C2020000 		.4byte	.LASF48
+ 841 037f 05       		.byte	0x5
+ 842 0380 7D01     		.2byte	0x17d
+ 843 0382 16       		.uleb128 0x16
+ 844 0383 76000000 		.4byte	0x76
+ 845 0387 00       		.byte	0
+ 846 0388 00       		.byte	0
+ 847              		.section	.debug_abbrev,"",%progbits
+ 848              	.Ldebug_abbrev0:
+ 849 0000 01       		.uleb128 0x1
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 27
+
+
+ 850 0001 11       		.uleb128 0x11
+ 851 0002 01       		.byte	0x1
+ 852 0003 25       		.uleb128 0x25
+ 853 0004 0E       		.uleb128 0xe
+ 854 0005 13       		.uleb128 0x13
+ 855 0006 0B       		.uleb128 0xb
+ 856 0007 03       		.uleb128 0x3
+ 857 0008 0E       		.uleb128 0xe
+ 858 0009 1B       		.uleb128 0x1b
+ 859 000a 0E       		.uleb128 0xe
+ 860 000b 55       		.uleb128 0x55
+ 861 000c 17       		.uleb128 0x17
+ 862 000d 11       		.uleb128 0x11
+ 863 000e 01       		.uleb128 0x1
+ 864 000f 10       		.uleb128 0x10
+ 865 0010 17       		.uleb128 0x17
+ 866 0011 00       		.byte	0
+ 867 0012 00       		.byte	0
+ 868 0013 02       		.uleb128 0x2
+ 869 0014 24       		.uleb128 0x24
+ 870 0015 00       		.byte	0
+ 871 0016 0B       		.uleb128 0xb
+ 872 0017 0B       		.uleb128 0xb
+ 873 0018 3E       		.uleb128 0x3e
+ 874 0019 0B       		.uleb128 0xb
+ 875 001a 03       		.uleb128 0x3
+ 876 001b 0E       		.uleb128 0xe
+ 877 001c 00       		.byte	0
+ 878 001d 00       		.byte	0
+ 879 001e 03       		.uleb128 0x3
+ 880 001f 24       		.uleb128 0x24
+ 881 0020 00       		.byte	0
+ 882 0021 0B       		.uleb128 0xb
+ 883 0022 0B       		.uleb128 0xb
+ 884 0023 3E       		.uleb128 0x3e
+ 885 0024 0B       		.uleb128 0xb
+ 886 0025 03       		.uleb128 0x3
+ 887 0026 08       		.uleb128 0x8
+ 888 0027 00       		.byte	0
+ 889 0028 00       		.byte	0
+ 890 0029 04       		.uleb128 0x4
+ 891 002a 16       		.uleb128 0x16
+ 892 002b 00       		.byte	0
+ 893 002c 03       		.uleb128 0x3
+ 894 002d 0E       		.uleb128 0xe
+ 895 002e 3A       		.uleb128 0x3a
+ 896 002f 0B       		.uleb128 0xb
+ 897 0030 3B       		.uleb128 0x3b
+ 898 0031 0B       		.uleb128 0xb
+ 899 0032 49       		.uleb128 0x49
+ 900 0033 13       		.uleb128 0x13
+ 901 0034 00       		.byte	0
+ 902 0035 00       		.byte	0
+ 903 0036 05       		.uleb128 0x5
+ 904 0037 35       		.uleb128 0x35
+ 905 0038 00       		.byte	0
+ 906 0039 49       		.uleb128 0x49
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 28
+
+
+ 907 003a 13       		.uleb128 0x13
+ 908 003b 00       		.byte	0
+ 909 003c 00       		.byte	0
+ 910 003d 06       		.uleb128 0x6
+ 911 003e 16       		.uleb128 0x16
+ 912 003f 00       		.byte	0
+ 913 0040 03       		.uleb128 0x3
+ 914 0041 0E       		.uleb128 0xe
+ 915 0042 3A       		.uleb128 0x3a
+ 916 0043 0B       		.uleb128 0xb
+ 917 0044 3B       		.uleb128 0x3b
+ 918 0045 05       		.uleb128 0x5
+ 919 0046 49       		.uleb128 0x49
+ 920 0047 13       		.uleb128 0x13
+ 921 0048 00       		.byte	0
+ 922 0049 00       		.byte	0
+ 923 004a 07       		.uleb128 0x7
+ 924 004b 0F       		.uleb128 0xf
+ 925 004c 00       		.byte	0
+ 926 004d 0B       		.uleb128 0xb
+ 927 004e 0B       		.uleb128 0xb
+ 928 004f 49       		.uleb128 0x49
+ 929 0050 13       		.uleb128 0x13
+ 930 0051 00       		.byte	0
+ 931 0052 00       		.byte	0
+ 932 0053 08       		.uleb128 0x8
+ 933 0054 15       		.uleb128 0x15
+ 934 0055 00       		.byte	0
+ 935 0056 27       		.uleb128 0x27
+ 936 0057 19       		.uleb128 0x19
+ 937 0058 00       		.byte	0
+ 938 0059 00       		.byte	0
+ 939 005a 09       		.uleb128 0x9
+ 940 005b 2E       		.uleb128 0x2e
+ 941 005c 01       		.byte	0x1
+ 942 005d 3F       		.uleb128 0x3f
+ 943 005e 19       		.uleb128 0x19
+ 944 005f 03       		.uleb128 0x3
+ 945 0060 0E       		.uleb128 0xe
+ 946 0061 3A       		.uleb128 0x3a
+ 947 0062 0B       		.uleb128 0xb
+ 948 0063 3B       		.uleb128 0x3b
+ 949 0064 0B       		.uleb128 0xb
+ 950 0065 27       		.uleb128 0x27
+ 951 0066 19       		.uleb128 0x19
+ 952 0067 11       		.uleb128 0x11
+ 953 0068 01       		.uleb128 0x1
+ 954 0069 12       		.uleb128 0x12
+ 955 006a 06       		.uleb128 0x6
+ 956 006b 40       		.uleb128 0x40
+ 957 006c 18       		.uleb128 0x18
+ 958 006d 9742     		.uleb128 0x2117
+ 959 006f 19       		.uleb128 0x19
+ 960 0070 01       		.uleb128 0x1
+ 961 0071 13       		.uleb128 0x13
+ 962 0072 00       		.byte	0
+ 963 0073 00       		.byte	0
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 29
+
+
+ 964 0074 0A       		.uleb128 0xa
+ 965 0075 898201   		.uleb128 0x4109
+ 966 0078 01       		.byte	0x1
+ 967 0079 11       		.uleb128 0x11
+ 968 007a 01       		.uleb128 0x1
+ 969 007b 31       		.uleb128 0x31
+ 970 007c 13       		.uleb128 0x13
+ 971 007d 01       		.uleb128 0x1
+ 972 007e 13       		.uleb128 0x13
+ 973 007f 00       		.byte	0
+ 974 0080 00       		.byte	0
+ 975 0081 0B       		.uleb128 0xb
+ 976 0082 8A8201   		.uleb128 0x410a
+ 977 0085 00       		.byte	0
+ 978 0086 02       		.uleb128 0x2
+ 979 0087 18       		.uleb128 0x18
+ 980 0088 9142     		.uleb128 0x2111
+ 981 008a 18       		.uleb128 0x18
+ 982 008b 00       		.byte	0
+ 983 008c 00       		.byte	0
+ 984 008d 0C       		.uleb128 0xc
+ 985 008e 898201   		.uleb128 0x4109
+ 986 0091 01       		.byte	0x1
+ 987 0092 11       		.uleb128 0x11
+ 988 0093 01       		.uleb128 0x1
+ 989 0094 31       		.uleb128 0x31
+ 990 0095 13       		.uleb128 0x13
+ 991 0096 00       		.byte	0
+ 992 0097 00       		.byte	0
+ 993 0098 0D       		.uleb128 0xd
+ 994 0099 2E       		.uleb128 0x2e
+ 995 009a 01       		.byte	0x1
+ 996 009b 3F       		.uleb128 0x3f
+ 997 009c 19       		.uleb128 0x19
+ 998 009d 03       		.uleb128 0x3
+ 999 009e 0E       		.uleb128 0xe
+ 1000 009f 3A       		.uleb128 0x3a
+ 1001 00a0 0B       		.uleb128 0xb
+ 1002 00a1 3B       		.uleb128 0x3b
+ 1003 00a2 05       		.uleb128 0x5
+ 1004 00a3 27       		.uleb128 0x27
+ 1005 00a4 19       		.uleb128 0x19
+ 1006 00a5 11       		.uleb128 0x11
+ 1007 00a6 01       		.uleb128 0x1
+ 1008 00a7 12       		.uleb128 0x12
+ 1009 00a8 06       		.uleb128 0x6
+ 1010 00a9 40       		.uleb128 0x40
+ 1011 00aa 18       		.uleb128 0x18
+ 1012 00ab 9742     		.uleb128 0x2117
+ 1013 00ad 19       		.uleb128 0x19
+ 1014 00ae 01       		.uleb128 0x1
+ 1015 00af 13       		.uleb128 0x13
+ 1016 00b0 00       		.byte	0
+ 1017 00b1 00       		.byte	0
+ 1018 00b2 0E       		.uleb128 0xe
+ 1019 00b3 05       		.uleb128 0x5
+ 1020 00b4 00       		.byte	0
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 30
+
+
+ 1021 00b5 03       		.uleb128 0x3
+ 1022 00b6 0E       		.uleb128 0xe
+ 1023 00b7 3A       		.uleb128 0x3a
+ 1024 00b8 0B       		.uleb128 0xb
+ 1025 00b9 3B       		.uleb128 0x3b
+ 1026 00ba 05       		.uleb128 0x5
+ 1027 00bb 49       		.uleb128 0x49
+ 1028 00bc 13       		.uleb128 0x13
+ 1029 00bd 02       		.uleb128 0x2
+ 1030 00be 17       		.uleb128 0x17
+ 1031 00bf 00       		.byte	0
+ 1032 00c0 00       		.byte	0
+ 1033 00c1 0F       		.uleb128 0xf
+ 1034 00c2 34       		.uleb128 0x34
+ 1035 00c3 00       		.byte	0
+ 1036 00c4 03       		.uleb128 0x3
+ 1037 00c5 0E       		.uleb128 0xe
+ 1038 00c6 3A       		.uleb128 0x3a
+ 1039 00c7 0B       		.uleb128 0xb
+ 1040 00c8 3B       		.uleb128 0x3b
+ 1041 00c9 05       		.uleb128 0x5
+ 1042 00ca 49       		.uleb128 0x49
+ 1043 00cb 13       		.uleb128 0x13
+ 1044 00cc 02       		.uleb128 0x2
+ 1045 00cd 17       		.uleb128 0x17
+ 1046 00ce 00       		.byte	0
+ 1047 00cf 00       		.byte	0
+ 1048 00d0 10       		.uleb128 0x10
+ 1049 00d1 2E       		.uleb128 0x2e
+ 1050 00d2 01       		.byte	0x1
+ 1051 00d3 3F       		.uleb128 0x3f
+ 1052 00d4 19       		.uleb128 0x19
+ 1053 00d5 03       		.uleb128 0x3
+ 1054 00d6 0E       		.uleb128 0xe
+ 1055 00d7 3A       		.uleb128 0x3a
+ 1056 00d8 0B       		.uleb128 0xb
+ 1057 00d9 3B       		.uleb128 0x3b
+ 1058 00da 05       		.uleb128 0x5
+ 1059 00db 27       		.uleb128 0x27
+ 1060 00dc 19       		.uleb128 0x19
+ 1061 00dd 49       		.uleb128 0x49
+ 1062 00de 13       		.uleb128 0x13
+ 1063 00df 11       		.uleb128 0x11
+ 1064 00e0 01       		.uleb128 0x1
+ 1065 00e1 12       		.uleb128 0x12
+ 1066 00e2 06       		.uleb128 0x6
+ 1067 00e3 40       		.uleb128 0x40
+ 1068 00e4 18       		.uleb128 0x18
+ 1069 00e5 9742     		.uleb128 0x2117
+ 1070 00e7 19       		.uleb128 0x19
+ 1071 00e8 01       		.uleb128 0x1
+ 1072 00e9 13       		.uleb128 0x13
+ 1073 00ea 00       		.byte	0
+ 1074 00eb 00       		.byte	0
+ 1075 00ec 11       		.uleb128 0x11
+ 1076 00ed 898201   		.uleb128 0x4109
+ 1077 00f0 00       		.byte	0
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 31
+
+
+ 1078 00f1 11       		.uleb128 0x11
+ 1079 00f2 01       		.uleb128 0x1
+ 1080 00f3 31       		.uleb128 0x31
+ 1081 00f4 13       		.uleb128 0x13
+ 1082 00f5 00       		.byte	0
+ 1083 00f6 00       		.byte	0
+ 1084 00f7 12       		.uleb128 0x12
+ 1085 00f8 34       		.uleb128 0x34
+ 1086 00f9 00       		.byte	0
+ 1087 00fa 03       		.uleb128 0x3
+ 1088 00fb 0E       		.uleb128 0xe
+ 1089 00fc 3A       		.uleb128 0x3a
+ 1090 00fd 0B       		.uleb128 0xb
+ 1091 00fe 3B       		.uleb128 0x3b
+ 1092 00ff 05       		.uleb128 0x5
+ 1093 0100 49       		.uleb128 0x49
+ 1094 0101 13       		.uleb128 0x13
+ 1095 0102 02       		.uleb128 0x2
+ 1096 0103 18       		.uleb128 0x18
+ 1097 0104 00       		.byte	0
+ 1098 0105 00       		.byte	0
+ 1099 0106 13       		.uleb128 0x13
+ 1100 0107 26       		.uleb128 0x26
+ 1101 0108 00       		.byte	0
+ 1102 0109 49       		.uleb128 0x49
+ 1103 010a 13       		.uleb128 0x13
+ 1104 010b 00       		.byte	0
+ 1105 010c 00       		.byte	0
+ 1106 010d 14       		.uleb128 0x14
+ 1107 010e 34       		.uleb128 0x34
+ 1108 010f 00       		.byte	0
+ 1109 0110 03       		.uleb128 0x3
+ 1110 0111 0E       		.uleb128 0xe
+ 1111 0112 3A       		.uleb128 0x3a
+ 1112 0113 0B       		.uleb128 0xb
+ 1113 0114 3B       		.uleb128 0x3b
+ 1114 0115 0B       		.uleb128 0xb
+ 1115 0116 49       		.uleb128 0x49
+ 1116 0117 13       		.uleb128 0x13
+ 1117 0118 3F       		.uleb128 0x3f
+ 1118 0119 19       		.uleb128 0x19
+ 1119 011a 3C       		.uleb128 0x3c
+ 1120 011b 19       		.uleb128 0x19
+ 1121 011c 00       		.byte	0
+ 1122 011d 00       		.byte	0
+ 1123 011e 15       		.uleb128 0x15
+ 1124 011f 2E       		.uleb128 0x2e
+ 1125 0120 01       		.byte	0x1
+ 1126 0121 3F       		.uleb128 0x3f
+ 1127 0122 19       		.uleb128 0x19
+ 1128 0123 03       		.uleb128 0x3
+ 1129 0124 0E       		.uleb128 0xe
+ 1130 0125 3A       		.uleb128 0x3a
+ 1131 0126 0B       		.uleb128 0xb
+ 1132 0127 3B       		.uleb128 0x3b
+ 1133 0128 0B       		.uleb128 0xb
+ 1134 0129 27       		.uleb128 0x27
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 32
+
+
+ 1135 012a 19       		.uleb128 0x19
+ 1136 012b 3C       		.uleb128 0x3c
+ 1137 012c 19       		.uleb128 0x19
+ 1138 012d 01       		.uleb128 0x1
+ 1139 012e 13       		.uleb128 0x13
+ 1140 012f 00       		.byte	0
+ 1141 0130 00       		.byte	0
+ 1142 0131 16       		.uleb128 0x16
+ 1143 0132 05       		.uleb128 0x5
+ 1144 0133 00       		.byte	0
+ 1145 0134 49       		.uleb128 0x49
+ 1146 0135 13       		.uleb128 0x13
+ 1147 0136 00       		.byte	0
+ 1148 0137 00       		.byte	0
+ 1149 0138 17       		.uleb128 0x17
+ 1150 0139 2E       		.uleb128 0x2e
+ 1151 013a 01       		.byte	0x1
+ 1152 013b 3F       		.uleb128 0x3f
+ 1153 013c 19       		.uleb128 0x19
+ 1154 013d 03       		.uleb128 0x3
+ 1155 013e 0E       		.uleb128 0xe
+ 1156 013f 3A       		.uleb128 0x3a
+ 1157 0140 0B       		.uleb128 0xb
+ 1158 0141 3B       		.uleb128 0x3b
+ 1159 0142 0B       		.uleb128 0xb
+ 1160 0143 27       		.uleb128 0x27
+ 1161 0144 19       		.uleb128 0x19
+ 1162 0145 49       		.uleb128 0x49
+ 1163 0146 13       		.uleb128 0x13
+ 1164 0147 3C       		.uleb128 0x3c
+ 1165 0148 19       		.uleb128 0x19
+ 1166 0149 01       		.uleb128 0x1
+ 1167 014a 13       		.uleb128 0x13
+ 1168 014b 00       		.byte	0
+ 1169 014c 00       		.byte	0
+ 1170 014d 18       		.uleb128 0x18
+ 1171 014e 2E       		.uleb128 0x2e
+ 1172 014f 00       		.byte	0
+ 1173 0150 3F       		.uleb128 0x3f
+ 1174 0151 19       		.uleb128 0x19
+ 1175 0152 03       		.uleb128 0x3
+ 1176 0153 0E       		.uleb128 0xe
+ 1177 0154 3A       		.uleb128 0x3a
+ 1178 0155 0B       		.uleb128 0xb
+ 1179 0156 3B       		.uleb128 0x3b
+ 1180 0157 05       		.uleb128 0x5
+ 1181 0158 27       		.uleb128 0x27
+ 1182 0159 19       		.uleb128 0x19
+ 1183 015a 49       		.uleb128 0x49
+ 1184 015b 13       		.uleb128 0x13
+ 1185 015c 3C       		.uleb128 0x3c
+ 1186 015d 19       		.uleb128 0x19
+ 1187 015e 00       		.byte	0
+ 1188 015f 00       		.byte	0
+ 1189 0160 19       		.uleb128 0x19
+ 1190 0161 2E       		.uleb128 0x2e
+ 1191 0162 00       		.byte	0
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 33
+
+
+ 1192 0163 3F       		.uleb128 0x3f
+ 1193 0164 19       		.uleb128 0x19
+ 1194 0165 03       		.uleb128 0x3
+ 1195 0166 0E       		.uleb128 0xe
+ 1196 0167 3A       		.uleb128 0x3a
+ 1197 0168 0B       		.uleb128 0xb
+ 1198 0169 3B       		.uleb128 0x3b
+ 1199 016a 0B       		.uleb128 0xb
+ 1200 016b 27       		.uleb128 0x27
+ 1201 016c 19       		.uleb128 0x19
+ 1202 016d 49       		.uleb128 0x49
+ 1203 016e 13       		.uleb128 0x13
+ 1204 016f 3C       		.uleb128 0x3c
+ 1205 0170 19       		.uleb128 0x19
+ 1206 0171 00       		.byte	0
+ 1207 0172 00       		.byte	0
+ 1208 0173 1A       		.uleb128 0x1a
+ 1209 0174 2E       		.uleb128 0x2e
+ 1210 0175 01       		.byte	0x1
+ 1211 0176 3F       		.uleb128 0x3f
+ 1212 0177 19       		.uleb128 0x19
+ 1213 0178 03       		.uleb128 0x3
+ 1214 0179 0E       		.uleb128 0xe
+ 1215 017a 3A       		.uleb128 0x3a
+ 1216 017b 0B       		.uleb128 0xb
+ 1217 017c 3B       		.uleb128 0x3b
+ 1218 017d 05       		.uleb128 0x5
+ 1219 017e 27       		.uleb128 0x27
+ 1220 017f 19       		.uleb128 0x19
+ 1221 0180 3C       		.uleb128 0x3c
+ 1222 0181 19       		.uleb128 0x19
+ 1223 0182 00       		.byte	0
+ 1224 0183 00       		.byte	0
+ 1225 0184 00       		.byte	0
+ 1226              		.section	.debug_loc,"",%progbits
+ 1227              	.Ldebug_loc0:
+ 1228              	.LLST0:
+ 1229 0000 00000000 		.4byte	.LVL3
+ 1230 0004 06000000 		.4byte	.LVL4
+ 1231 0008 0100     		.2byte	0x1
+ 1232 000a 50       		.byte	0x50
+ 1233 000b 06000000 		.4byte	.LVL4
+ 1234 000f 14000000 		.4byte	.LFE1
+ 1235 0013 0400     		.2byte	0x4
+ 1236 0015 F3       		.byte	0xf3
+ 1237 0016 01       		.uleb128 0x1
+ 1238 0017 50       		.byte	0x50
+ 1239 0018 9F       		.byte	0x9f
+ 1240 0019 00000000 		.4byte	0
+ 1241 001d 00000000 		.4byte	0
+ 1242              	.LLST1:
+ 1243 0021 08000000 		.4byte	.LVL5
+ 1244 0025 0C000000 		.4byte	.LVL7
+ 1245 0029 0100     		.2byte	0x1
+ 1246 002b 53       		.byte	0x53
+ 1247 002c 0C000000 		.4byte	.LVL7
+ 1248 0030 14000000 		.4byte	.LFE1
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 34
+
+
+ 1249 0034 0100     		.2byte	0x1
+ 1250 0036 50       		.byte	0x50
+ 1251 0037 00000000 		.4byte	0
+ 1252 003b 00000000 		.4byte	0
+ 1253              	.LLST2:
+ 1254 003f 00000000 		.4byte	.LVL8
+ 1255 0043 08000000 		.4byte	.LVL10
+ 1256 0047 0100     		.2byte	0x1
+ 1257 0049 50       		.byte	0x50
+ 1258 004a 08000000 		.4byte	.LVL10
+ 1259 004e 18000000 		.4byte	.LFE2
+ 1260 0052 0400     		.2byte	0x4
+ 1261 0054 F3       		.byte	0xf3
+ 1262 0055 01       		.uleb128 0x1
+ 1263 0056 50       		.byte	0x50
+ 1264 0057 9F       		.byte	0x9f
+ 1265 0058 00000000 		.4byte	0
+ 1266 005c 00000000 		.4byte	0
+ 1267              	.LLST3:
+ 1268 0060 06000000 		.4byte	.LVL9
+ 1269 0064 0A000000 		.4byte	.LVL11
+ 1270 0068 0100     		.2byte	0x1
+ 1271 006a 51       		.byte	0x51
+ 1272 006b 0A000000 		.4byte	.LVL11
+ 1273 006f 0C000000 		.4byte	.LVL12
+ 1274 0073 0100     		.2byte	0x1
+ 1275 0075 53       		.byte	0x53
+ 1276 0076 0C000000 		.4byte	.LVL12
+ 1277 007a 18000000 		.4byte	.LFE2
+ 1278 007e 0100     		.2byte	0x1
+ 1279 0080 50       		.byte	0x50
+ 1280 0081 00000000 		.4byte	0
+ 1281 0085 00000000 		.4byte	0
+ 1282              	.LLST4:
+ 1283 0089 00000000 		.4byte	.LVL13
+ 1284 008d 12000000 		.4byte	.LVL15
+ 1285 0091 0200     		.2byte	0x2
+ 1286 0093 30       		.byte	0x30
+ 1287 0094 9F       		.byte	0x9f
+ 1288 0095 12000000 		.4byte	.LVL15
+ 1289 0099 1E000000 		.4byte	.LVL16
+ 1290 009d 0100     		.2byte	0x1
+ 1291 009f 50       		.byte	0x50
+ 1292 00a0 1E000000 		.4byte	.LVL16
+ 1293 00a4 22000000 		.4byte	.LVL17
+ 1294 00a8 0200     		.2byte	0x2
+ 1295 00aa 30       		.byte	0x30
+ 1296 00ab 9F       		.byte	0x9f
+ 1297 00ac 22000000 		.4byte	.LVL17
+ 1298 00b0 28000000 		.4byte	.LFE3
+ 1299 00b4 0100     		.2byte	0x1
+ 1300 00b6 50       		.byte	0x50
+ 1301 00b7 00000000 		.4byte	0
+ 1302 00bb 00000000 		.4byte	0
+ 1303              	.LLST5:
+ 1304 00bf 18000000 		.4byte	.LVL21
+ 1305 00c3 1A000000 		.4byte	.LVL22
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 35
+
+
+ 1306 00c7 0100     		.2byte	0x1
+ 1307 00c9 50       		.byte	0x50
+ 1308 00ca 1E000000 		.4byte	.LVL23
+ 1309 00ce 2A000000 		.4byte	.LVL25
+ 1310 00d2 0100     		.2byte	0x1
+ 1311 00d4 50       		.byte	0x50
+ 1312 00d5 2A000000 		.4byte	.LVL25
+ 1313 00d9 30000000 		.4byte	.LVL26
+ 1314 00dd 0C00     		.2byte	0xc
+ 1315 00df 71       		.byte	0x71
+ 1316 00e0 00       		.sleb128 0
+ 1317 00e1 0A       		.byte	0xa
+ 1318 00e2 6003     		.2byte	0x360
+ 1319 00e4 1A       		.byte	0x1a
+ 1320 00e5 38       		.byte	0x38
+ 1321 00e6 24       		.byte	0x24
+ 1322 00e7 70       		.byte	0x70
+ 1323 00e8 00       		.sleb128 0
+ 1324 00e9 21       		.byte	0x21
+ 1325 00ea 9F       		.byte	0x9f
+ 1326 00eb 00000000 		.4byte	0
+ 1327 00ef 00000000 		.4byte	0
+ 1328              	.LLST6:
+ 1329 00f3 08000000 		.4byte	.LVL19
+ 1330 00f7 0B000000 		.4byte	.LVL20-1
+ 1331 00fb 0100     		.2byte	0x1
+ 1332 00fd 50       		.byte	0x50
+ 1333 00fe 0B000000 		.4byte	.LVL20-1
+ 1334 0102 30000000 		.4byte	.LVL27
+ 1335 0106 0100     		.2byte	0x1
+ 1336 0108 54       		.byte	0x54
+ 1337 0109 00000000 		.4byte	0
+ 1338 010d 00000000 		.4byte	0
+ 1339              	.LLST7:
+ 1340 0111 00000000 		.4byte	.LVL28
+ 1341 0115 04000000 		.4byte	.LVL29
+ 1342 0119 0100     		.2byte	0x1
+ 1343 011b 50       		.byte	0x50
+ 1344 011c 04000000 		.4byte	.LVL29
+ 1345 0120 16000000 		.4byte	.LFE5
+ 1346 0124 0400     		.2byte	0x4
+ 1347 0126 F3       		.byte	0xf3
+ 1348 0127 01       		.uleb128 0x1
+ 1349 0128 50       		.byte	0x50
+ 1350 0129 9F       		.byte	0x9f
+ 1351 012a 00000000 		.4byte	0
+ 1352 012e 00000000 		.4byte	0
+ 1353              	.LLST8:
+ 1354 0132 04000000 		.4byte	.LVL29
+ 1355 0136 06000000 		.4byte	.LVL30
+ 1356 013a 0700     		.2byte	0x7
+ 1357 013c 74       		.byte	0x74
+ 1358 013d 00       		.sleb128 0
+ 1359 013e F3       		.byte	0xf3
+ 1360 013f 01       		.uleb128 0x1
+ 1361 0140 50       		.byte	0x50
+ 1362 0141 1C       		.byte	0x1c
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 36
+
+
+ 1363 0142 9F       		.byte	0x9f
+ 1364 0143 06000000 		.4byte	.LVL30
+ 1365 0147 12000000 		.4byte	.LVL31
+ 1366 014b 0800     		.2byte	0x8
+ 1367 014d F3       		.byte	0xf3
+ 1368 014e 01       		.uleb128 0x1
+ 1369 014f 50       		.byte	0x50
+ 1370 0150 20       		.byte	0x20
+ 1371 0151 74       		.byte	0x74
+ 1372 0152 00       		.sleb128 0
+ 1373 0153 22       		.byte	0x22
+ 1374 0154 9F       		.byte	0x9f
+ 1375 0155 12000000 		.4byte	.LVL31
+ 1376 0159 14000000 		.4byte	.LVL32
+ 1377 015d 0700     		.2byte	0x7
+ 1378 015f 74       		.byte	0x74
+ 1379 0160 00       		.sleb128 0
+ 1380 0161 F3       		.byte	0xf3
+ 1381 0162 01       		.uleb128 0x1
+ 1382 0163 50       		.byte	0x50
+ 1383 0164 1C       		.byte	0x1c
+ 1384 0165 9F       		.byte	0x9f
+ 1385 0166 14000000 		.4byte	.LVL32
+ 1386 016a 14000000 		.4byte	.LVL33
+ 1387 016e 0800     		.2byte	0x8
+ 1388 0170 F3       		.byte	0xf3
+ 1389 0171 01       		.uleb128 0x1
+ 1390 0172 50       		.byte	0x50
+ 1391 0173 20       		.byte	0x20
+ 1392 0174 74       		.byte	0x74
+ 1393 0175 00       		.sleb128 0
+ 1394 0176 22       		.byte	0x22
+ 1395 0177 9F       		.byte	0x9f
+ 1396 0178 14000000 		.4byte	.LVL33
+ 1397 017c 16000000 		.4byte	.LFE5
+ 1398 0180 0700     		.2byte	0x7
+ 1399 0182 73       		.byte	0x73
+ 1400 0183 00       		.sleb128 0
+ 1401 0184 F3       		.byte	0xf3
+ 1402 0185 01       		.uleb128 0x1
+ 1403 0186 50       		.byte	0x50
+ 1404 0187 1C       		.byte	0x1c
+ 1405 0188 9F       		.byte	0x9f
+ 1406 0189 00000000 		.4byte	0
+ 1407 018d 00000000 		.4byte	0
+ 1408              	.LLST9:
+ 1409 0191 00000000 		.4byte	.LVL34
+ 1410 0195 05000000 		.4byte	.LVL35-1
+ 1411 0199 0100     		.2byte	0x1
+ 1412 019b 50       		.byte	0x50
+ 1413 019c 05000000 		.4byte	.LVL35-1
+ 1414 01a0 14000000 		.4byte	.LFE6
+ 1415 01a4 0400     		.2byte	0x4
+ 1416 01a6 F3       		.byte	0xf3
+ 1417 01a7 01       		.uleb128 0x1
+ 1418 01a8 50       		.byte	0x50
+ 1419 01a9 9F       		.byte	0x9f
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 37
+
+
+ 1420 01aa 00000000 		.4byte	0
+ 1421 01ae 00000000 		.4byte	0
+ 1422              		.section	.debug_aranges,"",%progbits
+ 1423 0000 4C000000 		.4byte	0x4c
+ 1424 0004 0200     		.2byte	0x2
+ 1425 0006 00000000 		.4byte	.Ldebug_info0
+ 1426 000a 04       		.byte	0x4
+ 1427 000b 00       		.byte	0
+ 1428 000c 0000     		.2byte	0
+ 1429 000e 0000     		.2byte	0
+ 1430 0010 00000000 		.4byte	.LFB0
+ 1431 0014 D4000000 		.4byte	.LFE0-.LFB0
+ 1432 0018 00000000 		.4byte	.LFB1
+ 1433 001c 14000000 		.4byte	.LFE1-.LFB1
+ 1434 0020 00000000 		.4byte	.LFB2
+ 1435 0024 18000000 		.4byte	.LFE2-.LFB2
+ 1436 0028 00000000 		.4byte	.LFB3
+ 1437 002c 28000000 		.4byte	.LFE3-.LFB3
+ 1438 0030 00000000 		.4byte	.LFB4
+ 1439 0034 40000000 		.4byte	.LFE4-.LFB4
+ 1440 0038 00000000 		.4byte	.LFB5
+ 1441 003c 16000000 		.4byte	.LFE5-.LFB5
+ 1442 0040 00000000 		.4byte	.LFB6
+ 1443 0044 14000000 		.4byte	.LFE6-.LFB6
+ 1444 0048 00000000 		.4byte	0
+ 1445 004c 00000000 		.4byte	0
+ 1446              		.section	.debug_ranges,"",%progbits
+ 1447              	.Ldebug_ranges0:
+ 1448 0000 00000000 		.4byte	.LFB0
+ 1449 0004 D4000000 		.4byte	.LFE0
+ 1450 0008 00000000 		.4byte	.LFB1
+ 1451 000c 14000000 		.4byte	.LFE1
+ 1452 0010 00000000 		.4byte	.LFB2
+ 1453 0014 18000000 		.4byte	.LFE2
+ 1454 0018 00000000 		.4byte	.LFB3
+ 1455 001c 28000000 		.4byte	.LFE3
+ 1456 0020 00000000 		.4byte	.LFB4
+ 1457 0024 40000000 		.4byte	.LFE4
+ 1458 0028 00000000 		.4byte	.LFB5
+ 1459 002c 16000000 		.4byte	.LFE5
+ 1460 0030 00000000 		.4byte	.LFB6
+ 1461 0034 14000000 		.4byte	.LFE6
+ 1462 0038 00000000 		.4byte	0
+ 1463 003c 00000000 		.4byte	0
+ 1464              		.section	.debug_line,"",%progbits
+ 1465              	.Ldebug_line0:
+ 1466 0000 68010000 		.section	.debug_str,"MS",%progbits,1
+ 1466      02009400 
+ 1466      00000201 
+ 1466      FB0E0D00 
+ 1466      01010101 
+ 1467              	.LASF6:
+ 1468 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1468      206C6F6E 
+ 1468      6720696E 
+ 1468      7400
+ 1469              	.LASF15:
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 38
+
+
+ 1470 000e 72656733 		.ascii	"reg32\000"
+ 1470      3200
+ 1471              	.LASF44:
+ 1472 0014 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1472      4320342E 
+ 1472      392E3320 
+ 1472      32303135 
+ 1472      30333033 
+ 1473 0047 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1473      20726576 
+ 1473      6973696F 
+ 1473      6E203232 
+ 1473      31323230 
+ 1474 007a 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 1474      66756E63 
+ 1474      74696F6E 
+ 1474      2D736563 
+ 1474      74696F6E 
+ 1475              	.LASF20:
+ 1476 00a2 55415254 		.ascii	"UART_UartSetRxAddressMask\000"
+ 1476      5F556172 
+ 1476      74536574 
+ 1476      52784164 
+ 1476      64726573 
+ 1477              	.LASF47:
+ 1478 00bc 4379496E 		.ascii	"CyIntSetVector\000"
+ 1478      74536574 
+ 1478      56656374 
+ 1478      6F7200
+ 1479              	.LASF46:
+ 1480 00cb 433A5C55 		.ascii	"C:\\Users\\vangelis\\Striplights\\UART_Bootloader.c"
+ 1480      73657273 
+ 1480      5C76616E 
+ 1480      67656C69 
+ 1480      735C5374 
+ 1481 00fa 7964736E 		.ascii	"ydsn\000"
+ 1481      00
+ 1482              	.LASF3:
+ 1483 00ff 73686F72 		.ascii	"short unsigned int\000"
+ 1483      7420756E 
+ 1483      7369676E 
+ 1483      65642069 
+ 1483      6E7400
+ 1484              	.LASF14:
+ 1485 0112 63686172 		.ascii	"char\000"
+ 1485      00
+ 1486              	.LASF8:
+ 1487 0117 756E7369 		.ascii	"unsigned int\000"
+ 1487      676E6564 
+ 1487      20696E74 
+ 1487      00
+ 1488              	.LASF30:
+ 1489 0124 73747269 		.ascii	"string\000"
+ 1489      6E6700
+ 1490              	.LASF29:
+ 1491 012b 55415254 		.ascii	"UART_UartPutString\000"
+ 1491      5F556172 
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 39
+
+
+ 1491      74507574 
+ 1491      53747269 
+ 1491      6E6700
+ 1492              	.LASF26:
+ 1493 013e 55415254 		.ascii	"UART_UartGetByte\000"
+ 1493      5F556172 
+ 1493      74476574 
+ 1493      42797465 
+ 1493      00
+ 1494              	.LASF1:
+ 1495 014f 756E7369 		.ascii	"unsigned char\000"
+ 1495      676E6564 
+ 1495      20636861 
+ 1495      7200
+ 1496              	.LASF35:
+ 1497 015d 55415254 		.ascii	"UART_rxBufferTail\000"
+ 1497      5F727842 
+ 1497      75666665 
+ 1497      72546169 
+ 1497      6C00
+ 1498              	.LASF13:
+ 1499 016f 63686172 		.ascii	"char8\000"
+ 1499      3800
+ 1500              	.LASF5:
+ 1501 0175 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1501      20756E73 
+ 1501      69676E65 
+ 1501      6420696E 
+ 1501      7400
+ 1502              	.LASF9:
+ 1503 0187 75696E74 		.ascii	"uint8\000"
+ 1503      3800
+ 1504              	.LASF32:
+ 1505 018d 55415254 		.ascii	"UART_UartPutCRLF\000"
+ 1505      5F556172 
+ 1505      74507574 
+ 1505      43524C46 
+ 1505      00
+ 1506              	.LASF24:
+ 1507 019e 72784461 		.ascii	"rxData\000"
+ 1507      746100
+ 1508              	.LASF22:
+ 1509 01a5 61646472 		.ascii	"addressMask\000"
+ 1509      6573734D 
+ 1509      61736B00 
+ 1510              	.LASF12:
+ 1511 01b1 646F7562 		.ascii	"double\000"
+ 1511      6C6500
+ 1512              	.LASF19:
+ 1513 01b8 55415254 		.ascii	"UART_UartSetRxAddress\000"
+ 1513      5F556172 
+ 1513      74536574 
+ 1513      52784164 
+ 1513      64726573 
+ 1514              	.LASF38:
+ 1515 01ce 55415254 		.ascii	"UART_txBufferTail\000"
+ 1515      5F747842 
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 40
+
+
+ 1515      75666665 
+ 1515      72546169 
+ 1515      6C00
+ 1516              	.LASF10:
+ 1517 01e0 75696E74 		.ascii	"uint32\000"
+ 1517      333200
+ 1518              	.LASF43:
+ 1519 01e7 55415254 		.ascii	"UART_SpiUartDisableIntRx\000"
+ 1519      5F537069 
+ 1519      55617274 
+ 1519      44697361 
+ 1519      626C6549 
+ 1520              	.LASF28:
+ 1521 0200 696E7453 		.ascii	"intSourceMask\000"
+ 1521      6F757263 
+ 1521      654D6173 
+ 1521      6B00
+ 1522              	.LASF18:
+ 1523 020e 55415254 		.ascii	"UART_UartInit\000"
+ 1523      5F556172 
+ 1523      74496E69 
+ 1523      7400
+ 1524              	.LASF21:
+ 1525 021c 61646472 		.ascii	"address\000"
+ 1525      65737300 
+ 1526              	.LASF7:
+ 1527 0224 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1527      206C6F6E 
+ 1527      6720756E 
+ 1527      7369676E 
+ 1527      65642069 
+ 1528              	.LASF40:
+ 1529 023b 4379496E 		.ascii	"CyIntSetPriority\000"
+ 1529      74536574 
+ 1529      5072696F 
+ 1529      72697479 
+ 1529      00
+ 1530              	.LASF36:
+ 1531 024c 55415254 		.ascii	"UART_rxBufferOverflow\000"
+ 1531      5F727842 
+ 1531      75666665 
+ 1531      724F7665 
+ 1531      72666C6F 
+ 1532              	.LASF16:
+ 1533 0262 63796973 		.ascii	"cyisraddress\000"
+ 1533      72616464 
+ 1533      72657373 
+ 1533      00
+ 1534              	.LASF31:
+ 1535 026f 62756649 		.ascii	"bufIndex\000"
+ 1535      6E646578 
+ 1535      00
+ 1536              	.LASF25:
+ 1537 0278 55415254 		.ascii	"UART_UartGetChar\000"
+ 1537      5F556172 
+ 1537      74476574 
+ 1537      43686172 
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 41
+
+
+ 1537      00
+ 1538              	.LASF17:
+ 1539 0289 73697A65 		.ascii	"sizetype\000"
+ 1539      74797065 
+ 1539      00
+ 1540              	.LASF33:
+ 1541 0292 74784461 		.ascii	"txDataByte\000"
+ 1541      74614279 
+ 1541      746500
+ 1542              	.LASF45:
+ 1543 029d 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\UART_UART.c\000"
+ 1543      6E657261 
+ 1543      7465645F 
+ 1543      536F7572 
+ 1543      63655C50 
+ 1544              	.LASF48:
+ 1545 02c2 55415254 		.ascii	"UART_SpiUartWriteTxData\000"
+ 1545      5F537069 
+ 1545      55617274 
+ 1545      57726974 
+ 1545      65547844 
+ 1546              	.LASF37:
+ 1547 02da 55415254 		.ascii	"UART_txBufferHead\000"
+ 1547      5F747842 
+ 1547      75666665 
+ 1547      72486561 
+ 1547      6400
+ 1548              	.LASF39:
+ 1549 02ec 4379496E 		.ascii	"CyIntDisable\000"
+ 1549      74446973 
+ 1549      61626C65 
+ 1549      00
+ 1550              	.LASF2:
+ 1551 02f9 73686F72 		.ascii	"short int\000"
+ 1551      7420696E 
+ 1551      7400
+ 1552              	.LASF42:
+ 1553 0303 55415254 		.ascii	"UART_SpiUartReadRxData\000"
+ 1553      5F537069 
+ 1553      55617274 
+ 1553      52656164 
+ 1553      52784461 
+ 1554              	.LASF4:
+ 1555 031a 6C6F6E67 		.ascii	"long int\000"
+ 1555      20696E74 
+ 1555      00
+ 1556              	.LASF27:
+ 1557 0323 746D7053 		.ascii	"tmpStatus\000"
+ 1557      74617475 
+ 1557      7300
+ 1558              	.LASF23:
+ 1559 032d 6D617463 		.ascii	"matchReg\000"
+ 1559      68526567 
+ 1559      00
+ 1560              	.LASF11:
+ 1561 0336 666C6F61 		.ascii	"float\000"
+ 1561      7400
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccqTM55y.s 			page 42
+
+
+ 1562              	.LASF0:
+ 1563 033c 7369676E 		.ascii	"signed char\000"
+ 1563      65642063 
+ 1563      68617200 
+ 1564              	.LASF41:
+ 1565 0348 55415254 		.ascii	"UART_SpiUartGetRxBufferSize\000"
+ 1565      5F537069 
+ 1565      55617274 
+ 1565      47657452 
+ 1565      78427566 
+ 1566              	.LASF34:
+ 1567 0364 55415254 		.ascii	"UART_rxBufferHead\000"
+ 1567      5F727842 
+ 1567      75666665 
+ 1567      72486561 
+ 1567      6400
+ 1568              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

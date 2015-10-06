@@ -1,0 +1,2055 @@
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"StripLights_1_fonts.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.comm	StripLights_1_fontPtr,4,4
+  18              		.comm	StripLights_1_fontX,4,4
+  19              		.comm	StripLights_1_fontY,4,4
+  20              		.comm	StripLights_1_fontOffset,4,4
+  21              		.global	StripLights_1_Font5x7
+  22              		.section	.rodata
+  23              		.align	2
+  24              		.type	StripLights_1_Font5x7, %object
+  25              		.size	StripLights_1_Font5x7, 480
+  26              	StripLights_1_Font5x7:
+  27 0000 00       		.byte	0
+  28 0001 00       		.byte	0
+  29 0002 00       		.byte	0
+  30 0003 00       		.byte	0
+  31 0004 00       		.byte	0
+  32 0005 00       		.byte	0
+  33 0006 00       		.byte	0
+  34 0007 5F       		.byte	95
+  35 0008 00       		.byte	0
+  36 0009 00       		.byte	0
+  37 000a 00       		.byte	0
+  38 000b 07       		.byte	7
+  39 000c 00       		.byte	0
+  40 000d 07       		.byte	7
+  41 000e 00       		.byte	0
+  42 000f 14       		.byte	20
+  43 0010 7F       		.byte	127
+  44 0011 14       		.byte	20
+  45 0012 7F       		.byte	127
+  46 0013 14       		.byte	20
+  47 0014 24       		.byte	36
+  48 0015 2A       		.byte	42
+  49 0016 7F       		.byte	127
+  50 0017 2A       		.byte	42
+  51 0018 12       		.byte	18
+  52 0019 23       		.byte	35
+  53 001a 13       		.byte	19
+  54 001b 08       		.byte	8
+  55 001c 64       		.byte	100
+  56 001d 62       		.byte	98
+  57 001e 36       		.byte	54
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 2
+
+
+  58 001f 49       		.byte	73
+  59 0020 55       		.byte	85
+  60 0021 22       		.byte	34
+  61 0022 50       		.byte	80
+  62 0023 00       		.byte	0
+  63 0024 05       		.byte	5
+  64 0025 03       		.byte	3
+  65 0026 00       		.byte	0
+  66 0027 00       		.byte	0
+  67 0028 00       		.byte	0
+  68 0029 1C       		.byte	28
+  69 002a 22       		.byte	34
+  70 002b 41       		.byte	65
+  71 002c 00       		.byte	0
+  72 002d 00       		.byte	0
+  73 002e 41       		.byte	65
+  74 002f 22       		.byte	34
+  75 0030 1C       		.byte	28
+  76 0031 00       		.byte	0
+  77 0032 08       		.byte	8
+  78 0033 2A       		.byte	42
+  79 0034 1C       		.byte	28
+  80 0035 2A       		.byte	42
+  81 0036 08       		.byte	8
+  82 0037 08       		.byte	8
+  83 0038 08       		.byte	8
+  84 0039 3E       		.byte	62
+  85 003a 08       		.byte	8
+  86 003b 08       		.byte	8
+  87 003c 00       		.byte	0
+  88 003d 50       		.byte	80
+  89 003e 30       		.byte	48
+  90 003f 00       		.byte	0
+  91 0040 00       		.byte	0
+  92 0041 08       		.byte	8
+  93 0042 08       		.byte	8
+  94 0043 08       		.byte	8
+  95 0044 08       		.byte	8
+  96 0045 08       		.byte	8
+  97 0046 00       		.byte	0
+  98 0047 60       		.byte	96
+  99 0048 60       		.byte	96
+ 100 0049 00       		.byte	0
+ 101 004a 00       		.byte	0
+ 102 004b 20       		.byte	32
+ 103 004c 10       		.byte	16
+ 104 004d 08       		.byte	8
+ 105 004e 04       		.byte	4
+ 106 004f 02       		.byte	2
+ 107 0050 3E       		.byte	62
+ 108 0051 51       		.byte	81
+ 109 0052 49       		.byte	73
+ 110 0053 45       		.byte	69
+ 111 0054 3E       		.byte	62
+ 112 0055 00       		.byte	0
+ 113 0056 42       		.byte	66
+ 114 0057 7F       		.byte	127
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 3
+
+
+ 115 0058 40       		.byte	64
+ 116 0059 00       		.byte	0
+ 117 005a 42       		.byte	66
+ 118 005b 61       		.byte	97
+ 119 005c 51       		.byte	81
+ 120 005d 49       		.byte	73
+ 121 005e 46       		.byte	70
+ 122 005f 21       		.byte	33
+ 123 0060 41       		.byte	65
+ 124 0061 45       		.byte	69
+ 125 0062 4B       		.byte	75
+ 126 0063 31       		.byte	49
+ 127 0064 18       		.byte	24
+ 128 0065 14       		.byte	20
+ 129 0066 12       		.byte	18
+ 130 0067 7F       		.byte	127
+ 131 0068 10       		.byte	16
+ 132 0069 27       		.byte	39
+ 133 006a 45       		.byte	69
+ 134 006b 45       		.byte	69
+ 135 006c 45       		.byte	69
+ 136 006d 39       		.byte	57
+ 137 006e 3C       		.byte	60
+ 138 006f 4A       		.byte	74
+ 139 0070 49       		.byte	73
+ 140 0071 49       		.byte	73
+ 141 0072 30       		.byte	48
+ 142 0073 01       		.byte	1
+ 143 0074 71       		.byte	113
+ 144 0075 09       		.byte	9
+ 145 0076 05       		.byte	5
+ 146 0077 03       		.byte	3
+ 147 0078 36       		.byte	54
+ 148 0079 49       		.byte	73
+ 149 007a 49       		.byte	73
+ 150 007b 49       		.byte	73
+ 151 007c 36       		.byte	54
+ 152 007d 06       		.byte	6
+ 153 007e 49       		.byte	73
+ 154 007f 49       		.byte	73
+ 155 0080 29       		.byte	41
+ 156 0081 1E       		.byte	30
+ 157 0082 00       		.byte	0
+ 158 0083 36       		.byte	54
+ 159 0084 36       		.byte	54
+ 160 0085 00       		.byte	0
+ 161 0086 00       		.byte	0
+ 162 0087 00       		.byte	0
+ 163 0088 56       		.byte	86
+ 164 0089 36       		.byte	54
+ 165 008a 00       		.byte	0
+ 166 008b 00       		.byte	0
+ 167 008c 00       		.byte	0
+ 168 008d 08       		.byte	8
+ 169 008e 14       		.byte	20
+ 170 008f 22       		.byte	34
+ 171 0090 41       		.byte	65
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 4
+
+
+ 172 0091 14       		.byte	20
+ 173 0092 14       		.byte	20
+ 174 0093 14       		.byte	20
+ 175 0094 14       		.byte	20
+ 176 0095 14       		.byte	20
+ 177 0096 41       		.byte	65
+ 178 0097 22       		.byte	34
+ 179 0098 14       		.byte	20
+ 180 0099 08       		.byte	8
+ 181 009a 00       		.byte	0
+ 182 009b 02       		.byte	2
+ 183 009c 01       		.byte	1
+ 184 009d 51       		.byte	81
+ 185 009e 09       		.byte	9
+ 186 009f 06       		.byte	6
+ 187 00a0 32       		.byte	50
+ 188 00a1 49       		.byte	73
+ 189 00a2 79       		.byte	121
+ 190 00a3 41       		.byte	65
+ 191 00a4 3E       		.byte	62
+ 192 00a5 7E       		.byte	126
+ 193 00a6 11       		.byte	17
+ 194 00a7 11       		.byte	17
+ 195 00a8 11       		.byte	17
+ 196 00a9 7E       		.byte	126
+ 197 00aa 7F       		.byte	127
+ 198 00ab 49       		.byte	73
+ 199 00ac 49       		.byte	73
+ 200 00ad 49       		.byte	73
+ 201 00ae 36       		.byte	54
+ 202 00af 3E       		.byte	62
+ 203 00b0 41       		.byte	65
+ 204 00b1 41       		.byte	65
+ 205 00b2 41       		.byte	65
+ 206 00b3 22       		.byte	34
+ 207 00b4 7F       		.byte	127
+ 208 00b5 41       		.byte	65
+ 209 00b6 41       		.byte	65
+ 210 00b7 22       		.byte	34
+ 211 00b8 1C       		.byte	28
+ 212 00b9 7F       		.byte	127
+ 213 00ba 49       		.byte	73
+ 214 00bb 49       		.byte	73
+ 215 00bc 49       		.byte	73
+ 216 00bd 41       		.byte	65
+ 217 00be 7F       		.byte	127
+ 218 00bf 09       		.byte	9
+ 219 00c0 09       		.byte	9
+ 220 00c1 01       		.byte	1
+ 221 00c2 01       		.byte	1
+ 222 00c3 3E       		.byte	62
+ 223 00c4 41       		.byte	65
+ 224 00c5 41       		.byte	65
+ 225 00c6 51       		.byte	81
+ 226 00c7 32       		.byte	50
+ 227 00c8 7F       		.byte	127
+ 228 00c9 08       		.byte	8
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 5
+
+
+ 229 00ca 08       		.byte	8
+ 230 00cb 08       		.byte	8
+ 231 00cc 7F       		.byte	127
+ 232 00cd 00       		.byte	0
+ 233 00ce 41       		.byte	65
+ 234 00cf 7F       		.byte	127
+ 235 00d0 41       		.byte	65
+ 236 00d1 00       		.byte	0
+ 237 00d2 20       		.byte	32
+ 238 00d3 40       		.byte	64
+ 239 00d4 41       		.byte	65
+ 240 00d5 3F       		.byte	63
+ 241 00d6 01       		.byte	1
+ 242 00d7 7F       		.byte	127
+ 243 00d8 08       		.byte	8
+ 244 00d9 14       		.byte	20
+ 245 00da 22       		.byte	34
+ 246 00db 41       		.byte	65
+ 247 00dc 7F       		.byte	127
+ 248 00dd 40       		.byte	64
+ 249 00de 40       		.byte	64
+ 250 00df 40       		.byte	64
+ 251 00e0 40       		.byte	64
+ 252 00e1 7F       		.byte	127
+ 253 00e2 02       		.byte	2
+ 254 00e3 04       		.byte	4
+ 255 00e4 02       		.byte	2
+ 256 00e5 7F       		.byte	127
+ 257 00e6 7F       		.byte	127
+ 258 00e7 04       		.byte	4
+ 259 00e8 08       		.byte	8
+ 260 00e9 10       		.byte	16
+ 261 00ea 7F       		.byte	127
+ 262 00eb 3E       		.byte	62
+ 263 00ec 41       		.byte	65
+ 264 00ed 41       		.byte	65
+ 265 00ee 41       		.byte	65
+ 266 00ef 3E       		.byte	62
+ 267 00f0 7F       		.byte	127
+ 268 00f1 09       		.byte	9
+ 269 00f2 09       		.byte	9
+ 270 00f3 09       		.byte	9
+ 271 00f4 06       		.byte	6
+ 272 00f5 3E       		.byte	62
+ 273 00f6 41       		.byte	65
+ 274 00f7 51       		.byte	81
+ 275 00f8 21       		.byte	33
+ 276 00f9 5E       		.byte	94
+ 277 00fa 7F       		.byte	127
+ 278 00fb 09       		.byte	9
+ 279 00fc 19       		.byte	25
+ 280 00fd 29       		.byte	41
+ 281 00fe 46       		.byte	70
+ 282 00ff 46       		.byte	70
+ 283 0100 49       		.byte	73
+ 284 0101 49       		.byte	73
+ 285 0102 49       		.byte	73
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 6
+
+
+ 286 0103 31       		.byte	49
+ 287 0104 01       		.byte	1
+ 288 0105 01       		.byte	1
+ 289 0106 7F       		.byte	127
+ 290 0107 01       		.byte	1
+ 291 0108 01       		.byte	1
+ 292 0109 3F       		.byte	63
+ 293 010a 40       		.byte	64
+ 294 010b 40       		.byte	64
+ 295 010c 40       		.byte	64
+ 296 010d 3F       		.byte	63
+ 297 010e 1F       		.byte	31
+ 298 010f 20       		.byte	32
+ 299 0110 40       		.byte	64
+ 300 0111 20       		.byte	32
+ 301 0112 1F       		.byte	31
+ 302 0113 7F       		.byte	127
+ 303 0114 20       		.byte	32
+ 304 0115 18       		.byte	24
+ 305 0116 20       		.byte	32
+ 306 0117 7F       		.byte	127
+ 307 0118 63       		.byte	99
+ 308 0119 14       		.byte	20
+ 309 011a 08       		.byte	8
+ 310 011b 14       		.byte	20
+ 311 011c 63       		.byte	99
+ 312 011d 03       		.byte	3
+ 313 011e 04       		.byte	4
+ 314 011f 78       		.byte	120
+ 315 0120 04       		.byte	4
+ 316 0121 03       		.byte	3
+ 317 0122 61       		.byte	97
+ 318 0123 51       		.byte	81
+ 319 0124 49       		.byte	73
+ 320 0125 45       		.byte	69
+ 321 0126 43       		.byte	67
+ 322 0127 00       		.byte	0
+ 323 0128 00       		.byte	0
+ 324 0129 7F       		.byte	127
+ 325 012a 41       		.byte	65
+ 326 012b 41       		.byte	65
+ 327 012c 02       		.byte	2
+ 328 012d 04       		.byte	4
+ 329 012e 08       		.byte	8
+ 330 012f 10       		.byte	16
+ 331 0130 20       		.byte	32
+ 332 0131 41       		.byte	65
+ 333 0132 41       		.byte	65
+ 334 0133 7F       		.byte	127
+ 335 0134 00       		.byte	0
+ 336 0135 00       		.byte	0
+ 337 0136 04       		.byte	4
+ 338 0137 02       		.byte	2
+ 339 0138 01       		.byte	1
+ 340 0139 02       		.byte	2
+ 341 013a 04       		.byte	4
+ 342 013b 40       		.byte	64
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 7
+
+
+ 343 013c 40       		.byte	64
+ 344 013d 40       		.byte	64
+ 345 013e 40       		.byte	64
+ 346 013f 40       		.byte	64
+ 347 0140 00       		.byte	0
+ 348 0141 01       		.byte	1
+ 349 0142 02       		.byte	2
+ 350 0143 04       		.byte	4
+ 351 0144 00       		.byte	0
+ 352 0145 20       		.byte	32
+ 353 0146 54       		.byte	84
+ 354 0147 54       		.byte	84
+ 355 0148 54       		.byte	84
+ 356 0149 78       		.byte	120
+ 357 014a 7F       		.byte	127
+ 358 014b 48       		.byte	72
+ 359 014c 44       		.byte	68
+ 360 014d 44       		.byte	68
+ 361 014e 38       		.byte	56
+ 362 014f 38       		.byte	56
+ 363 0150 44       		.byte	68
+ 364 0151 44       		.byte	68
+ 365 0152 44       		.byte	68
+ 366 0153 20       		.byte	32
+ 367 0154 38       		.byte	56
+ 368 0155 44       		.byte	68
+ 369 0156 44       		.byte	68
+ 370 0157 48       		.byte	72
+ 371 0158 7F       		.byte	127
+ 372 0159 38       		.byte	56
+ 373 015a 54       		.byte	84
+ 374 015b 54       		.byte	84
+ 375 015c 54       		.byte	84
+ 376 015d 18       		.byte	24
+ 377 015e 08       		.byte	8
+ 378 015f 7E       		.byte	126
+ 379 0160 09       		.byte	9
+ 380 0161 01       		.byte	1
+ 381 0162 02       		.byte	2
+ 382 0163 08       		.byte	8
+ 383 0164 14       		.byte	20
+ 384 0165 54       		.byte	84
+ 385 0166 54       		.byte	84
+ 386 0167 3C       		.byte	60
+ 387 0168 7F       		.byte	127
+ 388 0169 08       		.byte	8
+ 389 016a 04       		.byte	4
+ 390 016b 04       		.byte	4
+ 391 016c 78       		.byte	120
+ 392 016d 00       		.byte	0
+ 393 016e 44       		.byte	68
+ 394 016f 7D       		.byte	125
+ 395 0170 40       		.byte	64
+ 396 0171 00       		.byte	0
+ 397 0172 20       		.byte	32
+ 398 0173 40       		.byte	64
+ 399 0174 44       		.byte	68
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 8
+
+
+ 400 0175 3D       		.byte	61
+ 401 0176 00       		.byte	0
+ 402 0177 00       		.byte	0
+ 403 0178 7F       		.byte	127
+ 404 0179 10       		.byte	16
+ 405 017a 28       		.byte	40
+ 406 017b 44       		.byte	68
+ 407 017c 00       		.byte	0
+ 408 017d 41       		.byte	65
+ 409 017e 7F       		.byte	127
+ 410 017f 40       		.byte	64
+ 411 0180 00       		.byte	0
+ 412 0181 7C       		.byte	124
+ 413 0182 04       		.byte	4
+ 414 0183 18       		.byte	24
+ 415 0184 04       		.byte	4
+ 416 0185 78       		.byte	120
+ 417 0186 7C       		.byte	124
+ 418 0187 08       		.byte	8
+ 419 0188 04       		.byte	4
+ 420 0189 04       		.byte	4
+ 421 018a 78       		.byte	120
+ 422 018b 38       		.byte	56
+ 423 018c 44       		.byte	68
+ 424 018d 44       		.byte	68
+ 425 018e 44       		.byte	68
+ 426 018f 38       		.byte	56
+ 427 0190 7C       		.byte	124
+ 428 0191 14       		.byte	20
+ 429 0192 14       		.byte	20
+ 430 0193 14       		.byte	20
+ 431 0194 08       		.byte	8
+ 432 0195 08       		.byte	8
+ 433 0196 14       		.byte	20
+ 434 0197 14       		.byte	20
+ 435 0198 18       		.byte	24
+ 436 0199 7C       		.byte	124
+ 437 019a 7C       		.byte	124
+ 438 019b 08       		.byte	8
+ 439 019c 04       		.byte	4
+ 440 019d 04       		.byte	4
+ 441 019e 08       		.byte	8
+ 442 019f 48       		.byte	72
+ 443 01a0 54       		.byte	84
+ 444 01a1 54       		.byte	84
+ 445 01a2 54       		.byte	84
+ 446 01a3 20       		.byte	32
+ 447 01a4 04       		.byte	4
+ 448 01a5 3F       		.byte	63
+ 449 01a6 44       		.byte	68
+ 450 01a7 40       		.byte	64
+ 451 01a8 20       		.byte	32
+ 452 01a9 3C       		.byte	60
+ 453 01aa 40       		.byte	64
+ 454 01ab 40       		.byte	64
+ 455 01ac 20       		.byte	32
+ 456 01ad 7C       		.byte	124
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 9
+
+
+ 457 01ae 1C       		.byte	28
+ 458 01af 20       		.byte	32
+ 459 01b0 40       		.byte	64
+ 460 01b1 20       		.byte	32
+ 461 01b2 1C       		.byte	28
+ 462 01b3 3C       		.byte	60
+ 463 01b4 40       		.byte	64
+ 464 01b5 30       		.byte	48
+ 465 01b6 40       		.byte	64
+ 466 01b7 3C       		.byte	60
+ 467 01b8 44       		.byte	68
+ 468 01b9 28       		.byte	40
+ 469 01ba 10       		.byte	16
+ 470 01bb 28       		.byte	40
+ 471 01bc 44       		.byte	68
+ 472 01bd 0C       		.byte	12
+ 473 01be 50       		.byte	80
+ 474 01bf 50       		.byte	80
+ 475 01c0 50       		.byte	80
+ 476 01c1 3C       		.byte	60
+ 477 01c2 44       		.byte	68
+ 478 01c3 64       		.byte	100
+ 479 01c4 54       		.byte	84
+ 480 01c5 4C       		.byte	76
+ 481 01c6 44       		.byte	68
+ 482 01c7 00       		.byte	0
+ 483 01c8 08       		.byte	8
+ 484 01c9 36       		.byte	54
+ 485 01ca 41       		.byte	65
+ 486 01cb 00       		.byte	0
+ 487 01cc 00       		.byte	0
+ 488 01cd 00       		.byte	0
+ 489 01ce 7F       		.byte	127
+ 490 01cf 00       		.byte	0
+ 491 01d0 00       		.byte	0
+ 492 01d1 00       		.byte	0
+ 493 01d2 41       		.byte	65
+ 494 01d3 36       		.byte	54
+ 495 01d4 08       		.byte	8
+ 496 01d5 00       		.byte	0
+ 497 01d6 08       		.byte	8
+ 498 01d7 08       		.byte	8
+ 499 01d8 2A       		.byte	42
+ 500 01d9 1C       		.byte	28
+ 501 01da 08       		.byte	8
+ 502 01db 08       		.byte	8
+ 503 01dc 1C       		.byte	28
+ 504 01dd 2A       		.byte	42
+ 505 01de 08       		.byte	8
+ 506 01df 08       		.byte	8
+ 507              		.section	.text.StripLights_1_SetFont,"ax",%progbits
+ 508              		.align	2
+ 509              		.global	StripLights_1_SetFont
+ 510              		.code	16
+ 511              		.thumb_func
+ 512              		.type	StripLights_1_SetFont, %function
+ 513              	StripLights_1_SetFont:
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 10
+
+
+ 514              	.LFB33:
+ 515              		.file 1 ".\\Generated_Source\\PSoC4\\StripLights_1_fonts.c"
+   1:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** /* ========================================
+   2:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****  *
+   3:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****  * All Rights Reserved
+   5:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****  *
+   7:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****  *
+  10:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****  * ========================================
+  11:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** */
+  12:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** #include <project.h>
+  13:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** #include "cytypes.h"
+  14:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** #include "stdlib.h"
+  15:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** #include "cyfitter.h"
+  16:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** #include "StripLights_1.h"
+  17:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** #include "StripLights_1_fonts.h"
+  18:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 
+  19:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** uint8 const * StripLights_1_fontPtr;
+  20:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** int32 StripLights_1_fontX;
+  21:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** int32 StripLights_1_fontY;
+  22:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** int32 StripLights_1_fontOffset;
+  23:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 
+  24:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 
+  25:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** // standard ascii 5x7 font
+  26:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** // defines ascii characters 0x20-0x7F (32-127)
+  27:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** const uint8 StripLights_1_Font5x7[] = {
+  28:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x00, 0x00, 0x00, 0x00,// (space)
+  29:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x00, 0x5F, 0x00, 0x00,// !
+  30:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x07, 0x00, 0x07, 0x00,// "
+  31:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x14, 0x7F, 0x14, 0x7F, 0x14,// #
+  32:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x24, 0x2A, 0x7F, 0x2A, 0x12,// $
+  33:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x23, 0x13, 0x08, 0x64, 0x62,// %
+  34:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x36, 0x49, 0x55, 0x22, 0x50,// &
+  35:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x05, 0x03, 0x00, 0x00,// '
+  36:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x1C, 0x22, 0x41, 0x00,// (
+  37:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x41, 0x22, 0x1C, 0x00,// )
+  38:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x08, 0x2A, 0x1C, 0x2A, 0x08,// *
+  39:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x08, 0x08, 0x3E, 0x08, 0x08,// +
+  40:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x50, 0x30, 0x00, 0x00,// ,
+  41:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x08, 0x08, 0x08, 0x08, 0x08,// -
+  42:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x60, 0x60, 0x00, 0x00,// .
+  43:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x20, 0x10, 0x08, 0x04, 0x02,// /
+  44:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x3E, 0x51, 0x49, 0x45, 0x3E,// 0
+  45:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x42, 0x7F, 0x40, 0x00,// 1
+  46:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x42, 0x61, 0x51, 0x49, 0x46,// 2
+  47:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x21, 0x41, 0x45, 0x4B, 0x31,// 3
+  48:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x18, 0x14, 0x12, 0x7F, 0x10,// 4
+  49:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x27, 0x45, 0x45, 0x45, 0x39,// 5
+  50:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x3C, 0x4A, 0x49, 0x49, 0x30,// 6
+  51:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x01, 0x71, 0x09, 0x05, 0x03,// 7
+  52:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x36, 0x49, 0x49, 0x49, 0x36,// 8
+  53:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x06, 0x49, 0x49, 0x29, 0x1E,// 9
+  54:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x36, 0x36, 0x00, 0x00,// :
+  55:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x56, 0x36, 0x00, 0x00,// ;
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 11
+
+
+  56:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x08, 0x14, 0x22, 0x41,// <
+  57:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x14, 0x14, 0x14, 0x14, 0x14,// =
+  58:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x41, 0x22, 0x14, 0x08, 0x00,// >
+  59:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x02, 0x01, 0x51, 0x09, 0x06,// ?
+  60:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x32, 0x49, 0x79, 0x41, 0x3E,// @
+  61:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7E, 0x11, 0x11, 0x11, 0x7E,// A
+  62:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x49, 0x49, 0x49, 0x36,// B
+  63:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x3E, 0x41, 0x41, 0x41, 0x22,// C
+  64:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x41, 0x41, 0x22, 0x1C,// D
+  65:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x49, 0x49, 0x49, 0x41,// E
+  66:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x09, 0x09, 0x01, 0x01,// F
+  67:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x3E, 0x41, 0x41, 0x51, 0x32,// G
+  68:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x08, 0x08, 0x08, 0x7F,// H
+  69:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x41, 0x7F, 0x41, 0x00,// I
+  70:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x20, 0x40, 0x41, 0x3F, 0x01,// J
+  71:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x08, 0x14, 0x22, 0x41,// K
+  72:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x40, 0x40, 0x40, 0x40,// L
+  73:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x02, 0x04, 0x02, 0x7F,// M
+  74:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x04, 0x08, 0x10, 0x7F,// N
+  75:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x3E, 0x41, 0x41, 0x41, 0x3E,// O
+  76:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x09, 0x09, 0x09, 0x06,// P
+  77:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x3E, 0x41, 0x51, 0x21, 0x5E,// Q
+  78:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x09, 0x19, 0x29, 0x46,// R
+  79:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x46, 0x49, 0x49, 0x49, 0x31,// S
+  80:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x01, 0x01, 0x7F, 0x01, 0x01,// T
+  81:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x3F, 0x40, 0x40, 0x40, 0x3F,// U
+  82:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x1F, 0x20, 0x40, 0x20, 0x1F,// V
+  83:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x20, 0x18, 0x20, 0x7F,// W
+  84:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x63, 0x14, 0x08, 0x14, 0x63,// X
+  85:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x03, 0x04, 0x78, 0x04, 0x03,// Y
+  86:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x61, 0x51, 0x49, 0x45, 0x43,// Z
+  87:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x00, 0x7F, 0x41, 0x41,// [
+  88:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x02, 0x04, 0x08, 0x10, 0x20,// "\"
+  89:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x41, 0x41, 0x7F, 0x00, 0x00,// ]
+  90:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x04, 0x02, 0x01, 0x02, 0x04,// ^
+  91:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x40, 0x40, 0x40, 0x40, 0x40,// _
+  92:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x01, 0x02, 0x04, 0x00,// `
+  93:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x20, 0x54, 0x54, 0x54, 0x78,// a
+  94:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x48, 0x44, 0x44, 0x38,// b
+  95:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x38, 0x44, 0x44, 0x44, 0x20,// c
+  96:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x38, 0x44, 0x44, 0x48, 0x7F,// d
+  97:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x38, 0x54, 0x54, 0x54, 0x18,// e
+  98:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x08, 0x7E, 0x09, 0x01, 0x02,// f
+  99:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x08, 0x14, 0x54, 0x54, 0x3C,// g
+ 100:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7F, 0x08, 0x04, 0x04, 0x78,// h
+ 101:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x44, 0x7D, 0x40, 0x00,// i
+ 102:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x20, 0x40, 0x44, 0x3D, 0x00,// j
+ 103:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x7F, 0x10, 0x28, 0x44,// k
+ 104:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x41, 0x7F, 0x40, 0x00,// l
+ 105:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7C, 0x04, 0x18, 0x04, 0x78,// m
+ 106:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7C, 0x08, 0x04, 0x04, 0x78,// n
+ 107:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x38, 0x44, 0x44, 0x44, 0x38,// o
+ 108:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7C, 0x14, 0x14, 0x14, 0x08,// p
+ 109:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x08, 0x14, 0x14, 0x18, 0x7C,// q
+ 110:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x7C, 0x08, 0x04, 0x04, 0x08,// r
+ 111:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x48, 0x54, 0x54, 0x54, 0x20,// s
+ 112:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x04, 0x3F, 0x44, 0x40, 0x20,// t
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 12
+
+
+ 113:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x3C, 0x40, 0x40, 0x20, 0x7C,// u
+ 114:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x1C, 0x20, 0x40, 0x20, 0x1C,// v
+ 115:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x3C, 0x40, 0x30, 0x40, 0x3C,// w
+ 116:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x44, 0x28, 0x10, 0x28, 0x44,// x
+ 117:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x0C, 0x50, 0x50, 0x50, 0x3C,// y
+ 118:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x44, 0x64, 0x54, 0x4C, 0x44,// z
+ 119:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x08, 0x36, 0x41, 0x00,// {
+ 120:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x00, 0x7F, 0x00, 0x00,// |
+ 121:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x00, 0x41, 0x36, 0x08, 0x00,// }
+ 122:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x08, 0x08, 0x2A, 0x1C, 0x08,// ->
+ 123:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	0x08, 0x1C, 0x2A, 0x08, 0x08 // <-
+ 124:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** };
+ 125:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 
+ 126:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 
+ 127:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** /*******************************************************************************
+ 128:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** * Function Name: StripLights_1_SetFont
+ 129:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** ********************************************************************************
+ 130:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** * Summary:
+ 131:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *   Set the specific font.  (Only one font supported at this time.)
+ 132:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *
+ 133:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** * Parameters:  
+ 134:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  uint32 font: Font to be selected 
+ 135:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *
+ 136:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** * Return: 
+ 137:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  void
+ 138:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *
+ 139:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *******************************************************************************/
+ 140:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** void StripLights_1_SetFont( uint32 font)
+ 141:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** {
+ 516              		.loc 1 141 0
+ 517              		.cfi_startproc
+ 518 0000 80B5     		push	{r7, lr}
+ 519              		.cfi_def_cfa_offset 8
+ 520              		.cfi_offset 7, -8
+ 521              		.cfi_offset 14, -4
+ 522 0002 82B0     		sub	sp, sp, #8
+ 523              		.cfi_def_cfa_offset 16
+ 524 0004 00AF     		add	r7, sp, #0
+ 525              		.cfi_def_cfa_register 7
+ 526 0006 7860     		str	r0, [r7, #4]
+ 142:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     switch(font)
+ 527              		.loc 1 142 0
+ 528 0008 7B68     		ldr	r3, [r7, #4]
+ 529 000a 002B     		cmp	r3, #0
+ 530 000c 0CD1     		bne	.L5
+ 143:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     {
+ 144:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****        case StripLights_1_FONT_5X7:
+ 145:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****            StripLights_1_fontPtr = StripLights_1_Font5x7;
+ 531              		.loc 1 145 0
+ 532 000e 0E4B     		ldr	r3, .L6
+ 533 0010 0E4A     		ldr	r2, .L6+4
+ 534 0012 1A60     		str	r2, [r3]
+ 146:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****            StripLights_1_fontX = StripLights_1_Font5x7_XSIZE;
+ 535              		.loc 1 146 0
+ 536 0014 0E4B     		ldr	r3, .L6+8
+ 537 0016 0522     		mov	r2, #5
+ 538 0018 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 13
+
+
+ 147:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****            StripLights_1_fontY = StripLights_1_Font5x7_YSIZE;
+ 539              		.loc 1 147 0
+ 540 001a 0E4B     		ldr	r3, .L6+12
+ 541 001c 0722     		mov	r2, #7
+ 542 001e 1A60     		str	r2, [r3]
+ 148:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****            StripLights_1_fontOffset = StripLights_1_Font5x7_OFFSET;
+ 543              		.loc 1 148 0
+ 544 0020 0D4B     		ldr	r3, .L6+16
+ 545 0022 2022     		mov	r2, #32
+ 546 0024 1A60     		str	r2, [r3]
+ 149:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****            break;
+ 547              		.loc 1 149 0
+ 548 0026 0CE0     		b	.L1
+ 549              	.L5:
+ 150:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****            
+ 151:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****        default:
+ 152:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****            StripLights_1_fontPtr = StripLights_1_Font5x7;
+ 550              		.loc 1 152 0
+ 551 0028 074B     		ldr	r3, .L6
+ 552 002a 084A     		ldr	r2, .L6+4
+ 553 002c 1A60     		str	r2, [r3]
+ 153:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****            StripLights_1_fontX = StripLights_1_Font5x7_XSIZE;
+ 554              		.loc 1 153 0
+ 555 002e 084B     		ldr	r3, .L6+8
+ 556 0030 0522     		mov	r2, #5
+ 557 0032 1A60     		str	r2, [r3]
+ 154:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****            StripLights_1_fontY = StripLights_1_Font5x7_YSIZE;
+ 558              		.loc 1 154 0
+ 559 0034 074B     		ldr	r3, .L6+12
+ 560 0036 0722     		mov	r2, #7
+ 561 0038 1A60     		str	r2, [r3]
+ 155:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****            StripLights_1_fontOffset = StripLights_1_Font5x7_OFFSET;
+ 562              		.loc 1 155 0
+ 563 003a 074B     		ldr	r3, .L6+16
+ 564 003c 2022     		mov	r2, #32
+ 565 003e 1A60     		str	r2, [r3]
+ 156:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****            break;
+ 566              		.loc 1 156 0
+ 567 0040 C046     		mov	r8, r8
+ 568              	.L1:
+ 157:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     }
+ 158:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** }
+ 569              		.loc 1 158 0
+ 570 0042 BD46     		mov	sp, r7
+ 571 0044 02B0     		add	sp, sp, #8
+ 572              		@ sp needed
+ 573 0046 80BD     		pop	{r7, pc}
+ 574              	.L7:
+ 575              		.align	2
+ 576              	.L6:
+ 577 0048 00000000 		.word	StripLights_1_fontPtr
+ 578 004c 00000000 		.word	StripLights_1_Font5x7
+ 579 0050 00000000 		.word	StripLights_1_fontX
+ 580 0054 00000000 		.word	StripLights_1_fontY
+ 581 0058 00000000 		.word	StripLights_1_fontOffset
+ 582              		.cfi_endproc
+ 583              	.LFE33:
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 14
+
+
+ 584              		.size	StripLights_1_SetFont, .-StripLights_1_SetFont
+ 585              		.section	.text.StripLights_1_PrintString,"ax",%progbits
+ 586              		.align	2
+ 587              		.global	StripLights_1_PrintString
+ 588              		.code	16
+ 589              		.thumb_func
+ 590              		.type	StripLights_1_PrintString, %function
+ 591              	StripLights_1_PrintString:
+ 592              	.LFB34:
+ 159:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 
+ 160:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 
+ 161:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** /*******************************************************************************
+ 162:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** * Function Name: StripLights_1_PrintString
+ 163:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** ********************************************************************************
+ 164:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** * Summary:
+ 165:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *   Print string at the given location.
+ 166:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *
+ 167:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** * Parameters:  
+ 168:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  uint32 xpos: X location at which to start string.
+ 169:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  uint32 ypos: Upper Y location to place string.
+ 170:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  char * theString:  The string to print.
+ 171:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  uint32 fg: The forground fount color.
+ 172:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  uint32 bg: Background color
+ 173:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *
+ 174:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** * Return: 
+ 175:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  void
+ 176:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *
+ 177:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *******************************************************************************/
+ 178:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** void StripLights_1_PrintString(int32 xpos, int32 ypos, char * theString, uint32 fg, uint32 bg)
+ 179:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** {
+ 593              		.loc 1 179 0
+ 594              		.cfi_startproc
+ 595 0000 B0B5     		push	{r4, r5, r7, lr}
+ 596              		.cfi_def_cfa_offset 16
+ 597              		.cfi_offset 4, -16
+ 598              		.cfi_offset 5, -12
+ 599              		.cfi_offset 7, -8
+ 600              		.cfi_offset 14, -4
+ 601 0002 88B0     		sub	sp, sp, #32
+ 602              		.cfi_def_cfa_offset 48
+ 603 0004 02AF     		add	r7, sp, #8
+ 604              		.cfi_def_cfa 7, 40
+ 605 0006 F860     		str	r0, [r7, #12]
+ 606 0008 B960     		str	r1, [r7, #8]
+ 607 000a 7A60     		str	r2, [r7, #4]
+ 608 000c 3B60     		str	r3, [r7]
+ 180:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     uint32 strPos = 0;
+ 609              		.loc 1 180 0
+ 610 000e 0023     		mov	r3, #0
+ 611 0010 7B61     		str	r3, [r7, #20]
+ 181:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     uint32 yStop;
+ 182:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     
+ 183:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     yStop = ypos + StripLights_1_fontY;
+ 612              		.loc 1 183 0
+ 613 0012 384B     		ldr	r3, .L16
+ 614 0014 1A68     		ldr	r2, [r3]
+ 615 0016 BB68     		ldr	r3, [r7, #8]
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 15
+
+
+ 616 0018 D318     		add	r3, r2, r3
+ 617 001a 3B61     		str	r3, [r7, #16]
+ 184:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     if(yStop > StripLights_1_MAX_Y) yStop = StripLights_1_MAX_Y;
+ 618              		.loc 1 184 0
+ 619 001c 3B69     		ldr	r3, [r7, #16]
+ 620 001e 0B2B     		cmp	r3, #11
+ 621 0020 01D9     		bls	.L9
+ 622              		.loc 1 184 0 is_stmt 0 discriminator 1
+ 623 0022 0B23     		mov	r3, #11
+ 624 0024 3B61     		str	r3, [r7, #16]
+ 625              	.L9:
+ 185:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     
+ 186:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     while(theString[strPos] != 0)
+ 626              		.loc 1 186 0 is_stmt 1
+ 627 0026 45E0     		b	.L10
+ 628              	.L14:
+ 187:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     {
+ 188:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 		// Print character
+ 189:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         if(fg == StripLights_1_COLORWHEEL_FONT)
+ 629              		.loc 1 189 0
+ 630 0028 3A68     		ldr	r2, [r7]
+ 631 002a 8023     		mov	r3, #128
+ 632 002c 1B06     		lsl	r3, r3, #24
+ 633 002e 9A42     		cmp	r2, r3
+ 634 0030 12D1     		bne	.L11
+ 190:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         {
+ 191:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****             StripLights_1_PutChar(xpos, ypos, theString[strPos], StripLights_1_ColorInc(1), bg);
+ 635              		.loc 1 191 0
+ 636 0032 7A68     		ldr	r2, [r7, #4]
+ 637 0034 7B69     		ldr	r3, [r7, #20]
+ 638 0036 D318     		add	r3, r2, r3
+ 639 0038 1C78     		ldrb	r4, [r3]
+ 640 003a 0120     		mov	r0, #1
+ 641 003c FFF7FEFF 		bl	StripLights_1_ColorInc
+ 642 0040 051C     		mov	r5, r0
+ 643 0042 F968     		ldr	r1, [r7, #12]
+ 644 0044 BA68     		ldr	r2, [r7, #8]
+ 645 0046 BB6A     		ldr	r3, [r7, #40]
+ 646 0048 0093     		str	r3, [sp]
+ 647 004a 081C     		mov	r0, r1
+ 648 004c 111C     		mov	r1, r2
+ 649 004e 221C     		mov	r2, r4
+ 650 0050 2B1C     		mov	r3, r5
+ 651 0052 FFF7FEFF 		bl	StripLights_1_PutChar
+ 652 0056 0BE0     		b	.L12
+ 653              	.L11:
+ 192:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         }
+ 193:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         else
+ 194:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         {
+ 195:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****             StripLights_1_PutChar(xpos, ypos, theString[strPos], fg, bg);
+ 654              		.loc 1 195 0
+ 655 0058 7A68     		ldr	r2, [r7, #4]
+ 656 005a 7B69     		ldr	r3, [r7, #20]
+ 657 005c D318     		add	r3, r2, r3
+ 658 005e 1A78     		ldrb	r2, [r3]
+ 659 0060 F868     		ldr	r0, [r7, #12]
+ 660 0062 B968     		ldr	r1, [r7, #8]
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 16
+
+
+ 661 0064 3C68     		ldr	r4, [r7]
+ 662 0066 BB6A     		ldr	r3, [r7, #40]
+ 663 0068 0093     		str	r3, [sp]
+ 664 006a 231C     		mov	r3, r4
+ 665 006c FFF7FEFF 		bl	StripLights_1_PutChar
+ 666              	.L12:
+ 196:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         }
+ 197:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         strPos++;   // Advance to next character
+ 667              		.loc 1 197 0
+ 668 0070 7B69     		ldr	r3, [r7, #20]
+ 669 0072 0133     		add	r3, r3, #1
+ 670 0074 7B61     		str	r3, [r7, #20]
+ 198:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         xpos += StripLights_1_fontX;  // Advance to next x location for next character
+ 671              		.loc 1 198 0
+ 672 0076 204B     		ldr	r3, .L16+4
+ 673 0078 1B68     		ldr	r3, [r3]
+ 674 007a FA68     		ldr	r2, [r7, #12]
+ 675 007c D318     		add	r3, r2, r3
+ 676 007e FB60     		str	r3, [r7, #12]
+ 199:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 		
+ 200:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 		// If not last character clear out area between characters.
+ 201:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         if(theString[strPos] != 0)
+ 677              		.loc 1 201 0
+ 678 0080 7A68     		ldr	r2, [r7, #4]
+ 679 0082 7B69     		ldr	r3, [r7, #20]
+ 680 0084 D318     		add	r3, r2, r3
+ 681 0086 1B78     		ldrb	r3, [r3]
+ 682 0088 002B     		cmp	r3, #0
+ 683 008a 10D0     		beq	.L13
+ 202:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         {
+ 203:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 			if(bg != StripLights_1_TRANS_BG)
+ 684              		.loc 1 203 0
+ 685 008c BA6A     		ldr	r2, [r7, #40]
+ 686 008e FF23     		mov	r3, #255
+ 687 0090 1B06     		lsl	r3, r3, #24
+ 688 0092 9A42     		cmp	r2, r3
+ 689 0094 0BD0     		beq	.L13
+ 204:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 			{
+ 205:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 			     StripLights_1_DrawLine(xpos, ypos, xpos, ypos+StripLights_1_fontY, bg);
+ 690              		.loc 1 205 0
+ 691 0096 174B     		ldr	r3, .L16
+ 692 0098 1A68     		ldr	r2, [r3]
+ 693 009a BB68     		ldr	r3, [r7, #8]
+ 694 009c D418     		add	r4, r2, r3
+ 695 009e F868     		ldr	r0, [r7, #12]
+ 696 00a0 B968     		ldr	r1, [r7, #8]
+ 697 00a2 FA68     		ldr	r2, [r7, #12]
+ 698 00a4 BB6A     		ldr	r3, [r7, #40]
+ 699 00a6 0093     		str	r3, [sp]
+ 700 00a8 231C     		mov	r3, r4
+ 701 00aa FFF7FEFF 		bl	StripLights_1_DrawLine
+ 702              	.L13:
+ 206:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 			}
+ 207:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         }
+ 208:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         xpos++;
+ 703              		.loc 1 208 0
+ 704 00ae FB68     		ldr	r3, [r7, #12]
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 17
+
+
+ 705 00b0 0133     		add	r3, r3, #1
+ 706 00b2 FB60     		str	r3, [r7, #12]
+ 707              	.L10:
+ 186:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     {
+ 708              		.loc 1 186 0
+ 709 00b4 7A68     		ldr	r2, [r7, #4]
+ 710 00b6 7B69     		ldr	r3, [r7, #20]
+ 711 00b8 D318     		add	r3, r2, r3
+ 712 00ba 1B78     		ldrb	r3, [r3]
+ 713 00bc 002B     		cmp	r3, #0
+ 714 00be B3D1     		bne	.L14
+ 209:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     }
+ 210:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	if(bg != StripLights_1_TRANS_BG)
+ 715              		.loc 1 210 0
+ 716 00c0 BA6A     		ldr	r2, [r7, #40]
+ 717 00c2 FF23     		mov	r3, #255
+ 718 00c4 1B06     		lsl	r3, r3, #24
+ 719 00c6 9A42     		cmp	r2, r3
+ 720 00c8 10D0     		beq	.L8
+ 211:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	{
+ 212:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         StripLights_1_DrawLine(xpos-1, ypos, xpos-1, ypos+StripLights_1_fontY, bg);
+ 721              		.loc 1 212 0
+ 722 00ca FB68     		ldr	r3, [r7, #12]
+ 723 00cc 591E     		sub	r1, r3, #1
+ 724 00ce FB68     		ldr	r3, [r7, #12]
+ 725 00d0 5D1E     		sub	r5, r3, #1
+ 726 00d2 084B     		ldr	r3, .L16
+ 727 00d4 1A68     		ldr	r2, [r3]
+ 728 00d6 BB68     		ldr	r3, [r7, #8]
+ 729 00d8 D418     		add	r4, r2, r3
+ 730 00da BA68     		ldr	r2, [r7, #8]
+ 731 00dc BB6A     		ldr	r3, [r7, #40]
+ 732 00de 0093     		str	r3, [sp]
+ 733 00e0 081C     		mov	r0, r1
+ 734 00e2 111C     		mov	r1, r2
+ 735 00e4 2A1C     		mov	r2, r5
+ 736 00e6 231C     		mov	r3, r4
+ 737 00e8 FFF7FEFF 		bl	StripLights_1_DrawLine
+ 738              	.L8:
+ 213:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 	}
+ 214:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** }
+ 739              		.loc 1 214 0
+ 740 00ec BD46     		mov	sp, r7
+ 741 00ee 06B0     		add	sp, sp, #24
+ 742              		@ sp needed
+ 743 00f0 B0BD     		pop	{r4, r5, r7, pc}
+ 744              	.L17:
+ 745 00f2 C046     		.align	2
+ 746              	.L16:
+ 747 00f4 00000000 		.word	StripLights_1_fontY
+ 748 00f8 00000000 		.word	StripLights_1_fontX
+ 749              		.cfi_endproc
+ 750              	.LFE34:
+ 751              		.size	StripLights_1_PrintString, .-StripLights_1_PrintString
+ 752              		.section	.text.StripLights_1_PutChar,"ax",%progbits
+ 753              		.align	2
+ 754              		.global	StripLights_1_PutChar
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 18
+
+
+ 755              		.code	16
+ 756              		.thumb_func
+ 757              		.type	StripLights_1_PutChar, %function
+ 758              	StripLights_1_PutChar:
+ 759              	.LFB35:
+ 215:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 
+ 216:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** /*******************************************************************************
+ 217:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** * Function Name: StripLights_1_PutChar
+ 218:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** ********************************************************************************
+ 219:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** * Summary:
+ 220:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *   Print character at the given location.
+ 221:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *
+ 222:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** * Parameters:  
+ 223:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  uint32 xpos: X location at which to start string.
+ 224:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  uint32 ypos: Upper Y location to place string.
+ 225:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  char theChar:  The character to print.
+ 226:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  uint32 fg: The forground fount color.
+ 227:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  uint32 bg: Background color
+ 228:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *
+ 229:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** * Return: 
+ 230:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *  void
+ 231:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *
+ 232:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** *******************************************************************************/
+ 233:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** void StripLights_1_PutChar(int32 xpos, int32 ypos, uint8 theChar, uint32 fg, uint32 bg)
+ 234:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** {
+ 760              		.loc 1 234 0
+ 761              		.cfi_startproc
+ 762 0000 80B5     		push	{r7, lr}
+ 763              		.cfi_def_cfa_offset 8
+ 764              		.cfi_offset 7, -8
+ 765              		.cfi_offset 14, -4
+ 766 0002 8AB0     		sub	sp, sp, #40
+ 767              		.cfi_def_cfa_offset 48
+ 768 0004 00AF     		add	r7, sp, #0
+ 769              		.cfi_def_cfa_register 7
+ 770 0006 F860     		str	r0, [r7, #12]
+ 771 0008 B960     		str	r1, [r7, #8]
+ 772 000a 3B60     		str	r3, [r7]
+ 773 000c FB1D     		add	r3, r7, #7
+ 774 000e 1A70     		strb	r2, [r3]
+ 235:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     int32 x,y, fp;
+ 236:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     uint8 mask;
+ 237:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     int32 yStop, xStop;
+ 238:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****    
+ 239:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     fp = (theChar - StripLights_1_fontOffset) * StripLights_1_fontX;
+ 775              		.loc 1 239 0
+ 776 0010 FB1D     		add	r3, r7, #7
+ 777 0012 1A78     		ldrb	r2, [r3]
+ 778 0014 334B     		ldr	r3, .L27
+ 779 0016 1B68     		ldr	r3, [r3]
+ 780 0018 D21A     		sub	r2, r2, r3
+ 781 001a 334B     		ldr	r3, .L27+4
+ 782 001c 1B68     		ldr	r3, [r3]
+ 783 001e 5343     		mul	r3, r2
+ 784 0020 FB61     		str	r3, [r7, #28]
+ 240:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****    
+ 241:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     xStop = xpos + StripLights_1_fontX;
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 19
+
+
+ 785              		.loc 1 241 0
+ 786 0022 314B     		ldr	r3, .L27+4
+ 787 0024 1B68     		ldr	r3, [r3]
+ 788 0026 FA68     		ldr	r2, [r7, #12]
+ 789 0028 D318     		add	r3, r2, r3
+ 790 002a 3B61     		str	r3, [r7, #16]
+ 242:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     if(xStop > StripLights_1_MAX_X) xStop = StripLights_1_MAX_X;
+ 791              		.loc 1 242 0
+ 792 002c 3B69     		ldr	r3, [r7, #16]
+ 793 002e 0B2B     		cmp	r3, #11
+ 794 0030 01DD     		ble	.L19
+ 795              		.loc 1 242 0 is_stmt 0 discriminator 1
+ 796 0032 0B23     		mov	r3, #11
+ 797 0034 3B61     		str	r3, [r7, #16]
+ 798              	.L19:
+ 243:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****    
+ 244:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     yStop = ypos + StripLights_1_fontY;
+ 799              		.loc 1 244 0 is_stmt 1
+ 800 0036 2D4B     		ldr	r3, .L27+8
+ 801 0038 1B68     		ldr	r3, [r3]
+ 802 003a BA68     		ldr	r2, [r7, #8]
+ 803 003c D318     		add	r3, r2, r3
+ 804 003e 7B61     		str	r3, [r7, #20]
+ 245:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     if(yStop > StripLights_1_MAX_Y) yStop = StripLights_1_MAX_Y;
+ 805              		.loc 1 245 0
+ 806 0040 7B69     		ldr	r3, [r7, #20]
+ 807 0042 0B2B     		cmp	r3, #11
+ 808 0044 01DD     		ble	.L20
+ 809              		.loc 1 245 0 is_stmt 0 discriminator 1
+ 810 0046 0B23     		mov	r3, #11
+ 811 0048 7B61     		str	r3, [r7, #20]
+ 812              	.L20:
+ 246:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****    
+ 247:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     for( x = xpos; x < xStop; x++)
+ 813              		.loc 1 247 0 is_stmt 1
+ 814 004a FB68     		ldr	r3, [r7, #12]
+ 815 004c 7B62     		str	r3, [r7, #36]
+ 816 004e 42E0     		b	.L21
+ 817              	.L26:
+ 248:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     {
+ 249:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         mask = 0x01;
+ 818              		.loc 1 249 0
+ 819 0050 1B23     		mov	r3, #27
+ 820 0052 FB18     		add	r3, r7, r3
+ 821 0054 0122     		mov	r2, #1
+ 822 0056 1A70     		strb	r2, [r3]
+ 250:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         for(y = ypos; y <= yStop; y++)
+ 823              		.loc 1 250 0
+ 824 0058 BB68     		ldr	r3, [r7, #8]
+ 825 005a 3B62     		str	r3, [r7, #32]
+ 826 005c 31E0     		b	.L22
+ 827              	.L25:
+ 251:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         {
+ 252:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****             if((y >= 0) && (x >= 0))
+ 828              		.loc 1 252 0
+ 829 005e 3B6A     		ldr	r3, [r7, #32]
+ 830 0060 002B     		cmp	r3, #0
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 20
+
+
+ 831 0062 24DB     		blt	.L23
+ 832              		.loc 1 252 0 is_stmt 0 discriminator 1
+ 833 0064 7B6A     		ldr	r3, [r7, #36]
+ 834 0066 002B     		cmp	r3, #0
+ 835 0068 21DB     		blt	.L23
+ 253:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****             {
+ 254:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****                 if(mask & StripLights_1_fontPtr[fp])
+ 836              		.loc 1 254 0 is_stmt 1
+ 837 006a 214B     		ldr	r3, .L27+12
+ 838 006c 1A68     		ldr	r2, [r3]
+ 839 006e FB69     		ldr	r3, [r7, #28]
+ 840 0070 D318     		add	r3, r2, r3
+ 841 0072 1B78     		ldrb	r3, [r3]
+ 842 0074 1B22     		mov	r2, #27
+ 843 0076 BA18     		add	r2, r7, r2
+ 844 0078 1278     		ldrb	r2, [r2]
+ 845 007a 1340     		and	r3, r2
+ 846 007c DBB2     		uxtb	r3, r3
+ 847 007e 002B     		cmp	r3, #0
+ 848 0080 08D0     		beq	.L24
+ 255:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****                 { 
+ 256:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 				     StripLights_1_Pixel( x, y, fg);
+ 849              		.loc 1 256 0
+ 850 0082 796A     		ldr	r1, [r7, #36]
+ 851 0084 3A6A     		ldr	r2, [r7, #32]
+ 852 0086 3B68     		ldr	r3, [r7]
+ 853 0088 081C     		mov	r0, r1
+ 854 008a 111C     		mov	r1, r2
+ 855 008c 1A1C     		mov	r2, r3
+ 856 008e FFF7FEFF 		bl	StripLights_1_Pixel
+ 857 0092 0CE0     		b	.L23
+ 858              	.L24:
+ 257:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****                 }
+ 258:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****                 else
+ 259:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****                 {
+ 260:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 					if(bg != StripLights_1_TRANS_BG)
+ 859              		.loc 1 260 0
+ 860 0094 3A6B     		ldr	r2, [r7, #48]
+ 861 0096 FF23     		mov	r3, #255
+ 862 0098 1B06     		lsl	r3, r3, #24
+ 863 009a 9A42     		cmp	r2, r3
+ 864 009c 07D0     		beq	.L23
+ 261:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 					{
+ 262:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 				        StripLights_1_Pixel( x, y, bg);
+ 865              		.loc 1 262 0
+ 866 009e 796A     		ldr	r1, [r7, #36]
+ 867 00a0 3A6A     		ldr	r2, [r7, #32]
+ 868 00a2 3B6B     		ldr	r3, [r7, #48]
+ 869 00a4 081C     		mov	r0, r1
+ 870 00a6 111C     		mov	r1, r2
+ 871 00a8 1A1C     		mov	r2, r3
+ 872 00aa FFF7FEFF 		bl	StripLights_1_Pixel
+ 873              	.L23:
+ 263:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** 					}
+ 264:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****                 }
+ 265:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****             }
+ 266:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****             mask = mask << 1;
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 21
+
+
+ 874              		.loc 1 266 0 discriminator 2
+ 875 00ae 1B23     		mov	r3, #27
+ 876 00b0 FA18     		add	r2, r7, r3
+ 877 00b2 1B23     		mov	r3, #27
+ 878 00b4 FB18     		add	r3, r7, r3
+ 879 00b6 1B78     		ldrb	r3, [r3]
+ 880 00b8 DB18     		add	r3, r3, r3
+ 881 00ba 1370     		strb	r3, [r2]
+ 250:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         {
+ 882              		.loc 1 250 0 discriminator 2
+ 883 00bc 3B6A     		ldr	r3, [r7, #32]
+ 884 00be 0133     		add	r3, r3, #1
+ 885 00c0 3B62     		str	r3, [r7, #32]
+ 886              	.L22:
+ 250:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         {
+ 887              		.loc 1 250 0 is_stmt 0 discriminator 1
+ 888 00c2 3A6A     		ldr	r2, [r7, #32]
+ 889 00c4 7B69     		ldr	r3, [r7, #20]
+ 890 00c6 9A42     		cmp	r2, r3
+ 891 00c8 C9DD     		ble	.L25
+ 267:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         }
+ 268:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****         fp++;
+ 892              		.loc 1 268 0 is_stmt 1 discriminator 2
+ 893 00ca FB69     		ldr	r3, [r7, #28]
+ 894 00cc 0133     		add	r3, r3, #1
+ 895 00ce FB61     		str	r3, [r7, #28]
+ 247:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     {
+ 896              		.loc 1 247 0 discriminator 2
+ 897 00d0 7B6A     		ldr	r3, [r7, #36]
+ 898 00d2 0133     		add	r3, r3, #1
+ 899 00d4 7B62     		str	r3, [r7, #36]
+ 900              	.L21:
+ 247:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     {
+ 901              		.loc 1 247 0 is_stmt 0 discriminator 1
+ 902 00d6 7A6A     		ldr	r2, [r7, #36]
+ 903 00d8 3B69     		ldr	r3, [r7, #16]
+ 904 00da 9A42     		cmp	r2, r3
+ 905 00dc B8DB     		blt	.L26
+ 269:.\Generated_Source\PSoC4/StripLights_1_fonts.c ****     }
+ 270:.\Generated_Source\PSoC4/StripLights_1_fonts.c **** }
+ 906              		.loc 1 270 0 is_stmt 1
+ 907 00de BD46     		mov	sp, r7
+ 908 00e0 0AB0     		add	sp, sp, #40
+ 909              		@ sp needed
+ 910 00e2 80BD     		pop	{r7, pc}
+ 911              	.L28:
+ 912              		.align	2
+ 913              	.L27:
+ 914 00e4 00000000 		.word	StripLights_1_fontOffset
+ 915 00e8 00000000 		.word	StripLights_1_fontX
+ 916 00ec 00000000 		.word	StripLights_1_fontY
+ 917 00f0 00000000 		.word	StripLights_1_fontPtr
+ 918              		.cfi_endproc
+ 919              	.LFE35:
+ 920              		.size	StripLights_1_PutChar, .-StripLights_1_PutChar
+ 921              		.text
+ 922              	.Letext0:
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 22
+
+
+ 923              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 924              		.section	.debug_info,"",%progbits
+ 925              	.Ldebug_info0:
+ 926 0000 64020000 		.4byte	0x264
+ 927 0004 0400     		.2byte	0x4
+ 928 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 929 000a 04       		.byte	0x4
+ 930 000b 01       		.uleb128 0x1
+ 931 000c EB000000 		.4byte	.LASF33
+ 932 0010 01       		.byte	0x1
+ 933 0011 40000000 		.4byte	.LASF34
+ 934 0015 F8010000 		.4byte	.LASF35
+ 935 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 936 001d 00000000 		.4byte	0
+ 937 0021 00000000 		.4byte	.Ldebug_line0
+ 938 0025 02       		.uleb128 0x2
+ 939 0026 01       		.byte	0x1
+ 940 0027 06       		.byte	0x6
+ 941 0028 84020000 		.4byte	.LASF0
+ 942 002c 02       		.uleb128 0x2
+ 943 002d 01       		.byte	0x1
+ 944 002e 08       		.byte	0x8
+ 945 002f B4000000 		.4byte	.LASF1
+ 946 0033 02       		.uleb128 0x2
+ 947 0034 02       		.byte	0x2
+ 948 0035 05       		.byte	0x5
+ 949 0036 4D020000 		.4byte	.LASF2
+ 950 003a 02       		.uleb128 0x2
+ 951 003b 02       		.byte	0x2
+ 952 003c 07       		.byte	0x7
+ 953 003d 2D000000 		.4byte	.LASF3
+ 954 0041 02       		.uleb128 0x2
+ 955 0042 04       		.byte	0x4
+ 956 0043 05       		.byte	0x5
+ 957 0044 76020000 		.4byte	.LASF4
+ 958 0048 02       		.uleb128 0x2
+ 959 0049 04       		.byte	0x4
+ 960 004a 07       		.byte	0x7
+ 961 004b CC000000 		.4byte	.LASF5
+ 962 004f 02       		.uleb128 0x2
+ 963 0050 08       		.byte	0x8
+ 964 0051 05       		.byte	0x5
+ 965 0052 CF010000 		.4byte	.LASF6
+ 966 0056 02       		.uleb128 0x2
+ 967 0057 08       		.byte	0x8
+ 968 0058 07       		.byte	0x7
+ 969 0059 93010000 		.4byte	.LASF7
+ 970 005d 03       		.uleb128 0x3
+ 971 005e 04       		.byte	0x4
+ 972 005f 05       		.byte	0x5
+ 973 0060 696E7400 		.ascii	"int\000"
+ 974 0064 02       		.uleb128 0x2
+ 975 0065 04       		.byte	0x4
+ 976 0066 07       		.byte	0x7
+ 977 0067 86010000 		.4byte	.LASF8
+ 978 006b 04       		.uleb128 0x4
+ 979 006c 70020000 		.4byte	.LASF9
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 23
+
+
+ 980 0070 02       		.byte	0x2
+ 981 0071 A1       		.byte	0xa1
+ 982 0072 2C000000 		.4byte	0x2c
+ 983 0076 04       		.uleb128 0x4
+ 984 0077 79010000 		.4byte	.LASF10
+ 985 007b 02       		.byte	0x2
+ 986 007c A3       		.byte	0xa3
+ 987 007d 48000000 		.4byte	0x48
+ 988 0081 04       		.uleb128 0x4
+ 989 0082 DE000000 		.4byte	.LASF11
+ 990 0086 02       		.byte	0x2
+ 991 0087 A6       		.byte	0xa6
+ 992 0088 41000000 		.4byte	0x41
+ 993 008c 02       		.uleb128 0x2
+ 994 008d 04       		.byte	0x4
+ 995 008e 04       		.byte	0x4
+ 996 008f 94000000 		.4byte	.LASF12
+ 997 0093 02       		.uleb128 0x2
+ 998 0094 08       		.byte	0x8
+ 999 0095 04       		.byte	0x4
+ 1000 0096 E4000000 		.4byte	.LASF13
+ 1001 009a 02       		.uleb128 0x2
+ 1002 009b 01       		.byte	0x1
+ 1003 009c 08       		.byte	0x8
+ 1004 009d 7F020000 		.4byte	.LASF14
+ 1005 00a1 02       		.uleb128 0x2
+ 1006 00a2 04       		.byte	0x4
+ 1007 00a3 07       		.byte	0x7
+ 1008 00a4 C6010000 		.4byte	.LASF15
+ 1009 00a8 05       		.uleb128 0x5
+ 1010 00a9 04       		.byte	0x4
+ 1011 00aa 9A000000 		.4byte	0x9a
+ 1012 00ae 06       		.uleb128 0x6
+ 1013 00af 37020000 		.4byte	.LASF16
+ 1014 00b3 01       		.byte	0x1
+ 1015 00b4 8C       		.byte	0x8c
+ 1016 00b5 00000000 		.4byte	.LFB33
+ 1017 00b9 5C000000 		.4byte	.LFE33-.LFB33
+ 1018 00bd 01       		.uleb128 0x1
+ 1019 00be 9C       		.byte	0x9c
+ 1020 00bf D2000000 		.4byte	0xd2
+ 1021 00c3 07       		.uleb128 0x7
+ 1022 00c4 C7000000 		.4byte	.LASF18
+ 1023 00c8 01       		.byte	0x1
+ 1024 00c9 8C       		.byte	0x8c
+ 1025 00ca 76000000 		.4byte	0x76
+ 1026 00ce 02       		.uleb128 0x2
+ 1027 00cf 91       		.byte	0x91
+ 1028 00d0 74       		.sleb128 -12
+ 1029 00d1 00       		.byte	0
+ 1030 00d2 08       		.uleb128 0x8
+ 1031 00d3 9A000000 		.4byte	.LASF17
+ 1032 00d7 01       		.byte	0x1
+ 1033 00d8 B2       		.byte	0xb2
+ 1034 00d9 00000000 		.4byte	.LFB34
+ 1035 00dd FC000000 		.4byte	.LFE34-.LFB34
+ 1036 00e1 01       		.uleb128 0x1
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 24
+
+
+ 1037 00e2 9C       		.byte	0x9c
+ 1038 00e3 48010000 		.4byte	0x148
+ 1039 00e7 07       		.uleb128 0x7
+ 1040 00e8 28000000 		.4byte	.LASF19
+ 1041 00ec 01       		.byte	0x1
+ 1042 00ed B2       		.byte	0xb2
+ 1043 00ee 81000000 		.4byte	0x81
+ 1044 00f2 02       		.uleb128 0x2
+ 1045 00f3 91       		.byte	0x91
+ 1046 00f4 64       		.sleb128 -28
+ 1047 00f5 07       		.uleb128 0x7
+ 1048 00f6 C2000000 		.4byte	.LASF20
+ 1049 00fa 01       		.byte	0x1
+ 1050 00fb B2       		.byte	0xb2
+ 1051 00fc 81000000 		.4byte	0x81
+ 1052 0100 02       		.uleb128 0x2
+ 1053 0101 91       		.byte	0x91
+ 1054 0102 60       		.sleb128 -32
+ 1055 0103 07       		.uleb128 0x7
+ 1056 0104 90020000 		.4byte	.LASF21
+ 1057 0108 01       		.byte	0x1
+ 1058 0109 B2       		.byte	0xb2
+ 1059 010a A8000000 		.4byte	0xa8
+ 1060 010e 02       		.uleb128 0x2
+ 1061 010f 91       		.byte	0x91
+ 1062 0110 5C       		.sleb128 -36
+ 1063 0111 09       		.uleb128 0x9
+ 1064 0112 666700   		.ascii	"fg\000"
+ 1065 0115 01       		.byte	0x1
+ 1066 0116 B2       		.byte	0xb2
+ 1067 0117 76000000 		.4byte	0x76
+ 1068 011b 02       		.uleb128 0x2
+ 1069 011c 91       		.byte	0x91
+ 1070 011d 58       		.sleb128 -40
+ 1071 011e 09       		.uleb128 0x9
+ 1072 011f 626700   		.ascii	"bg\000"
+ 1073 0122 01       		.byte	0x1
+ 1074 0123 B2       		.byte	0xb2
+ 1075 0124 76000000 		.4byte	0x76
+ 1076 0128 02       		.uleb128 0x2
+ 1077 0129 91       		.byte	0x91
+ 1078 012a 00       		.sleb128 0
+ 1079 012b 0A       		.uleb128 0xa
+ 1080 012c 6F000000 		.4byte	.LASF22
+ 1081 0130 01       		.byte	0x1
+ 1082 0131 B4       		.byte	0xb4
+ 1083 0132 76000000 		.4byte	0x76
+ 1084 0136 02       		.uleb128 0x2
+ 1085 0137 91       		.byte	0x91
+ 1086 0138 6C       		.sleb128 -20
+ 1087 0139 0A       		.uleb128 0xa
+ 1088 013a 80010000 		.4byte	.LASF23
+ 1089 013e 01       		.byte	0x1
+ 1090 013f B5       		.byte	0xb5
+ 1091 0140 76000000 		.4byte	0x76
+ 1092 0144 02       		.uleb128 0x2
+ 1093 0145 91       		.byte	0x91
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 25
+
+
+ 1094 0146 68       		.sleb128 -24
+ 1095 0147 00       		.byte	0
+ 1096 0148 08       		.uleb128 0x8
+ 1097 0149 AA010000 		.4byte	.LASF24
+ 1098 014d 01       		.byte	0x1
+ 1099 014e E9       		.byte	0xe9
+ 1100 014f 00000000 		.4byte	.LFB35
+ 1101 0153 F4000000 		.4byte	.LFE35-.LFB35
+ 1102 0157 01       		.uleb128 0x1
+ 1103 0158 9C       		.byte	0x9c
+ 1104 0159 F1010000 		.4byte	0x1f1
+ 1105 015d 07       		.uleb128 0x7
+ 1106 015e 28000000 		.4byte	.LASF19
+ 1107 0162 01       		.byte	0x1
+ 1108 0163 E9       		.byte	0xe9
+ 1109 0164 81000000 		.4byte	0x81
+ 1110 0168 02       		.uleb128 0x2
+ 1111 0169 91       		.byte	0x91
+ 1112 016a 5C       		.sleb128 -36
+ 1113 016b 07       		.uleb128 0x7
+ 1114 016c C2000000 		.4byte	.LASF20
+ 1115 0170 01       		.byte	0x1
+ 1116 0171 E9       		.byte	0xe9
+ 1117 0172 81000000 		.4byte	0x81
+ 1118 0176 02       		.uleb128 0x2
+ 1119 0177 91       		.byte	0x91
+ 1120 0178 58       		.sleb128 -40
+ 1121 0179 07       		.uleb128 0x7
+ 1122 017a 76000000 		.4byte	.LASF25
+ 1123 017e 01       		.byte	0x1
+ 1124 017f E9       		.byte	0xe9
+ 1125 0180 6B000000 		.4byte	0x6b
+ 1126 0184 02       		.uleb128 0x2
+ 1127 0185 91       		.byte	0x91
+ 1128 0186 57       		.sleb128 -41
+ 1129 0187 09       		.uleb128 0x9
+ 1130 0188 666700   		.ascii	"fg\000"
+ 1131 018b 01       		.byte	0x1
+ 1132 018c E9       		.byte	0xe9
+ 1133 018d 76000000 		.4byte	0x76
+ 1134 0191 02       		.uleb128 0x2
+ 1135 0192 91       		.byte	0x91
+ 1136 0193 50       		.sleb128 -48
+ 1137 0194 09       		.uleb128 0x9
+ 1138 0195 626700   		.ascii	"bg\000"
+ 1139 0198 01       		.byte	0x1
+ 1140 0199 E9       		.byte	0xe9
+ 1141 019a 76000000 		.4byte	0x76
+ 1142 019e 02       		.uleb128 0x2
+ 1143 019f 91       		.byte	0x91
+ 1144 01a0 00       		.sleb128 0
+ 1145 01a1 0B       		.uleb128 0xb
+ 1146 01a2 7800     		.ascii	"x\000"
+ 1147 01a4 01       		.byte	0x1
+ 1148 01a5 EB       		.byte	0xeb
+ 1149 01a6 81000000 		.4byte	0x81
+ 1150 01aa 02       		.uleb128 0x2
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 26
+
+
+ 1151 01ab 91       		.byte	0x91
+ 1152 01ac 74       		.sleb128 -12
+ 1153 01ad 0B       		.uleb128 0xb
+ 1154 01ae 7900     		.ascii	"y\000"
+ 1155 01b0 01       		.byte	0x1
+ 1156 01b1 EB       		.byte	0xeb
+ 1157 01b2 81000000 		.4byte	0x81
+ 1158 01b6 02       		.uleb128 0x2
+ 1159 01b7 91       		.byte	0x91
+ 1160 01b8 70       		.sleb128 -16
+ 1161 01b9 0B       		.uleb128 0xb
+ 1162 01ba 667000   		.ascii	"fp\000"
+ 1163 01bd 01       		.byte	0x1
+ 1164 01be EB       		.byte	0xeb
+ 1165 01bf 81000000 		.4byte	0x81
+ 1166 01c3 02       		.uleb128 0x2
+ 1167 01c4 91       		.byte	0x91
+ 1168 01c5 6C       		.sleb128 -20
+ 1169 01c6 0A       		.uleb128 0xa
+ 1170 01c7 DD010000 		.4byte	.LASF26
+ 1171 01cb 01       		.byte	0x1
+ 1172 01cc EC       		.byte	0xec
+ 1173 01cd 6B000000 		.4byte	0x6b
+ 1174 01d1 02       		.uleb128 0x2
+ 1175 01d2 91       		.byte	0x91
+ 1176 01d3 6B       		.sleb128 -21
+ 1177 01d4 0A       		.uleb128 0xa
+ 1178 01d5 80010000 		.4byte	.LASF23
+ 1179 01d9 01       		.byte	0x1
+ 1180 01da ED       		.byte	0xed
+ 1181 01db 81000000 		.4byte	0x81
+ 1182 01df 02       		.uleb128 0x2
+ 1183 01e0 91       		.byte	0x91
+ 1184 01e1 64       		.sleb128 -28
+ 1185 01e2 0A       		.uleb128 0xa
+ 1186 01e3 C0010000 		.4byte	.LASF27
+ 1187 01e7 01       		.byte	0x1
+ 1188 01e8 ED       		.byte	0xed
+ 1189 01e9 81000000 		.4byte	0x81
+ 1190 01ed 02       		.uleb128 0x2
+ 1191 01ee 91       		.byte	0x91
+ 1192 01ef 60       		.sleb128 -32
+ 1193 01f0 00       		.byte	0
+ 1194 01f1 0C       		.uleb128 0xc
+ 1195 01f2 7E000000 		.4byte	.LASF28
+ 1196 01f6 01       		.byte	0x1
+ 1197 01f7 13       		.byte	0x13
+ 1198 01f8 02020000 		.4byte	0x202
+ 1199 01fc 05       		.uleb128 0x5
+ 1200 01fd 03       		.byte	0x3
+ 1201 01fe 00000000 		.4byte	StripLights_1_fontPtr
+ 1202 0202 05       		.uleb128 0x5
+ 1203 0203 04       		.byte	0x4
+ 1204 0204 08020000 		.4byte	0x208
+ 1205 0208 0D       		.uleb128 0xd
+ 1206 0209 6B000000 		.4byte	0x6b
+ 1207 020d 0C       		.uleb128 0xc
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 27
+
+
+ 1208 020e 00000000 		.4byte	.LASF29
+ 1209 0212 01       		.byte	0x1
+ 1210 0213 14       		.byte	0x14
+ 1211 0214 81000000 		.4byte	0x81
+ 1212 0218 05       		.uleb128 0x5
+ 1213 0219 03       		.byte	0x3
+ 1214 021a 00000000 		.4byte	StripLights_1_fontX
+ 1215 021e 0C       		.uleb128 0xc
+ 1216 021f 14000000 		.4byte	.LASF30
+ 1217 0223 01       		.byte	0x1
+ 1218 0224 15       		.byte	0x15
+ 1219 0225 81000000 		.4byte	0x81
+ 1220 0229 05       		.uleb128 0x5
+ 1221 022a 03       		.byte	0x3
+ 1222 022b 00000000 		.4byte	StripLights_1_fontY
+ 1223 022f 0C       		.uleb128 0xc
+ 1224 0230 57020000 		.4byte	.LASF31
+ 1225 0234 01       		.byte	0x1
+ 1226 0235 16       		.byte	0x16
+ 1227 0236 81000000 		.4byte	0x81
+ 1228 023a 05       		.uleb128 0x5
+ 1229 023b 03       		.byte	0x3
+ 1230 023c 00000000 		.4byte	StripLights_1_fontOffset
+ 1231 0240 0E       		.uleb128 0xe
+ 1232 0241 6B000000 		.4byte	0x6b
+ 1233 0245 51020000 		.4byte	0x251
+ 1234 0249 0F       		.uleb128 0xf
+ 1235 024a A1000000 		.4byte	0xa1
+ 1236 024e DF01     		.2byte	0x1df
+ 1237 0250 00       		.byte	0
+ 1238 0251 0C       		.uleb128 0xc
+ 1239 0252 E2010000 		.4byte	.LASF32
+ 1240 0256 01       		.byte	0x1
+ 1241 0257 1B       		.byte	0x1b
+ 1242 0258 62020000 		.4byte	0x262
+ 1243 025c 05       		.uleb128 0x5
+ 1244 025d 03       		.byte	0x3
+ 1245 025e 00000000 		.4byte	StripLights_1_Font5x7
+ 1246 0262 0D       		.uleb128 0xd
+ 1247 0263 40020000 		.4byte	0x240
+ 1248 0267 00       		.byte	0
+ 1249              		.section	.debug_abbrev,"",%progbits
+ 1250              	.Ldebug_abbrev0:
+ 1251 0000 01       		.uleb128 0x1
+ 1252 0001 11       		.uleb128 0x11
+ 1253 0002 01       		.byte	0x1
+ 1254 0003 25       		.uleb128 0x25
+ 1255 0004 0E       		.uleb128 0xe
+ 1256 0005 13       		.uleb128 0x13
+ 1257 0006 0B       		.uleb128 0xb
+ 1258 0007 03       		.uleb128 0x3
+ 1259 0008 0E       		.uleb128 0xe
+ 1260 0009 1B       		.uleb128 0x1b
+ 1261 000a 0E       		.uleb128 0xe
+ 1262 000b 55       		.uleb128 0x55
+ 1263 000c 17       		.uleb128 0x17
+ 1264 000d 11       		.uleb128 0x11
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 28
+
+
+ 1265 000e 01       		.uleb128 0x1
+ 1266 000f 10       		.uleb128 0x10
+ 1267 0010 17       		.uleb128 0x17
+ 1268 0011 00       		.byte	0
+ 1269 0012 00       		.byte	0
+ 1270 0013 02       		.uleb128 0x2
+ 1271 0014 24       		.uleb128 0x24
+ 1272 0015 00       		.byte	0
+ 1273 0016 0B       		.uleb128 0xb
+ 1274 0017 0B       		.uleb128 0xb
+ 1275 0018 3E       		.uleb128 0x3e
+ 1276 0019 0B       		.uleb128 0xb
+ 1277 001a 03       		.uleb128 0x3
+ 1278 001b 0E       		.uleb128 0xe
+ 1279 001c 00       		.byte	0
+ 1280 001d 00       		.byte	0
+ 1281 001e 03       		.uleb128 0x3
+ 1282 001f 24       		.uleb128 0x24
+ 1283 0020 00       		.byte	0
+ 1284 0021 0B       		.uleb128 0xb
+ 1285 0022 0B       		.uleb128 0xb
+ 1286 0023 3E       		.uleb128 0x3e
+ 1287 0024 0B       		.uleb128 0xb
+ 1288 0025 03       		.uleb128 0x3
+ 1289 0026 08       		.uleb128 0x8
+ 1290 0027 00       		.byte	0
+ 1291 0028 00       		.byte	0
+ 1292 0029 04       		.uleb128 0x4
+ 1293 002a 16       		.uleb128 0x16
+ 1294 002b 00       		.byte	0
+ 1295 002c 03       		.uleb128 0x3
+ 1296 002d 0E       		.uleb128 0xe
+ 1297 002e 3A       		.uleb128 0x3a
+ 1298 002f 0B       		.uleb128 0xb
+ 1299 0030 3B       		.uleb128 0x3b
+ 1300 0031 0B       		.uleb128 0xb
+ 1301 0032 49       		.uleb128 0x49
+ 1302 0033 13       		.uleb128 0x13
+ 1303 0034 00       		.byte	0
+ 1304 0035 00       		.byte	0
+ 1305 0036 05       		.uleb128 0x5
+ 1306 0037 0F       		.uleb128 0xf
+ 1307 0038 00       		.byte	0
+ 1308 0039 0B       		.uleb128 0xb
+ 1309 003a 0B       		.uleb128 0xb
+ 1310 003b 49       		.uleb128 0x49
+ 1311 003c 13       		.uleb128 0x13
+ 1312 003d 00       		.byte	0
+ 1313 003e 00       		.byte	0
+ 1314 003f 06       		.uleb128 0x6
+ 1315 0040 2E       		.uleb128 0x2e
+ 1316 0041 01       		.byte	0x1
+ 1317 0042 3F       		.uleb128 0x3f
+ 1318 0043 19       		.uleb128 0x19
+ 1319 0044 03       		.uleb128 0x3
+ 1320 0045 0E       		.uleb128 0xe
+ 1321 0046 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 29
+
+
+ 1322 0047 0B       		.uleb128 0xb
+ 1323 0048 3B       		.uleb128 0x3b
+ 1324 0049 0B       		.uleb128 0xb
+ 1325 004a 27       		.uleb128 0x27
+ 1326 004b 19       		.uleb128 0x19
+ 1327 004c 11       		.uleb128 0x11
+ 1328 004d 01       		.uleb128 0x1
+ 1329 004e 12       		.uleb128 0x12
+ 1330 004f 06       		.uleb128 0x6
+ 1331 0050 40       		.uleb128 0x40
+ 1332 0051 18       		.uleb128 0x18
+ 1333 0052 9742     		.uleb128 0x2117
+ 1334 0054 19       		.uleb128 0x19
+ 1335 0055 01       		.uleb128 0x1
+ 1336 0056 13       		.uleb128 0x13
+ 1337 0057 00       		.byte	0
+ 1338 0058 00       		.byte	0
+ 1339 0059 07       		.uleb128 0x7
+ 1340 005a 05       		.uleb128 0x5
+ 1341 005b 00       		.byte	0
+ 1342 005c 03       		.uleb128 0x3
+ 1343 005d 0E       		.uleb128 0xe
+ 1344 005e 3A       		.uleb128 0x3a
+ 1345 005f 0B       		.uleb128 0xb
+ 1346 0060 3B       		.uleb128 0x3b
+ 1347 0061 0B       		.uleb128 0xb
+ 1348 0062 49       		.uleb128 0x49
+ 1349 0063 13       		.uleb128 0x13
+ 1350 0064 02       		.uleb128 0x2
+ 1351 0065 18       		.uleb128 0x18
+ 1352 0066 00       		.byte	0
+ 1353 0067 00       		.byte	0
+ 1354 0068 08       		.uleb128 0x8
+ 1355 0069 2E       		.uleb128 0x2e
+ 1356 006a 01       		.byte	0x1
+ 1357 006b 3F       		.uleb128 0x3f
+ 1358 006c 19       		.uleb128 0x19
+ 1359 006d 03       		.uleb128 0x3
+ 1360 006e 0E       		.uleb128 0xe
+ 1361 006f 3A       		.uleb128 0x3a
+ 1362 0070 0B       		.uleb128 0xb
+ 1363 0071 3B       		.uleb128 0x3b
+ 1364 0072 0B       		.uleb128 0xb
+ 1365 0073 27       		.uleb128 0x27
+ 1366 0074 19       		.uleb128 0x19
+ 1367 0075 11       		.uleb128 0x11
+ 1368 0076 01       		.uleb128 0x1
+ 1369 0077 12       		.uleb128 0x12
+ 1370 0078 06       		.uleb128 0x6
+ 1371 0079 40       		.uleb128 0x40
+ 1372 007a 18       		.uleb128 0x18
+ 1373 007b 9642     		.uleb128 0x2116
+ 1374 007d 19       		.uleb128 0x19
+ 1375 007e 01       		.uleb128 0x1
+ 1376 007f 13       		.uleb128 0x13
+ 1377 0080 00       		.byte	0
+ 1378 0081 00       		.byte	0
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 30
+
+
+ 1379 0082 09       		.uleb128 0x9
+ 1380 0083 05       		.uleb128 0x5
+ 1381 0084 00       		.byte	0
+ 1382 0085 03       		.uleb128 0x3
+ 1383 0086 08       		.uleb128 0x8
+ 1384 0087 3A       		.uleb128 0x3a
+ 1385 0088 0B       		.uleb128 0xb
+ 1386 0089 3B       		.uleb128 0x3b
+ 1387 008a 0B       		.uleb128 0xb
+ 1388 008b 49       		.uleb128 0x49
+ 1389 008c 13       		.uleb128 0x13
+ 1390 008d 02       		.uleb128 0x2
+ 1391 008e 18       		.uleb128 0x18
+ 1392 008f 00       		.byte	0
+ 1393 0090 00       		.byte	0
+ 1394 0091 0A       		.uleb128 0xa
+ 1395 0092 34       		.uleb128 0x34
+ 1396 0093 00       		.byte	0
+ 1397 0094 03       		.uleb128 0x3
+ 1398 0095 0E       		.uleb128 0xe
+ 1399 0096 3A       		.uleb128 0x3a
+ 1400 0097 0B       		.uleb128 0xb
+ 1401 0098 3B       		.uleb128 0x3b
+ 1402 0099 0B       		.uleb128 0xb
+ 1403 009a 49       		.uleb128 0x49
+ 1404 009b 13       		.uleb128 0x13
+ 1405 009c 02       		.uleb128 0x2
+ 1406 009d 18       		.uleb128 0x18
+ 1407 009e 00       		.byte	0
+ 1408 009f 00       		.byte	0
+ 1409 00a0 0B       		.uleb128 0xb
+ 1410 00a1 34       		.uleb128 0x34
+ 1411 00a2 00       		.byte	0
+ 1412 00a3 03       		.uleb128 0x3
+ 1413 00a4 08       		.uleb128 0x8
+ 1414 00a5 3A       		.uleb128 0x3a
+ 1415 00a6 0B       		.uleb128 0xb
+ 1416 00a7 3B       		.uleb128 0x3b
+ 1417 00a8 0B       		.uleb128 0xb
+ 1418 00a9 49       		.uleb128 0x49
+ 1419 00aa 13       		.uleb128 0x13
+ 1420 00ab 02       		.uleb128 0x2
+ 1421 00ac 18       		.uleb128 0x18
+ 1422 00ad 00       		.byte	0
+ 1423 00ae 00       		.byte	0
+ 1424 00af 0C       		.uleb128 0xc
+ 1425 00b0 34       		.uleb128 0x34
+ 1426 00b1 00       		.byte	0
+ 1427 00b2 03       		.uleb128 0x3
+ 1428 00b3 0E       		.uleb128 0xe
+ 1429 00b4 3A       		.uleb128 0x3a
+ 1430 00b5 0B       		.uleb128 0xb
+ 1431 00b6 3B       		.uleb128 0x3b
+ 1432 00b7 0B       		.uleb128 0xb
+ 1433 00b8 49       		.uleb128 0x49
+ 1434 00b9 13       		.uleb128 0x13
+ 1435 00ba 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 31
+
+
+ 1436 00bb 19       		.uleb128 0x19
+ 1437 00bc 02       		.uleb128 0x2
+ 1438 00bd 18       		.uleb128 0x18
+ 1439 00be 00       		.byte	0
+ 1440 00bf 00       		.byte	0
+ 1441 00c0 0D       		.uleb128 0xd
+ 1442 00c1 26       		.uleb128 0x26
+ 1443 00c2 00       		.byte	0
+ 1444 00c3 49       		.uleb128 0x49
+ 1445 00c4 13       		.uleb128 0x13
+ 1446 00c5 00       		.byte	0
+ 1447 00c6 00       		.byte	0
+ 1448 00c7 0E       		.uleb128 0xe
+ 1449 00c8 01       		.uleb128 0x1
+ 1450 00c9 01       		.byte	0x1
+ 1451 00ca 49       		.uleb128 0x49
+ 1452 00cb 13       		.uleb128 0x13
+ 1453 00cc 01       		.uleb128 0x1
+ 1454 00cd 13       		.uleb128 0x13
+ 1455 00ce 00       		.byte	0
+ 1456 00cf 00       		.byte	0
+ 1457 00d0 0F       		.uleb128 0xf
+ 1458 00d1 21       		.uleb128 0x21
+ 1459 00d2 00       		.byte	0
+ 1460 00d3 49       		.uleb128 0x49
+ 1461 00d4 13       		.uleb128 0x13
+ 1462 00d5 2F       		.uleb128 0x2f
+ 1463 00d6 05       		.uleb128 0x5
+ 1464 00d7 00       		.byte	0
+ 1465 00d8 00       		.byte	0
+ 1466 00d9 00       		.byte	0
+ 1467              		.section	.debug_aranges,"",%progbits
+ 1468 0000 2C000000 		.4byte	0x2c
+ 1469 0004 0200     		.2byte	0x2
+ 1470 0006 00000000 		.4byte	.Ldebug_info0
+ 1471 000a 04       		.byte	0x4
+ 1472 000b 00       		.byte	0
+ 1473 000c 0000     		.2byte	0
+ 1474 000e 0000     		.2byte	0
+ 1475 0010 00000000 		.4byte	.LFB33
+ 1476 0014 5C000000 		.4byte	.LFE33-.LFB33
+ 1477 0018 00000000 		.4byte	.LFB34
+ 1478 001c FC000000 		.4byte	.LFE34-.LFB34
+ 1479 0020 00000000 		.4byte	.LFB35
+ 1480 0024 F4000000 		.4byte	.LFE35-.LFB35
+ 1481 0028 00000000 		.4byte	0
+ 1482 002c 00000000 		.4byte	0
+ 1483              		.section	.debug_ranges,"",%progbits
+ 1484              	.Ldebug_ranges0:
+ 1485 0000 00000000 		.4byte	.LFB33
+ 1486 0004 5C000000 		.4byte	.LFE33
+ 1487 0008 00000000 		.4byte	.LFB34
+ 1488 000c FC000000 		.4byte	.LFE34
+ 1489 0010 00000000 		.4byte	.LFB35
+ 1490 0014 F4000000 		.4byte	.LFE35
+ 1491 0018 00000000 		.4byte	0
+ 1492 001c 00000000 		.4byte	0
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 32
+
+
+ 1493              		.section	.debug_line,"",%progbits
+ 1494              	.Ldebug_line0:
+ 1495 0000 16010000 		.section	.debug_str,"MS",%progbits,1
+ 1495      02006900 
+ 1495      00000201 
+ 1495      FB0E0D00 
+ 1495      01010101 
+ 1496              	.LASF29:
+ 1497 0000 53747269 		.ascii	"StripLights_1_fontX\000"
+ 1497      704C6967 
+ 1497      6874735F 
+ 1497      315F666F 
+ 1497      6E745800 
+ 1498              	.LASF30:
+ 1499 0014 53747269 		.ascii	"StripLights_1_fontY\000"
+ 1499      704C6967 
+ 1499      6874735F 
+ 1499      315F666F 
+ 1499      6E745900 
+ 1500              	.LASF19:
+ 1501 0028 78706F73 		.ascii	"xpos\000"
+ 1501      00
+ 1502              	.LASF3:
+ 1503 002d 73686F72 		.ascii	"short unsigned int\000"
+ 1503      7420756E 
+ 1503      7369676E 
+ 1503      65642069 
+ 1503      6E7400
+ 1504              	.LASF34:
+ 1505 0040 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\StripLights_1_fonts.c\000"
+ 1505      6E657261 
+ 1505      7465645F 
+ 1505      536F7572 
+ 1505      63655C50 
+ 1506              	.LASF22:
+ 1507 006f 73747250 		.ascii	"strPos\000"
+ 1507      6F7300
+ 1508              	.LASF25:
+ 1509 0076 74686543 		.ascii	"theChar\000"
+ 1509      68617200 
+ 1510              	.LASF28:
+ 1511 007e 53747269 		.ascii	"StripLights_1_fontPtr\000"
+ 1511      704C6967 
+ 1511      6874735F 
+ 1511      315F666F 
+ 1511      6E745074 
+ 1512              	.LASF12:
+ 1513 0094 666C6F61 		.ascii	"float\000"
+ 1513      7400
+ 1514              	.LASF17:
+ 1515 009a 53747269 		.ascii	"StripLights_1_PrintString\000"
+ 1515      704C6967 
+ 1515      6874735F 
+ 1515      315F5072 
+ 1515      696E7453 
+ 1516              	.LASF1:
+ 1517 00b4 756E7369 		.ascii	"unsigned char\000"
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 33
+
+
+ 1517      676E6564 
+ 1517      20636861 
+ 1517      7200
+ 1518              	.LASF20:
+ 1519 00c2 79706F73 		.ascii	"ypos\000"
+ 1519      00
+ 1520              	.LASF18:
+ 1521 00c7 666F6E74 		.ascii	"font\000"
+ 1521      00
+ 1522              	.LASF5:
+ 1523 00cc 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1523      20756E73 
+ 1523      69676E65 
+ 1523      6420696E 
+ 1523      7400
+ 1524              	.LASF11:
+ 1525 00de 696E7433 		.ascii	"int32\000"
+ 1525      3200
+ 1526              	.LASF13:
+ 1527 00e4 646F7562 		.ascii	"double\000"
+ 1527      6C6500
+ 1528              	.LASF33:
+ 1529 00eb 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1529      4320342E 
+ 1529      392E3320 
+ 1529      32303135 
+ 1529      30333033 
+ 1530 011e 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1530      20726576 
+ 1530      6973696F 
+ 1530      6E203232 
+ 1530      31323230 
+ 1531 0151 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1531      66756E63 
+ 1531      74696F6E 
+ 1531      2D736563 
+ 1531      74696F6E 
+ 1532              	.LASF10:
+ 1533 0179 75696E74 		.ascii	"uint32\000"
+ 1533      333200
+ 1534              	.LASF23:
+ 1535 0180 7953746F 		.ascii	"yStop\000"
+ 1535      7000
+ 1536              	.LASF8:
+ 1537 0186 756E7369 		.ascii	"unsigned int\000"
+ 1537      676E6564 
+ 1537      20696E74 
+ 1537      00
+ 1538              	.LASF7:
+ 1539 0193 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1539      206C6F6E 
+ 1539      6720756E 
+ 1539      7369676E 
+ 1539      65642069 
+ 1540              	.LASF24:
+ 1541 01aa 53747269 		.ascii	"StripLights_1_PutChar\000"
+ 1541      704C6967 
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 34
+
+
+ 1541      6874735F 
+ 1541      315F5075 
+ 1541      74436861 
+ 1542              	.LASF27:
+ 1543 01c0 7853746F 		.ascii	"xStop\000"
+ 1543      7000
+ 1544              	.LASF15:
+ 1545 01c6 73697A65 		.ascii	"sizetype\000"
+ 1545      74797065 
+ 1545      00
+ 1546              	.LASF6:
+ 1547 01cf 6C6F6E67 		.ascii	"long long int\000"
+ 1547      206C6F6E 
+ 1547      6720696E 
+ 1547      7400
+ 1548              	.LASF26:
+ 1549 01dd 6D61736B 		.ascii	"mask\000"
+ 1549      00
+ 1550              	.LASF32:
+ 1551 01e2 53747269 		.ascii	"StripLights_1_Font5x7\000"
+ 1551      704C6967 
+ 1551      6874735F 
+ 1551      315F466F 
+ 1551      6E743578 
+ 1552              	.LASF35:
+ 1553 01f8 433A5C55 		.ascii	"C:\\Users\\vangelis\\SCB_Bootloader\\Striplight_boo"
+ 1553      73657273 
+ 1553      5C76616E 
+ 1553      67656C69 
+ 1553      735C5343 
+ 1554 0227 746C6F61 		.ascii	"tloadable.cydsn\000"
+ 1554      6461626C 
+ 1554      652E6379 
+ 1554      64736E00 
+ 1555              	.LASF16:
+ 1556 0237 53747269 		.ascii	"StripLights_1_SetFont\000"
+ 1556      704C6967 
+ 1556      6874735F 
+ 1556      315F5365 
+ 1556      74466F6E 
+ 1557              	.LASF2:
+ 1558 024d 73686F72 		.ascii	"short int\000"
+ 1558      7420696E 
+ 1558      7400
+ 1559              	.LASF31:
+ 1560 0257 53747269 		.ascii	"StripLights_1_fontOffset\000"
+ 1560      704C6967 
+ 1560      6874735F 
+ 1560      315F666F 
+ 1560      6E744F66 
+ 1561              	.LASF9:
+ 1562 0270 75696E74 		.ascii	"uint8\000"
+ 1562      3800
+ 1563              	.LASF4:
+ 1564 0276 6C6F6E67 		.ascii	"long int\000"
+ 1564      20696E74 
+ 1564      00
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cckC55VY.s 			page 35
+
+
+ 1565              	.LASF14:
+ 1566 027f 63686172 		.ascii	"char\000"
+ 1566      00
+ 1567              	.LASF0:
+ 1568 0284 7369676E 		.ascii	"signed char\000"
+ 1568      65642063 
+ 1568      68617200 
+ 1569              	.LASF21:
+ 1570 0290 74686553 		.ascii	"theString\000"
+ 1570      7472696E 
+ 1570      6700
+ 1571              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

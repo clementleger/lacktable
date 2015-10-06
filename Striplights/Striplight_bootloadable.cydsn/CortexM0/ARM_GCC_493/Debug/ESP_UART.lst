@@ -1,0 +1,2129 @@
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"ESP_UART.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.ESP_UartInit,"ax",%progbits
+  18              		.align	2
+  19              		.global	ESP_UartInit
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	ESP_UartInit, %function
+  23              	ESP_UartInit:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\ESP_UART.c"
+   1:.\Generated_Source\PSoC4/ESP_UART.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/ESP_UART.c **** * File Name: ESP_UART.c
+   3:.\Generated_Source\PSoC4/ESP_UART.c **** * Version 3.0
+   4:.\Generated_Source\PSoC4/ESP_UART.c **** *
+   5:.\Generated_Source\PSoC4/ESP_UART.c **** * Description:
+   6:.\Generated_Source\PSoC4/ESP_UART.c **** *  This file provides the source code to the API for the SCB Component in
+   7:.\Generated_Source\PSoC4/ESP_UART.c **** *  UART mode.
+   8:.\Generated_Source\PSoC4/ESP_UART.c **** *
+   9:.\Generated_Source\PSoC4/ESP_UART.c **** * Note:
+  10:.\Generated_Source\PSoC4/ESP_UART.c **** *
+  11:.\Generated_Source\PSoC4/ESP_UART.c **** *******************************************************************************
+  12:.\Generated_Source\PSoC4/ESP_UART.c **** * Copyright 2013-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC4/ESP_UART.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:.\Generated_Source\PSoC4/ESP_UART.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:.\Generated_Source\PSoC4/ESP_UART.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC4/ESP_UART.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC4/ESP_UART.c **** 
+  18:.\Generated_Source\PSoC4/ESP_UART.c **** #include "ESP_PVT.h"
+  19:.\Generated_Source\PSoC4/ESP_UART.c **** #include "ESP_SPI_UART_PVT.h"
+  20:.\Generated_Source\PSoC4/ESP_UART.c **** 
+  21:.\Generated_Source\PSoC4/ESP_UART.c **** 
+  22:.\Generated_Source\PSoC4/ESP_UART.c **** #if(ESP_SCB_MODE_UNCONFIG_CONST_CFG)
+  23:.\Generated_Source\PSoC4/ESP_UART.c **** 
+  24:.\Generated_Source\PSoC4/ESP_UART.c ****     /***************************************
+  25:.\Generated_Source\PSoC4/ESP_UART.c ****     *  Configuration Structure Initialization
+  26:.\Generated_Source\PSoC4/ESP_UART.c ****     ***************************************/
+  27:.\Generated_Source\PSoC4/ESP_UART.c **** 
+  28:.\Generated_Source\PSoC4/ESP_UART.c ****     const ESP_UART_INIT_STRUCT ESP_configUart =
+  29:.\Generated_Source\PSoC4/ESP_UART.c ****     {
+  30:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_SUB_MODE,
+  31:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_DIRECTION,
+  32:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_DATA_BITS_NUM,
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_PARITY_TYPE,
+  34:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_STOP_BITS_NUM,
+  35:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_OVS_FACTOR,
+  36:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_IRDA_LOW_POWER,
+  37:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_MEDIAN_FILTER_ENABLE,
+  38:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_RETRY_ON_NACK,
+  39:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_IRDA_POLARITY,
+  40:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_DROP_ON_PARITY_ERR,
+  41:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_DROP_ON_FRAME_ERR,
+  42:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_WAKE_ENABLE,
+  43:.\Generated_Source\PSoC4/ESP_UART.c ****         0u,
+  44:.\Generated_Source\PSoC4/ESP_UART.c ****         NULL,
+  45:.\Generated_Source\PSoC4/ESP_UART.c ****         0u,
+  46:.\Generated_Source\PSoC4/ESP_UART.c ****         NULL,
+  47:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_MP_MODE_ENABLE,
+  48:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_MP_ACCEPT_ADDRESS,
+  49:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_MP_RX_ADDRESS,
+  50:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_MP_RX_ADDRESS_MASK,
+  51:.\Generated_Source\PSoC4/ESP_UART.c ****         (uint32) ESP_SCB_IRQ_INTERNAL,
+  52:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_INTR_RX_MASK,
+  53:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_RX_TRIGGER_LEVEL,
+  54:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_INTR_TX_MASK,
+  55:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_TX_TRIGGER_LEVEL,
+  56:.\Generated_Source\PSoC4/ESP_UART.c ****         (uint8) ESP_UART_BYTE_MODE_ENABLE,
+  57:.\Generated_Source\PSoC4/ESP_UART.c ****         (uint8) ESP_UART_CTS_ENABLE,
+  58:.\Generated_Source\PSoC4/ESP_UART.c ****         (uint8) ESP_UART_CTS_POLARITY,
+  59:.\Generated_Source\PSoC4/ESP_UART.c ****         (uint8) ESP_UART_RTS_POLARITY,
+  60:.\Generated_Source\PSoC4/ESP_UART.c ****         (uint8) ESP_UART_RTS_FIFO_LEVEL
+  61:.\Generated_Source\PSoC4/ESP_UART.c ****     };
+  62:.\Generated_Source\PSoC4/ESP_UART.c **** 
+  63:.\Generated_Source\PSoC4/ESP_UART.c **** 
+  64:.\Generated_Source\PSoC4/ESP_UART.c ****     /*******************************************************************************
+  65:.\Generated_Source\PSoC4/ESP_UART.c ****     * Function Name: ESP_UartInit
+  66:.\Generated_Source\PSoC4/ESP_UART.c ****     ********************************************************************************
+  67:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+  68:.\Generated_Source\PSoC4/ESP_UART.c ****     * Summary:
+  69:.\Generated_Source\PSoC4/ESP_UART.c ****     *  Configures the SCB for the UART operation.
+  70:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+  71:.\Generated_Source\PSoC4/ESP_UART.c ****     * Parameters:
+  72:.\Generated_Source\PSoC4/ESP_UART.c ****     *  config:  Pointer to a structure that contains the following ordered list of
+  73:.\Generated_Source\PSoC4/ESP_UART.c ****     *           fields. These fields match the selections available in the
+  74:.\Generated_Source\PSoC4/ESP_UART.c ****     *           customizer.
+  75:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+  76:.\Generated_Source\PSoC4/ESP_UART.c ****     * Return:
+  77:.\Generated_Source\PSoC4/ESP_UART.c ****     *  None
+  78:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+  79:.\Generated_Source\PSoC4/ESP_UART.c ****     *******************************************************************************/
+  80:.\Generated_Source\PSoC4/ESP_UART.c ****     void ESP_UartInit(const ESP_UART_INIT_STRUCT *config)
+  81:.\Generated_Source\PSoC4/ESP_UART.c ****     {
+  82:.\Generated_Source\PSoC4/ESP_UART.c ****         uint32 pinsConfig;
+  83:.\Generated_Source\PSoC4/ESP_UART.c **** 
+  84:.\Generated_Source\PSoC4/ESP_UART.c ****         if (NULL == config)
+  85:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+  86:.\Generated_Source\PSoC4/ESP_UART.c ****             CYASSERT(0u != 0u); /* Halt execution due to bad function parameter */
+  87:.\Generated_Source\PSoC4/ESP_UART.c ****         }
+  88:.\Generated_Source\PSoC4/ESP_UART.c ****         else
+  89:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 3
+
+
+  90:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Get direction to configure UART pins: TX, RX or TX+RX */
+  91:.\Generated_Source\PSoC4/ESP_UART.c ****             pinsConfig  = config->direction;
+  92:.\Generated_Source\PSoC4/ESP_UART.c **** 
+  93:.\Generated_Source\PSoC4/ESP_UART.c ****         #if !(ESP_CY_SCBIP_V0 || ESP_CY_SCBIP_V1)
+  94:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Add RTS and CTS pins to configure */
+  95:.\Generated_Source\PSoC4/ESP_UART.c ****             pinsConfig |= (0u != config->rtsRxFifoLevel) ? (ESP_UART_RTS_PIN_ENABLE) : (0u);
+  96:.\Generated_Source\PSoC4/ESP_UART.c ****             pinsConfig |= (0u != config->enableCts)      ? (ESP_UART_CTS_PIN_ENABLE) : (0u);
+  97:.\Generated_Source\PSoC4/ESP_UART.c ****         #endif /* !(ESP_CY_SCBIP_V0 || ESP_CY_SCBIP_V1) */
+  98:.\Generated_Source\PSoC4/ESP_UART.c **** 
+  99:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Configure pins */
+ 100:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_SetPins(ESP_SCB_MODE_UART, config->mode, pinsConfig);
+ 101:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 102:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Store internal configuration */
+ 103:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_scbMode       = (uint8) ESP_SCB_MODE_UART;
+ 104:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_scbEnableWake = (uint8) config->enableWake;
+ 105:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_scbEnableIntr = (uint8) config->enableInterrupt;
+ 106:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 107:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Set RX direction internal variables */
+ 108:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_rxBuffer      =         config->rxBuffer;
+ 109:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_rxDataBits    = (uint8) config->dataBits;
+ 110:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_rxBufferSize  = (uint8) config->rxBufferSize;
+ 111:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 112:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Set TX direction internal variables */
+ 113:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_txBuffer      =         config->txBuffer;
+ 114:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_txDataBits    = (uint8) config->dataBits;
+ 115:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_txBufferSize  = (uint8) config->txBufferSize;
+ 116:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 117:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Configure UART interface */
+ 118:.\Generated_Source\PSoC4/ESP_UART.c ****             if(ESP_UART_MODE_IRDA == config->mode)
+ 119:.\Generated_Source\PSoC4/ESP_UART.c ****             {
+ 120:.\Generated_Source\PSoC4/ESP_UART.c ****                 /* OVS settings: IrDA */
+ 121:.\Generated_Source\PSoC4/ESP_UART.c ****                 ESP_CTRL_REG  = ((0u != config->enableIrdaLowPower) ?
+ 122:.\Generated_Source\PSoC4/ESP_UART.c ****                                                 (ESP_UART_GET_CTRL_OVS_IRDA_LP(config->oversample))
+ 123:.\Generated_Source\PSoC4/ESP_UART.c ****                                                 (ESP_CTRL_OVS_IRDA_OVS16));
+ 124:.\Generated_Source\PSoC4/ESP_UART.c ****             }
+ 125:.\Generated_Source\PSoC4/ESP_UART.c ****             else
+ 126:.\Generated_Source\PSoC4/ESP_UART.c ****             {
+ 127:.\Generated_Source\PSoC4/ESP_UART.c ****                 /* OVS settings: UART and SmartCard */
+ 128:.\Generated_Source\PSoC4/ESP_UART.c ****                 ESP_CTRL_REG  = ESP_GET_CTRL_OVS(config->oversample);
+ 129:.\Generated_Source\PSoC4/ESP_UART.c ****             }
+ 130:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 131:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_CTRL_REG     |= ESP_GET_CTRL_BYTE_MODE  (config->enableByteMode)      |
+ 132:.\Generated_Source\PSoC4/ESP_UART.c ****                                              ESP_GET_CTRL_ADDR_ACCEPT(config->multiprocAcceptAddr) 
+ 133:.\Generated_Source\PSoC4/ESP_UART.c ****                                              ESP_CTRL_UART;
+ 134:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 135:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Configure sub-mode: UART, SmartCard or IrDA */
+ 136:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_UART_CTRL_REG = ESP_GET_UART_CTRL_MODE(config->mode);
+ 137:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 138:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Configure RX direction */
+ 139:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_UART_RX_CTRL_REG = ESP_GET_UART_RX_CTRL_MODE(config->stopBits)              |
+ 140:.\Generated_Source\PSoC4/ESP_UART.c ****                                         ESP_GET_UART_RX_CTRL_POLARITY(config->enableInvertedRx)    
+ 141:.\Generated_Source\PSoC4/ESP_UART.c ****                                         ESP_GET_UART_RX_CTRL_MP_MODE(config->enableMultiproc)      
+ 142:.\Generated_Source\PSoC4/ESP_UART.c ****                                         ESP_GET_UART_RX_CTRL_DROP_ON_PARITY_ERR(config->dropOnParit
+ 143:.\Generated_Source\PSoC4/ESP_UART.c ****                                         ESP_GET_UART_RX_CTRL_DROP_ON_FRAME_ERR(config->dropOnFrameE
+ 144:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 145:.\Generated_Source\PSoC4/ESP_UART.c ****             if(ESP_UART_PARITY_NONE != config->parity)
+ 146:.\Generated_Source\PSoC4/ESP_UART.c ****             {
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 4
+
+
+ 147:.\Generated_Source\PSoC4/ESP_UART.c ****                ESP_UART_RX_CTRL_REG |= ESP_GET_UART_RX_CTRL_PARITY(config->parity) |
+ 148:.\Generated_Source\PSoC4/ESP_UART.c ****                                                     ESP_UART_RX_CTRL_PARITY_ENABLED;
+ 149:.\Generated_Source\PSoC4/ESP_UART.c ****             }
+ 150:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 151:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_RX_CTRL_REG      = ESP_GET_RX_CTRL_DATA_WIDTH(config->dataBits)       |
+ 152:.\Generated_Source\PSoC4/ESP_UART.c ****                                                 ESP_GET_RX_CTRL_MEDIAN(config->enableMedianFilter) 
+ 153:.\Generated_Source\PSoC4/ESP_UART.c ****                                                 ESP_GET_UART_RX_CTRL_ENABLED(config->direction);
+ 154:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 155:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_RX_FIFO_CTRL_REG = ESP_GET_RX_FIFO_CTRL_TRIGGER_LEVEL(config->rxTriggerLevel);
+ 156:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 157:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Configure MP address */
+ 158:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_RX_MATCH_REG     = ESP_GET_RX_MATCH_ADDR(config->multiprocAddr) |
+ 159:.\Generated_Source\PSoC4/ESP_UART.c ****                                                 ESP_GET_RX_MATCH_MASK(config->multiprocAddrMask);
+ 160:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 161:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Configure RX direction */
+ 162:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_UART_TX_CTRL_REG = ESP_GET_UART_TX_CTRL_MODE(config->stopBits) |
+ 163:.\Generated_Source\PSoC4/ESP_UART.c ****                                                 ESP_GET_UART_TX_CTRL_RETRY_NACK(config->enableRetry
+ 164:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 165:.\Generated_Source\PSoC4/ESP_UART.c ****             if(ESP_UART_PARITY_NONE != config->parity)
+ 166:.\Generated_Source\PSoC4/ESP_UART.c ****             {
+ 167:.\Generated_Source\PSoC4/ESP_UART.c ****                ESP_UART_TX_CTRL_REG |= ESP_GET_UART_TX_CTRL_PARITY(config->parity) |
+ 168:.\Generated_Source\PSoC4/ESP_UART.c ****                                                     ESP_UART_TX_CTRL_PARITY_ENABLED;
+ 169:.\Generated_Source\PSoC4/ESP_UART.c ****             }
+ 170:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 171:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_TX_CTRL_REG      = ESP_GET_TX_CTRL_DATA_WIDTH(config->dataBits)    |
+ 172:.\Generated_Source\PSoC4/ESP_UART.c ****                                                 ESP_GET_UART_TX_CTRL_ENABLED(config->direction);
+ 173:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 174:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_TX_FIFO_CTRL_REG = ESP_GET_TX_FIFO_CTRL_TRIGGER_LEVEL(config->txTriggerLevel);
+ 175:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 176:.\Generated_Source\PSoC4/ESP_UART.c ****         #if !(ESP_CY_SCBIP_V0 || ESP_CY_SCBIP_V1)
+ 177:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_UART_FLOW_CTRL_REG = ESP_GET_UART_FLOW_CTRL_CTS_ENABLE(config->enableCts) | \
+ 178:.\Generated_Source\PSoC4/ESP_UART.c ****                                             ESP_GET_UART_FLOW_CTRL_CTS_POLARITY (config->ctsPolarit
+ 179:.\Generated_Source\PSoC4/ESP_UART.c ****                                             ESP_GET_UART_FLOW_CTRL_RTS_POLARITY (config->rtsPolarit
+ 180:.\Generated_Source\PSoC4/ESP_UART.c ****                                             ESP_GET_UART_FLOW_CTRL_TRIGGER_LEVEL(config->rtsRxFifoL
+ 181:.\Generated_Source\PSoC4/ESP_UART.c ****         #endif /* !(ESP_CY_SCBIP_V0 || ESP_CY_SCBIP_V1) */
+ 182:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 183:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Configure interrupt with UART handler but do not enable it */
+ 184:.\Generated_Source\PSoC4/ESP_UART.c ****             CyIntDisable    (ESP_ISR_NUMBER);
+ 185:.\Generated_Source\PSoC4/ESP_UART.c ****             CyIntSetPriority(ESP_ISR_NUMBER, ESP_ISR_PRIORITY);
+ 186:.\Generated_Source\PSoC4/ESP_UART.c ****             (void) CyIntSetVector(ESP_ISR_NUMBER, &ESP_SPI_UART_ISR);
+ 187:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 188:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Configure WAKE interrupt */
+ 189:.\Generated_Source\PSoC4/ESP_UART.c ****         #if(ESP_UART_RX_WAKEUP_IRQ)
+ 190:.\Generated_Source\PSoC4/ESP_UART.c ****             CyIntDisable    (ESP_RX_WAKE_ISR_NUMBER);
+ 191:.\Generated_Source\PSoC4/ESP_UART.c ****             CyIntSetPriority(ESP_RX_WAKE_ISR_NUMBER, ESP_RX_WAKE_ISR_PRIORITY);
+ 192:.\Generated_Source\PSoC4/ESP_UART.c ****             (void) CyIntSetVector(ESP_RX_WAKE_ISR_NUMBER, &ESP_UART_WAKEUP_ISR);
+ 193:.\Generated_Source\PSoC4/ESP_UART.c ****         #endif /* (ESP_UART_RX_WAKEUP_IRQ) */
+ 194:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 195:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Configure interrupt sources */
+ 196:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_INTR_I2C_EC_MASK_REG = ESP_NO_INTR_SOURCES;
+ 197:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_INTR_SPI_EC_MASK_REG = ESP_NO_INTR_SOURCES;
+ 198:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_INTR_SLAVE_MASK_REG  = ESP_NO_INTR_SOURCES;
+ 199:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_INTR_MASTER_MASK_REG = ESP_NO_INTR_SOURCES;
+ 200:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_INTR_RX_MASK_REG     = config->rxInterruptMask;
+ 201:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_INTR_TX_MASK_REG     = config->txInterruptMask;
+ 202:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 203:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Clear RX buffer indexes */
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 5
+
+
+ 204:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_rxBufferHead     = 0u;
+ 205:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_rxBufferTail     = 0u;
+ 206:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_rxBufferOverflow = 0u;
+ 207:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 208:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Clear TX buffer indexes */
+ 209:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_txBufferHead = 0u;
+ 210:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_txBufferTail = 0u;
+ 211:.\Generated_Source\PSoC4/ESP_UART.c ****         }
+ 212:.\Generated_Source\PSoC4/ESP_UART.c ****     }
+ 213:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 214:.\Generated_Source\PSoC4/ESP_UART.c **** #else
+ 215:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 216:.\Generated_Source\PSoC4/ESP_UART.c ****     /*******************************************************************************
+ 217:.\Generated_Source\PSoC4/ESP_UART.c ****     * Function Name: ESP_UartInit
+ 218:.\Generated_Source\PSoC4/ESP_UART.c ****     ********************************************************************************
+ 219:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 220:.\Generated_Source\PSoC4/ESP_UART.c ****     * Summary:
+ 221:.\Generated_Source\PSoC4/ESP_UART.c ****     *  Configures the SCB for the UART operation.
+ 222:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 223:.\Generated_Source\PSoC4/ESP_UART.c ****     * Parameters:
+ 224:.\Generated_Source\PSoC4/ESP_UART.c ****     *  None
+ 225:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 226:.\Generated_Source\PSoC4/ESP_UART.c ****     * Return:
+ 227:.\Generated_Source\PSoC4/ESP_UART.c ****     *  None
+ 228:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 229:.\Generated_Source\PSoC4/ESP_UART.c ****     *******************************************************************************/
+ 230:.\Generated_Source\PSoC4/ESP_UART.c ****     void ESP_UartInit(void)
+ 231:.\Generated_Source\PSoC4/ESP_UART.c ****     {
+  26              		.loc 1 231 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 7, -8
+  31              		.cfi_offset 14, -4
+  32 0002 00AF     		add	r7, sp, #0
+  33              		.cfi_def_cfa_register 7
+ 232:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Configure UART interface */
+ 233:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_CTRL_REG = ESP_UART_DEFAULT_CTRL;
+  34              		.loc 1 233 0
+  35 0004 1D4B     		ldr	r3, .L2
+  36 0006 1E4A     		ldr	r2, .L2+4
+  37 0008 1A60     		str	r2, [r3]
+ 234:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 235:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Configure sub-mode: UART, SmartCard or IrDA */
+ 236:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_CTRL_REG = ESP_UART_DEFAULT_UART_CTRL;
+  38              		.loc 1 236 0
+  39 000a 1E4B     		ldr	r3, .L2+8
+  40 000c 0022     		mov	r2, #0
+  41 000e 1A60     		str	r2, [r3]
+ 237:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 238:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Configure RX direction */
+ 239:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_RX_CTRL_REG = ESP_UART_DEFAULT_UART_RX_CTRL;
+  42              		.loc 1 239 0
+  43 0010 1D4B     		ldr	r3, .L2+12
+  44 0012 0122     		mov	r2, #1
+  45 0014 1A60     		str	r2, [r3]
+ 240:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_RX_CTRL_REG      = ESP_UART_DEFAULT_RX_CTRL;
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 6
+
+
+  46              		.loc 1 240 0
+  47 0016 1D4B     		ldr	r3, .L2+16
+  48 0018 1D4A     		ldr	r2, .L2+20
+  49 001a 1A60     		str	r2, [r3]
+ 241:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_RX_FIFO_CTRL_REG = ESP_UART_DEFAULT_RX_FIFO_CTRL;
+  50              		.loc 1 241 0
+  51 001c 1D4B     		ldr	r3, .L2+24
+  52 001e 0722     		mov	r2, #7
+  53 0020 1A60     		str	r2, [r3]
+ 242:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_RX_MATCH_REG     = ESP_UART_DEFAULT_RX_MATCH_REG;
+  54              		.loc 1 242 0
+  55 0022 1D4B     		ldr	r3, .L2+28
+  56 0024 0022     		mov	r2, #0
+  57 0026 1A60     		str	r2, [r3]
+ 243:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 244:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Configure TX direction */
+ 245:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_TX_CTRL_REG = ESP_UART_DEFAULT_UART_TX_CTRL;
+  58              		.loc 1 245 0
+  59 0028 1C4B     		ldr	r3, .L2+32
+  60 002a 0122     		mov	r2, #1
+  61 002c 1A60     		str	r2, [r3]
+ 246:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_TX_CTRL_REG      = ESP_UART_DEFAULT_TX_CTRL;
+  62              		.loc 1 246 0
+  63 002e 1C4B     		ldr	r3, .L2+36
+  64 0030 174A     		ldr	r2, .L2+20
+  65 0032 1A60     		str	r2, [r3]
+ 247:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_TX_FIFO_CTRL_REG = ESP_UART_DEFAULT_TX_FIFO_CTRL;
+  66              		.loc 1 247 0
+  67 0034 1B4B     		ldr	r3, .L2+40
+  68 0036 0022     		mov	r2, #0
+  69 0038 1A60     		str	r2, [r3]
+ 248:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 249:.\Generated_Source\PSoC4/ESP_UART.c ****     #if !(ESP_CY_SCBIP_V0 || ESP_CY_SCBIP_V1)
+ 250:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UART_FLOW_CTRL_REG = ESP_UART_DEFAULT_FLOW_CTRL;
+ 251:.\Generated_Source\PSoC4/ESP_UART.c ****     #endif /* !(ESP_CY_SCBIP_V0 || ESP_CY_SCBIP_V1) */
+ 252:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 253:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Configure interrupt with UART handler but do not enable it */
+ 254:.\Generated_Source\PSoC4/ESP_UART.c ****     #if(ESP_SCB_IRQ_INTERNAL)
+ 255:.\Generated_Source\PSoC4/ESP_UART.c ****         CyIntDisable    (ESP_ISR_NUMBER);
+  70              		.loc 1 255 0
+  71 003a 0B20     		mov	r0, #11
+  72 003c FFF7FEFF 		bl	CyIntDisable
+ 256:.\Generated_Source\PSoC4/ESP_UART.c ****         CyIntSetPriority(ESP_ISR_NUMBER, ESP_ISR_PRIORITY);
+  73              		.loc 1 256 0
+  74 0040 0B20     		mov	r0, #11
+  75 0042 0321     		mov	r1, #3
+  76 0044 FFF7FEFF 		bl	CyIntSetPriority
+ 257:.\Generated_Source\PSoC4/ESP_UART.c ****         (void) CyIntSetVector(ESP_ISR_NUMBER, &ESP_SPI_UART_ISR);
+  77              		.loc 1 257 0
+  78 0048 174B     		ldr	r3, .L2+44
+  79 004a 0B20     		mov	r0, #11
+  80 004c 191C     		mov	r1, r3
+  81 004e FFF7FEFF 		bl	CyIntSetVector
+ 258:.\Generated_Source\PSoC4/ESP_UART.c ****     #endif /* (ESP_SCB_IRQ_INTERNAL) */
+ 259:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 260:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Configure WAKE interrupt */
+ 261:.\Generated_Source\PSoC4/ESP_UART.c ****     #if(ESP_UART_RX_WAKEUP_IRQ)
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 7
+
+
+ 262:.\Generated_Source\PSoC4/ESP_UART.c ****         CyIntDisable    (ESP_RX_WAKE_ISR_NUMBER);
+ 263:.\Generated_Source\PSoC4/ESP_UART.c ****         CyIntSetPriority(ESP_RX_WAKE_ISR_NUMBER, ESP_RX_WAKE_ISR_PRIORITY);
+ 264:.\Generated_Source\PSoC4/ESP_UART.c ****         (void) CyIntSetVector(ESP_RX_WAKE_ISR_NUMBER, &ESP_UART_WAKEUP_ISR);
+ 265:.\Generated_Source\PSoC4/ESP_UART.c ****     #endif /* (ESP_UART_RX_WAKEUP_IRQ) */
+ 266:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 267:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Configure interrupt sources */
+ 268:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_INTR_I2C_EC_MASK_REG = ESP_UART_DEFAULT_INTR_I2C_EC_MASK;
+  82              		.loc 1 268 0
+  83 0052 164B     		ldr	r3, .L2+48
+  84 0054 0022     		mov	r2, #0
+  85 0056 1A60     		str	r2, [r3]
+ 269:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_INTR_SPI_EC_MASK_REG = ESP_UART_DEFAULT_INTR_SPI_EC_MASK;
+  86              		.loc 1 269 0
+  87 0058 154B     		ldr	r3, .L2+52
+  88 005a 0022     		mov	r2, #0
+  89 005c 1A60     		str	r2, [r3]
+ 270:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_INTR_SLAVE_MASK_REG  = ESP_UART_DEFAULT_INTR_SLAVE_MASK;
+  90              		.loc 1 270 0
+  91 005e 154B     		ldr	r3, .L2+56
+  92 0060 0022     		mov	r2, #0
+  93 0062 1A60     		str	r2, [r3]
+ 271:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_INTR_MASTER_MASK_REG = ESP_UART_DEFAULT_INTR_MASTER_MASK;
+  94              		.loc 1 271 0
+  95 0064 144B     		ldr	r3, .L2+60
+  96 0066 0022     		mov	r2, #0
+  97 0068 1A60     		str	r2, [r3]
+ 272:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_INTR_RX_MASK_REG     = ESP_UART_DEFAULT_INTR_RX_MASK;
+  98              		.loc 1 272 0
+  99 006a 144B     		ldr	r3, .L2+64
+ 100 006c 0022     		mov	r2, #0
+ 101 006e 1A60     		str	r2, [r3]
+ 273:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_INTR_TX_MASK_REG     = ESP_UART_DEFAULT_INTR_TX_MASK;
+ 102              		.loc 1 273 0
+ 103 0070 134B     		ldr	r3, .L2+68
+ 104 0072 0022     		mov	r2, #0
+ 105 0074 1A60     		str	r2, [r3]
+ 274:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 275:.\Generated_Source\PSoC4/ESP_UART.c ****     #if(ESP_INTERNAL_RX_SW_BUFFER_CONST)
+ 276:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_rxBufferHead     = 0u;
+ 277:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_rxBufferTail     = 0u;
+ 278:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_rxBufferOverflow = 0u;
+ 279:.\Generated_Source\PSoC4/ESP_UART.c ****     #endif /* (ESP_INTERNAL_RX_SW_BUFFER_CONST) */
+ 280:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 281:.\Generated_Source\PSoC4/ESP_UART.c ****     #if(ESP_INTERNAL_TX_SW_BUFFER_CONST)
+ 282:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_txBufferHead = 0u;
+ 283:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_txBufferTail = 0u;
+ 284:.\Generated_Source\PSoC4/ESP_UART.c ****     #endif /* (ESP_INTERNAL_TX_SW_BUFFER_CONST) */
+ 285:.\Generated_Source\PSoC4/ESP_UART.c ****     }
+ 106              		.loc 1 285 0
+ 107 0076 BD46     		mov	sp, r7
+ 108              		@ sp needed
+ 109 0078 80BD     		pop	{r7, pc}
+ 110              	.L3:
+ 111 007a C046     		.align	2
+ 112              	.L2:
+ 113 007c 00000740 		.word	1074200576
+ 114 0080 0B000002 		.word	33554443
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 8
+
+
+ 115 0084 40000740 		.word	1074200640
+ 116 0088 48000740 		.word	1074200648
+ 117 008c 00030740 		.word	1074201344
+ 118 0090 07000080 		.word	-2147483641
+ 119 0094 04030740 		.word	1074201348
+ 120 0098 10030740 		.word	1074201360
+ 121 009c 44000740 		.word	1074200644
+ 122 00a0 00020740 		.word	1074201088
+ 123 00a4 04020740 		.word	1074201092
+ 124 00a8 00000000 		.word	ESP_SPI_UART_ISR
+ 125 00ac 880E0740 		.word	1074204296
+ 126 00b0 C80E0740 		.word	1074204360
+ 127 00b4 480F0740 		.word	1074204488
+ 128 00b8 080F0740 		.word	1074204424
+ 129 00bc C80F0740 		.word	1074204616
+ 130 00c0 880F0740 		.word	1074204552
+ 131              		.cfi_endproc
+ 132              	.LFE0:
+ 133              		.size	ESP_UartInit, .-ESP_UartInit
+ 134              		.section	.text.ESP_UartPostEnable,"ax",%progbits
+ 135              		.align	2
+ 136              		.global	ESP_UartPostEnable
+ 137              		.code	16
+ 138              		.thumb_func
+ 139              		.type	ESP_UartPostEnable, %function
+ 140              	ESP_UartPostEnable:
+ 141              	.LFB1:
+ 286:.\Generated_Source\PSoC4/ESP_UART.c **** #endif /* (ESP_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 287:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 288:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 289:.\Generated_Source\PSoC4/ESP_UART.c **** /*******************************************************************************
+ 290:.\Generated_Source\PSoC4/ESP_UART.c **** * Function Name: ESP_UartPostEnable
+ 291:.\Generated_Source\PSoC4/ESP_UART.c **** ********************************************************************************
+ 292:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 293:.\Generated_Source\PSoC4/ESP_UART.c **** * Summary:
+ 294:.\Generated_Source\PSoC4/ESP_UART.c **** *  Restores HSIOM settings for the UART output pins (TX and/or RTS) to be 
+ 295:.\Generated_Source\PSoC4/ESP_UART.c **** *  controlled by the SCB UART.
+ 296:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 297:.\Generated_Source\PSoC4/ESP_UART.c **** * Parameters:
+ 298:.\Generated_Source\PSoC4/ESP_UART.c **** *  None
+ 299:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 300:.\Generated_Source\PSoC4/ESP_UART.c **** * Return:
+ 301:.\Generated_Source\PSoC4/ESP_UART.c **** *  None
+ 302:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 303:.\Generated_Source\PSoC4/ESP_UART.c **** *******************************************************************************/
+ 304:.\Generated_Source\PSoC4/ESP_UART.c **** void ESP_UartPostEnable(void)
+ 305:.\Generated_Source\PSoC4/ESP_UART.c **** {
+ 142              		.loc 1 305 0
+ 143              		.cfi_startproc
+ 144 0000 80B5     		push	{r7, lr}
+ 145              		.cfi_def_cfa_offset 8
+ 146              		.cfi_offset 7, -8
+ 147              		.cfi_offset 14, -4
+ 148 0002 00AF     		add	r7, sp, #0
+ 149              		.cfi_def_cfa_register 7
+ 306:.\Generated_Source\PSoC4/ESP_UART.c **** #if (ESP_SCB_MODE_UNCONFIG_CONST_CFG)
+ 307:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 9
+
+
+ 308:.\Generated_Source\PSoC4/ESP_UART.c **** #if (ESP_TX_SDA_MISO_PIN)
+ 309:.\Generated_Source\PSoC4/ESP_UART.c ****     if (ESP_CHECK_TX_SDA_MISO_PIN_USED)
+ 310:.\Generated_Source\PSoC4/ESP_UART.c ****     {
+ 311:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Set SCB UART to drive the output pin */
+ 312:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_SET_HSIOM_SEL(ESP_TX_SDA_MISO_HSIOM_REG, ESP_TX_SDA_MISO_HSIOM_MASK,
+ 313:.\Generated_Source\PSoC4/ESP_UART.c ****                                        ESP_TX_SDA_MISO_HSIOM_POS, ESP_HSIOM_UART_SEL);
+ 314:.\Generated_Source\PSoC4/ESP_UART.c ****     }
+ 315:.\Generated_Source\PSoC4/ESP_UART.c **** #endif /* (ESP_TX_SDA_MISO_PIN_PIN) */
+ 316:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 317:.\Generated_Source\PSoC4/ESP_UART.c **** #if (ESP_SS0_PIN)
+ 318:.\Generated_Source\PSoC4/ESP_UART.c ****     if (ESP_CHECK_SS0_PIN_USED)
+ 319:.\Generated_Source\PSoC4/ESP_UART.c ****     {
+ 320:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Set SCB UART to drive the output pin */
+ 321:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_SET_HSIOM_SEL(ESP_SS0_HSIOM_REG, ESP_SS0_HSIOM_MASK,
+ 322:.\Generated_Source\PSoC4/ESP_UART.c ****                                        ESP_SS0_HSIOM_POS, ESP_HSIOM_UART_SEL);
+ 323:.\Generated_Source\PSoC4/ESP_UART.c ****     }
+ 324:.\Generated_Source\PSoC4/ESP_UART.c **** #endif /* (ESP_SS0_PIN) */
+ 325:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 326:.\Generated_Source\PSoC4/ESP_UART.c **** #else
+ 327:.\Generated_Source\PSoC4/ESP_UART.c **** #if (ESP_UART_TX_PIN)
+ 328:.\Generated_Source\PSoC4/ESP_UART.c ****      /* Set SCB UART to drive the output pin */
+ 329:.\Generated_Source\PSoC4/ESP_UART.c ****     ESP_SET_HSIOM_SEL(ESP_TX_HSIOM_REG, ESP_TX_HSIOM_MASK,
+ 150              		.loc 1 329 0
+ 151 0004 054B     		ldr	r3, .L5
+ 152 0006 054A     		ldr	r2, .L5
+ 153 0008 1268     		ldr	r2, [r2]
+ 154 000a 0549     		ldr	r1, .L5+4
+ 155 000c 0A40     		and	r2, r1
+ 156 000e 9021     		mov	r1, #144
+ 157 0010 0904     		lsl	r1, r1, #16
+ 158 0012 0A43     		orr	r2, r1
+ 159 0014 1A60     		str	r2, [r3]
+ 330:.\Generated_Source\PSoC4/ESP_UART.c ****                                    ESP_TX_HSIOM_POS, ESP_HSIOM_UART_SEL);
+ 331:.\Generated_Source\PSoC4/ESP_UART.c **** #endif /* (ESP_UART_TX_PIN) */
+ 332:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 333:.\Generated_Source\PSoC4/ESP_UART.c **** #if (ESP_UART_RTS_PIN)
+ 334:.\Generated_Source\PSoC4/ESP_UART.c ****     /* Set SCB UART to drive the output pin */
+ 335:.\Generated_Source\PSoC4/ESP_UART.c ****     ESP_SET_HSIOM_SEL(ESP_RTS_HSIOM_REG, ESP_RTS_HSIOM_MASK,
+ 336:.\Generated_Source\PSoC4/ESP_UART.c ****                                    ESP_RTS_HSIOM_POS, ESP_HSIOM_UART_SEL);
+ 337:.\Generated_Source\PSoC4/ESP_UART.c **** #endif /* (ESP_UART_RTS_PIN) */
+ 338:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 339:.\Generated_Source\PSoC4/ESP_UART.c **** #endif /* (ESP_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 340:.\Generated_Source\PSoC4/ESP_UART.c **** }
+ 160              		.loc 1 340 0
+ 161 0016 BD46     		mov	sp, r7
+ 162              		@ sp needed
+ 163 0018 80BD     		pop	{r7, pc}
+ 164              	.L6:
+ 165 001a C046     		.align	2
+ 166              	.L5:
+ 167 001c 00000140 		.word	1073807360
+ 168 0020 FFFF0FFF 		.word	-15728641
+ 169              		.cfi_endproc
+ 170              	.LFE1:
+ 171              		.size	ESP_UartPostEnable, .-ESP_UartPostEnable
+ 172              		.section	.text.ESP_UartStop,"ax",%progbits
+ 173              		.align	2
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 10
+
+
+ 174              		.global	ESP_UartStop
+ 175              		.code	16
+ 176              		.thumb_func
+ 177              		.type	ESP_UartStop, %function
+ 178              	ESP_UartStop:
+ 179              	.LFB2:
+ 341:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 342:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 343:.\Generated_Source\PSoC4/ESP_UART.c **** /*******************************************************************************
+ 344:.\Generated_Source\PSoC4/ESP_UART.c **** * Function Name: ESP_UartStop
+ 345:.\Generated_Source\PSoC4/ESP_UART.c **** ********************************************************************************
+ 346:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 347:.\Generated_Source\PSoC4/ESP_UART.c **** * Summary:
+ 348:.\Generated_Source\PSoC4/ESP_UART.c **** *  Changes the HSIOM settings for the UART output pins (TX and/or RTS) to keep
+ 349:.\Generated_Source\PSoC4/ESP_UART.c **** *  them inactive after the block is disabled. The output pins are controlled by
+ 350:.\Generated_Source\PSoC4/ESP_UART.c **** *  the GPIO data register. Also, the function disables the skip start feature to
+ 351:.\Generated_Source\PSoC4/ESP_UART.c **** *  not cause it to trigger after the component is enabled.
+ 352:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 353:.\Generated_Source\PSoC4/ESP_UART.c **** * Parameters:
+ 354:.\Generated_Source\PSoC4/ESP_UART.c **** *  None
+ 355:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 356:.\Generated_Source\PSoC4/ESP_UART.c **** * Return:
+ 357:.\Generated_Source\PSoC4/ESP_UART.c **** *  None
+ 358:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 359:.\Generated_Source\PSoC4/ESP_UART.c **** *******************************************************************************/
+ 360:.\Generated_Source\PSoC4/ESP_UART.c **** void ESP_UartStop(void)
+ 361:.\Generated_Source\PSoC4/ESP_UART.c **** {
+ 180              		.loc 1 361 0
+ 181              		.cfi_startproc
+ 182 0000 80B5     		push	{r7, lr}
+ 183              		.cfi_def_cfa_offset 8
+ 184              		.cfi_offset 7, -8
+ 185              		.cfi_offset 14, -4
+ 186 0002 00AF     		add	r7, sp, #0
+ 187              		.cfi_def_cfa_register 7
+ 362:.\Generated_Source\PSoC4/ESP_UART.c **** #if(ESP_SCB_MODE_UNCONFIG_CONST_CFG)
+ 363:.\Generated_Source\PSoC4/ESP_UART.c ****     #if (ESP_TX_SDA_MISO_PIN)
+ 364:.\Generated_Source\PSoC4/ESP_UART.c ****         if (ESP_CHECK_TX_SDA_MISO_PIN_USED)
+ 365:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+ 366:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Set GPIO to drive output pin */
+ 367:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_SET_HSIOM_SEL(ESP_TX_SDA_MISO_HSIOM_REG, ESP_TX_SDA_MISO_HSIOM_MASK,
+ 368:.\Generated_Source\PSoC4/ESP_UART.c ****                                            ESP_TX_SDA_MISO_HSIOM_POS, ESP_HSIOM_GPIO_SEL);
+ 369:.\Generated_Source\PSoC4/ESP_UART.c ****         }
+ 370:.\Generated_Source\PSoC4/ESP_UART.c ****     #endif /* (ESP_TX_SDA_MISO_PIN_PIN) */
+ 371:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 372:.\Generated_Source\PSoC4/ESP_UART.c ****     #if (ESP_SS0_PIN)
+ 373:.\Generated_Source\PSoC4/ESP_UART.c ****         if (ESP_CHECK_SS0_PIN_USED)
+ 374:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+ 375:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Set output pin state after block is disabled */
+ 376:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_spi_ss0_Write(ESP_GET_UART_RTS_INACTIVE);
+ 377:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 378:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Set GPIO to drive output pin */
+ 379:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_SET_HSIOM_SEL(ESP_SS0_HSIOM_REG, ESP_SS0_HSIOM_MASK,
+ 380:.\Generated_Source\PSoC4/ESP_UART.c ****                                            ESP_SS0_HSIOM_POS, ESP_HSIOM_GPIO_SEL);
+ 381:.\Generated_Source\PSoC4/ESP_UART.c ****         }
+ 382:.\Generated_Source\PSoC4/ESP_UART.c ****     #endif /* (ESP_SS0_PIN) */
+ 383:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 11
+
+
+ 384:.\Generated_Source\PSoC4/ESP_UART.c **** #else
+ 385:.\Generated_Source\PSoC4/ESP_UART.c ****     #if (ESP_UART_TX_PIN)
+ 386:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Set GPIO to drive output pin */
+ 387:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_SET_HSIOM_SEL(ESP_TX_HSIOM_REG, ESP_TX_HSIOM_MASK,
+ 188              		.loc 1 387 0
+ 189 0004 034B     		ldr	r3, .L8
+ 190 0006 034A     		ldr	r2, .L8
+ 191 0008 1268     		ldr	r2, [r2]
+ 192 000a 0349     		ldr	r1, .L8+4
+ 193 000c 0A40     		and	r2, r1
+ 194 000e 1A60     		str	r2, [r3]
+ 388:.\Generated_Source\PSoC4/ESP_UART.c ****                                        ESP_TX_HSIOM_POS, ESP_HSIOM_GPIO_SEL);
+ 389:.\Generated_Source\PSoC4/ESP_UART.c ****     #endif /* (ESP_UART_TX_PIN) */
+ 390:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 391:.\Generated_Source\PSoC4/ESP_UART.c ****     #if (ESP_UART_RTS_PIN)
+ 392:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Set output pin state after block is disabled */
+ 393:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_rts_Write(ESP_GET_UART_RTS_INACTIVE);
+ 394:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 395:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Set GPIO to drive output pin */
+ 396:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_SET_HSIOM_SEL(ESP_RTS_HSIOM_REG, ESP_RTS_HSIOM_MASK,
+ 397:.\Generated_Source\PSoC4/ESP_UART.c ****                                        ESP_RTS_HSIOM_POS, ESP_HSIOM_GPIO_SEL);
+ 398:.\Generated_Source\PSoC4/ESP_UART.c ****     #endif /* (ESP_UART_RTS_PIN) */
+ 399:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 400:.\Generated_Source\PSoC4/ESP_UART.c **** #endif /* (ESP_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 401:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 402:.\Generated_Source\PSoC4/ESP_UART.c **** #if (ESP_UART_WAKE_ENABLE_CONST)
+ 403:.\Generated_Source\PSoC4/ESP_UART.c ****     /* Disable skip start feature used for wakeup */
+ 404:.\Generated_Source\PSoC4/ESP_UART.c ****     ESP_UART_RX_CTRL_REG &= (uint32) ~ESP_UART_RX_CTRL_SKIP_START;
+ 405:.\Generated_Source\PSoC4/ESP_UART.c **** #endif /* (ESP_UART_WAKE_ENABLE_CONST) */
+ 406:.\Generated_Source\PSoC4/ESP_UART.c **** }
+ 195              		.loc 1 406 0
+ 196 0010 BD46     		mov	sp, r7
+ 197              		@ sp needed
+ 198 0012 80BD     		pop	{r7, pc}
+ 199              	.L9:
+ 200              		.align	2
+ 201              	.L8:
+ 202 0014 00000140 		.word	1073807360
+ 203 0018 FFFF0FFF 		.word	-15728641
+ 204              		.cfi_endproc
+ 205              	.LFE2:
+ 206              		.size	ESP_UartStop, .-ESP_UartStop
+ 207              		.section	.text.ESP_UartSetRxAddress,"ax",%progbits
+ 208              		.align	2
+ 209              		.global	ESP_UartSetRxAddress
+ 210              		.code	16
+ 211              		.thumb_func
+ 212              		.type	ESP_UartSetRxAddress, %function
+ 213              	ESP_UartSetRxAddress:
+ 214              	.LFB3:
+ 407:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 408:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 409:.\Generated_Source\PSoC4/ESP_UART.c **** /*******************************************************************************
+ 410:.\Generated_Source\PSoC4/ESP_UART.c **** * Function Name: ESP_UartSetRxAddress
+ 411:.\Generated_Source\PSoC4/ESP_UART.c **** ********************************************************************************
+ 412:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 413:.\Generated_Source\PSoC4/ESP_UART.c **** * Summary:
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 12
+
+
+ 414:.\Generated_Source\PSoC4/ESP_UART.c **** *  Sets the hardware detectable receiver address for the UART in the
+ 415:.\Generated_Source\PSoC4/ESP_UART.c **** *  Multiprocessor mode.
+ 416:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 417:.\Generated_Source\PSoC4/ESP_UART.c **** * Parameters:
+ 418:.\Generated_Source\PSoC4/ESP_UART.c **** *  address: Address for hardware address detection.
+ 419:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 420:.\Generated_Source\PSoC4/ESP_UART.c **** * Return:
+ 421:.\Generated_Source\PSoC4/ESP_UART.c **** *  None
+ 422:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 423:.\Generated_Source\PSoC4/ESP_UART.c **** *******************************************************************************/
+ 424:.\Generated_Source\PSoC4/ESP_UART.c **** void ESP_UartSetRxAddress(uint32 address)
+ 425:.\Generated_Source\PSoC4/ESP_UART.c **** {
+ 215              		.loc 1 425 0
+ 216              		.cfi_startproc
+ 217 0000 80B5     		push	{r7, lr}
+ 218              		.cfi_def_cfa_offset 8
+ 219              		.cfi_offset 7, -8
+ 220              		.cfi_offset 14, -4
+ 221 0002 84B0     		sub	sp, sp, #16
+ 222              		.cfi_def_cfa_offset 24
+ 223 0004 00AF     		add	r7, sp, #0
+ 224              		.cfi_def_cfa_register 7
+ 225 0006 7860     		str	r0, [r7, #4]
+ 426:.\Generated_Source\PSoC4/ESP_UART.c ****      uint32 matchReg;
+ 427:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 428:.\Generated_Source\PSoC4/ESP_UART.c ****     matchReg = ESP_RX_MATCH_REG;
+ 226              		.loc 1 428 0
+ 227 0008 094B     		ldr	r3, .L11
+ 228 000a 1B68     		ldr	r3, [r3]
+ 229 000c FB60     		str	r3, [r7, #12]
+ 429:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 430:.\Generated_Source\PSoC4/ESP_UART.c ****     matchReg &= ((uint32) ~ESP_RX_MATCH_ADDR_MASK); /* Clear address bits */
+ 230              		.loc 1 430 0
+ 231 000e FB68     		ldr	r3, [r7, #12]
+ 232 0010 FF22     		mov	r2, #255
+ 233 0012 9343     		bic	r3, r2
+ 234 0014 FB60     		str	r3, [r7, #12]
+ 431:.\Generated_Source\PSoC4/ESP_UART.c ****     matchReg |= ((uint32)  (address & ESP_RX_MATCH_ADDR_MASK)); /* Set address  */
+ 235              		.loc 1 431 0
+ 236 0016 7B68     		ldr	r3, [r7, #4]
+ 237 0018 FF22     		mov	r2, #255
+ 238 001a 1340     		and	r3, r2
+ 239 001c FA68     		ldr	r2, [r7, #12]
+ 240 001e 1343     		orr	r3, r2
+ 241 0020 FB60     		str	r3, [r7, #12]
+ 432:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 433:.\Generated_Source\PSoC4/ESP_UART.c ****     ESP_RX_MATCH_REG = matchReg;
+ 242              		.loc 1 433 0
+ 243 0022 034B     		ldr	r3, .L11
+ 244 0024 FA68     		ldr	r2, [r7, #12]
+ 245 0026 1A60     		str	r2, [r3]
+ 434:.\Generated_Source\PSoC4/ESP_UART.c **** }
+ 246              		.loc 1 434 0
+ 247 0028 BD46     		mov	sp, r7
+ 248 002a 04B0     		add	sp, sp, #16
+ 249              		@ sp needed
+ 250 002c 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 13
+
+
+ 251              	.L12:
+ 252 002e C046     		.align	2
+ 253              	.L11:
+ 254 0030 10030740 		.word	1074201360
+ 255              		.cfi_endproc
+ 256              	.LFE3:
+ 257              		.size	ESP_UartSetRxAddress, .-ESP_UartSetRxAddress
+ 258              		.section	.text.ESP_UartSetRxAddressMask,"ax",%progbits
+ 259              		.align	2
+ 260              		.global	ESP_UartSetRxAddressMask
+ 261              		.code	16
+ 262              		.thumb_func
+ 263              		.type	ESP_UartSetRxAddressMask, %function
+ 264              	ESP_UartSetRxAddressMask:
+ 265              	.LFB4:
+ 435:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 436:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 437:.\Generated_Source\PSoC4/ESP_UART.c **** /*******************************************************************************
+ 438:.\Generated_Source\PSoC4/ESP_UART.c **** * Function Name: ESP_UartSetRxAddressMask
+ 439:.\Generated_Source\PSoC4/ESP_UART.c **** ********************************************************************************
+ 440:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 441:.\Generated_Source\PSoC4/ESP_UART.c **** * Summary:
+ 442:.\Generated_Source\PSoC4/ESP_UART.c **** *  Sets the hardware address mask for the UART in the Multiprocessor mode.
+ 443:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 444:.\Generated_Source\PSoC4/ESP_UART.c **** * Parameters:
+ 445:.\Generated_Source\PSoC4/ESP_UART.c **** *  addressMask: Address mask.
+ 446:.\Generated_Source\PSoC4/ESP_UART.c **** *   0 - address bit does not care while comparison.
+ 447:.\Generated_Source\PSoC4/ESP_UART.c **** *   1 - address bit is significant while comparison.
+ 448:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 449:.\Generated_Source\PSoC4/ESP_UART.c **** * Return:
+ 450:.\Generated_Source\PSoC4/ESP_UART.c **** *  None
+ 451:.\Generated_Source\PSoC4/ESP_UART.c **** *
+ 452:.\Generated_Source\PSoC4/ESP_UART.c **** *******************************************************************************/
+ 453:.\Generated_Source\PSoC4/ESP_UART.c **** void ESP_UartSetRxAddressMask(uint32 addressMask)
+ 454:.\Generated_Source\PSoC4/ESP_UART.c **** {
+ 266              		.loc 1 454 0
+ 267              		.cfi_startproc
+ 268 0000 80B5     		push	{r7, lr}
+ 269              		.cfi_def_cfa_offset 8
+ 270              		.cfi_offset 7, -8
+ 271              		.cfi_offset 14, -4
+ 272 0002 84B0     		sub	sp, sp, #16
+ 273              		.cfi_def_cfa_offset 24
+ 274 0004 00AF     		add	r7, sp, #0
+ 275              		.cfi_def_cfa_register 7
+ 276 0006 7860     		str	r0, [r7, #4]
+ 455:.\Generated_Source\PSoC4/ESP_UART.c ****     uint32 matchReg;
+ 456:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 457:.\Generated_Source\PSoC4/ESP_UART.c ****     matchReg = ESP_RX_MATCH_REG;
+ 277              		.loc 1 457 0
+ 278 0008 084B     		ldr	r3, .L14
+ 279 000a 1B68     		ldr	r3, [r3]
+ 280 000c FB60     		str	r3, [r7, #12]
+ 458:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 459:.\Generated_Source\PSoC4/ESP_UART.c ****     matchReg &= ((uint32) ~ESP_RX_MATCH_MASK_MASK); /* Clear address mask bits */
+ 281              		.loc 1 459 0
+ 282 000e FB68     		ldr	r3, [r7, #12]
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 14
+
+
+ 283 0010 074A     		ldr	r2, .L14+4
+ 284 0012 1340     		and	r3, r2
+ 285 0014 FB60     		str	r3, [r7, #12]
+ 460:.\Generated_Source\PSoC4/ESP_UART.c ****     matchReg |= ((uint32) (addressMask << ESP_RX_MATCH_MASK_POS));
+ 286              		.loc 1 460 0
+ 287 0016 7B68     		ldr	r3, [r7, #4]
+ 288 0018 1B04     		lsl	r3, r3, #16
+ 289 001a FA68     		ldr	r2, [r7, #12]
+ 290 001c 1343     		orr	r3, r2
+ 291 001e FB60     		str	r3, [r7, #12]
+ 461:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 462:.\Generated_Source\PSoC4/ESP_UART.c ****     ESP_RX_MATCH_REG = matchReg;
+ 292              		.loc 1 462 0
+ 293 0020 024B     		ldr	r3, .L14
+ 294 0022 FA68     		ldr	r2, [r7, #12]
+ 295 0024 1A60     		str	r2, [r3]
+ 463:.\Generated_Source\PSoC4/ESP_UART.c **** }
+ 296              		.loc 1 463 0
+ 297 0026 BD46     		mov	sp, r7
+ 298 0028 04B0     		add	sp, sp, #16
+ 299              		@ sp needed
+ 300 002a 80BD     		pop	{r7, pc}
+ 301              	.L15:
+ 302              		.align	2
+ 303              	.L14:
+ 304 002c 10030740 		.word	1074201360
+ 305 0030 FFFF00FF 		.word	-16711681
+ 306              		.cfi_endproc
+ 307              	.LFE4:
+ 308              		.size	ESP_UartSetRxAddressMask, .-ESP_UartSetRxAddressMask
+ 309              		.section	.text.ESP_UartGetChar,"ax",%progbits
+ 310              		.align	2
+ 311              		.global	ESP_UartGetChar
+ 312              		.code	16
+ 313              		.thumb_func
+ 314              		.type	ESP_UartGetChar, %function
+ 315              	ESP_UartGetChar:
+ 316              	.LFB5:
+ 464:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 465:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 466:.\Generated_Source\PSoC4/ESP_UART.c **** #if(ESP_UART_RX_DIRECTION)
+ 467:.\Generated_Source\PSoC4/ESP_UART.c ****     /*******************************************************************************
+ 468:.\Generated_Source\PSoC4/ESP_UART.c ****     * Function Name: ESP_UartGetChar
+ 469:.\Generated_Source\PSoC4/ESP_UART.c ****     ********************************************************************************
+ 470:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 471:.\Generated_Source\PSoC4/ESP_UART.c ****     * Summary:
+ 472:.\Generated_Source\PSoC4/ESP_UART.c ****     *  Retrieves the next data element from the receive buffer.
+ 473:.\Generated_Source\PSoC4/ESP_UART.c ****     *  This function is designed for ASCII characters and returns a char
+ 474:.\Generated_Source\PSoC4/ESP_UART.c ****     *  where 1 to 255 are valid characters and 0 indicates an error occurred or
+ 475:.\Generated_Source\PSoC4/ESP_UART.c ****     *  no data present.
+ 476:.\Generated_Source\PSoC4/ESP_UART.c ****     *  - The RX software buffer is disabled: returns the data element
+ 477:.\Generated_Source\PSoC4/ESP_UART.c ****     *    retrieved from the RX FIFO.
+ 478:.\Generated_Source\PSoC4/ESP_UART.c ****     *    Undefined data will be returned if the RX FIFO is empty.
+ 479:.\Generated_Source\PSoC4/ESP_UART.c ****     *  - The RX software buffer is enabled: returns the data element from
+ 480:.\Generated_Source\PSoC4/ESP_UART.c ****     *    the software receive buffer.
+ 481:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 482:.\Generated_Source\PSoC4/ESP_UART.c ****     * Parameters:
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 15
+
+
+ 483:.\Generated_Source\PSoC4/ESP_UART.c ****     *  None
+ 484:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 485:.\Generated_Source\PSoC4/ESP_UART.c ****     * Return:
+ 486:.\Generated_Source\PSoC4/ESP_UART.c ****     *  The next data element from the receive buffer.
+ 487:.\Generated_Source\PSoC4/ESP_UART.c ****     *  ASCII character values from 1 to 255 are valid.
+ 488:.\Generated_Source\PSoC4/ESP_UART.c ****     *  A returned zero signifies an error condition or no data available.
+ 489:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 490:.\Generated_Source\PSoC4/ESP_UART.c ****     * Side Effects:
+ 491:.\Generated_Source\PSoC4/ESP_UART.c ****     *  The errors bits may not correspond with reading characters due to RX FIFO
+ 492:.\Generated_Source\PSoC4/ESP_UART.c ****     *  and software buffer usage.
+ 493:.\Generated_Source\PSoC4/ESP_UART.c ****     *  RX software buffer is enabled: The internal software buffer overflow
+ 494:.\Generated_Source\PSoC4/ESP_UART.c ****     *  does not treat as an error condition.
+ 495:.\Generated_Source\PSoC4/ESP_UART.c ****     *  Check SCB_rxBufferOverflow to capture that error condition.
+ 496:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 497:.\Generated_Source\PSoC4/ESP_UART.c ****     *******************************************************************************/
+ 498:.\Generated_Source\PSoC4/ESP_UART.c ****     uint32 ESP_UartGetChar(void)
+ 499:.\Generated_Source\PSoC4/ESP_UART.c ****     {
+ 317              		.loc 1 499 0
+ 318              		.cfi_startproc
+ 319 0000 80B5     		push	{r7, lr}
+ 320              		.cfi_def_cfa_offset 8
+ 321              		.cfi_offset 7, -8
+ 322              		.cfi_offset 14, -4
+ 323 0002 82B0     		sub	sp, sp, #8
+ 324              		.cfi_def_cfa_offset 16
+ 325 0004 00AF     		add	r7, sp, #0
+ 326              		.cfi_def_cfa_register 7
+ 500:.\Generated_Source\PSoC4/ESP_UART.c ****         uint32 rxData = 0u;
+ 327              		.loc 1 500 0
+ 328 0006 0023     		mov	r3, #0
+ 329 0008 7B60     		str	r3, [r7, #4]
+ 501:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 502:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Reads data only if there is data to read */
+ 503:.\Generated_Source\PSoC4/ESP_UART.c ****         if (0u != ESP_SpiUartGetRxBufferSize())
+ 330              		.loc 1 503 0
+ 331 000a FFF7FEFF 		bl	ESP_SpiUartGetRxBufferSize
+ 332 000e 031E     		sub	r3, r0, #0
+ 333 0010 03D0     		beq	.L17
+ 504:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+ 505:.\Generated_Source\PSoC4/ESP_UART.c ****             rxData = ESP_SpiUartReadRxData();
+ 334              		.loc 1 505 0
+ 335 0012 FFF7FEFF 		bl	ESP_SpiUartReadRxData
+ 336 0016 031C     		mov	r3, r0
+ 337 0018 7B60     		str	r3, [r7, #4]
+ 338              	.L17:
+ 506:.\Generated_Source\PSoC4/ESP_UART.c ****         }
+ 507:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 508:.\Generated_Source\PSoC4/ESP_UART.c ****         if (ESP_CHECK_INTR_RX(ESP_INTR_RX_ERR))
+ 339              		.loc 1 508 0
+ 340 001a 084B     		ldr	r3, .L20
+ 341 001c 1A68     		ldr	r2, [r3]
+ 342 001e D823     		mov	r3, #216
+ 343 0020 9B00     		lsl	r3, r3, #2
+ 344 0022 1340     		and	r3, r2
+ 345 0024 05D0     		beq	.L18
+ 509:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+ 510:.\Generated_Source\PSoC4/ESP_UART.c ****             rxData = 0u; /* Error occurred: returns zero */
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 16
+
+
+ 346              		.loc 1 510 0
+ 347 0026 0023     		mov	r3, #0
+ 348 0028 7B60     		str	r3, [r7, #4]
+ 511:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_ClearRxInterruptSource(ESP_INTR_RX_ERR);
+ 349              		.loc 1 511 0
+ 350 002a 044B     		ldr	r3, .L20
+ 351 002c D822     		mov	r2, #216
+ 352 002e 9200     		lsl	r2, r2, #2
+ 353 0030 1A60     		str	r2, [r3]
+ 354              	.L18:
+ 512:.\Generated_Source\PSoC4/ESP_UART.c ****         }
+ 513:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 514:.\Generated_Source\PSoC4/ESP_UART.c ****         return (rxData);
+ 355              		.loc 1 514 0
+ 356 0032 7B68     		ldr	r3, [r7, #4]
+ 515:.\Generated_Source\PSoC4/ESP_UART.c ****     }
+ 357              		.loc 1 515 0
+ 358 0034 181C     		mov	r0, r3
+ 359 0036 BD46     		mov	sp, r7
+ 360 0038 02B0     		add	sp, sp, #8
+ 361              		@ sp needed
+ 362 003a 80BD     		pop	{r7, pc}
+ 363              	.L21:
+ 364              		.align	2
+ 365              	.L20:
+ 366 003c C00F0740 		.word	1074204608
+ 367              		.cfi_endproc
+ 368              	.LFE5:
+ 369              		.size	ESP_UartGetChar, .-ESP_UartGetChar
+ 370              		.section	.text.ESP_UartGetByte,"ax",%progbits
+ 371              		.align	2
+ 372              		.global	ESP_UartGetByte
+ 373              		.code	16
+ 374              		.thumb_func
+ 375              		.type	ESP_UartGetByte, %function
+ 376              	ESP_UartGetByte:
+ 377              	.LFB6:
+ 516:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 517:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 518:.\Generated_Source\PSoC4/ESP_UART.c ****     /*******************************************************************************
+ 519:.\Generated_Source\PSoC4/ESP_UART.c ****     * Function Name: ESP_UartGetByte
+ 520:.\Generated_Source\PSoC4/ESP_UART.c ****     ********************************************************************************
+ 521:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 522:.\Generated_Source\PSoC4/ESP_UART.c ****     * Summary:
+ 523:.\Generated_Source\PSoC4/ESP_UART.c ****     *  Retrieves the next data element from the receive buffer, returns the
+ 524:.\Generated_Source\PSoC4/ESP_UART.c ****     *  received byte and error condition.
+ 525:.\Generated_Source\PSoC4/ESP_UART.c ****     *   - The RX software buffer is disabled: returns the data element retrieved
+ 526:.\Generated_Source\PSoC4/ESP_UART.c ****     *     from the RX FIFO. Undefined data will be returned if the RX FIFO is
+ 527:.\Generated_Source\PSoC4/ESP_UART.c ****     *     empty.
+ 528:.\Generated_Source\PSoC4/ESP_UART.c ****     *   - The RX software buffer is enabled: returns data element from the
+ 529:.\Generated_Source\PSoC4/ESP_UART.c ****     *     software receive buffer.
+ 530:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 531:.\Generated_Source\PSoC4/ESP_UART.c ****     * Parameters:
+ 532:.\Generated_Source\PSoC4/ESP_UART.c ****     *  None
+ 533:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 534:.\Generated_Source\PSoC4/ESP_UART.c ****     * Return:
+ 535:.\Generated_Source\PSoC4/ESP_UART.c ****     *  Bits 7-0 contain the next data element from the receive buffer and
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 17
+
+
+ 536:.\Generated_Source\PSoC4/ESP_UART.c ****     *  other bits contain the error condition.
+ 537:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 538:.\Generated_Source\PSoC4/ESP_UART.c ****     * Side Effects:
+ 539:.\Generated_Source\PSoC4/ESP_UART.c ****     *  The errors bits may not correspond with reading characters due to RX FIFO
+ 540:.\Generated_Source\PSoC4/ESP_UART.c ****     *  and software buffer usage.
+ 541:.\Generated_Source\PSoC4/ESP_UART.c ****     *  RX software buffer is disabled: The internal software buffer overflow
+ 542:.\Generated_Source\PSoC4/ESP_UART.c ****     *  is not returned as status by this function.
+ 543:.\Generated_Source\PSoC4/ESP_UART.c ****     *  Check SCB_rxBufferOverflow to capture that error condition.
+ 544:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 545:.\Generated_Source\PSoC4/ESP_UART.c ****     *******************************************************************************/
+ 546:.\Generated_Source\PSoC4/ESP_UART.c ****     uint32 ESP_UartGetByte(void)
+ 547:.\Generated_Source\PSoC4/ESP_UART.c ****     {
+ 378              		.loc 1 547 0
+ 379              		.cfi_startproc
+ 380 0000 80B5     		push	{r7, lr}
+ 381              		.cfi_def_cfa_offset 8
+ 382              		.cfi_offset 7, -8
+ 383              		.cfi_offset 14, -4
+ 384 0002 82B0     		sub	sp, sp, #8
+ 385              		.cfi_def_cfa_offset 16
+ 386 0004 00AF     		add	r7, sp, #0
+ 387              		.cfi_def_cfa_register 7
+ 548:.\Generated_Source\PSoC4/ESP_UART.c ****         uint32 rxData;
+ 549:.\Generated_Source\PSoC4/ESP_UART.c ****         uint32 tmpStatus;
+ 550:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 551:.\Generated_Source\PSoC4/ESP_UART.c ****         #if (ESP_CHECK_RX_SW_BUFFER)
+ 552:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+ 553:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_DisableInt();
+ 554:.\Generated_Source\PSoC4/ESP_UART.c ****         }
+ 555:.\Generated_Source\PSoC4/ESP_UART.c ****         #endif
+ 556:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 557:.\Generated_Source\PSoC4/ESP_UART.c ****         if (0u != ESP_SpiUartGetRxBufferSize())
+ 388              		.loc 1 557 0
+ 389 0006 FFF7FEFF 		bl	ESP_SpiUartGetRxBufferSize
+ 390 000a 031E     		sub	r3, r0, #0
+ 391 000c 04D0     		beq	.L23
+ 558:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+ 559:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Enables interrupt to receive more bytes: at least one byte is in
+ 560:.\Generated_Source\PSoC4/ESP_UART.c ****             * buffer.
+ 561:.\Generated_Source\PSoC4/ESP_UART.c ****             */
+ 562:.\Generated_Source\PSoC4/ESP_UART.c ****             #if (ESP_CHECK_RX_SW_BUFFER)
+ 563:.\Generated_Source\PSoC4/ESP_UART.c ****             {            
+ 564:.\Generated_Source\PSoC4/ESP_UART.c ****                 ESP_EnableInt();
+ 565:.\Generated_Source\PSoC4/ESP_UART.c ****             }
+ 566:.\Generated_Source\PSoC4/ESP_UART.c ****             #endif
+ 567:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 568:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Get received byte */
+ 569:.\Generated_Source\PSoC4/ESP_UART.c ****             rxData = ESP_SpiUartReadRxData();
+ 392              		.loc 1 569 0
+ 393 000e FFF7FEFF 		bl	ESP_SpiUartReadRxData
+ 394 0012 031C     		mov	r3, r0
+ 395 0014 7B60     		str	r3, [r7, #4]
+ 396 0016 02E0     		b	.L24
+ 397              	.L23:
+ 570:.\Generated_Source\PSoC4/ESP_UART.c ****         }
+ 571:.\Generated_Source\PSoC4/ESP_UART.c ****         else
+ 572:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 18
+
+
+ 573:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Reads a byte directly from RX FIFO: underflow is raised in the case
+ 574:.\Generated_Source\PSoC4/ESP_UART.c ****             * of empty. Otherwise the first received byte will be read.
+ 575:.\Generated_Source\PSoC4/ESP_UART.c ****             */
+ 576:.\Generated_Source\PSoC4/ESP_UART.c ****             rxData = ESP_RX_FIFO_RD_REG;
+ 398              		.loc 1 576 0
+ 399 0018 0B4B     		ldr	r3, .L26
+ 400 001a 1B68     		ldr	r3, [r3]
+ 401 001c 7B60     		str	r3, [r7, #4]
+ 402              	.L24:
+ 577:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 578:.\Generated_Source\PSoC4/ESP_UART.c ****             /* Enables interrupt to receive more bytes.
+ 579:.\Generated_Source\PSoC4/ESP_UART.c ****             * The RX_NOT_EMPTY interrupt is cleared by the interrupt routine
+ 580:.\Generated_Source\PSoC4/ESP_UART.c ****             * in case the byte was received and read by code above.
+ 581:.\Generated_Source\PSoC4/ESP_UART.c ****             */
+ 582:.\Generated_Source\PSoC4/ESP_UART.c ****             #if (ESP_CHECK_RX_SW_BUFFER)
+ 583:.\Generated_Source\PSoC4/ESP_UART.c ****             {
+ 584:.\Generated_Source\PSoC4/ESP_UART.c ****                 ESP_EnableInt();
+ 585:.\Generated_Source\PSoC4/ESP_UART.c ****             }
+ 586:.\Generated_Source\PSoC4/ESP_UART.c ****             #endif
+ 587:.\Generated_Source\PSoC4/ESP_UART.c ****         }
+ 588:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 589:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Get and clear RX error mask */
+ 590:.\Generated_Source\PSoC4/ESP_UART.c ****         tmpStatus = (ESP_GetRxInterruptSource() & ESP_INTR_RX_ERR);
+ 403              		.loc 1 590 0
+ 404 001e 0B4B     		ldr	r3, .L26+4
+ 405 0020 1A68     		ldr	r2, [r3]
+ 406 0022 D823     		mov	r3, #216
+ 407 0024 9B00     		lsl	r3, r3, #2
+ 408 0026 1340     		and	r3, r2
+ 409 0028 3B60     		str	r3, [r7]
+ 591:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_ClearRxInterruptSource(ESP_INTR_RX_ERR);
+ 410              		.loc 1 591 0
+ 411 002a 084B     		ldr	r3, .L26+4
+ 412 002c D822     		mov	r2, #216
+ 413 002e 9200     		lsl	r2, r2, #2
+ 414 0030 1A60     		str	r2, [r3]
+ 592:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 593:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Puts together data and error status:
+ 594:.\Generated_Source\PSoC4/ESP_UART.c ****         * MP mode and accept address: 9th bit is set to notify mark.
+ 595:.\Generated_Source\PSoC4/ESP_UART.c ****         */
+ 596:.\Generated_Source\PSoC4/ESP_UART.c ****         rxData |= ((uint32) (tmpStatus << 8u));
+ 415              		.loc 1 596 0
+ 416 0032 3B68     		ldr	r3, [r7]
+ 417 0034 1B02     		lsl	r3, r3, #8
+ 418 0036 7A68     		ldr	r2, [r7, #4]
+ 419 0038 1343     		orr	r3, r2
+ 420 003a 7B60     		str	r3, [r7, #4]
+ 597:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 598:.\Generated_Source\PSoC4/ESP_UART.c ****         return (rxData);
+ 421              		.loc 1 598 0
+ 422 003c 7B68     		ldr	r3, [r7, #4]
+ 599:.\Generated_Source\PSoC4/ESP_UART.c ****     }
+ 423              		.loc 1 599 0
+ 424 003e 181C     		mov	r0, r3
+ 425 0040 BD46     		mov	sp, r7
+ 426 0042 02B0     		add	sp, sp, #8
+ 427              		@ sp needed
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 19
+
+
+ 428 0044 80BD     		pop	{r7, pc}
+ 429              	.L27:
+ 430 0046 C046     		.align	2
+ 431              	.L26:
+ 432 0048 40030740 		.word	1074201408
+ 433 004c C00F0740 		.word	1074204608
+ 434              		.cfi_endproc
+ 435              	.LFE6:
+ 436              		.size	ESP_UartGetByte, .-ESP_UartGetByte
+ 437              		.section	.text.ESP_UartPutString,"ax",%progbits
+ 438              		.align	2
+ 439              		.global	ESP_UartPutString
+ 440              		.code	16
+ 441              		.thumb_func
+ 442              		.type	ESP_UartPutString, %function
+ 443              	ESP_UartPutString:
+ 444              	.LFB7:
+ 600:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 601:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 602:.\Generated_Source\PSoC4/ESP_UART.c ****     #if !(ESP_CY_SCBIP_V0 || ESP_CY_SCBIP_V1)
+ 603:.\Generated_Source\PSoC4/ESP_UART.c ****         /*******************************************************************************
+ 604:.\Generated_Source\PSoC4/ESP_UART.c ****         * Function Name: ESP_UartSetRtsPolarity
+ 605:.\Generated_Source\PSoC4/ESP_UART.c ****         ********************************************************************************
+ 606:.\Generated_Source\PSoC4/ESP_UART.c ****         *
+ 607:.\Generated_Source\PSoC4/ESP_UART.c ****         * Summary:
+ 608:.\Generated_Source\PSoC4/ESP_UART.c ****         *  Sets active polarity of RTS output signal.
+ 609:.\Generated_Source\PSoC4/ESP_UART.c ****         *
+ 610:.\Generated_Source\PSoC4/ESP_UART.c ****         * Parameters:
+ 611:.\Generated_Source\PSoC4/ESP_UART.c ****         *  polarity: Active polarity of RTS output signal.
+ 612:.\Generated_Source\PSoC4/ESP_UART.c ****         *   ESP_UART_RTS_ACTIVE_LOW  - RTS signal is active low.
+ 613:.\Generated_Source\PSoC4/ESP_UART.c ****         *   ESP_UART_RTS_ACTIVE_HIGH - RTS signal is active high.
+ 614:.\Generated_Source\PSoC4/ESP_UART.c ****         *
+ 615:.\Generated_Source\PSoC4/ESP_UART.c ****         * Return:
+ 616:.\Generated_Source\PSoC4/ESP_UART.c ****         *  None
+ 617:.\Generated_Source\PSoC4/ESP_UART.c ****         *
+ 618:.\Generated_Source\PSoC4/ESP_UART.c ****         *******************************************************************************/
+ 619:.\Generated_Source\PSoC4/ESP_UART.c ****         void ESP_UartSetRtsPolarity(uint32 polarity)
+ 620:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+ 621:.\Generated_Source\PSoC4/ESP_UART.c ****             if(0u != polarity)
+ 622:.\Generated_Source\PSoC4/ESP_UART.c ****             {
+ 623:.\Generated_Source\PSoC4/ESP_UART.c ****                 ESP_UART_FLOW_CTRL_REG |= (uint32)  ESP_UART_FLOW_CTRL_RTS_POLARITY;
+ 624:.\Generated_Source\PSoC4/ESP_UART.c ****             }
+ 625:.\Generated_Source\PSoC4/ESP_UART.c ****             else
+ 626:.\Generated_Source\PSoC4/ESP_UART.c ****             {
+ 627:.\Generated_Source\PSoC4/ESP_UART.c ****                 ESP_UART_FLOW_CTRL_REG &= (uint32) ~ESP_UART_FLOW_CTRL_RTS_POLARITY;
+ 628:.\Generated_Source\PSoC4/ESP_UART.c ****             }
+ 629:.\Generated_Source\PSoC4/ESP_UART.c ****         }
+ 630:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 631:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 632:.\Generated_Source\PSoC4/ESP_UART.c ****         /*******************************************************************************
+ 633:.\Generated_Source\PSoC4/ESP_UART.c ****         * Function Name: ESP_UartSetRtsFifoLevel
+ 634:.\Generated_Source\PSoC4/ESP_UART.c ****         ********************************************************************************
+ 635:.\Generated_Source\PSoC4/ESP_UART.c ****         *
+ 636:.\Generated_Source\PSoC4/ESP_UART.c ****         * Summary:
+ 637:.\Generated_Source\PSoC4/ESP_UART.c ****         *  Sets level in the RX FIFO for RTS signal activation.
+ 638:.\Generated_Source\PSoC4/ESP_UART.c ****         *  While the RX FIFO has fewer entries than the RX FIFO level the RTS signal
+ 639:.\Generated_Source\PSoC4/ESP_UART.c ****         *  remains active, otherwise the RTS signal becomes inactive.
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 20
+
+
+ 640:.\Generated_Source\PSoC4/ESP_UART.c ****         *
+ 641:.\Generated_Source\PSoC4/ESP_UART.c ****         * Parameters:
+ 642:.\Generated_Source\PSoC4/ESP_UART.c ****         *  level: Level in the RX FIFO for RTS signal activation.
+ 643:.\Generated_Source\PSoC4/ESP_UART.c ****         *         The range of valid level values is between 0 and RX FIFO depth - 1.
+ 644:.\Generated_Source\PSoC4/ESP_UART.c ****         *         Setting level value to 0 disables RTS signal activation.
+ 645:.\Generated_Source\PSoC4/ESP_UART.c ****         *
+ 646:.\Generated_Source\PSoC4/ESP_UART.c ****         * Return:
+ 647:.\Generated_Source\PSoC4/ESP_UART.c ****         *  None
+ 648:.\Generated_Source\PSoC4/ESP_UART.c ****         *
+ 649:.\Generated_Source\PSoC4/ESP_UART.c ****         *******************************************************************************/
+ 650:.\Generated_Source\PSoC4/ESP_UART.c ****         void ESP_UartSetRtsFifoLevel(uint32 level)
+ 651:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+ 652:.\Generated_Source\PSoC4/ESP_UART.c ****             uint32 uartFlowCtrl;
+ 653:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 654:.\Generated_Source\PSoC4/ESP_UART.c ****             uartFlowCtrl = ESP_UART_FLOW_CTRL_REG;
+ 655:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 656:.\Generated_Source\PSoC4/ESP_UART.c ****             uartFlowCtrl &= ((uint32) ~ESP_UART_FLOW_CTRL_TRIGGER_LEVEL_MASK); /* Clear level mask 
+ 657:.\Generated_Source\PSoC4/ESP_UART.c ****             uartFlowCtrl |= ((uint32) (ESP_UART_FLOW_CTRL_TRIGGER_LEVEL_MASK & level));
+ 658:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 659:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_UART_FLOW_CTRL_REG = uartFlowCtrl;
+ 660:.\Generated_Source\PSoC4/ESP_UART.c ****         }
+ 661:.\Generated_Source\PSoC4/ESP_UART.c ****     #endif /* !(ESP_CY_SCBIP_V0 || ESP_CY_SCBIP_V1) */
+ 662:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 663:.\Generated_Source\PSoC4/ESP_UART.c **** #endif /* (ESP_UART_RX_DIRECTION) */
+ 664:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 665:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 666:.\Generated_Source\PSoC4/ESP_UART.c **** #if(ESP_UART_TX_DIRECTION)
+ 667:.\Generated_Source\PSoC4/ESP_UART.c ****     /*******************************************************************************
+ 668:.\Generated_Source\PSoC4/ESP_UART.c ****     * Function Name: ESP_UartPutString
+ 669:.\Generated_Source\PSoC4/ESP_UART.c ****     ********************************************************************************
+ 670:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 671:.\Generated_Source\PSoC4/ESP_UART.c ****     * Summary:
+ 672:.\Generated_Source\PSoC4/ESP_UART.c ****     *  Places a NULL terminated string in the transmit buffer to be sent at the
+ 673:.\Generated_Source\PSoC4/ESP_UART.c ****     *  next available bus time.
+ 674:.\Generated_Source\PSoC4/ESP_UART.c ****     *  This function is blocking and waits until there is space available to put
+ 675:.\Generated_Source\PSoC4/ESP_UART.c ****     *  all the requested data into the  transmit buffer.
+ 676:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 677:.\Generated_Source\PSoC4/ESP_UART.c ****     * Parameters:
+ 678:.\Generated_Source\PSoC4/ESP_UART.c ****     *  string: pointer to the null terminated string array to be placed in the
+ 679:.\Generated_Source\PSoC4/ESP_UART.c ****     *          transmit buffer.
+ 680:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 681:.\Generated_Source\PSoC4/ESP_UART.c ****     * Return:
+ 682:.\Generated_Source\PSoC4/ESP_UART.c ****     *  None
+ 683:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 684:.\Generated_Source\PSoC4/ESP_UART.c ****     *******************************************************************************/
+ 685:.\Generated_Source\PSoC4/ESP_UART.c ****     void ESP_UartPutString(const char8 string[])
+ 686:.\Generated_Source\PSoC4/ESP_UART.c ****     {
+ 445              		.loc 1 686 0
+ 446              		.cfi_startproc
+ 447 0000 80B5     		push	{r7, lr}
+ 448              		.cfi_def_cfa_offset 8
+ 449              		.cfi_offset 7, -8
+ 450              		.cfi_offset 14, -4
+ 451 0002 84B0     		sub	sp, sp, #16
+ 452              		.cfi_def_cfa_offset 24
+ 453 0004 00AF     		add	r7, sp, #0
+ 454              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 21
+
+
+ 455 0006 7860     		str	r0, [r7, #4]
+ 687:.\Generated_Source\PSoC4/ESP_UART.c ****         uint32 bufIndex;
+ 688:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 689:.\Generated_Source\PSoC4/ESP_UART.c ****         bufIndex = 0u;
+ 456              		.loc 1 689 0
+ 457 0008 0023     		mov	r3, #0
+ 458 000a FB60     		str	r3, [r7, #12]
+ 690:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 691:.\Generated_Source\PSoC4/ESP_UART.c ****         /* Blocks the control flow until all data has been sent */
+ 692:.\Generated_Source\PSoC4/ESP_UART.c ****         while(string[bufIndex] != ((char8) 0))
+ 459              		.loc 1 692 0
+ 460 000c 09E0     		b	.L29
+ 461              	.L30:
+ 693:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+ 694:.\Generated_Source\PSoC4/ESP_UART.c ****             ESP_UartPutChar((uint32) string[bufIndex]);
+ 462              		.loc 1 694 0
+ 463 000e 7A68     		ldr	r2, [r7, #4]
+ 464 0010 FB68     		ldr	r3, [r7, #12]
+ 465 0012 D318     		add	r3, r2, r3
+ 466 0014 1B78     		ldrb	r3, [r3]
+ 467 0016 181C     		mov	r0, r3
+ 468 0018 FFF7FEFF 		bl	ESP_SpiUartWriteTxData
+ 695:.\Generated_Source\PSoC4/ESP_UART.c ****             bufIndex++;
+ 469              		.loc 1 695 0
+ 470 001c FB68     		ldr	r3, [r7, #12]
+ 471 001e 0133     		add	r3, r3, #1
+ 472 0020 FB60     		str	r3, [r7, #12]
+ 473              	.L29:
+ 692:.\Generated_Source\PSoC4/ESP_UART.c ****         {
+ 474              		.loc 1 692 0
+ 475 0022 7A68     		ldr	r2, [r7, #4]
+ 476 0024 FB68     		ldr	r3, [r7, #12]
+ 477 0026 D318     		add	r3, r2, r3
+ 478 0028 1B78     		ldrb	r3, [r3]
+ 479 002a 002B     		cmp	r3, #0
+ 480 002c EFD1     		bne	.L30
+ 696:.\Generated_Source\PSoC4/ESP_UART.c ****         }
+ 697:.\Generated_Source\PSoC4/ESP_UART.c ****     }
+ 481              		.loc 1 697 0
+ 482 002e BD46     		mov	sp, r7
+ 483 0030 04B0     		add	sp, sp, #16
+ 484              		@ sp needed
+ 485 0032 80BD     		pop	{r7, pc}
+ 486              		.cfi_endproc
+ 487              	.LFE7:
+ 488              		.size	ESP_UartPutString, .-ESP_UartPutString
+ 489              		.section	.text.ESP_UartPutCRLF,"ax",%progbits
+ 490              		.align	2
+ 491              		.global	ESP_UartPutCRLF
+ 492              		.code	16
+ 493              		.thumb_func
+ 494              		.type	ESP_UartPutCRLF, %function
+ 495              	ESP_UartPutCRLF:
+ 496              	.LFB8:
+ 698:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 699:.\Generated_Source\PSoC4/ESP_UART.c **** 
+ 700:.\Generated_Source\PSoC4/ESP_UART.c ****     /*******************************************************************************
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 22
+
+
+ 701:.\Generated_Source\PSoC4/ESP_UART.c ****     * Function Name: ESP_UartPutCRLF
+ 702:.\Generated_Source\PSoC4/ESP_UART.c ****     ********************************************************************************
+ 703:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 704:.\Generated_Source\PSoC4/ESP_UART.c ****     * Summary:
+ 705:.\Generated_Source\PSoC4/ESP_UART.c ****     *  Places a byte of data followed by a carriage return (0x0D) and
+ 706:.\Generated_Source\PSoC4/ESP_UART.c ****     *  line feed (0x0A) into the transmit buffer.
+ 707:.\Generated_Source\PSoC4/ESP_UART.c ****     *  This function is blocking and waits until there is space available to put
+ 708:.\Generated_Source\PSoC4/ESP_UART.c ****     *  all the requested data into the  transmit buffer.
+ 709:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 710:.\Generated_Source\PSoC4/ESP_UART.c ****     * Parameters:
+ 711:.\Generated_Source\PSoC4/ESP_UART.c ****     *  txDataByte : the data to be transmitted.
+ 712:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 713:.\Generated_Source\PSoC4/ESP_UART.c ****     * Return:
+ 714:.\Generated_Source\PSoC4/ESP_UART.c ****     *  None
+ 715:.\Generated_Source\PSoC4/ESP_UART.c ****     *
+ 716:.\Generated_Source\PSoC4/ESP_UART.c ****     *******************************************************************************/
+ 717:.\Generated_Source\PSoC4/ESP_UART.c ****     void ESP_UartPutCRLF(uint32 txDataByte)
+ 718:.\Generated_Source\PSoC4/ESP_UART.c ****     {
+ 497              		.loc 1 718 0
+ 498              		.cfi_startproc
+ 499 0000 80B5     		push	{r7, lr}
+ 500              		.cfi_def_cfa_offset 8
+ 501              		.cfi_offset 7, -8
+ 502              		.cfi_offset 14, -4
+ 503 0002 82B0     		sub	sp, sp, #8
+ 504              		.cfi_def_cfa_offset 16
+ 505 0004 00AF     		add	r7, sp, #0
+ 506              		.cfi_def_cfa_register 7
+ 507 0006 7860     		str	r0, [r7, #4]
+ 719:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UartPutChar(txDataByte);  /* Blocks control flow until all data has been sent */
+ 508              		.loc 1 719 0
+ 509 0008 7B68     		ldr	r3, [r7, #4]
+ 510 000a 181C     		mov	r0, r3
+ 511 000c FFF7FEFF 		bl	ESP_SpiUartWriteTxData
+ 720:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UartPutChar(0x0Du);       /* Blocks control flow until all data has been sent */
+ 512              		.loc 1 720 0
+ 513 0010 0D20     		mov	r0, #13
+ 514 0012 FFF7FEFF 		bl	ESP_SpiUartWriteTxData
+ 721:.\Generated_Source\PSoC4/ESP_UART.c ****         ESP_UartPutChar(0x0Au);       /* Blocks control flow until all data has been sent */
+ 515              		.loc 1 721 0
+ 516 0016 0A20     		mov	r0, #10
+ 517 0018 FFF7FEFF 		bl	ESP_SpiUartWriteTxData
+ 722:.\Generated_Source\PSoC4/ESP_UART.c ****     }
+ 518              		.loc 1 722 0
+ 519 001c BD46     		mov	sp, r7
+ 520 001e 02B0     		add	sp, sp, #8
+ 521              		@ sp needed
+ 522 0020 80BD     		pop	{r7, pc}
+ 523              		.cfi_endproc
+ 524              	.LFE8:
+ 525              		.size	ESP_UartPutCRLF, .-ESP_UartPutCRLF
+ 526 0022 C046     		.text
+ 527              	.Letext0:
+ 528              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 529              		.section	.debug_info,"",%progbits
+ 530              	.Ldebug_info0:
+ 531 0000 1A020000 		.4byte	0x21a
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 23
+
+
+ 532 0004 0400     		.2byte	0x4
+ 533 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 534 000a 04       		.byte	0x4
+ 535 000b 01       		.uleb128 0x1
+ 536 000c C8000000 		.4byte	.LASF33
+ 537 0010 01       		.byte	0x1
+ 538 0011 4E000000 		.4byte	.LASF34
+ 539 0015 56010000 		.4byte	.LASF35
+ 540 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 541 001d 00000000 		.4byte	0
+ 542 0021 00000000 		.4byte	.Ldebug_line0
+ 543 0025 02       		.uleb128 0x2
+ 544 0026 01       		.byte	0x1
+ 545 0027 06       		.byte	0x6
+ 546 0028 60020000 		.4byte	.LASF0
+ 547 002c 02       		.uleb128 0x2
+ 548 002d 01       		.byte	0x1
+ 549 002e 08       		.byte	0x8
+ 550 002f 40000000 		.4byte	.LASF1
+ 551 0033 02       		.uleb128 0x2
+ 552 0034 02       		.byte	0x2
+ 553 0035 05       		.byte	0x5
+ 554 0036 0F020000 		.4byte	.LASF2
+ 555 003a 02       		.uleb128 0x2
+ 556 003b 02       		.byte	0x2
+ 557 003c 07       		.byte	0x7
+ 558 003d 14000000 		.4byte	.LASF3
+ 559 0041 02       		.uleb128 0x2
+ 560 0042 04       		.byte	0x4
+ 561 0043 05       		.byte	0x5
+ 562 0044 44020000 		.4byte	.LASF4
+ 563 0048 02       		.uleb128 0x2
+ 564 0049 04       		.byte	0x4
+ 565 004a 07       		.byte	0x7
+ 566 004b 78000000 		.4byte	.LASF5
+ 567 004f 02       		.uleb128 0x2
+ 568 0050 08       		.byte	0x8
+ 569 0051 05       		.byte	0x5
+ 570 0052 00000000 		.4byte	.LASF6
+ 571 0056 02       		.uleb128 0x2
+ 572 0057 08       		.byte	0x8
+ 573 0058 07       		.byte	0x7
+ 574 0059 AE010000 		.4byte	.LASF7
+ 575 005d 03       		.uleb128 0x3
+ 576 005e 04       		.byte	0x4
+ 577 005f 05       		.byte	0x5
+ 578 0060 696E7400 		.ascii	"int\000"
+ 579 0064 02       		.uleb128 0x2
+ 580 0065 04       		.byte	0x4
+ 581 0066 07       		.byte	0x7
+ 582 0067 99010000 		.4byte	.LASF8
+ 583 006b 04       		.uleb128 0x4
+ 584 006c 8A000000 		.4byte	.LASF9
+ 585 0070 02       		.byte	0x2
+ 586 0071 A1       		.byte	0xa1
+ 587 0072 2C000000 		.4byte	0x2c
+ 588 0076 04       		.uleb128 0x4
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 24
+
+
+ 589 0077 92010000 		.4byte	.LASF10
+ 590 007b 02       		.byte	0x2
+ 591 007c A3       		.byte	0xa3
+ 592 007d 48000000 		.4byte	0x48
+ 593 0081 02       		.uleb128 0x2
+ 594 0082 04       		.byte	0x4
+ 595 0083 04       		.byte	0x4
+ 596 0084 3A000000 		.4byte	.LASF11
+ 597 0088 02       		.uleb128 0x2
+ 598 0089 08       		.byte	0x8
+ 599 008a 04       		.byte	0x4
+ 600 008b C1000000 		.4byte	.LASF12
+ 601 008f 04       		.uleb128 0x4
+ 602 0090 72000000 		.4byte	.LASF13
+ 603 0094 02       		.byte	0x2
+ 604 0095 B2       		.byte	0xb2
+ 605 0096 9A000000 		.4byte	0x9a
+ 606 009a 02       		.uleb128 0x2
+ 607 009b 01       		.byte	0x1
+ 608 009c 08       		.byte	0x8
+ 609 009d 27000000 		.4byte	.LASF14
+ 610 00a1 05       		.uleb128 0x5
+ 611 00a2 0E000000 		.4byte	.LASF15
+ 612 00a6 02       		.byte	0x2
+ 613 00a7 4D01     		.2byte	0x14d
+ 614 00a9 AD000000 		.4byte	0xad
+ 615 00ad 06       		.uleb128 0x6
+ 616 00ae 76000000 		.4byte	0x76
+ 617 00b2 02       		.uleb128 0x2
+ 618 00b3 04       		.byte	0x4
+ 619 00b4 07       		.byte	0x7
+ 620 00b5 EB010000 		.4byte	.LASF16
+ 621 00b9 07       		.uleb128 0x7
+ 622 00ba D5010000 		.4byte	.LASF17
+ 623 00be 01       		.byte	0x1
+ 624 00bf E6       		.byte	0xe6
+ 625 00c0 00000000 		.4byte	.LFB0
+ 626 00c4 C4000000 		.4byte	.LFE0-.LFB0
+ 627 00c8 01       		.uleb128 0x1
+ 628 00c9 9C       		.byte	0x9c
+ 629 00ca 08       		.uleb128 0x8
+ 630 00cb 79020000 		.4byte	.LASF18
+ 631 00cf 01       		.byte	0x1
+ 632 00d0 3001     		.2byte	0x130
+ 633 00d2 00000000 		.4byte	.LFB1
+ 634 00d6 24000000 		.4byte	.LFE1-.LFB1
+ 635 00da 01       		.uleb128 0x1
+ 636 00db 9C       		.byte	0x9c
+ 637 00dc 08       		.uleb128 0x8
+ 638 00dd 6C020000 		.4byte	.LASF19
+ 639 00e1 01       		.byte	0x1
+ 640 00e2 6801     		.2byte	0x168
+ 641 00e4 00000000 		.4byte	.LFB2
+ 642 00e8 1C000000 		.4byte	.LFE2-.LFB2
+ 643 00ec 01       		.uleb128 0x1
+ 644 00ed 9C       		.byte	0x9c
+ 645 00ee 09       		.uleb128 0x9
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 25
+
+
+ 646 00ef 90000000 		.4byte	.LASF20
+ 647 00f3 01       		.byte	0x1
+ 648 00f4 A801     		.2byte	0x1a8
+ 649 00f6 00000000 		.4byte	.LFB3
+ 650 00fa 34000000 		.4byte	.LFE3-.LFB3
+ 651 00fe 01       		.uleb128 0x1
+ 652 00ff 9C       		.byte	0x9c
+ 653 0100 23010000 		.4byte	0x123
+ 654 0104 0A       		.uleb128 0xa
+ 655 0105 A6010000 		.4byte	.LASF22
+ 656 0109 01       		.byte	0x1
+ 657 010a A801     		.2byte	0x1a8
+ 658 010c 76000000 		.4byte	0x76
+ 659 0110 02       		.uleb128 0x2
+ 660 0111 91       		.byte	0x91
+ 661 0112 6C       		.sleb128 -20
+ 662 0113 0B       		.uleb128 0xb
+ 663 0114 57020000 		.4byte	.LASF24
+ 664 0118 01       		.byte	0x1
+ 665 0119 AA01     		.2byte	0x1aa
+ 666 011b 76000000 		.4byte	0x76
+ 667 011f 02       		.uleb128 0x2
+ 668 0120 91       		.byte	0x91
+ 669 0121 74       		.sleb128 -12
+ 670 0122 00       		.byte	0
+ 671 0123 09       		.uleb128 0x9
+ 672 0124 19020000 		.4byte	.LASF21
+ 673 0128 01       		.byte	0x1
+ 674 0129 C501     		.2byte	0x1c5
+ 675 012b 00000000 		.4byte	.LFB4
+ 676 012f 34000000 		.4byte	.LFE4-.LFB4
+ 677 0133 01       		.uleb128 0x1
+ 678 0134 9C       		.byte	0x9c
+ 679 0135 58010000 		.4byte	0x158
+ 680 0139 0A       		.uleb128 0xa
+ 681 013a B5000000 		.4byte	.LASF23
+ 682 013e 01       		.byte	0x1
+ 683 013f C501     		.2byte	0x1c5
+ 684 0141 76000000 		.4byte	0x76
+ 685 0145 02       		.uleb128 0x2
+ 686 0146 91       		.byte	0x91
+ 687 0147 6C       		.sleb128 -20
+ 688 0148 0B       		.uleb128 0xb
+ 689 0149 57020000 		.4byte	.LASF24
+ 690 014d 01       		.byte	0x1
+ 691 014e C701     		.2byte	0x1c7
+ 692 0150 76000000 		.4byte	0x76
+ 693 0154 02       		.uleb128 0x2
+ 694 0155 91       		.byte	0x91
+ 695 0156 74       		.sleb128 -12
+ 696 0157 00       		.byte	0
+ 697 0158 0C       		.uleb128 0xc
+ 698 0159 A5000000 		.4byte	.LASF26
+ 699 015d 01       		.byte	0x1
+ 700 015e F201     		.2byte	0x1f2
+ 701 0160 76000000 		.4byte	0x76
+ 702 0164 00000000 		.4byte	.LFB5
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 26
+
+
+ 703 0168 40000000 		.4byte	.LFE5-.LFB5
+ 704 016c 01       		.uleb128 0x1
+ 705 016d 9C       		.byte	0x9c
+ 706 016e 82010000 		.4byte	0x182
+ 707 0172 0B       		.uleb128 0xb
+ 708 0173 33000000 		.4byte	.LASF25
+ 709 0177 01       		.byte	0x1
+ 710 0178 F401     		.2byte	0x1f4
+ 711 017a 76000000 		.4byte	0x76
+ 712 017e 02       		.uleb128 0x2
+ 713 017f 91       		.byte	0x91
+ 714 0180 74       		.sleb128 -12
+ 715 0181 00       		.byte	0
+ 716 0182 0C       		.uleb128 0xc
+ 717 0183 C5010000 		.4byte	.LASF27
+ 718 0187 01       		.byte	0x1
+ 719 0188 2202     		.2byte	0x222
+ 720 018a 76000000 		.4byte	0x76
+ 721 018e 00000000 		.4byte	.LFB6
+ 722 0192 50000000 		.4byte	.LFE6-.LFB6
+ 723 0196 01       		.uleb128 0x1
+ 724 0197 9C       		.byte	0x9c
+ 725 0198 BB010000 		.4byte	0x1bb
+ 726 019c 0B       		.uleb128 0xb
+ 727 019d 33000000 		.4byte	.LASF25
+ 728 01a1 01       		.byte	0x1
+ 729 01a2 2402     		.2byte	0x224
+ 730 01a4 76000000 		.4byte	0x76
+ 731 01a8 02       		.uleb128 0x2
+ 732 01a9 91       		.byte	0x91
+ 733 01aa 74       		.sleb128 -12
+ 734 01ab 0B       		.uleb128 0xb
+ 735 01ac 4D020000 		.4byte	.LASF28
+ 736 01b0 01       		.byte	0x1
+ 737 01b1 2502     		.2byte	0x225
+ 738 01b3 76000000 		.4byte	0x76
+ 739 01b7 02       		.uleb128 0x2
+ 740 01b8 91       		.byte	0x91
+ 741 01b9 70       		.sleb128 -16
+ 742 01ba 00       		.byte	0
+ 743 01bb 0D       		.uleb128 0xd
+ 744 01bc 32020000 		.4byte	.LASF29
+ 745 01c0 01       		.byte	0x1
+ 746 01c1 AD02     		.2byte	0x2ad
+ 747 01c3 00000000 		.4byte	.LFB7
+ 748 01c7 34000000 		.4byte	.LFE7-.LFB7
+ 749 01cb 01       		.uleb128 0x1
+ 750 01cc 9C       		.byte	0x9c
+ 751 01cd F0010000 		.4byte	0x1f0
+ 752 01d1 0A       		.uleb128 0xa
+ 753 01d2 2C000000 		.4byte	.LASF30
+ 754 01d6 01       		.byte	0x1
+ 755 01d7 AD02     		.2byte	0x2ad
+ 756 01d9 F0010000 		.4byte	0x1f0
+ 757 01dd 02       		.uleb128 0x2
+ 758 01de 91       		.byte	0x91
+ 759 01df 6C       		.sleb128 -20
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 27
+
+
+ 760 01e0 0B       		.uleb128 0xb
+ 761 01e1 E2010000 		.4byte	.LASF31
+ 762 01e5 01       		.byte	0x1
+ 763 01e6 AF02     		.2byte	0x2af
+ 764 01e8 76000000 		.4byte	0x76
+ 765 01ec 02       		.uleb128 0x2
+ 766 01ed 91       		.byte	0x91
+ 767 01ee 74       		.sleb128 -12
+ 768 01ef 00       		.byte	0
+ 769 01f0 0E       		.uleb128 0xe
+ 770 01f1 04       		.byte	0x4
+ 771 01f2 F6010000 		.4byte	0x1f6
+ 772 01f6 0F       		.uleb128 0xf
+ 773 01f7 8F000000 		.4byte	0x8f
+ 774 01fb 10       		.uleb128 0x10
+ 775 01fc FF010000 		.4byte	.LASF36
+ 776 0200 01       		.byte	0x1
+ 777 0201 CD02     		.2byte	0x2cd
+ 778 0203 00000000 		.4byte	.LFB8
+ 779 0207 22000000 		.4byte	.LFE8-.LFB8
+ 780 020b 01       		.uleb128 0x1
+ 781 020c 9C       		.byte	0x9c
+ 782 020d 0A       		.uleb128 0xa
+ 783 020e F4010000 		.4byte	.LASF32
+ 784 0212 01       		.byte	0x1
+ 785 0213 CD02     		.2byte	0x2cd
+ 786 0215 76000000 		.4byte	0x76
+ 787 0219 02       		.uleb128 0x2
+ 788 021a 91       		.byte	0x91
+ 789 021b 74       		.sleb128 -12
+ 790 021c 00       		.byte	0
+ 791 021d 00       		.byte	0
+ 792              		.section	.debug_abbrev,"",%progbits
+ 793              	.Ldebug_abbrev0:
+ 794 0000 01       		.uleb128 0x1
+ 795 0001 11       		.uleb128 0x11
+ 796 0002 01       		.byte	0x1
+ 797 0003 25       		.uleb128 0x25
+ 798 0004 0E       		.uleb128 0xe
+ 799 0005 13       		.uleb128 0x13
+ 800 0006 0B       		.uleb128 0xb
+ 801 0007 03       		.uleb128 0x3
+ 802 0008 0E       		.uleb128 0xe
+ 803 0009 1B       		.uleb128 0x1b
+ 804 000a 0E       		.uleb128 0xe
+ 805 000b 55       		.uleb128 0x55
+ 806 000c 17       		.uleb128 0x17
+ 807 000d 11       		.uleb128 0x11
+ 808 000e 01       		.uleb128 0x1
+ 809 000f 10       		.uleb128 0x10
+ 810 0010 17       		.uleb128 0x17
+ 811 0011 00       		.byte	0
+ 812 0012 00       		.byte	0
+ 813 0013 02       		.uleb128 0x2
+ 814 0014 24       		.uleb128 0x24
+ 815 0015 00       		.byte	0
+ 816 0016 0B       		.uleb128 0xb
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 28
+
+
+ 817 0017 0B       		.uleb128 0xb
+ 818 0018 3E       		.uleb128 0x3e
+ 819 0019 0B       		.uleb128 0xb
+ 820 001a 03       		.uleb128 0x3
+ 821 001b 0E       		.uleb128 0xe
+ 822 001c 00       		.byte	0
+ 823 001d 00       		.byte	0
+ 824 001e 03       		.uleb128 0x3
+ 825 001f 24       		.uleb128 0x24
+ 826 0020 00       		.byte	0
+ 827 0021 0B       		.uleb128 0xb
+ 828 0022 0B       		.uleb128 0xb
+ 829 0023 3E       		.uleb128 0x3e
+ 830 0024 0B       		.uleb128 0xb
+ 831 0025 03       		.uleb128 0x3
+ 832 0026 08       		.uleb128 0x8
+ 833 0027 00       		.byte	0
+ 834 0028 00       		.byte	0
+ 835 0029 04       		.uleb128 0x4
+ 836 002a 16       		.uleb128 0x16
+ 837 002b 00       		.byte	0
+ 838 002c 03       		.uleb128 0x3
+ 839 002d 0E       		.uleb128 0xe
+ 840 002e 3A       		.uleb128 0x3a
+ 841 002f 0B       		.uleb128 0xb
+ 842 0030 3B       		.uleb128 0x3b
+ 843 0031 0B       		.uleb128 0xb
+ 844 0032 49       		.uleb128 0x49
+ 845 0033 13       		.uleb128 0x13
+ 846 0034 00       		.byte	0
+ 847 0035 00       		.byte	0
+ 848 0036 05       		.uleb128 0x5
+ 849 0037 16       		.uleb128 0x16
+ 850 0038 00       		.byte	0
+ 851 0039 03       		.uleb128 0x3
+ 852 003a 0E       		.uleb128 0xe
+ 853 003b 3A       		.uleb128 0x3a
+ 854 003c 0B       		.uleb128 0xb
+ 855 003d 3B       		.uleb128 0x3b
+ 856 003e 05       		.uleb128 0x5
+ 857 003f 49       		.uleb128 0x49
+ 858 0040 13       		.uleb128 0x13
+ 859 0041 00       		.byte	0
+ 860 0042 00       		.byte	0
+ 861 0043 06       		.uleb128 0x6
+ 862 0044 35       		.uleb128 0x35
+ 863 0045 00       		.byte	0
+ 864 0046 49       		.uleb128 0x49
+ 865 0047 13       		.uleb128 0x13
+ 866 0048 00       		.byte	0
+ 867 0049 00       		.byte	0
+ 868 004a 07       		.uleb128 0x7
+ 869 004b 2E       		.uleb128 0x2e
+ 870 004c 00       		.byte	0
+ 871 004d 3F       		.uleb128 0x3f
+ 872 004e 19       		.uleb128 0x19
+ 873 004f 03       		.uleb128 0x3
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 29
+
+
+ 874 0050 0E       		.uleb128 0xe
+ 875 0051 3A       		.uleb128 0x3a
+ 876 0052 0B       		.uleb128 0xb
+ 877 0053 3B       		.uleb128 0x3b
+ 878 0054 0B       		.uleb128 0xb
+ 879 0055 27       		.uleb128 0x27
+ 880 0056 19       		.uleb128 0x19
+ 881 0057 11       		.uleb128 0x11
+ 882 0058 01       		.uleb128 0x1
+ 883 0059 12       		.uleb128 0x12
+ 884 005a 06       		.uleb128 0x6
+ 885 005b 40       		.uleb128 0x40
+ 886 005c 18       		.uleb128 0x18
+ 887 005d 9642     		.uleb128 0x2116
+ 888 005f 19       		.uleb128 0x19
+ 889 0060 00       		.byte	0
+ 890 0061 00       		.byte	0
+ 891 0062 08       		.uleb128 0x8
+ 892 0063 2E       		.uleb128 0x2e
+ 893 0064 00       		.byte	0
+ 894 0065 3F       		.uleb128 0x3f
+ 895 0066 19       		.uleb128 0x19
+ 896 0067 03       		.uleb128 0x3
+ 897 0068 0E       		.uleb128 0xe
+ 898 0069 3A       		.uleb128 0x3a
+ 899 006a 0B       		.uleb128 0xb
+ 900 006b 3B       		.uleb128 0x3b
+ 901 006c 05       		.uleb128 0x5
+ 902 006d 27       		.uleb128 0x27
+ 903 006e 19       		.uleb128 0x19
+ 904 006f 11       		.uleb128 0x11
+ 905 0070 01       		.uleb128 0x1
+ 906 0071 12       		.uleb128 0x12
+ 907 0072 06       		.uleb128 0x6
+ 908 0073 40       		.uleb128 0x40
+ 909 0074 18       		.uleb128 0x18
+ 910 0075 9742     		.uleb128 0x2117
+ 911 0077 19       		.uleb128 0x19
+ 912 0078 00       		.byte	0
+ 913 0079 00       		.byte	0
+ 914 007a 09       		.uleb128 0x9
+ 915 007b 2E       		.uleb128 0x2e
+ 916 007c 01       		.byte	0x1
+ 917 007d 3F       		.uleb128 0x3f
+ 918 007e 19       		.uleb128 0x19
+ 919 007f 03       		.uleb128 0x3
+ 920 0080 0E       		.uleb128 0xe
+ 921 0081 3A       		.uleb128 0x3a
+ 922 0082 0B       		.uleb128 0xb
+ 923 0083 3B       		.uleb128 0x3b
+ 924 0084 05       		.uleb128 0x5
+ 925 0085 27       		.uleb128 0x27
+ 926 0086 19       		.uleb128 0x19
+ 927 0087 11       		.uleb128 0x11
+ 928 0088 01       		.uleb128 0x1
+ 929 0089 12       		.uleb128 0x12
+ 930 008a 06       		.uleb128 0x6
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 30
+
+
+ 931 008b 40       		.uleb128 0x40
+ 932 008c 18       		.uleb128 0x18
+ 933 008d 9742     		.uleb128 0x2117
+ 934 008f 19       		.uleb128 0x19
+ 935 0090 01       		.uleb128 0x1
+ 936 0091 13       		.uleb128 0x13
+ 937 0092 00       		.byte	0
+ 938 0093 00       		.byte	0
+ 939 0094 0A       		.uleb128 0xa
+ 940 0095 05       		.uleb128 0x5
+ 941 0096 00       		.byte	0
+ 942 0097 03       		.uleb128 0x3
+ 943 0098 0E       		.uleb128 0xe
+ 944 0099 3A       		.uleb128 0x3a
+ 945 009a 0B       		.uleb128 0xb
+ 946 009b 3B       		.uleb128 0x3b
+ 947 009c 05       		.uleb128 0x5
+ 948 009d 49       		.uleb128 0x49
+ 949 009e 13       		.uleb128 0x13
+ 950 009f 02       		.uleb128 0x2
+ 951 00a0 18       		.uleb128 0x18
+ 952 00a1 00       		.byte	0
+ 953 00a2 00       		.byte	0
+ 954 00a3 0B       		.uleb128 0xb
+ 955 00a4 34       		.uleb128 0x34
+ 956 00a5 00       		.byte	0
+ 957 00a6 03       		.uleb128 0x3
+ 958 00a7 0E       		.uleb128 0xe
+ 959 00a8 3A       		.uleb128 0x3a
+ 960 00a9 0B       		.uleb128 0xb
+ 961 00aa 3B       		.uleb128 0x3b
+ 962 00ab 05       		.uleb128 0x5
+ 963 00ac 49       		.uleb128 0x49
+ 964 00ad 13       		.uleb128 0x13
+ 965 00ae 02       		.uleb128 0x2
+ 966 00af 18       		.uleb128 0x18
+ 967 00b0 00       		.byte	0
+ 968 00b1 00       		.byte	0
+ 969 00b2 0C       		.uleb128 0xc
+ 970 00b3 2E       		.uleb128 0x2e
+ 971 00b4 01       		.byte	0x1
+ 972 00b5 3F       		.uleb128 0x3f
+ 973 00b6 19       		.uleb128 0x19
+ 974 00b7 03       		.uleb128 0x3
+ 975 00b8 0E       		.uleb128 0xe
+ 976 00b9 3A       		.uleb128 0x3a
+ 977 00ba 0B       		.uleb128 0xb
+ 978 00bb 3B       		.uleb128 0x3b
+ 979 00bc 05       		.uleb128 0x5
+ 980 00bd 27       		.uleb128 0x27
+ 981 00be 19       		.uleb128 0x19
+ 982 00bf 49       		.uleb128 0x49
+ 983 00c0 13       		.uleb128 0x13
+ 984 00c1 11       		.uleb128 0x11
+ 985 00c2 01       		.uleb128 0x1
+ 986 00c3 12       		.uleb128 0x12
+ 987 00c4 06       		.uleb128 0x6
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 31
+
+
+ 988 00c5 40       		.uleb128 0x40
+ 989 00c6 18       		.uleb128 0x18
+ 990 00c7 9642     		.uleb128 0x2116
+ 991 00c9 19       		.uleb128 0x19
+ 992 00ca 01       		.uleb128 0x1
+ 993 00cb 13       		.uleb128 0x13
+ 994 00cc 00       		.byte	0
+ 995 00cd 00       		.byte	0
+ 996 00ce 0D       		.uleb128 0xd
+ 997 00cf 2E       		.uleb128 0x2e
+ 998 00d0 01       		.byte	0x1
+ 999 00d1 3F       		.uleb128 0x3f
+ 1000 00d2 19       		.uleb128 0x19
+ 1001 00d3 03       		.uleb128 0x3
+ 1002 00d4 0E       		.uleb128 0xe
+ 1003 00d5 3A       		.uleb128 0x3a
+ 1004 00d6 0B       		.uleb128 0xb
+ 1005 00d7 3B       		.uleb128 0x3b
+ 1006 00d8 05       		.uleb128 0x5
+ 1007 00d9 27       		.uleb128 0x27
+ 1008 00da 19       		.uleb128 0x19
+ 1009 00db 11       		.uleb128 0x11
+ 1010 00dc 01       		.uleb128 0x1
+ 1011 00dd 12       		.uleb128 0x12
+ 1012 00de 06       		.uleb128 0x6
+ 1013 00df 40       		.uleb128 0x40
+ 1014 00e0 18       		.uleb128 0x18
+ 1015 00e1 9642     		.uleb128 0x2116
+ 1016 00e3 19       		.uleb128 0x19
+ 1017 00e4 01       		.uleb128 0x1
+ 1018 00e5 13       		.uleb128 0x13
+ 1019 00e6 00       		.byte	0
+ 1020 00e7 00       		.byte	0
+ 1021 00e8 0E       		.uleb128 0xe
+ 1022 00e9 0F       		.uleb128 0xf
+ 1023 00ea 00       		.byte	0
+ 1024 00eb 0B       		.uleb128 0xb
+ 1025 00ec 0B       		.uleb128 0xb
+ 1026 00ed 49       		.uleb128 0x49
+ 1027 00ee 13       		.uleb128 0x13
+ 1028 00ef 00       		.byte	0
+ 1029 00f0 00       		.byte	0
+ 1030 00f1 0F       		.uleb128 0xf
+ 1031 00f2 26       		.uleb128 0x26
+ 1032 00f3 00       		.byte	0
+ 1033 00f4 49       		.uleb128 0x49
+ 1034 00f5 13       		.uleb128 0x13
+ 1035 00f6 00       		.byte	0
+ 1036 00f7 00       		.byte	0
+ 1037 00f8 10       		.uleb128 0x10
+ 1038 00f9 2E       		.uleb128 0x2e
+ 1039 00fa 01       		.byte	0x1
+ 1040 00fb 3F       		.uleb128 0x3f
+ 1041 00fc 19       		.uleb128 0x19
+ 1042 00fd 03       		.uleb128 0x3
+ 1043 00fe 0E       		.uleb128 0xe
+ 1044 00ff 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 32
+
+
+ 1045 0100 0B       		.uleb128 0xb
+ 1046 0101 3B       		.uleb128 0x3b
+ 1047 0102 05       		.uleb128 0x5
+ 1048 0103 27       		.uleb128 0x27
+ 1049 0104 19       		.uleb128 0x19
+ 1050 0105 11       		.uleb128 0x11
+ 1051 0106 01       		.uleb128 0x1
+ 1052 0107 12       		.uleb128 0x12
+ 1053 0108 06       		.uleb128 0x6
+ 1054 0109 40       		.uleb128 0x40
+ 1055 010a 18       		.uleb128 0x18
+ 1056 010b 9642     		.uleb128 0x2116
+ 1057 010d 19       		.uleb128 0x19
+ 1058 010e 00       		.byte	0
+ 1059 010f 00       		.byte	0
+ 1060 0110 00       		.byte	0
+ 1061              		.section	.debug_aranges,"",%progbits
+ 1062 0000 5C000000 		.4byte	0x5c
+ 1063 0004 0200     		.2byte	0x2
+ 1064 0006 00000000 		.4byte	.Ldebug_info0
+ 1065 000a 04       		.byte	0x4
+ 1066 000b 00       		.byte	0
+ 1067 000c 0000     		.2byte	0
+ 1068 000e 0000     		.2byte	0
+ 1069 0010 00000000 		.4byte	.LFB0
+ 1070 0014 C4000000 		.4byte	.LFE0-.LFB0
+ 1071 0018 00000000 		.4byte	.LFB1
+ 1072 001c 24000000 		.4byte	.LFE1-.LFB1
+ 1073 0020 00000000 		.4byte	.LFB2
+ 1074 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 1075 0028 00000000 		.4byte	.LFB3
+ 1076 002c 34000000 		.4byte	.LFE3-.LFB3
+ 1077 0030 00000000 		.4byte	.LFB4
+ 1078 0034 34000000 		.4byte	.LFE4-.LFB4
+ 1079 0038 00000000 		.4byte	.LFB5
+ 1080 003c 40000000 		.4byte	.LFE5-.LFB5
+ 1081 0040 00000000 		.4byte	.LFB6
+ 1082 0044 50000000 		.4byte	.LFE6-.LFB6
+ 1083 0048 00000000 		.4byte	.LFB7
+ 1084 004c 34000000 		.4byte	.LFE7-.LFB7
+ 1085 0050 00000000 		.4byte	.LFB8
+ 1086 0054 22000000 		.4byte	.LFE8-.LFB8
+ 1087 0058 00000000 		.4byte	0
+ 1088 005c 00000000 		.4byte	0
+ 1089              		.section	.debug_ranges,"",%progbits
+ 1090              	.Ldebug_ranges0:
+ 1091 0000 00000000 		.4byte	.LFB0
+ 1092 0004 C4000000 		.4byte	.LFE0
+ 1093 0008 00000000 		.4byte	.LFB1
+ 1094 000c 24000000 		.4byte	.LFE1
+ 1095 0010 00000000 		.4byte	.LFB2
+ 1096 0014 1C000000 		.4byte	.LFE2
+ 1097 0018 00000000 		.4byte	.LFB3
+ 1098 001c 34000000 		.4byte	.LFE3
+ 1099 0020 00000000 		.4byte	.LFB4
+ 1100 0024 34000000 		.4byte	.LFE4
+ 1101 0028 00000000 		.4byte	.LFB5
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 33
+
+
+ 1102 002c 40000000 		.4byte	.LFE5
+ 1103 0030 00000000 		.4byte	.LFB6
+ 1104 0034 50000000 		.4byte	.LFE6
+ 1105 0038 00000000 		.4byte	.LFB7
+ 1106 003c 34000000 		.4byte	.LFE7
+ 1107 0040 00000000 		.4byte	.LFB8
+ 1108 0044 22000000 		.4byte	.LFE8
+ 1109 0048 00000000 		.4byte	0
+ 1110 004c 00000000 		.4byte	0
+ 1111              		.section	.debug_line,"",%progbits
+ 1112              	.Ldebug_line0:
+ 1113 0000 41010000 		.section	.debug_str,"MS",%progbits,1
+ 1113      02005E00 
+ 1113      00000201 
+ 1113      FB0E0D00 
+ 1113      01010101 
+ 1114              	.LASF6:
+ 1115 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1115      206C6F6E 
+ 1115      6720696E 
+ 1115      7400
+ 1116              	.LASF15:
+ 1117 000e 72656733 		.ascii	"reg32\000"
+ 1117      3200
+ 1118              	.LASF3:
+ 1119 0014 73686F72 		.ascii	"short unsigned int\000"
+ 1119      7420756E 
+ 1119      7369676E 
+ 1119      65642069 
+ 1119      6E7400
+ 1120              	.LASF14:
+ 1121 0027 63686172 		.ascii	"char\000"
+ 1121      00
+ 1122              	.LASF30:
+ 1123 002c 73747269 		.ascii	"string\000"
+ 1123      6E6700
+ 1124              	.LASF25:
+ 1125 0033 72784461 		.ascii	"rxData\000"
+ 1125      746100
+ 1126              	.LASF11:
+ 1127 003a 666C6F61 		.ascii	"float\000"
+ 1127      7400
+ 1128              	.LASF1:
+ 1129 0040 756E7369 		.ascii	"unsigned char\000"
+ 1129      676E6564 
+ 1129      20636861 
+ 1129      7200
+ 1130              	.LASF34:
+ 1131 004e 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\ESP_UART.c\000"
+ 1131      6E657261 
+ 1131      7465645F 
+ 1131      536F7572 
+ 1131      63655C50 
+ 1132              	.LASF13:
+ 1133 0072 63686172 		.ascii	"char8\000"
+ 1133      3800
+ 1134              	.LASF5:
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 34
+
+
+ 1135 0078 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1135      20756E73 
+ 1135      69676E65 
+ 1135      6420696E 
+ 1135      7400
+ 1136              	.LASF9:
+ 1137 008a 75696E74 		.ascii	"uint8\000"
+ 1137      3800
+ 1138              	.LASF20:
+ 1139 0090 4553505F 		.ascii	"ESP_UartSetRxAddress\000"
+ 1139      55617274 
+ 1139      53657452 
+ 1139      78416464 
+ 1139      72657373 
+ 1140              	.LASF26:
+ 1141 00a5 4553505F 		.ascii	"ESP_UartGetChar\000"
+ 1141      55617274 
+ 1141      47657443 
+ 1141      68617200 
+ 1142              	.LASF23:
+ 1143 00b5 61646472 		.ascii	"addressMask\000"
+ 1143      6573734D 
+ 1143      61736B00 
+ 1144              	.LASF12:
+ 1145 00c1 646F7562 		.ascii	"double\000"
+ 1145      6C6500
+ 1146              	.LASF33:
+ 1147 00c8 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1147      4320342E 
+ 1147      392E3320 
+ 1147      32303135 
+ 1147      30333033 
+ 1148 00fb 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1148      20726576 
+ 1148      6973696F 
+ 1148      6E203232 
+ 1148      31323230 
+ 1149 012e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1149      66756E63 
+ 1149      74696F6E 
+ 1149      2D736563 
+ 1149      74696F6E 
+ 1150              	.LASF35:
+ 1151 0156 433A5C55 		.ascii	"C:\\Users\\vangelis\\Striplights\\Striplight_bootlo"
+ 1151      73657273 
+ 1151      5C76616E 
+ 1151      67656C69 
+ 1151      735C5374 
+ 1152 0185 61646162 		.ascii	"adable.cydsn\000"
+ 1152      6C652E63 
+ 1152      7964736E 
+ 1152      00
+ 1153              	.LASF10:
+ 1154 0192 75696E74 		.ascii	"uint32\000"
+ 1154      333200
+ 1155              	.LASF8:
+ 1156 0199 756E7369 		.ascii	"unsigned int\000"
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 35
+
+
+ 1156      676E6564 
+ 1156      20696E74 
+ 1156      00
+ 1157              	.LASF22:
+ 1158 01a6 61646472 		.ascii	"address\000"
+ 1158      65737300 
+ 1159              	.LASF7:
+ 1160 01ae 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1160      206C6F6E 
+ 1160      6720756E 
+ 1160      7369676E 
+ 1160      65642069 
+ 1161              	.LASF27:
+ 1162 01c5 4553505F 		.ascii	"ESP_UartGetByte\000"
+ 1162      55617274 
+ 1162      47657442 
+ 1162      79746500 
+ 1163              	.LASF17:
+ 1164 01d5 4553505F 		.ascii	"ESP_UartInit\000"
+ 1164      55617274 
+ 1164      496E6974 
+ 1164      00
+ 1165              	.LASF31:
+ 1166 01e2 62756649 		.ascii	"bufIndex\000"
+ 1166      6E646578 
+ 1166      00
+ 1167              	.LASF16:
+ 1168 01eb 73697A65 		.ascii	"sizetype\000"
+ 1168      74797065 
+ 1168      00
+ 1169              	.LASF32:
+ 1170 01f4 74784461 		.ascii	"txDataByte\000"
+ 1170      74614279 
+ 1170      746500
+ 1171              	.LASF36:
+ 1172 01ff 4553505F 		.ascii	"ESP_UartPutCRLF\000"
+ 1172      55617274 
+ 1172      50757443 
+ 1172      524C4600 
+ 1173              	.LASF2:
+ 1174 020f 73686F72 		.ascii	"short int\000"
+ 1174      7420696E 
+ 1174      7400
+ 1175              	.LASF21:
+ 1176 0219 4553505F 		.ascii	"ESP_UartSetRxAddressMask\000"
+ 1176      55617274 
+ 1176      53657452 
+ 1176      78416464 
+ 1176      72657373 
+ 1177              	.LASF29:
+ 1178 0232 4553505F 		.ascii	"ESP_UartPutString\000"
+ 1178      55617274 
+ 1178      50757453 
+ 1178      7472696E 
+ 1178      6700
+ 1179              	.LASF4:
+ 1180 0244 6C6F6E67 		.ascii	"long int\000"
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\cceKM5yS.s 			page 36
+
+
+ 1180      20696E74 
+ 1180      00
+ 1181              	.LASF28:
+ 1182 024d 746D7053 		.ascii	"tmpStatus\000"
+ 1182      74617475 
+ 1182      7300
+ 1183              	.LASF24:
+ 1184 0257 6D617463 		.ascii	"matchReg\000"
+ 1184      68526567 
+ 1184      00
+ 1185              	.LASF0:
+ 1186 0260 7369676E 		.ascii	"signed char\000"
+ 1186      65642063 
+ 1186      68617200 
+ 1187              	.LASF19:
+ 1188 026c 4553505F 		.ascii	"ESP_UartStop\000"
+ 1188      55617274 
+ 1188      53746F70 
+ 1188      00
+ 1189              	.LASF18:
+ 1190 0279 4553505F 		.ascii	"ESP_UartPostEnable\000"
+ 1190      55617274 
+ 1190      506F7374 
+ 1190      456E6162 
+ 1190      6C6500
+ 1191              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
