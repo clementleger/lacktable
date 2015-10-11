@@ -1,0 +1,1 @@
+'D:\lacktable\Striplights\UART_Bootloader.cydsn\main.c' 'D:\lacktable\Striplights\UART_Bootloader.cydsn\UART_Btldr.c' -o .o -T C_FILE -I 'D:\lacktable\Striplights\UART_Bootloader.cydsn' -I 'D:\lacktable\Striplights\UART_Bootloader.cydsn\Generated_Source\PSoC4' -f 'D:\lacktable\Striplights\UART_Bootloader.cydsn\CortexM0\ARM_GCC_493\Debug\.deps\C_FILE.d'

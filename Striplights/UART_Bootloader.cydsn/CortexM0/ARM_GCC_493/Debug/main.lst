@@ -1,0 +1,789 @@
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.startup.main,"ax",%progbits
+  18              		.align	1
+  19              		.global	main
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	main, %function
+  23              	main:
+  24              	.LFB33:
+  25              		.file 1 ".\\main.c"
+   1:.\main.c      **** ﻿/******************************************************************************
+   2:.\main.c      **** * Project Name		: UART_Bootloader
+   3:.\main.c      **** * File Name			: main.c
+   4:.\main.c      **** * Version 			: 1.0
+   5:.\main.c      **** * Device Used		: CY8C4245AXI-483
+   6:.\main.c      **** * Software Used		: PSoC Creator 3.1
+   7:.\main.c      **** * Compiler    		: ARMGCC 4.8.4, ARM RVDS Generic, ARM MDK Generic
+   8:.\main.c      **** * Related Hardware	: CY8CKIT-049-42xx PSoC 4 Prototyping Kit 
+   9:.\main.c      **** *
+  10:.\main.c      **** ********************************************************************************
+  11:.\main.c      **** * Copyright (2015), Cypress Semiconductor Corporation. All Rights Reserved.
+  12:.\main.c      **** ********************************************************************************
+  13:.\main.c      **** * This software is owned by Cypress Semiconductor Corporation (Cypress)
+  14:.\main.c      **** * and is protected by and subject to worldwide patent protection (United
+  15:.\main.c      **** * States and foreign), United States copyright laws and international treaty
+  16:.\main.c      **** * provisions. Cypress hereby grants to licensee a personal, non-exclusive,
+  17:.\main.c      **** * non-transferable license to copy, use, modify, create derivative works of,
+  18:.\main.c      **** * and compile the Cypress Source Code and derivative works for the sole
+  19:.\main.c      **** * purpose of creating custom software in support of licensee product to be
+  20:.\main.c      **** * used only in conjunction with a Cypress integrated circuit as specified in
+  21:.\main.c      **** * the applicable agreement. Any reproduction, modification, translation,
+  22:.\main.c      **** * compilation, or representation of this software except as specified above 
+  23:.\main.c      **** * is prohibited without the express written permission of Cypress.
+  24:.\main.c      **** *
+  25:.\main.c      **** * Disclaimer: CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH 
+  26:.\main.c      **** * REGARD TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  27:.\main.c      **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  28:.\main.c      **** * Cypress reserves the right to make changes without further notice to the 
+  29:.\main.c      **** * materials described herein. Cypress does not assume any liability arising out 
+  30:.\main.c      **** * of the application or use of any product or circuit described herein. Cypress 
+  31:.\main.c      **** * does not authorize its products for use as critical components in life-support 
+  32:.\main.c      **** * systems where a malfunction or failure may reasonably be expected to result in 
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 2
+
+
+  33:.\main.c      **** * significant injury to the user. The inclusion of Cypress' product in a life-
+  34:.\main.c      **** * support systems application implies that the manufacturer assumes all risk of 
+  35:.\main.c      **** * such use and in doing so indemnifies Cypress against all charges. 
+  36:.\main.c      **** *
+  37:.\main.c      **** * Use of this Software may be limited by and subject to the applicable Cypress
+  38:.\main.c      **** * software license agreement. 
+  39:.\main.c      **** *******************************************************************************/
+  40:.\main.c      **** 
+  41:.\main.c      **** /*********************************************************************************
+  42:.\main.c      **** *                           THEORY OF OPERATION
+  43:.\main.c      **** * The Bootlader uses UART interface to bootload a new project. The Switch on the 
+  44:.\main.c      **** * board needs to be pressed during power up to enter into the bootlader. The LED 
+  45:.\main.c      **** * on the board blinks every 500ms to indicate that the bootloader is active and 
+  46:.\main.c      **** * is ready for a bootload operation.
+  47:.\main.c      **** * Default UART Port Configuration for bootloading the PSoC 4 in CY8CKIT-049-42xx
+  48:.\main.c      **** * Baud Rate : 115200 bps
+  49:.\main.c      **** * Data Bits : 8
+  50:.\main.c      **** * Stop Bits : 1
+  51:.\main.c      **** * Parity    : None
+  52:.\main.c      **** * 
+  53:.\main.c      **** * Note: Debugging is disabled in the System DWR Editor. To enable debugging, change
+  54:.\main.c      **** *       the Debug Select to SWD in the System tab of the UART_Bootloader.cydwr file 
+  55:.\main.c      **** ***********************************************************************************/
+  56:.\main.c      **** 
+  57:.\main.c      **** #include <project.h>
+  58:.\main.c      **** 
+  59:.\main.c      **** /* Define the Bootload Switch timeout in ms */
+  60:.\main.c      **** #define SWITCH_PRESS_TIMEOUT 100
+  61:.\main.c      **** 
+  62:.\main.c      **** int main()
+  63:.\main.c      **** {
+  26              		.loc 1 63 0
+  27              		.cfi_startproc
+  28              	.LVL0:
+  29 0000 10B5     		push	{r4, lr}
+  30              		.cfi_def_cfa_offset 8
+  31              		.cfi_offset 4, -8
+  32              		.cfi_offset 14, -4
+  64:.\main.c      ****     
+  65:.\main.c      **** 	uint8 counter = 0;	
+  66:.\main.c      **** 	
+  67:.\main.c      **** 	/* Enable global interrupts*/
+  68:.\main.c      **** 	CyGlobalIntEnable;
+  33              		.loc 1 68 0
+  34              	@ 68 ".\main.c" 1
+  35 0002 62B6     		CPSIE   i
+  36              	@ 0 "" 2
+  69:.\main.c      **** 	
+  70:.\main.c      **** 	/* Check if the switch is pressed during power up */ 
+  71:.\main.c      **** 	if(Boot_P0_7_Read() == 0)
+  37              		.loc 1 71 0
+  38              		.code	16
+  39 0004 FFF7FEFF 		bl	Boot_P0_7_Read
+  40              	.LVL1:
+  41 0008 0028     		cmp	r0, #0
+  42 000a 0ED1     		bne	.L6
+  43 000c 6524     		mov	r4, #101
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 3
+
+
+  44              	.LVL2:
+  45              	.L3:
+  72:.\main.c      **** 	{
+  73:.\main.c      **** 		
+  74:.\main.c      **** 		for(counter = 0; counter <= SWITCH_PRESS_TIMEOUT; counter++)
+  75:.\main.c      **** 		{
+  76:.\main.c      **** 			/* Delay for 1ms */
+  77:.\main.c      **** 			CyDelay(1);
+  46              		.loc 1 77 0
+  47 000e 0120     		mov	r0, #1
+  48 0010 FFF7FEFF 		bl	CyDelay
+  49              	.LVL3:
+  78:.\main.c      **** 				
+  79:.\main.c      **** 			/* If the switch is released before specified time, do not enter the 
+  80:.\main.c      **** 			 * bootloader */
+  81:.\main.c      **** 			if(Boot_P0_7_Read() != 0)
+  50              		.loc 1 81 0
+  51 0014 FFF7FEFF 		bl	Boot_P0_7_Read
+  52              	.LVL4:
+  53 0018 0028     		cmp	r0, #0
+  54 001a 06D1     		bne	.L6
+  55              	.LVL5:
+  56 001c 013C     		sub	r4, r4, #1
+  57              	.LVL6:
+  58 001e E4B2     		uxtb	r4, r4
+  74:.\main.c      **** 		{
+  59              		.loc 1 74 0 discriminator 2
+  60 0020 002C     		cmp	r4, #0
+  61 0022 F4D1     		bne	.L3
+  82:.\main.c      **** 				break;
+  83:.\main.c      **** 		}
+  84:.\main.c      **** 						 
+  85:.\main.c      **** 		if(counter > SWITCH_PRESS_TIMEOUT)
+  86:.\main.c      **** 		{
+  87:.\main.c      **** 			/* If the switch was pressed for more than 100 millisecond counter 
+  88:.\main.c      **** 			 * value will be 100. If so, set the flash run type as bootloader to 
+  89:.\main.c      **** 			 * wait for a bootload operation */
+  90:.\main.c      **** 			Bootloader_SET_RUN_TYPE (Bootloader_START_BTLDR);
+  62              		.loc 1 90 0
+  63 0024 4022     		mov	r2, #64
+  64 0026 034B     		ldr	r3, .L9
+  65 0028 1A60     		str	r2, [r3]
+  66              	.L6:
+  91:.\main.c      **** 		}
+  92:.\main.c      **** 	}
+  93:.\main.c      **** 		
+  94:.\main.c      **** 	/*Indicate that you have entered the bootloader mode.*/
+  95:.\main.c      **** 	PWM_Start();
+  67              		.loc 1 95 0
+  68 002a FFF7FEFF 		bl	PWM_Start
+  69              	.LVL7:
+  96:.\main.c      **** 	
+  97:.\main.c      **** 	/* Start the Bootloader */
+  98:.\main.c      **** 	Bootloader_Start();
+  70              		.loc 1 98 0
+  71 002e FFF7FEFF 		bl	Bootloader_Start
+  72              	.LVL8:
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 4
+
+
+  73              	.L5:
+  99:.\main.c      **** 	/* The “Bootloader_Start()” API will either wait for a bootload operation or 
+ 100:.\main.c      **** 	 * will launch the application depending on whether or not the API
+ 101:.\main.c      **** 	 * "Bootloader_SET_RUN_TYPE(Bootloader_START_BTLDR)" was called because of the 
+ 102:.\main.c      **** 	 * switch being pressed during power up */
+ 103:.\main.c      **** 			
+ 104:.\main.c      ****     for(;;)
+ 105:.\main.c      ****     {
+ 106:.\main.c      ****         
+ 107:.\main.c      ****     }
+  74              		.loc 1 107 0 discriminator 1
+  75 0032 FEE7     		b	.L5
+  76              	.L10:
+  77              		.align	2
+  78              	.L9:
+  79 0034 00000000 		.word	cyBtldrRunType
+  80              		.cfi_endproc
+  81              	.LFE33:
+  82              		.size	main, .-main
+  83              		.text
+  84              	.Letext0:
+  85              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+  86              		.file 3 "Generated_Source\\PSoC4/PWM.h"
+  87              		.file 4 "Generated_Source\\PSoC4/Bootloader.h"
+  88              		.file 5 "Generated_Source\\PSoC4/Boot_P0_7.h"
+  89              		.file 6 "Generated_Source\\PSoC4/CyLib.h"
+  90              		.section	.debug_info,"",%progbits
+  91              	.Ldebug_info0:
+  92 0000 35010000 		.4byte	0x135
+  93 0004 0400     		.2byte	0x4
+  94 0006 00000000 		.4byte	.Ldebug_abbrev0
+  95 000a 04       		.byte	0x4
+  96 000b 01       		.uleb128 0x1
+  97 000c 44000000 		.4byte	.LASF17
+  98 0010 01       		.byte	0x1
+  99 0011 AE010000 		.4byte	.LASF18
+ 100 0015 52010000 		.4byte	.LASF19
+ 101 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 102 001d 00000000 		.4byte	0
+ 103 0021 00000000 		.4byte	.Ldebug_line0
+ 104 0025 02       		.uleb128 0x2
+ 105 0026 01       		.byte	0x1
+ 106 0027 06       		.byte	0x6
+ 107 0028 98010000 		.4byte	.LASF0
+ 108 002c 02       		.uleb128 0x2
+ 109 002d 01       		.byte	0x1
+ 110 002e 08       		.byte	0x8
+ 111 002f 1E010000 		.4byte	.LASF1
+ 112 0033 02       		.uleb128 0x2
+ 113 0034 02       		.byte	0x2
+ 114 0035 05       		.byte	0x5
+ 115 0036 E4000000 		.4byte	.LASF2
+ 116 003a 02       		.uleb128 0x2
+ 117 003b 02       		.byte	0x2
+ 118 003c 07       		.byte	0x7
+ 119 003d 05010000 		.4byte	.LASF3
+ 120 0041 02       		.uleb128 0x2
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 5
+
+
+ 121 0042 04       		.byte	0x4
+ 122 0043 05       		.byte	0x5
+ 123 0044 31010000 		.4byte	.LASF4
+ 124 0048 02       		.uleb128 0x2
+ 125 0049 04       		.byte	0x4
+ 126 004a 07       		.byte	0x7
+ 127 004b D2000000 		.4byte	.LASF5
+ 128 004f 02       		.uleb128 0x2
+ 129 0050 08       		.byte	0x8
+ 130 0051 05       		.byte	0x5
+ 131 0052 00000000 		.4byte	.LASF6
+ 132 0056 02       		.uleb128 0x2
+ 133 0057 08       		.byte	0x8
+ 134 0058 07       		.byte	0x7
+ 135 0059 EE000000 		.4byte	.LASF7
+ 136 005d 03       		.uleb128 0x3
+ 137 005e 04       		.byte	0x4
+ 138 005f 05       		.byte	0x5
+ 139 0060 696E7400 		.ascii	"int\000"
+ 140 0064 02       		.uleb128 0x2
+ 141 0065 04       		.byte	0x4
+ 142 0066 07       		.byte	0x7
+ 143 0067 15000000 		.4byte	.LASF8
+ 144 006b 04       		.uleb128 0x4
+ 145 006c 36000000 		.4byte	.LASF9
+ 146 0070 02       		.byte	0x2
+ 147 0071 A1       		.byte	0xa1
+ 148 0072 2C000000 		.4byte	0x2c
+ 149 0076 04       		.uleb128 0x4
+ 150 0077 0E000000 		.4byte	.LASF10
+ 151 007b 02       		.byte	0x2
+ 152 007c A3       		.byte	0xa3
+ 153 007d 48000000 		.4byte	0x48
+ 154 0081 02       		.uleb128 0x2
+ 155 0082 04       		.byte	0x4
+ 156 0083 04       		.byte	0x4
+ 157 0084 18010000 		.4byte	.LASF11
+ 158 0088 02       		.uleb128 0x2
+ 159 0089 08       		.byte	0x8
+ 160 008a 04       		.byte	0x4
+ 161 008b 3A010000 		.4byte	.LASF12
+ 162 008f 02       		.uleb128 0x2
+ 163 0090 01       		.byte	0x1
+ 164 0091 08       		.byte	0x8
+ 165 0092 2C010000 		.4byte	.LASF13
+ 166 0096 05       		.uleb128 0x5
+ 167 0097 76000000 		.4byte	0x76
+ 168 009b 02       		.uleb128 0x2
+ 169 009c 04       		.byte	0x4
+ 170 009d 07       		.byte	0x7
+ 171 009e B7010000 		.4byte	.LASF14
+ 172 00a2 06       		.uleb128 0x6
+ 173 00a3 31000000 		.4byte	.LASF20
+ 174 00a7 01       		.byte	0x1
+ 175 00a8 3E       		.byte	0x3e
+ 176 00a9 5D000000 		.4byte	0x5d
+ 177 00ad 00000000 		.4byte	.LFB33
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 6
+
+
+ 178 00b1 38000000 		.4byte	.LFE33-.LFB33
+ 179 00b5 01       		.uleb128 0x1
+ 180 00b6 9C       		.byte	0x9c
+ 181 00b7 02010000 		.4byte	0x102
+ 182 00bb 07       		.uleb128 0x7
+ 183 00bc 81010000 		.4byte	.LASF21
+ 184 00c0 01       		.byte	0x1
+ 185 00c1 41       		.byte	0x41
+ 186 00c2 6B000000 		.4byte	0x6b
+ 187 00c6 00000000 		.4byte	.LLST0
+ 188 00ca 08       		.uleb128 0x8
+ 189 00cb 08000000 		.4byte	.LVL1
+ 190 00cf 0D010000 		.4byte	0x10d
+ 191 00d3 09       		.uleb128 0x9
+ 192 00d4 14000000 		.4byte	.LVL3
+ 193 00d8 18010000 		.4byte	0x118
+ 194 00dc E6000000 		.4byte	0xe6
+ 195 00e0 0A       		.uleb128 0xa
+ 196 00e1 01       		.uleb128 0x1
+ 197 00e2 50       		.byte	0x50
+ 198 00e3 01       		.uleb128 0x1
+ 199 00e4 31       		.byte	0x31
+ 200 00e5 00       		.byte	0
+ 201 00e6 08       		.uleb128 0x8
+ 202 00e7 18000000 		.4byte	.LVL4
+ 203 00eb 0D010000 		.4byte	0x10d
+ 204 00ef 08       		.uleb128 0x8
+ 205 00f0 2E000000 		.4byte	.LVL7
+ 206 00f4 29010000 		.4byte	0x129
+ 207 00f8 08       		.uleb128 0x8
+ 208 00f9 32000000 		.4byte	.LVL8
+ 209 00fd 31010000 		.4byte	0x131
+ 210 0101 00       		.byte	0
+ 211 0102 0B       		.uleb128 0xb
+ 212 0103 89010000 		.4byte	.LASF22
+ 213 0107 04       		.byte	0x4
+ 214 0108 58       		.byte	0x58
+ 215 0109 96000000 		.4byte	0x96
+ 216 010d 0C       		.uleb128 0xc
+ 217 010e 22000000 		.4byte	.LASF23
+ 218 0112 05       		.byte	0x5
+ 219 0113 20       		.byte	0x20
+ 220 0114 6B000000 		.4byte	0x6b
+ 221 0118 0D       		.uleb128 0xd
+ 222 0119 3C000000 		.4byte	.LASF24
+ 223 011d 06       		.byte	0x6
+ 224 011e 7B       		.byte	0x7b
+ 225 011f 29010000 		.4byte	0x129
+ 226 0123 0E       		.uleb128 0xe
+ 227 0124 76000000 		.4byte	0x76
+ 228 0128 00       		.byte	0
+ 229 0129 0F       		.uleb128 0xf
+ 230 012a A4010000 		.4byte	.LASF15
+ 231 012e 03       		.byte	0x3
+ 232 012f 3101     		.2byte	0x131
+ 233 0131 10       		.uleb128 0x10
+ 234 0132 41010000 		.4byte	.LASF16
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 7
+
+
+ 235 0136 04       		.byte	0x4
+ 236 0137 8D       		.byte	0x8d
+ 237 0138 00       		.byte	0
+ 238              		.section	.debug_abbrev,"",%progbits
+ 239              	.Ldebug_abbrev0:
+ 240 0000 01       		.uleb128 0x1
+ 241 0001 11       		.uleb128 0x11
+ 242 0002 01       		.byte	0x1
+ 243 0003 25       		.uleb128 0x25
+ 244 0004 0E       		.uleb128 0xe
+ 245 0005 13       		.uleb128 0x13
+ 246 0006 0B       		.uleb128 0xb
+ 247 0007 03       		.uleb128 0x3
+ 248 0008 0E       		.uleb128 0xe
+ 249 0009 1B       		.uleb128 0x1b
+ 250 000a 0E       		.uleb128 0xe
+ 251 000b 55       		.uleb128 0x55
+ 252 000c 17       		.uleb128 0x17
+ 253 000d 11       		.uleb128 0x11
+ 254 000e 01       		.uleb128 0x1
+ 255 000f 10       		.uleb128 0x10
+ 256 0010 17       		.uleb128 0x17
+ 257 0011 00       		.byte	0
+ 258 0012 00       		.byte	0
+ 259 0013 02       		.uleb128 0x2
+ 260 0014 24       		.uleb128 0x24
+ 261 0015 00       		.byte	0
+ 262 0016 0B       		.uleb128 0xb
+ 263 0017 0B       		.uleb128 0xb
+ 264 0018 3E       		.uleb128 0x3e
+ 265 0019 0B       		.uleb128 0xb
+ 266 001a 03       		.uleb128 0x3
+ 267 001b 0E       		.uleb128 0xe
+ 268 001c 00       		.byte	0
+ 269 001d 00       		.byte	0
+ 270 001e 03       		.uleb128 0x3
+ 271 001f 24       		.uleb128 0x24
+ 272 0020 00       		.byte	0
+ 273 0021 0B       		.uleb128 0xb
+ 274 0022 0B       		.uleb128 0xb
+ 275 0023 3E       		.uleb128 0x3e
+ 276 0024 0B       		.uleb128 0xb
+ 277 0025 03       		.uleb128 0x3
+ 278 0026 08       		.uleb128 0x8
+ 279 0027 00       		.byte	0
+ 280 0028 00       		.byte	0
+ 281 0029 04       		.uleb128 0x4
+ 282 002a 16       		.uleb128 0x16
+ 283 002b 00       		.byte	0
+ 284 002c 03       		.uleb128 0x3
+ 285 002d 0E       		.uleb128 0xe
+ 286 002e 3A       		.uleb128 0x3a
+ 287 002f 0B       		.uleb128 0xb
+ 288 0030 3B       		.uleb128 0x3b
+ 289 0031 0B       		.uleb128 0xb
+ 290 0032 49       		.uleb128 0x49
+ 291 0033 13       		.uleb128 0x13
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 8
+
+
+ 292 0034 00       		.byte	0
+ 293 0035 00       		.byte	0
+ 294 0036 05       		.uleb128 0x5
+ 295 0037 35       		.uleb128 0x35
+ 296 0038 00       		.byte	0
+ 297 0039 49       		.uleb128 0x49
+ 298 003a 13       		.uleb128 0x13
+ 299 003b 00       		.byte	0
+ 300 003c 00       		.byte	0
+ 301 003d 06       		.uleb128 0x6
+ 302 003e 2E       		.uleb128 0x2e
+ 303 003f 01       		.byte	0x1
+ 304 0040 3F       		.uleb128 0x3f
+ 305 0041 19       		.uleb128 0x19
+ 306 0042 03       		.uleb128 0x3
+ 307 0043 0E       		.uleb128 0xe
+ 308 0044 3A       		.uleb128 0x3a
+ 309 0045 0B       		.uleb128 0xb
+ 310 0046 3B       		.uleb128 0x3b
+ 311 0047 0B       		.uleb128 0xb
+ 312 0048 49       		.uleb128 0x49
+ 313 0049 13       		.uleb128 0x13
+ 314 004a 11       		.uleb128 0x11
+ 315 004b 01       		.uleb128 0x1
+ 316 004c 12       		.uleb128 0x12
+ 317 004d 06       		.uleb128 0x6
+ 318 004e 40       		.uleb128 0x40
+ 319 004f 18       		.uleb128 0x18
+ 320 0050 9742     		.uleb128 0x2117
+ 321 0052 19       		.uleb128 0x19
+ 322 0053 01       		.uleb128 0x1
+ 323 0054 13       		.uleb128 0x13
+ 324 0055 00       		.byte	0
+ 325 0056 00       		.byte	0
+ 326 0057 07       		.uleb128 0x7
+ 327 0058 34       		.uleb128 0x34
+ 328 0059 00       		.byte	0
+ 329 005a 03       		.uleb128 0x3
+ 330 005b 0E       		.uleb128 0xe
+ 331 005c 3A       		.uleb128 0x3a
+ 332 005d 0B       		.uleb128 0xb
+ 333 005e 3B       		.uleb128 0x3b
+ 334 005f 0B       		.uleb128 0xb
+ 335 0060 49       		.uleb128 0x49
+ 336 0061 13       		.uleb128 0x13
+ 337 0062 02       		.uleb128 0x2
+ 338 0063 17       		.uleb128 0x17
+ 339 0064 00       		.byte	0
+ 340 0065 00       		.byte	0
+ 341 0066 08       		.uleb128 0x8
+ 342 0067 898201   		.uleb128 0x4109
+ 343 006a 00       		.byte	0
+ 344 006b 11       		.uleb128 0x11
+ 345 006c 01       		.uleb128 0x1
+ 346 006d 31       		.uleb128 0x31
+ 347 006e 13       		.uleb128 0x13
+ 348 006f 00       		.byte	0
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 9
+
+
+ 349 0070 00       		.byte	0
+ 350 0071 09       		.uleb128 0x9
+ 351 0072 898201   		.uleb128 0x4109
+ 352 0075 01       		.byte	0x1
+ 353 0076 11       		.uleb128 0x11
+ 354 0077 01       		.uleb128 0x1
+ 355 0078 31       		.uleb128 0x31
+ 356 0079 13       		.uleb128 0x13
+ 357 007a 01       		.uleb128 0x1
+ 358 007b 13       		.uleb128 0x13
+ 359 007c 00       		.byte	0
+ 360 007d 00       		.byte	0
+ 361 007e 0A       		.uleb128 0xa
+ 362 007f 8A8201   		.uleb128 0x410a
+ 363 0082 00       		.byte	0
+ 364 0083 02       		.uleb128 0x2
+ 365 0084 18       		.uleb128 0x18
+ 366 0085 9142     		.uleb128 0x2111
+ 367 0087 18       		.uleb128 0x18
+ 368 0088 00       		.byte	0
+ 369 0089 00       		.byte	0
+ 370 008a 0B       		.uleb128 0xb
+ 371 008b 34       		.uleb128 0x34
+ 372 008c 00       		.byte	0
+ 373 008d 03       		.uleb128 0x3
+ 374 008e 0E       		.uleb128 0xe
+ 375 008f 3A       		.uleb128 0x3a
+ 376 0090 0B       		.uleb128 0xb
+ 377 0091 3B       		.uleb128 0x3b
+ 378 0092 0B       		.uleb128 0xb
+ 379 0093 49       		.uleb128 0x49
+ 380 0094 13       		.uleb128 0x13
+ 381 0095 3F       		.uleb128 0x3f
+ 382 0096 19       		.uleb128 0x19
+ 383 0097 3C       		.uleb128 0x3c
+ 384 0098 19       		.uleb128 0x19
+ 385 0099 00       		.byte	0
+ 386 009a 00       		.byte	0
+ 387 009b 0C       		.uleb128 0xc
+ 388 009c 2E       		.uleb128 0x2e
+ 389 009d 00       		.byte	0
+ 390 009e 3F       		.uleb128 0x3f
+ 391 009f 19       		.uleb128 0x19
+ 392 00a0 03       		.uleb128 0x3
+ 393 00a1 0E       		.uleb128 0xe
+ 394 00a2 3A       		.uleb128 0x3a
+ 395 00a3 0B       		.uleb128 0xb
+ 396 00a4 3B       		.uleb128 0x3b
+ 397 00a5 0B       		.uleb128 0xb
+ 398 00a6 27       		.uleb128 0x27
+ 399 00a7 19       		.uleb128 0x19
+ 400 00a8 49       		.uleb128 0x49
+ 401 00a9 13       		.uleb128 0x13
+ 402 00aa 3C       		.uleb128 0x3c
+ 403 00ab 19       		.uleb128 0x19
+ 404 00ac 00       		.byte	0
+ 405 00ad 00       		.byte	0
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 10
+
+
+ 406 00ae 0D       		.uleb128 0xd
+ 407 00af 2E       		.uleb128 0x2e
+ 408 00b0 01       		.byte	0x1
+ 409 00b1 3F       		.uleb128 0x3f
+ 410 00b2 19       		.uleb128 0x19
+ 411 00b3 03       		.uleb128 0x3
+ 412 00b4 0E       		.uleb128 0xe
+ 413 00b5 3A       		.uleb128 0x3a
+ 414 00b6 0B       		.uleb128 0xb
+ 415 00b7 3B       		.uleb128 0x3b
+ 416 00b8 0B       		.uleb128 0xb
+ 417 00b9 27       		.uleb128 0x27
+ 418 00ba 19       		.uleb128 0x19
+ 419 00bb 3C       		.uleb128 0x3c
+ 420 00bc 19       		.uleb128 0x19
+ 421 00bd 01       		.uleb128 0x1
+ 422 00be 13       		.uleb128 0x13
+ 423 00bf 00       		.byte	0
+ 424 00c0 00       		.byte	0
+ 425 00c1 0E       		.uleb128 0xe
+ 426 00c2 05       		.uleb128 0x5
+ 427 00c3 00       		.byte	0
+ 428 00c4 49       		.uleb128 0x49
+ 429 00c5 13       		.uleb128 0x13
+ 430 00c6 00       		.byte	0
+ 431 00c7 00       		.byte	0
+ 432 00c8 0F       		.uleb128 0xf
+ 433 00c9 2E       		.uleb128 0x2e
+ 434 00ca 00       		.byte	0
+ 435 00cb 3F       		.uleb128 0x3f
+ 436 00cc 19       		.uleb128 0x19
+ 437 00cd 03       		.uleb128 0x3
+ 438 00ce 0E       		.uleb128 0xe
+ 439 00cf 3A       		.uleb128 0x3a
+ 440 00d0 0B       		.uleb128 0xb
+ 441 00d1 3B       		.uleb128 0x3b
+ 442 00d2 05       		.uleb128 0x5
+ 443 00d3 27       		.uleb128 0x27
+ 444 00d4 19       		.uleb128 0x19
+ 445 00d5 3C       		.uleb128 0x3c
+ 446 00d6 19       		.uleb128 0x19
+ 447 00d7 00       		.byte	0
+ 448 00d8 00       		.byte	0
+ 449 00d9 10       		.uleb128 0x10
+ 450 00da 2E       		.uleb128 0x2e
+ 451 00db 00       		.byte	0
+ 452 00dc 3F       		.uleb128 0x3f
+ 453 00dd 19       		.uleb128 0x19
+ 454 00de 03       		.uleb128 0x3
+ 455 00df 0E       		.uleb128 0xe
+ 456 00e0 3A       		.uleb128 0x3a
+ 457 00e1 0B       		.uleb128 0xb
+ 458 00e2 3B       		.uleb128 0x3b
+ 459 00e3 0B       		.uleb128 0xb
+ 460 00e4 27       		.uleb128 0x27
+ 461 00e5 19       		.uleb128 0x19
+ 462 00e6 3C       		.uleb128 0x3c
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 11
+
+
+ 463 00e7 19       		.uleb128 0x19
+ 464 00e8 00       		.byte	0
+ 465 00e9 00       		.byte	0
+ 466 00ea 00       		.byte	0
+ 467              		.section	.debug_loc,"",%progbits
+ 468              	.Ldebug_loc0:
+ 469              	.LLST0:
+ 470 0000 00000000 		.4byte	.LVL0
+ 471 0004 0E000000 		.4byte	.LVL2
+ 472 0008 0200     		.2byte	0x2
+ 473 000a 30       		.byte	0x30
+ 474 000b 9F       		.byte	0x9f
+ 475 000c 0E000000 		.4byte	.LVL2
+ 476 0010 1C000000 		.4byte	.LVL5
+ 477 0014 0600     		.2byte	0x6
+ 478 0016 08       		.byte	0x8
+ 479 0017 65       		.byte	0x65
+ 480 0018 74       		.byte	0x74
+ 481 0019 00       		.sleb128 0
+ 482 001a 1C       		.byte	0x1c
+ 483 001b 9F       		.byte	0x9f
+ 484 001c 1C000000 		.4byte	.LVL5
+ 485 0020 1E000000 		.4byte	.LVL6
+ 486 0024 0600     		.2byte	0x6
+ 487 0026 08       		.byte	0x8
+ 488 0027 66       		.byte	0x66
+ 489 0028 74       		.byte	0x74
+ 490 0029 00       		.sleb128 0
+ 491 002a 1C       		.byte	0x1c
+ 492 002b 9F       		.byte	0x9f
+ 493 002c 00000000 		.4byte	0
+ 494 0030 00000000 		.4byte	0
+ 495              		.section	.debug_aranges,"",%progbits
+ 496 0000 1C000000 		.4byte	0x1c
+ 497 0004 0200     		.2byte	0x2
+ 498 0006 00000000 		.4byte	.Ldebug_info0
+ 499 000a 04       		.byte	0x4
+ 500 000b 00       		.byte	0
+ 501 000c 0000     		.2byte	0
+ 502 000e 0000     		.2byte	0
+ 503 0010 00000000 		.4byte	.LFB33
+ 504 0014 38000000 		.4byte	.LFE33-.LFB33
+ 505 0018 00000000 		.4byte	0
+ 506 001c 00000000 		.4byte	0
+ 507              		.section	.debug_ranges,"",%progbits
+ 508              	.Ldebug_ranges0:
+ 509 0000 00000000 		.4byte	.LFB33
+ 510 0004 38000000 		.4byte	.LFE33
+ 511 0008 00000000 		.4byte	0
+ 512 000c 00000000 		.4byte	0
+ 513              		.section	.debug_line,"",%progbits
+ 514              	.Ldebug_line0:
+ 515 0000 A2000000 		.section	.debug_str,"MS",%progbits,1
+ 515      02007600 
+ 515      00000201 
+ 515      FB0E0D00 
+ 515      01010101 
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 12
+
+
+ 516              	.LASF6:
+ 517 0000 6C6F6E67 		.ascii	"long long int\000"
+ 517      206C6F6E 
+ 517      6720696E 
+ 517      7400
+ 518              	.LASF10:
+ 519 000e 75696E74 		.ascii	"uint32\000"
+ 519      333200
+ 520              	.LASF8:
+ 521 0015 756E7369 		.ascii	"unsigned int\000"
+ 521      676E6564 
+ 521      20696E74 
+ 521      00
+ 522              	.LASF23:
+ 523 0022 426F6F74 		.ascii	"Boot_P0_7_Read\000"
+ 523      5F50305F 
+ 523      375F5265 
+ 523      616400
+ 524              	.LASF20:
+ 525 0031 6D61696E 		.ascii	"main\000"
+ 525      00
+ 526              	.LASF9:
+ 527 0036 75696E74 		.ascii	"uint8\000"
+ 527      3800
+ 528              	.LASF24:
+ 529 003c 43794465 		.ascii	"CyDelay\000"
+ 529      6C617900 
+ 530              	.LASF17:
+ 531 0044 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 531      4320342E 
+ 531      392E3320 
+ 531      32303135 
+ 531      30333033 
+ 532 0077 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 532      20726576 
+ 532      6973696F 
+ 532      6E203232 
+ 532      31323230 
+ 533 00aa 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 533      66756E63 
+ 533      74696F6E 
+ 533      2D736563 
+ 533      74696F6E 
+ 534              	.LASF5:
+ 535 00d2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 535      20756E73 
+ 535      69676E65 
+ 535      6420696E 
+ 535      7400
+ 536              	.LASF2:
+ 537 00e4 73686F72 		.ascii	"short int\000"
+ 537      7420696E 
+ 537      7400
+ 538              	.LASF7:
+ 539 00ee 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 539      206C6F6E 
+ 539      6720756E 
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 13
+
+
+ 539      7369676E 
+ 539      65642069 
+ 540              	.LASF3:
+ 541 0105 73686F72 		.ascii	"short unsigned int\000"
+ 541      7420756E 
+ 541      7369676E 
+ 541      65642069 
+ 541      6E7400
+ 542              	.LASF11:
+ 543 0118 666C6F61 		.ascii	"float\000"
+ 543      7400
+ 544              	.LASF1:
+ 545 011e 756E7369 		.ascii	"unsigned char\000"
+ 545      676E6564 
+ 545      20636861 
+ 545      7200
+ 546              	.LASF13:
+ 547 012c 63686172 		.ascii	"char\000"
+ 547      00
+ 548              	.LASF4:
+ 549 0131 6C6F6E67 		.ascii	"long int\000"
+ 549      20696E74 
+ 549      00
+ 550              	.LASF12:
+ 551 013a 646F7562 		.ascii	"double\000"
+ 551      6C6500
+ 552              	.LASF16:
+ 553 0141 426F6F74 		.ascii	"Bootloader_Start\000"
+ 553      6C6F6164 
+ 553      65725F53 
+ 553      74617274 
+ 553      00
+ 554              	.LASF19:
+ 555 0152 443A5C6C 		.ascii	"D:\\lacktable\\Striplights\\UART_Bootloader.cydsn\000"
+ 555      61636B74 
+ 555      61626C65 
+ 555      5C537472 
+ 555      69706C69 
+ 556              	.LASF21:
+ 557 0181 636F756E 		.ascii	"counter\000"
+ 557      74657200 
+ 558              	.LASF22:
+ 559 0189 63794274 		.ascii	"cyBtldrRunType\000"
+ 559      6C647252 
+ 559      756E5479 
+ 559      706500
+ 560              	.LASF0:
+ 561 0198 7369676E 		.ascii	"signed char\000"
+ 561      65642063 
+ 561      68617200 
+ 562              	.LASF15:
+ 563 01a4 50574D5F 		.ascii	"PWM_Start\000"
+ 563      53746172 
+ 563      7400
+ 564              	.LASF18:
+ 565 01ae 2E5C6D61 		.ascii	".\\main.c\000"
+ 565      696E2E63 
+ARM GAS  C:\Users\vangelis\AppData\Local\Temp\ccEmDHXK.s 			page 14
+
+
+ 565      00
+ 566              	.LASF14:
+ 567 01b7 73697A65 		.ascii	"sizetype\000"
+ 567      74797065 
+ 567      00
+ 568              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

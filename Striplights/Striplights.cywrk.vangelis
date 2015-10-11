@@ -13,12 +13,13 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Striplights">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Striplights\Striplight_bootloadable">
 <ExpandedNodeIds>
 <v>Striplights</v>
 <v>Striplights\Striplight_bootloadable</v>
 <v>Striplights\Striplight_bootloadable\TopDesign</v>
 <v>Striplights\Striplight_bootloadable\Striplight_bootloadable.cydwr</v>
+<v>Striplights\Striplight_bootloadable\Source Files</v>
 <v>Striplights\Striplight_bootloadable\Source Files\main.c</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Bootloadable</v>
@@ -142,6 +143,7 @@
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cyfitterrv.inc</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cymetadata.c</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\project.h</v>
+<v>Striplights\StripLightLib</v>
 <v>Striplights\StripLightLib\Header Files</v>
 <v>Striplights\StripLightLib\Source Files</v>
 <v>Striplights\UART_Bootloader\TopDesign</v>
@@ -241,8 +243,11 @@
 <v>Striplights\Striplight_bootloadable\TopDesign</v>
 <v>Striplights\Striplight_bootloadable\Striplight_bootloadable.cydwr</v>
 <v>Striplights\Striplight_bootloadable\Source Files</v>
+<v>Striplights\Striplight_bootloadable\Source Files\main.c</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source</v>
 <v>Striplights\StripLightLib</v>
+<v>Striplights\StripLightLib\Header Files</v>
+<v>Striplights\StripLightLib\Source Files</v>
 <v>Striplights\UART_Bootloader</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
@@ -316,64 +321,10 @@
 <ExpandedNodeIds>
 <v>Striplights</v>
 <v>Striplights\Striplight_bootloadable</v>
-<v>Striplights\Striplight_bootloadable\CortexM0</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Bootloadable.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Cm0Start.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\cybootloader.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_BOOT.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_PM.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_rx.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_SCB_IRQ.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_SCBCLK.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_SPI_UART.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_SPI_UART_INT.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_tx.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_UART.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_UART_BOOT.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\main.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetClock.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetISR.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetTimer.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetTimer_PM.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_0.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_1.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_2.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_3.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_4.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_5.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_cisr.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_fisr.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_fonts.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_StringSel.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\SW1.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.cyacd</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.elf</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.hex</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.map</v>
 <v>Striplights\Striplight_bootloadable\Striplight_bootloadable.gpdsc</v>
 <v>Striplights\Striplight_bootloadable\Striplight_bootloadable.rpt</v>
 <v>Striplights\Striplight_bootloadable\Striplight_bootloadable_timing.html</v>
 <v>Striplights\StripLightLib</v>
-<v>Striplights\StripLightLib\CortexM0</v>
-<v>Striplights\StripLightLib\CortexM0\ARM_GCC_493</v>
-<v>Striplights\StripLightLib\CortexM0\ARM_GCC_493\Debug</v>
-<v>Striplights\StripLightLib\CortexM0\ARM_GCC_493\Debug\StripLightLib.a</v>
-<v>Striplights\StripLightLib\DP8051</v>
-<v>Striplights\StripLightLib\DP8051\DP8051_Keil_951</v>
-<v>Striplights\StripLightLib\DP8051\DP8051_Keil_951\Debug</v>
-<v>Striplights\StripLightLib\DP8051\DP8051_Keil_951\Debug\StripLightLib.lib</v>
 <v>Striplights\UART_Bootloader</v>
 <v>Striplights\UART_Bootloader\CortexM0</v>
 <v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493</v>
@@ -416,52 +367,48 @@
 <VisibleNodeIds>
 <v>Striplights</v>
 <v>Striplights\Striplight_bootloadable</v>
-<v>Striplights\Striplight_bootloadable\CortexM0</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Bootloadable.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Cm0Start.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\cybootloader.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_BOOT.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_PM.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_rx.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_SCB_IRQ.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_SCBCLK.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_SPI_UART.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_SPI_UART_INT.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_tx.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_UART.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_UART_BOOT.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\main.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetClock.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetISR.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetTimer.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetTimer_PM.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_0.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_1.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_2.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_3.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_4.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_5.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_cisr.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_fisr.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_fonts.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_StringSel.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\SW1.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.cyacd</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.elf</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.hex</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.map</v>
+<v>Striplights\Striplight_bootloadable\Striplight_bootloadable.gpdsc</v>
+<v>Striplights\Striplight_bootloadable\Striplight_bootloadable.rpt</v>
+<v>Striplights\Striplight_bootloadable\Striplight_bootloadable_timing.html</v>
+<v>Striplights\StripLightLib</v>
+<v>Striplights\UART_Bootloader</v>
+<v>Striplights\UART_Bootloader\CortexM0</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\Boot_P0_7.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\Bootloader.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\Clock.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\Cm0Start.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\P1_6.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\PWM.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\PWM_PM.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\UART.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_BOOT.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_Btldr.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_PM.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_rx.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_SCB_IRQ.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_SCBCLK.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_SPI_UART.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_SPI_UART_INT.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_tx.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_UART.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_UART_BOOT.lst</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\UART_Bootloader.elf</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\UART_Bootloader.hex</v>
+<v>Striplights\UART_Bootloader\CortexM0\ARM_GCC_493\Debug\UART_Bootloader.map</v>
+<v>Striplights\UART_Bootloader\UART_Bootloader.gpdsc</v>
+<v>Striplights\UART_Bootloader\UART_Bootloader.rpt</v>
+<v>Striplights\UART_Bootloader\UART_Bootloader_timing.html</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -563,13 +510,8 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\Striplight_bootloadable.cydsn\Generated_Source\PSoC4\ESP.c" />
-<name v=".\Striplight_bootloadable.cydsn\main.c" />
 <name v=".\Striplight_bootloadable.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\Striplight_bootloadable.cydsn\Striplight_bootloadable.cydwr" />
-<name v=".\UART_Bootloader.cydsn\UART_Bootloader.cydwr" />
-<name v=".\Striplight_bootloadable.cydsn\Generated_Source\PSoC4\StripLights.h" />
-<name v=".\Striplight_bootloadable.cydsn\Generated_Source\PSoC4\StripLights.c" />
+<name v=".\Striplight_bootloadable.cydsn\main.c" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />
