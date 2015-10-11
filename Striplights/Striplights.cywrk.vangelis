@@ -13,19 +13,17 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights\StripLights.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Striplights">
 <ExpandedNodeIds>
 <v>Striplights</v>
 <v>Striplights\Striplight_bootloadable</v>
 <v>Striplights\Striplight_bootloadable\TopDesign</v>
 <v>Striplights\Striplight_bootloadable\Striplight_bootloadable.cydwr</v>
-<v>Striplights\Striplight_bootloadable\Source Files</v>
 <v>Striplights\Striplight_bootloadable\Source Files\main.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Bootloadable_1</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Bootloadable_1\Bootloadable_1.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Bootloadable_1\Bootloadable_1.h</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Bootloadable</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Bootloadable\Bootloadable.c</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Bootloadable\Bootloadable.h</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cy_boot</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cy_boot\cm0gcc.ld</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cy_boot\Cm0Iar.icf</v>
@@ -75,6 +73,16 @@
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ESP_tx\ESP_tx.c</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ESP_tx\ESP_tx.h</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ESP_tx\ESP_tx_aliases.h</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ResetClock</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ResetClock\ResetClock.c</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ResetClock\ResetClock.h</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ResetISR</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ResetISR\ResetISR.c</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ResetISR\ResetISR.h</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ResetTimer</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ResetTimer\ResetTimer.c</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ResetTimer\ResetTimer.h</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\ResetTimer\ResetTimer_PM.c</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_0</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_0\Strip_0.c</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_0\Strip_0.h</v>
@@ -83,14 +91,6 @@
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_1\Strip_1.c</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_1\Strip_1.h</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_1\Strip_1_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_10</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_10\Strip_10.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_10\Strip_10.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_10\Strip_10_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_11</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_11\Strip_11.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_11\Strip_11.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_11\Strip_11_aliases.h</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_2</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_2\Strip_2.c</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_2\Strip_2.h</v>
@@ -107,22 +107,6 @@
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_5\Strip_5.c</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_5\Strip_5.h</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_5\Strip_5_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_6</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_6\Strip_6.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_6\Strip_6.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_6\Strip_6_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_7</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_7\Strip_7.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_7\Strip_7.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_7\Strip_7_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_8</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_8\Strip_8.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_8\Strip_8.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_8\Strip_8_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_9</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_9\Strip_9.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_9\Strip_9.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_9\Strip_9_aliases.h</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights\StripLights.c</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights\StripLights.h</v>
@@ -137,6 +121,10 @@
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights_StringSel</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights_StringSel\StripLights_StringSel.c</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights_StringSel\StripLights_StringSel.h</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\SW1</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\SW1\SW1.c</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\SW1\SW1.h</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\SW1\SW1_aliases.h</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cybootloader.c</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cybootloader.icf</v>
 <v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cycodeshareimport.ld</v>
@@ -248,53 +236,14 @@
 <v>Striplights\UART_Bootloader\Generated_Source\PSoC4\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_3\Strip_3.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_3\Strip_3.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_3\Strip_3_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_4</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_4\Strip_4.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_4\Strip_4.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_4\Strip_4_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_5</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_5\Strip_5.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_5\Strip_5.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_5\Strip_5_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_6</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_6\Strip_6.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_6\Strip_6.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_6\Strip_6_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_7</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_7\Strip_7.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_7\Strip_7.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_7\Strip_7_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_8</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_8\Strip_8.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_8\Strip_8.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_8\Strip_8_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_9</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_9\Strip_9.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_9\Strip_9.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\Strip_9\Strip_9_aliases.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights\StripLights.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights\StripLights.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights\StripLights_fonts.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights\StripLights_fonts.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights_cisr</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights_cisr\StripLights_cisr.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights_cisr\StripLights_cisr.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights_fisr</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights_fisr\StripLights_fisr.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights_fisr\StripLights_fisr.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights_StringSel</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights_StringSel\StripLights_StringSel.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\StripLights_StringSel\StripLights_StringSel.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cybootloader.c</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cybootloader.icf</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cycodeshareimport.ld</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cycodeshareimport.scat</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cydevice_trm.h</v>
-<v>Striplights\Striplight_bootloadable\Generated_Source\PSoC4\cydevicegnu_trm.inc</v>
+<v>Striplights</v>
+<v>Striplights\Striplight_bootloadable</v>
+<v>Striplights\Striplight_bootloadable\TopDesign</v>
+<v>Striplights\Striplight_bootloadable\Striplight_bootloadable.cydwr</v>
+<v>Striplights\Striplight_bootloadable\Source Files</v>
+<v>Striplights\Striplight_bootloadable\Generated_Source</v>
+<v>Striplights\StripLightLib</v>
+<v>Striplights\UART_Bootloader</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -371,7 +320,7 @@
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Bootloadable_1.lst</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Bootloadable.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Cm0Start.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\cybootloader.lst</v>
@@ -393,23 +342,22 @@
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_UART.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_UART_BOOT.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetClock.lst</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetISR.lst</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetTimer.lst</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetTimer_PM.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_0.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_1.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_10.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_11.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_2.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_3.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_4.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_5.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_6.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_7.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_8.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_9.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_cisr.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_fisr.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_fonts.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_StringSel.lst</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\SW1.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.cyacd</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.elf</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.hex</v>
@@ -472,7 +420,7 @@
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Bootloadable_1.lst</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Bootloadable.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Cm0Start.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\cybootloader.lst</v>
@@ -494,25 +442,26 @@
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_UART.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ESP_UART_BOOT.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetClock.lst</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetISR.lst</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetTimer.lst</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\ResetTimer_PM.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_0.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_1.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_10.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_11.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_2.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_3.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_4.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_5.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_6.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_7.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_8.lst</v>
-<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\Strip_9.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_cisr.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_fisr.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_fonts.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\StripLights_StringSel.lst</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Listing Files\SW1.lst</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.cyacd</v>
 <v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.elf</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.hex</v>
+<v>Striplights\Striplight_bootloadable\CortexM0\ARM_GCC_493\Debug\Striplight_bootloadable.map</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -529,10 +478,13 @@
 <v>Striplights\Striplight_bootloadable\System Reference Guides</v>
 <v>Striplights\Striplight_bootloadable\System Reference Guides\cy_boot_v4_20</v>
 <v>Striplights\Striplight_bootloadable\Bootloadable_v1_40.pdf</v>
+<v>Striplights\Striplight_bootloadable\cy_clock_v2_20.pdf</v>
+<v>Striplights\Striplight_bootloadable\cy_isr_v1_70.pdf</v>
 <v>Striplights\Striplight_bootloadable\cy_pins_v2_10</v>
 <v>Striplights\Striplight_bootloadable\cy_pins_v2_10\cy_pins_v2_10.pdf</v>
 <v>Striplights\Striplight_bootloadable\SCB_P4_v3_0.pdf</v>
 <v>Striplights\Striplight_bootloadable\StripLights.pdf</v>
+<v>Striplights\Striplight_bootloadable\TCPWM_P4_v2_0.pdf</v>
 <v>Striplights\UART_Bootloader</v>
 <v>Striplights\UART_Bootloader\PSoC 4 Architecture TRM</v>
 <v>Striplights\UART_Bootloader\PSoC 4200 Family Datasheet</v>
@@ -560,10 +512,13 @@
 <v>Striplights\Striplight_bootloadable\System Reference Guides</v>
 <v>Striplights\Striplight_bootloadable\System Reference Guides\cy_boot_v4_20</v>
 <v>Striplights\Striplight_bootloadable\Bootloadable_v1_40.pdf</v>
+<v>Striplights\Striplight_bootloadable\cy_clock_v2_20.pdf</v>
+<v>Striplights\Striplight_bootloadable\cy_isr_v1_70.pdf</v>
 <v>Striplights\Striplight_bootloadable\cy_pins_v2_10</v>
 <v>Striplights\Striplight_bootloadable\cy_pins_v2_10\cy_pins_v2_10.pdf</v>
 <v>Striplights\Striplight_bootloadable\SCB_P4_v3_0.pdf</v>
 <v>Striplights\Striplight_bootloadable\StripLights.pdf</v>
+<v>Striplights\Striplight_bootloadable\TCPWM_P4_v2_0.pdf</v>
 <v>Striplights\UART_Bootloader</v>
 <v>Striplights\UART_Bootloader\PSoC 4 Architecture TRM</v>
 <v>Striplights\UART_Bootloader\PSoC 4200 Family Datasheet</v>

@@ -55,11 +55,27 @@
 
 extern const uint32 StripLights_CLUT[];
 
+/* Prototype the ISR handler */
+CY_ISR_PROTO( ResetISR_Handler );
+ 
+/* Implementation of the ISR handler */
+CY_ISR( ResetISR_Handler )
+{
+    Bootloadable_Load();        /* Force a bootloader restart */
+}
+
 int main()
 {
     int i, j;
 	StripLights_Start();
     ESP_Start();
+    
+    /* Start the timer - only runs when SW1 is pressed */
+    ResetTimer_Start();
+ 
+    /* Install the ISR handler and make sure none are pending */
+    ResetISR_ClearPending();
+    ResetISR_StartEx( ResetISR_Handler );
     
     // Set dim level 0 = full power, 4 = lowest power
     StripLights_Dim(0); 

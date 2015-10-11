@@ -121,12 +121,12 @@ CY_ISR_PROTO(StripLights_FISR);
     #define StripLights_WORD_TIME_US 60u
 #endif
 
-#define StripLights_COLUMNS     12
-#define StripLights_ROWS        12
+#define StripLights_COLUMNS     24
+#define StripLights_ROWS        6
 #define StripLights_TOTAL_LEDS   (StripLights_COLUMNS*StripLights_ROWS)
 
-#define StripLights_ARRAY_COLS  (int32)(12)
-#define StripLights_ARRAY_ROWS  (int32)(12)
+#define StripLights_ARRAY_COLS  (int32)(24)
+#define StripLights_ARRAY_ROWS  (int32)(6)
 #define StripLights_CHIP        (2)
 #define StripLights_CHIP_WS2811 1
 #define StripLights_CHIP_WS2812 2

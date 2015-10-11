@@ -73,7 +73,7 @@
 #define ESP_UART_DROP_ON_FRAME_ERR     (0u)
 #define ESP_UART_DROP_ON_PARITY_ERR    (0u)
 #define ESP_UART_WAKE_ENABLE           (0u)
-#define ESP_UART_RX_BUFFER_SIZE        (8u)
+#define ESP_UART_RX_BUFFER_SIZE        (16u)
 #define ESP_UART_TX_BUFFER_SIZE        (8u)
 #define ESP_UART_MP_MODE_ENABLE        (0u)
 #define ESP_UART_MP_ACCEPT_ADDRESS     (0u)
@@ -82,7 +82,7 @@
 
 #define ESP_UART_INTERRUPT_MODE        (1u)
 
-#define ESP_UART_INTR_RX_MASK          (0u)
+#define ESP_UART_INTR_RX_MASK          (12u)
 #define ESP_UART_INTR_TX_MASK          (0u)
 
 #define ESP_UART_RX_TRIGGER_LEVEL      (7u)

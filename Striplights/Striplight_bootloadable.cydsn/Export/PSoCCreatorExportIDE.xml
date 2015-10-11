@@ -25,7 +25,7 @@
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
   </Toolchains>
-  <Project Name="Striplight_bootloadable" Path="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn" Version="4.20" Type="Bootloadable">
+  <Project Name="Striplight_bootloadable" Path="D:\Striplights\Striplight_bootloadable.cydsn" Version="4.20" Type="Bootloadable">
     <CMSIS_SVD_File>Striplight_bootloadable.svd</CMSIS_SVD_File>
     <Datasheet />
     <LinkerFiles>
@@ -34,13 +34,13 @@
       <LinkerFile Toolchain="ARM IAR Generic">.\Generated_Source\PSoC4\Cm0Iar.icf</LinkerFile>
     </LinkerFiles>
     <Folders>
-      <Folder BuildType="BUILD" Path="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn">
+      <Folder BuildType="BUILD" Path="D:\Striplights\Striplight_bootloadable.cydsn">
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn">
           <File BuildType="BUILD" Toolchain="">.\main.c</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn\Generated_Source\PSoC4">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn">
+      <Folder BuildType="STRICT" Path="D:\Striplights\Striplight_bootloadable.cydsn\Generated_Source\PSoC4">
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn">
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\cyfitter_cfg.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\cyfitter_cfg.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\cybootloader.c</File>
@@ -54,6 +54,8 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\cyfitteriar.inc</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\cyfitter.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\cydisabledsheets.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Bootloadable.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Bootloadable.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Cm0Start.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\core_cm0_psoc4.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\core_cm0.h</File>
@@ -90,26 +92,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_5.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_5.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_5_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_6.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_6.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_6_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_7.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_7.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_7_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_8.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_8.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_8_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_9.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_9.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_9_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_10.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_10.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_10_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_11.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_11.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Strip_11_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Bootloadable_1.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Bootloadable_1.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\StripLights.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\StripLights.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\StripLights_fonts.c</File>
@@ -143,49 +125,59 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ESP_rx.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ESP_rx.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ESP_rx_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ResetTimer.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ResetTimer.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ResetTimer_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SW1.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SW1.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SW1_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ResetISR.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ResetISR.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ResetClock.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ResetClock.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn\Export\ARM_GCC_Generic">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn">
+      <Folder BuildType="STRICT" Path="D:\Striplights\Striplight_bootloadable.cydsn\Export\ARM_GCC_Generic">
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn">
           <File BuildType="BUILD" Toolchain="ARM GCC Generic">.\Export\ARM_GCC_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn\Export\ARM_MDK_Generic">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn">
+      <Folder BuildType="STRICT" Path="D:\Striplights\Striplight_bootloadable.cydsn\Export\ARM_MDK_Generic">
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn">
           <File BuildType="BUILD" Toolchain="ARM MDK Generic">.\Export\ARM_MDK_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn\Export\ARM_IAR_Generic">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn">
+      <Folder BuildType="STRICT" Path="D:\Striplights\Striplight_bootloadable.cydsn\Export\ARM_IAR_Generic">
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn">
           <File BuildType="BUILD" Toolchain="ARM IAR Generic">.\Export\ARM_IAR_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\codegentemp">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn" />
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_441">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn" />
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_473">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn" />
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051_Keil_952">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn" />
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn" />
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn" />
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM3">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn" />
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\Generated_Source\PSoC3">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn" />
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\Generated_Source\PSoC5">
-        <Files Root="C:\Users\vangelis\Striplights\Striplight_bootloadable.cydsn" />
+        <Files Root="D:\Striplights\Striplight_bootloadable.cydsn" />
       </Folder>
     </Folders>
   </Project>
