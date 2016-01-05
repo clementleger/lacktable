@@ -61,7 +61,17 @@ CY_ISR_PROTO( ResetISR_Handler );
 /* Implementation of the ISR handler */
 CY_ISR( ResetISR_Handler )
 {
+    PC_Uart_Stop();
     Bootloadable_Load();        /* Force a bootloader restart */
+}
+
+/* Prototype the ISR handler */
+CY_ISR_PROTO(RotaryEncoderISR_Handler );
+ 
+/* Implementation of the ISR handler */
+CY_ISR( RotaryEncoderISR_Handler )
+{
+    /* Plop */
 }
 
 int main()
@@ -69,6 +79,8 @@ int main()
     int i, j;
 	StripLights_Start();
     ESP_Start();
+    PC_Uart_Start();
+    RotaryEncoder_Start();
     
     /* Start the timer - only runs when SW1 is pressed */
     ResetTimer_Start();
@@ -77,14 +89,19 @@ int main()
     ResetISR_ClearPending();
     ResetISR_StartEx( ResetISR_Handler );
     
+    RotaryEncoderISR_ClearPending();
+    RotaryEncoderISR_StartEx( RotaryEncoderISR_Handler );
+    
     // Set dim level 0 = full power, 4 = lowest power
     StripLights_Dim(0); 
 	
 	// Clear all memory to black
 	StripLights_MemClear(StripLights_BLACK);
     // Enable global interrupts, required for StripLights
-    CyGlobalIntEnable; 
-    
+    CyGlobalIntEnable;
+
+    while(1)
+        PC_Uart_UartPutString("Hello world !\r\n");
       
 	for(;;) {
         for (j = 0; j < StripLights_ROWS; j++) {
@@ -95,7 +112,7 @@ int main()
     	             while( StripLights_Ready() == 0);  
                 // Set the color of a single LED
                 StripLights_MemClear(StripLights_BLACK);
-    	        StripLights_Pixel(i, j, StripLights_WHITE );
+    	        StripLights_Pixel(i, j, StripLights_YELLOW );
                 StripLights_Trigger(1); 
                 CyDelay(50);
             }
