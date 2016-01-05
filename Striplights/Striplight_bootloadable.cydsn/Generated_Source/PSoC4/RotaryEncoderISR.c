@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: ResetISR.c  
+* File Name: RotaryEncoderISR.c  
 * Version 1.70
 *
 *  Description:
@@ -18,15 +18,15 @@
 
 #include <cydevice_trm.h>
 #include <CyLib.h>
-#include <ResetISR.h>
+#include <RotaryEncoderISR.h>
 
 
-#if !defined(ResetISR__REMOVED) /* Check for removal by optimization */
+#if !defined(RotaryEncoderISR__REMOVED) /* Check for removal by optimization */
 
 /*******************************************************************************
 *  Place your includes, defines and code here 
 ********************************************************************************/
-/* `#START ResetISR_intc` */
+/* `#START RotaryEncoderISR_intc` */
 
 /* `#END` */
 
@@ -37,7 +37,7 @@ CY_ISR_PROTO(IntDefaultHandler);
 
 
 /*******************************************************************************
-* Function Name: ResetISR_Start
+* Function Name: RotaryEncoderISR_Start
 ********************************************************************************
 *
 * Summary:
@@ -53,24 +53,24 @@ CY_ISR_PROTO(IntDefaultHandler);
 *   None
 *
 *******************************************************************************/
-void ResetISR_Start(void)
+void RotaryEncoderISR_Start(void)
 {
     /* For all we know the interrupt is active. */
-    ResetISR_Disable();
+    RotaryEncoderISR_Disable();
 
-    /* Set the ISR to point to the ResetISR Interrupt. */
-    ResetISR_SetVector(&ResetISR_Interrupt);
+    /* Set the ISR to point to the RotaryEncoderISR Interrupt. */
+    RotaryEncoderISR_SetVector(&RotaryEncoderISR_Interrupt);
 
     /* Set the priority. */
-    ResetISR_SetPriority((uint8)ResetISR_INTC_PRIOR_NUMBER);
+    RotaryEncoderISR_SetPriority((uint8)RotaryEncoderISR_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    ResetISR_Enable();
+    RotaryEncoderISR_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: ResetISR_StartEx
+* Function Name: RotaryEncoderISR_StartEx
 ********************************************************************************
 *
 * Summary:
@@ -96,24 +96,24 @@ void ResetISR_Start(void)
 *   None
 *
 *******************************************************************************/
-void ResetISR_StartEx(cyisraddress address)
+void RotaryEncoderISR_StartEx(cyisraddress address)
 {
     /* For all we know the interrupt is active. */
-    ResetISR_Disable();
+    RotaryEncoderISR_Disable();
 
-    /* Set the ISR to point to the ResetISR Interrupt. */
-    ResetISR_SetVector(address);
+    /* Set the ISR to point to the RotaryEncoderISR Interrupt. */
+    RotaryEncoderISR_SetVector(address);
 
     /* Set the priority. */
-    ResetISR_SetPriority((uint8)ResetISR_INTC_PRIOR_NUMBER);
+    RotaryEncoderISR_SetPriority((uint8)RotaryEncoderISR_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    ResetISR_Enable();
+    RotaryEncoderISR_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: ResetISR_Stop
+* Function Name: RotaryEncoderISR_Stop
 ********************************************************************************
 *
 * Summary:
@@ -126,22 +126,22 @@ void ResetISR_StartEx(cyisraddress address)
 *   None
 *
 *******************************************************************************/
-void ResetISR_Stop(void)
+void RotaryEncoderISR_Stop(void)
 {
     /* Disable this interrupt. */
-    ResetISR_Disable();
+    RotaryEncoderISR_Disable();
 
     /* Set the ISR to point to the passive one. */
-    ResetISR_SetVector(&IntDefaultHandler);
+    RotaryEncoderISR_SetVector(&IntDefaultHandler);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetISR_Interrupt
+* Function Name: RotaryEncoderISR_Interrupt
 ********************************************************************************
 *
 * Summary:
-*   The default Interrupt Service Routine for ResetISR.
+*   The default Interrupt Service Routine for RotaryEncoderISR.
 *
 *   Add custom code between the START and END comments to keep the next version
 *   of this file from over-writing your code.
@@ -156,27 +156,27 @@ void ResetISR_Stop(void)
 *   None
 *
 *******************************************************************************/
-CY_ISR(ResetISR_Interrupt)
+CY_ISR(RotaryEncoderISR_Interrupt)
 {
-    #ifdef ResetISR_INTERRUPT_INTERRUPT_CALLBACK
-        ResetISR_Interrupt_InterruptCallback();
-    #endif /* ResetISR_INTERRUPT_INTERRUPT_CALLBACK */ 
+    #ifdef RotaryEncoderISR_INTERRUPT_INTERRUPT_CALLBACK
+        RotaryEncoderISR_Interrupt_InterruptCallback();
+    #endif /* RotaryEncoderISR_INTERRUPT_INTERRUPT_CALLBACK */ 
 
     /*  Place your Interrupt code here. */
-    /* `#START ResetISR_Interrupt` */
+    /* `#START RotaryEncoderISR_Interrupt` */
 
     /* `#END` */
 }
 
 
 /*******************************************************************************
-* Function Name: ResetISR_SetVector
+* Function Name: RotaryEncoderISR_SetVector
 ********************************************************************************
 *
 * Summary:
-*   Change the ISR vector for the Interrupt. Note calling ResetISR_Start
+*   Change the ISR vector for the Interrupt. Note calling RotaryEncoderISR_Start
 *   will override any effect this method would have had. To set the vector 
-*   before the component has been started use ResetISR_StartEx instead.
+*   before the component has been started use RotaryEncoderISR_StartEx instead.
 * 
 *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
 *   used to provide consistent definition across compilers:
@@ -196,14 +196,14 @@ CY_ISR(ResetISR_Interrupt)
 *   None
 *
 *******************************************************************************/
-void ResetISR_SetVector(cyisraddress address)
+void RotaryEncoderISR_SetVector(cyisraddress address)
 {
-    CyRamVectors[CYINT_IRQ_BASE + ResetISR__INTC_NUMBER] = address;
+    CyRamVectors[CYINT_IRQ_BASE + RotaryEncoderISR__INTC_NUMBER] = address;
 }
 
 
 /*******************************************************************************
-* Function Name: ResetISR_GetVector
+* Function Name: RotaryEncoderISR_GetVector
 ********************************************************************************
 *
 * Summary:
@@ -216,22 +216,22 @@ void ResetISR_SetVector(cyisraddress address)
 *   Address of the ISR in the interrupt vector table.
 *
 *******************************************************************************/
-cyisraddress ResetISR_GetVector(void)
+cyisraddress RotaryEncoderISR_GetVector(void)
 {
-    return CyRamVectors[CYINT_IRQ_BASE + ResetISR__INTC_NUMBER];
+    return CyRamVectors[CYINT_IRQ_BASE + RotaryEncoderISR__INTC_NUMBER];
 }
 
 
 /*******************************************************************************
-* Function Name: ResetISR_SetPriority
+* Function Name: RotaryEncoderISR_SetPriority
 ********************************************************************************
 *
 * Summary:
 *   Sets the Priority of the Interrupt. 
 *
-*   Note calling ResetISR_Start or ResetISR_StartEx will 
+*   Note calling RotaryEncoderISR_Start or RotaryEncoderISR_StartEx will 
 *   override any effect this API would have had. This API should only be called
-*   after ResetISR_Start or ResetISR_StartEx has been called. 
+*   after RotaryEncoderISR_Start or RotaryEncoderISR_StartEx has been called. 
 *   To set the initial priority for the component, use the Design-Wide Resources
 *   Interrupt Editor.
 *
@@ -246,20 +246,20 @@ cyisraddress ResetISR_GetVector(void)
 *   None
 *
 *******************************************************************************/
-void ResetISR_SetPriority(uint8 priority)
+void RotaryEncoderISR_SetPriority(uint8 priority)
 {
 	uint8 interruptState;
-    uint32 priorityOffset = ((ResetISR__INTC_NUMBER % 4u) * 8u) + 6u;
+    uint32 priorityOffset = ((RotaryEncoderISR__INTC_NUMBER % 4u) * 8u) + 6u;
     
 	interruptState = CyEnterCriticalSection();
-    *ResetISR_INTC_PRIOR = (*ResetISR_INTC_PRIOR & (uint32)(~ResetISR__INTC_PRIOR_MASK)) |
+    *RotaryEncoderISR_INTC_PRIOR = (*RotaryEncoderISR_INTC_PRIOR & (uint32)(~RotaryEncoderISR__INTC_PRIOR_MASK)) |
                                     ((uint32)priority << priorityOffset);
 	CyExitCriticalSection(interruptState);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetISR_GetPriority
+* Function Name: RotaryEncoderISR_GetPriority
 ********************************************************************************
 *
 * Summary:
@@ -274,19 +274,19 @@ void ResetISR_SetPriority(uint8 priority)
 *    PSoC 4: Priority is from 0 to 3.
 *
 *******************************************************************************/
-uint8 ResetISR_GetPriority(void)
+uint8 RotaryEncoderISR_GetPriority(void)
 {
     uint32 priority;
-	uint32 priorityOffset = ((ResetISR__INTC_NUMBER % 4u) * 8u) + 6u;
+	uint32 priorityOffset = ((RotaryEncoderISR__INTC_NUMBER % 4u) * 8u) + 6u;
 
-    priority = (*ResetISR_INTC_PRIOR & ResetISR__INTC_PRIOR_MASK) >> priorityOffset;
+    priority = (*RotaryEncoderISR_INTC_PRIOR & RotaryEncoderISR__INTC_PRIOR_MASK) >> priorityOffset;
 
     return (uint8)priority;
 }
 
 
 /*******************************************************************************
-* Function Name: ResetISR_Enable
+* Function Name: RotaryEncoderISR_Enable
 ********************************************************************************
 *
 * Summary:
@@ -301,15 +301,15 @@ uint8 ResetISR_GetPriority(void)
 *   None
 *
 *******************************************************************************/
-void ResetISR_Enable(void)
+void RotaryEncoderISR_Enable(void)
 {
     /* Enable the general interrupt. */
-    *ResetISR_INTC_SET_EN = ResetISR__INTC_MASK;
+    *RotaryEncoderISR_INTC_SET_EN = RotaryEncoderISR__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: ResetISR_GetState
+* Function Name: RotaryEncoderISR_GetState
 ********************************************************************************
 *
 * Summary:
@@ -322,15 +322,15 @@ void ResetISR_Enable(void)
 *   1 if enabled, 0 if disabled.
 *
 *******************************************************************************/
-uint8 ResetISR_GetState(void)
+uint8 RotaryEncoderISR_GetState(void)
 {
     /* Get the state of the general interrupt. */
-    return ((*ResetISR_INTC_SET_EN & (uint32)ResetISR__INTC_MASK) != 0u) ? 1u:0u;
+    return ((*RotaryEncoderISR_INTC_SET_EN & (uint32)RotaryEncoderISR__INTC_MASK) != 0u) ? 1u:0u;
 }
 
 
 /*******************************************************************************
-* Function Name: ResetISR_Disable
+* Function Name: RotaryEncoderISR_Disable
 ********************************************************************************
 *
 * Summary:
@@ -343,15 +343,15 @@ uint8 ResetISR_GetState(void)
 *   None
 *
 *******************************************************************************/
-void ResetISR_Disable(void)
+void RotaryEncoderISR_Disable(void)
 {
     /* Disable the general interrupt. */
-    *ResetISR_INTC_CLR_EN = ResetISR__INTC_MASK;
+    *RotaryEncoderISR_INTC_CLR_EN = RotaryEncoderISR__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: ResetISR_SetPending
+* Function Name: RotaryEncoderISR_SetPending
 ********************************************************************************
 *
 * Summary:
@@ -370,14 +370,14 @@ void ResetISR_Disable(void)
 *   interrupts).
 *
 *******************************************************************************/
-void ResetISR_SetPending(void)
+void RotaryEncoderISR_SetPending(void)
 {
-    *ResetISR_INTC_SET_PD = ResetISR__INTC_MASK;
+    *RotaryEncoderISR_INTC_SET_PD = RotaryEncoderISR__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: ResetISR_ClearPending
+* Function Name: RotaryEncoderISR_ClearPending
 ********************************************************************************
 *
 * Summary:
@@ -395,9 +395,9 @@ void ResetISR_SetPending(void)
 *   None
 *
 *******************************************************************************/
-void ResetISR_ClearPending(void)
+void RotaryEncoderISR_ClearPending(void)
 {
-    *ResetISR_INTC_CLR_PD = ResetISR__INTC_MASK;
+    *RotaryEncoderISR_INTC_CLR_PD = RotaryEncoderISR__INTC_MASK;
 }
 
 #endif /* End check for removal by optimization */

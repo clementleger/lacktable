@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: SW1.c  
+* File Name: RotaryEncoderA.c  
 * Version 2.10
 *
 * Description:
@@ -15,18 +15,18 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "SW1.h"
+#include "RotaryEncoderA.h"
 
 #define SetP4PinDriveMode(shift, mode)  \
     do { \
-        SW1_PC =   (SW1_PC & \
-                                (uint32)(~(uint32)(SW1_DRIVE_MODE_IND_MASK << (SW1_DRIVE_MODE_BITS * (shift))))) | \
-                                (uint32)((uint32)(mode) << (SW1_DRIVE_MODE_BITS * (shift))); \
+        RotaryEncoderA_PC =   (RotaryEncoderA_PC & \
+                                (uint32)(~(uint32)(RotaryEncoderA_DRIVE_MODE_IND_MASK << (RotaryEncoderA_DRIVE_MODE_BITS * (shift))))) | \
+                                (uint32)((uint32)(mode) << (RotaryEncoderA_DRIVE_MODE_BITS * (shift))); \
     } while (0)
 
 
 /*******************************************************************************
-* Function Name: SW1_Write
+* Function Name: RotaryEncoderA_Write
 ********************************************************************************
 *
 * Summary:
@@ -39,16 +39,16 @@
 *  None 
 *  
 *******************************************************************************/
-void SW1_Write(uint8 value) 
+void RotaryEncoderA_Write(uint8 value) 
 {
-    uint8 drVal = (uint8)(SW1_DR & (uint8)(~SW1_MASK));
-    drVal = (drVal | ((uint8)(value << SW1_SHIFT) & SW1_MASK));
-    SW1_DR = (uint32)drVal;
+    uint8 drVal = (uint8)(RotaryEncoderA_DR & (uint8)(~RotaryEncoderA_MASK));
+    drVal = (drVal | ((uint8)(value << RotaryEncoderA_SHIFT) & RotaryEncoderA_MASK));
+    RotaryEncoderA_DR = (uint32)drVal;
 }
 
 
 /*******************************************************************************
-* Function Name: SW1_SetDriveMode
+* Function Name: RotaryEncoderA_SetDriveMode
 ********************************************************************************
 *
 * Summary:
@@ -57,27 +57,27 @@ void SW1_Write(uint8 value)
 * Parameters:  
 *  mode:  Change the pins to one of the following drive modes.
 *
-*  SW1_DM_STRONG     Strong Drive 
-*  SW1_DM_OD_HI      Open Drain, Drives High 
-*  SW1_DM_OD_LO      Open Drain, Drives Low 
-*  SW1_DM_RES_UP     Resistive Pull Up 
-*  SW1_DM_RES_DWN    Resistive Pull Down 
-*  SW1_DM_RES_UPDWN  Resistive Pull Up/Down 
-*  SW1_DM_DIG_HIZ    High Impedance Digital 
-*  SW1_DM_ALG_HIZ    High Impedance Analog 
+*  RotaryEncoderA_DM_STRONG     Strong Drive 
+*  RotaryEncoderA_DM_OD_HI      Open Drain, Drives High 
+*  RotaryEncoderA_DM_OD_LO      Open Drain, Drives Low 
+*  RotaryEncoderA_DM_RES_UP     Resistive Pull Up 
+*  RotaryEncoderA_DM_RES_DWN    Resistive Pull Down 
+*  RotaryEncoderA_DM_RES_UPDWN  Resistive Pull Up/Down 
+*  RotaryEncoderA_DM_DIG_HIZ    High Impedance Digital 
+*  RotaryEncoderA_DM_ALG_HIZ    High Impedance Analog 
 *
 * Return: 
 *  None
 *
 *******************************************************************************/
-void SW1_SetDriveMode(uint8 mode) 
+void RotaryEncoderA_SetDriveMode(uint8 mode) 
 {
-	SetP4PinDriveMode(SW1__0__SHIFT, mode);
+	SetP4PinDriveMode(RotaryEncoderA__0__SHIFT, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: SW1_Read
+* Function Name: RotaryEncoderA_Read
 ********************************************************************************
 *
 * Summary:
@@ -91,17 +91,17 @@ void SW1_SetDriveMode(uint8 mode)
 *  Returns the current value of the Digital Port as a right justified number
 *  
 * Note:
-*  Macro SW1_ReadPS calls this function. 
+*  Macro RotaryEncoderA_ReadPS calls this function. 
 *  
 *******************************************************************************/
-uint8 SW1_Read(void) 
+uint8 RotaryEncoderA_Read(void) 
 {
-    return (uint8)((SW1_PS & SW1_MASK) >> SW1_SHIFT);
+    return (uint8)((RotaryEncoderA_PS & RotaryEncoderA_MASK) >> RotaryEncoderA_SHIFT);
 }
 
 
 /*******************************************************************************
-* Function Name: SW1_ReadDataReg
+* Function Name: RotaryEncoderA_ReadDataReg
 ********************************************************************************
 *
 * Summary:
@@ -114,17 +114,17 @@ uint8 SW1_Read(void)
 *  Returns the current value assigned to the Digital Port's data output register
 *  
 *******************************************************************************/
-uint8 SW1_ReadDataReg(void) 
+uint8 RotaryEncoderA_ReadDataReg(void) 
 {
-    return (uint8)((SW1_DR & SW1_MASK) >> SW1_SHIFT);
+    return (uint8)((RotaryEncoderA_DR & RotaryEncoderA_MASK) >> RotaryEncoderA_SHIFT);
 }
 
 
 /* If Interrupts Are Enabled for this Pins component */ 
-#if defined(SW1_INTSTAT) 
+#if defined(RotaryEncoderA_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: SW1_ClearInterrupt
+    * Function Name: RotaryEncoderA_ClearInterrupt
     ********************************************************************************
     *
     * Summary:
@@ -138,11 +138,11 @@ uint8 SW1_ReadDataReg(void)
     *  Returns the value of the interrupt status register
     *  
     *******************************************************************************/
-    uint8 SW1_ClearInterrupt(void) 
+    uint8 RotaryEncoderA_ClearInterrupt(void) 
     {
-		uint8 maskedStatus = (uint8)(SW1_INTSTAT & SW1_MASK);
-		SW1_INTSTAT = maskedStatus;
-        return maskedStatus >> SW1_SHIFT;
+		uint8 maskedStatus = (uint8)(RotaryEncoderA_INTSTAT & RotaryEncoderA_MASK);
+		RotaryEncoderA_INTSTAT = maskedStatus;
+        return maskedStatus >> RotaryEncoderA_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: ResetTimer_PM.c
+* File Name: RotaryEncoder_PM.c
 * Version 2.0
 *
 * Description:
@@ -16,13 +16,13 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "ResetTimer.h"
+#include "RotaryEncoder.h"
 
-static ResetTimer_BACKUP_STRUCT ResetTimer_backup;
+static RotaryEncoder_BACKUP_STRUCT RotaryEncoder_backup;
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SaveConfig
+* Function Name: RotaryEncoder_SaveConfig
 ********************************************************************************
 *
 * Summary:
@@ -35,14 +35,14 @@ static ResetTimer_BACKUP_STRUCT ResetTimer_backup;
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SaveConfig(void)
+void RotaryEncoder_SaveConfig(void)
 {
 
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_Sleep
+* Function Name: RotaryEncoder_Sleep
 ********************************************************************************
 *
 * Summary:
@@ -55,24 +55,24 @@ void ResetTimer_SaveConfig(void)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_Sleep(void)
+void RotaryEncoder_Sleep(void)
 {
-    if(0u != (ResetTimer_BLOCK_CONTROL_REG & ResetTimer_MASK))
+    if(0u != (RotaryEncoder_BLOCK_CONTROL_REG & RotaryEncoder_MASK))
     {
-        ResetTimer_backup.enableState = 1u;
+        RotaryEncoder_backup.enableState = 1u;
     }
     else
     {
-        ResetTimer_backup.enableState = 0u;
+        RotaryEncoder_backup.enableState = 0u;
     }
 
-    ResetTimer_Stop();
-    ResetTimer_SaveConfig();
+    RotaryEncoder_Stop();
+    RotaryEncoder_SaveConfig();
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_RestoreConfig
+* Function Name: RotaryEncoder_RestoreConfig
 ********************************************************************************
 *
 * Summary:
@@ -85,14 +85,14 @@ void ResetTimer_Sleep(void)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_RestoreConfig(void)
+void RotaryEncoder_RestoreConfig(void)
 {
 
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_Wakeup
+* Function Name: RotaryEncoder_Wakeup
 ********************************************************************************
 *
 * Summary:
@@ -105,13 +105,13 @@ void ResetTimer_RestoreConfig(void)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_Wakeup(void)
+void RotaryEncoder_Wakeup(void)
 {
-    ResetTimer_RestoreConfig();
+    RotaryEncoder_RestoreConfig();
 
-    if(0u != ResetTimer_backup.enableState)
+    if(0u != RotaryEncoder_backup.enableState)
     {
-        ResetTimer_Enable();
+        RotaryEncoder_Enable();
     }
 }
 

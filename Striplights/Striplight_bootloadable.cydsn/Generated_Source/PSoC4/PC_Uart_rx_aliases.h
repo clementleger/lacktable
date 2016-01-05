@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: SW1.h  
+* File Name: PC_Uart_rx.h  
 * Version 2.10
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_SW1_ALIASES_H) /* Pins SW1_ALIASES_H */
-#define CY_PINS_SW1_ALIASES_H
+#if !defined(CY_PINS_PC_Uart_rx_ALIASES_H) /* Pins PC_Uart_rx_ALIASES_H */
+#define CY_PINS_PC_Uart_rx_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -26,14 +26,14 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define SW1_0		(SW1__0__PC)
-#define SW1_0_PS		(SW1__0__PS)
-#define SW1_0_PC		(SW1__0__PC)
-#define SW1_0_DR		(SW1__0__DR)
-#define SW1_0_SHIFT	(SW1__0__SHIFT)
+#define PC_Uart_rx_0		(PC_Uart_rx__0__PC)
+#define PC_Uart_rx_0_PS		(PC_Uart_rx__0__PS)
+#define PC_Uart_rx_0_PC		(PC_Uart_rx__0__PC)
+#define PC_Uart_rx_0_DR		(PC_Uart_rx__0__DR)
+#define PC_Uart_rx_0_SHIFT	(PC_Uart_rx__0__SHIFT)
 
 
-#endif /* End Pins SW1_ALIASES_H */
+#endif /* End Pins PC_Uart_rx_ALIASES_H */
 
 
 /* [] END OF FILE */

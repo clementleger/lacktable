@@ -1,9 +1,9 @@
 /*******************************************************************************
-* File Name: ResetTimer.c
+* File Name: RotaryEncoder.c
 * Version 2.0
 *
 * Description:
-*  This file provides the source code to the API for the ResetTimer
+*  This file provides the source code to the API for the RotaryEncoder
 *  component
 *
 * Note:
@@ -16,17 +16,17 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "ResetTimer.h"
+#include "RotaryEncoder.h"
 
-uint8 ResetTimer_initVar = 0u;
+uint8 RotaryEncoder_initVar = 0u;
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_Init
+* Function Name: RotaryEncoder_Init
 ********************************************************************************
 *
 * Summary:
-*  Initialize/Restore default ResetTimer configuration.
+*  Initialize/Restore default RotaryEncoder configuration.
 *
 * Parameters:
 *  None
@@ -35,137 +35,137 @@ uint8 ResetTimer_initVar = 0u;
 *  None
 *
 *******************************************************************************/
-void ResetTimer_Init(void)
+void RotaryEncoder_Init(void)
 {
 
     /* Set values from customizer to CTRL */
-    #if (ResetTimer__QUAD == ResetTimer_CONFIG)
-        ResetTimer_CONTROL_REG = ResetTimer_CTRL_QUAD_BASE_CONFIG;
+    #if (RotaryEncoder__QUAD == RotaryEncoder_CONFIG)
+        RotaryEncoder_CONTROL_REG = RotaryEncoder_CTRL_QUAD_BASE_CONFIG;
         
         /* Set values from customizer to CTRL1 */
-        ResetTimer_TRIG_CONTROL1_REG  = ResetTimer_QUAD_SIGNALS_MODES;
+        RotaryEncoder_TRIG_CONTROL1_REG  = RotaryEncoder_QUAD_SIGNALS_MODES;
 
         /* Set values from customizer to INTR */
-        ResetTimer_SetInterruptMode(ResetTimer_QUAD_INTERRUPT_MASK);
+        RotaryEncoder_SetInterruptMode(RotaryEncoder_QUAD_INTERRUPT_MASK);
         
          /* Set other values */
-        ResetTimer_SetCounterMode(ResetTimer_COUNT_DOWN);
-        ResetTimer_WritePeriod(ResetTimer_QUAD_PERIOD_INIT_VALUE);
-        ResetTimer_WriteCounter(ResetTimer_QUAD_PERIOD_INIT_VALUE);
-    #endif  /* (ResetTimer__QUAD == ResetTimer_CONFIG) */
+        RotaryEncoder_SetCounterMode(RotaryEncoder_COUNT_DOWN);
+        RotaryEncoder_WritePeriod(RotaryEncoder_QUAD_PERIOD_INIT_VALUE);
+        RotaryEncoder_WriteCounter(RotaryEncoder_QUAD_PERIOD_INIT_VALUE);
+    #endif  /* (RotaryEncoder__QUAD == RotaryEncoder_CONFIG) */
 
-    #if (ResetTimer__TIMER == ResetTimer_CONFIG)
-        ResetTimer_CONTROL_REG = ResetTimer_CTRL_TIMER_BASE_CONFIG;
+    #if (RotaryEncoder__TIMER == RotaryEncoder_CONFIG)
+        RotaryEncoder_CONTROL_REG = RotaryEncoder_CTRL_TIMER_BASE_CONFIG;
         
         /* Set values from customizer to CTRL1 */
-        ResetTimer_TRIG_CONTROL1_REG  = ResetTimer_TIMER_SIGNALS_MODES;
+        RotaryEncoder_TRIG_CONTROL1_REG  = RotaryEncoder_TIMER_SIGNALS_MODES;
     
         /* Set values from customizer to INTR */
-        ResetTimer_SetInterruptMode(ResetTimer_TC_INTERRUPT_MASK);
+        RotaryEncoder_SetInterruptMode(RotaryEncoder_TC_INTERRUPT_MASK);
         
         /* Set other values from customizer */
-        ResetTimer_WritePeriod(ResetTimer_TC_PERIOD_VALUE );
+        RotaryEncoder_WritePeriod(RotaryEncoder_TC_PERIOD_VALUE );
 
-        #if (ResetTimer__COMPARE == ResetTimer_TC_COMP_CAP_MODE)
-            ResetTimer_WriteCompare(ResetTimer_TC_COMPARE_VALUE);
+        #if (RotaryEncoder__COMPARE == RotaryEncoder_TC_COMP_CAP_MODE)
+            RotaryEncoder_WriteCompare(RotaryEncoder_TC_COMPARE_VALUE);
 
-            #if (1u == ResetTimer_TC_COMPARE_SWAP)
-                ResetTimer_SetCompareSwap(1u);
-                ResetTimer_WriteCompareBuf(ResetTimer_TC_COMPARE_BUF_VALUE);
-            #endif  /* (1u == ResetTimer_TC_COMPARE_SWAP) */
-        #endif  /* (ResetTimer__COMPARE == ResetTimer_TC_COMP_CAP_MODE) */
+            #if (1u == RotaryEncoder_TC_COMPARE_SWAP)
+                RotaryEncoder_SetCompareSwap(1u);
+                RotaryEncoder_WriteCompareBuf(RotaryEncoder_TC_COMPARE_BUF_VALUE);
+            #endif  /* (1u == RotaryEncoder_TC_COMPARE_SWAP) */
+        #endif  /* (RotaryEncoder__COMPARE == RotaryEncoder_TC_COMP_CAP_MODE) */
 
         /* Initialize counter value */
-        #if (ResetTimer_CY_TCPWM_V2 && ResetTimer_TIMER_UPDOWN_CNT_USED && !ResetTimer_CY_TCPWM_4000)
-            ResetTimer_WriteCounter(1u);
-        #elif(ResetTimer__COUNT_DOWN == ResetTimer_TC_COUNTER_MODE)
-            ResetTimer_WriteCounter(ResetTimer_TC_PERIOD_VALUE);
+        #if (RotaryEncoder_CY_TCPWM_V2 && RotaryEncoder_TIMER_UPDOWN_CNT_USED && !RotaryEncoder_CY_TCPWM_4000)
+            RotaryEncoder_WriteCounter(1u);
+        #elif(RotaryEncoder__COUNT_DOWN == RotaryEncoder_TC_COUNTER_MODE)
+            RotaryEncoder_WriteCounter(RotaryEncoder_TC_PERIOD_VALUE);
         #else
-            ResetTimer_WriteCounter(0u);
-        #endif /* (ResetTimer_CY_TCPWM_V2 && ResetTimer_TIMER_UPDOWN_CNT_USED && !ResetTimer_CY_TCPWM_4000) */
-    #endif  /* (ResetTimer__TIMER == ResetTimer_CONFIG) */
+            RotaryEncoder_WriteCounter(0u);
+        #endif /* (RotaryEncoder_CY_TCPWM_V2 && RotaryEncoder_TIMER_UPDOWN_CNT_USED && !RotaryEncoder_CY_TCPWM_4000) */
+    #endif  /* (RotaryEncoder__TIMER == RotaryEncoder_CONFIG) */
 
-    #if (ResetTimer__PWM_SEL == ResetTimer_CONFIG)
-        ResetTimer_CONTROL_REG = ResetTimer_CTRL_PWM_BASE_CONFIG;
+    #if (RotaryEncoder__PWM_SEL == RotaryEncoder_CONFIG)
+        RotaryEncoder_CONTROL_REG = RotaryEncoder_CTRL_PWM_BASE_CONFIG;
 
-        #if (ResetTimer__PWM_PR == ResetTimer_PWM_MODE)
-            ResetTimer_CONTROL_REG |= ResetTimer_CTRL_PWM_RUN_MODE;
-            ResetTimer_WriteCounter(ResetTimer_PWM_PR_INIT_VALUE);
+        #if (RotaryEncoder__PWM_PR == RotaryEncoder_PWM_MODE)
+            RotaryEncoder_CONTROL_REG |= RotaryEncoder_CTRL_PWM_RUN_MODE;
+            RotaryEncoder_WriteCounter(RotaryEncoder_PWM_PR_INIT_VALUE);
         #else
-            ResetTimer_CONTROL_REG |= ResetTimer_CTRL_PWM_ALIGN | ResetTimer_CTRL_PWM_KILL_EVENT;
+            RotaryEncoder_CONTROL_REG |= RotaryEncoder_CTRL_PWM_ALIGN | RotaryEncoder_CTRL_PWM_KILL_EVENT;
             
             /* Initialize counter value */
-            #if (ResetTimer_CY_TCPWM_V2 && ResetTimer_PWM_UPDOWN_CNT_USED && !ResetTimer_CY_TCPWM_4000)
-                ResetTimer_WriteCounter(1u);
-            #elif (ResetTimer__RIGHT == ResetTimer_PWM_ALIGN)
-                ResetTimer_WriteCounter(ResetTimer_PWM_PERIOD_VALUE);
+            #if (RotaryEncoder_CY_TCPWM_V2 && RotaryEncoder_PWM_UPDOWN_CNT_USED && !RotaryEncoder_CY_TCPWM_4000)
+                RotaryEncoder_WriteCounter(1u);
+            #elif (RotaryEncoder__RIGHT == RotaryEncoder_PWM_ALIGN)
+                RotaryEncoder_WriteCounter(RotaryEncoder_PWM_PERIOD_VALUE);
             #else 
-                ResetTimer_WriteCounter(0u);
-            #endif  /* (ResetTimer_CY_TCPWM_V2 && ResetTimer_PWM_UPDOWN_CNT_USED && !ResetTimer_CY_TCPWM_4000) */
-        #endif  /* (ResetTimer__PWM_PR == ResetTimer_PWM_MODE) */
+                RotaryEncoder_WriteCounter(0u);
+            #endif  /* (RotaryEncoder_CY_TCPWM_V2 && RotaryEncoder_PWM_UPDOWN_CNT_USED && !RotaryEncoder_CY_TCPWM_4000) */
+        #endif  /* (RotaryEncoder__PWM_PR == RotaryEncoder_PWM_MODE) */
 
-        #if (ResetTimer__PWM_DT == ResetTimer_PWM_MODE)
-            ResetTimer_CONTROL_REG |= ResetTimer_CTRL_PWM_DEAD_TIME_CYCLE;
-        #endif  /* (ResetTimer__PWM_DT == ResetTimer_PWM_MODE) */
+        #if (RotaryEncoder__PWM_DT == RotaryEncoder_PWM_MODE)
+            RotaryEncoder_CONTROL_REG |= RotaryEncoder_CTRL_PWM_DEAD_TIME_CYCLE;
+        #endif  /* (RotaryEncoder__PWM_DT == RotaryEncoder_PWM_MODE) */
 
-        #if (ResetTimer__PWM == ResetTimer_PWM_MODE)
-            ResetTimer_CONTROL_REG |= ResetTimer_CTRL_PWM_PRESCALER;
-        #endif  /* (ResetTimer__PWM == ResetTimer_PWM_MODE) */
+        #if (RotaryEncoder__PWM == RotaryEncoder_PWM_MODE)
+            RotaryEncoder_CONTROL_REG |= RotaryEncoder_CTRL_PWM_PRESCALER;
+        #endif  /* (RotaryEncoder__PWM == RotaryEncoder_PWM_MODE) */
 
         /* Set values from customizer to CTRL1 */
-        ResetTimer_TRIG_CONTROL1_REG  = ResetTimer_PWM_SIGNALS_MODES;
+        RotaryEncoder_TRIG_CONTROL1_REG  = RotaryEncoder_PWM_SIGNALS_MODES;
     
         /* Set values from customizer to INTR */
-        ResetTimer_SetInterruptMode(ResetTimer_PWM_INTERRUPT_MASK);
+        RotaryEncoder_SetInterruptMode(RotaryEncoder_PWM_INTERRUPT_MASK);
 
         /* Set values from customizer to CTRL2 */
-        #if (ResetTimer__PWM_PR == ResetTimer_PWM_MODE)
-            ResetTimer_TRIG_CONTROL2_REG =
-                    (ResetTimer_CC_MATCH_NO_CHANGE    |
-                    ResetTimer_OVERLOW_NO_CHANGE      |
-                    ResetTimer_UNDERFLOW_NO_CHANGE);
+        #if (RotaryEncoder__PWM_PR == RotaryEncoder_PWM_MODE)
+            RotaryEncoder_TRIG_CONTROL2_REG =
+                    (RotaryEncoder_CC_MATCH_NO_CHANGE    |
+                    RotaryEncoder_OVERLOW_NO_CHANGE      |
+                    RotaryEncoder_UNDERFLOW_NO_CHANGE);
         #else
-            #if (ResetTimer__LEFT == ResetTimer_PWM_ALIGN)
-                ResetTimer_TRIG_CONTROL2_REG = ResetTimer_PWM_MODE_LEFT;
-            #endif  /* ( ResetTimer_PWM_LEFT == ResetTimer_PWM_ALIGN) */
+            #if (RotaryEncoder__LEFT == RotaryEncoder_PWM_ALIGN)
+                RotaryEncoder_TRIG_CONTROL2_REG = RotaryEncoder_PWM_MODE_LEFT;
+            #endif  /* ( RotaryEncoder_PWM_LEFT == RotaryEncoder_PWM_ALIGN) */
 
-            #if (ResetTimer__RIGHT == ResetTimer_PWM_ALIGN)
-                ResetTimer_TRIG_CONTROL2_REG = ResetTimer_PWM_MODE_RIGHT;
-            #endif  /* ( ResetTimer_PWM_RIGHT == ResetTimer_PWM_ALIGN) */
+            #if (RotaryEncoder__RIGHT == RotaryEncoder_PWM_ALIGN)
+                RotaryEncoder_TRIG_CONTROL2_REG = RotaryEncoder_PWM_MODE_RIGHT;
+            #endif  /* ( RotaryEncoder_PWM_RIGHT == RotaryEncoder_PWM_ALIGN) */
 
-            #if (ResetTimer__CENTER == ResetTimer_PWM_ALIGN)
-                ResetTimer_TRIG_CONTROL2_REG = ResetTimer_PWM_MODE_CENTER;
-            #endif  /* ( ResetTimer_PWM_CENTER == ResetTimer_PWM_ALIGN) */
+            #if (RotaryEncoder__CENTER == RotaryEncoder_PWM_ALIGN)
+                RotaryEncoder_TRIG_CONTROL2_REG = RotaryEncoder_PWM_MODE_CENTER;
+            #endif  /* ( RotaryEncoder_PWM_CENTER == RotaryEncoder_PWM_ALIGN) */
 
-            #if (ResetTimer__ASYMMETRIC == ResetTimer_PWM_ALIGN)
-                ResetTimer_TRIG_CONTROL2_REG = ResetTimer_PWM_MODE_ASYM;
-            #endif  /* (ResetTimer__ASYMMETRIC == ResetTimer_PWM_ALIGN) */
-        #endif  /* (ResetTimer__PWM_PR == ResetTimer_PWM_MODE) */
+            #if (RotaryEncoder__ASYMMETRIC == RotaryEncoder_PWM_ALIGN)
+                RotaryEncoder_TRIG_CONTROL2_REG = RotaryEncoder_PWM_MODE_ASYM;
+            #endif  /* (RotaryEncoder__ASYMMETRIC == RotaryEncoder_PWM_ALIGN) */
+        #endif  /* (RotaryEncoder__PWM_PR == RotaryEncoder_PWM_MODE) */
 
         /* Set other values from customizer */
-        ResetTimer_WritePeriod(ResetTimer_PWM_PERIOD_VALUE );
-        ResetTimer_WriteCompare(ResetTimer_PWM_COMPARE_VALUE);
+        RotaryEncoder_WritePeriod(RotaryEncoder_PWM_PERIOD_VALUE );
+        RotaryEncoder_WriteCompare(RotaryEncoder_PWM_COMPARE_VALUE);
 
-        #if (1u == ResetTimer_PWM_COMPARE_SWAP)
-            ResetTimer_SetCompareSwap(1u);
-            ResetTimer_WriteCompareBuf(ResetTimer_PWM_COMPARE_BUF_VALUE);
-        #endif  /* (1u == ResetTimer_PWM_COMPARE_SWAP) */
+        #if (1u == RotaryEncoder_PWM_COMPARE_SWAP)
+            RotaryEncoder_SetCompareSwap(1u);
+            RotaryEncoder_WriteCompareBuf(RotaryEncoder_PWM_COMPARE_BUF_VALUE);
+        #endif  /* (1u == RotaryEncoder_PWM_COMPARE_SWAP) */
 
-        #if (1u == ResetTimer_PWM_PERIOD_SWAP)
-            ResetTimer_SetPeriodSwap(1u);
-            ResetTimer_WritePeriodBuf(ResetTimer_PWM_PERIOD_BUF_VALUE);
-        #endif  /* (1u == ResetTimer_PWM_PERIOD_SWAP) */
-    #endif  /* (ResetTimer__PWM_SEL == ResetTimer_CONFIG) */
+        #if (1u == RotaryEncoder_PWM_PERIOD_SWAP)
+            RotaryEncoder_SetPeriodSwap(1u);
+            RotaryEncoder_WritePeriodBuf(RotaryEncoder_PWM_PERIOD_BUF_VALUE);
+        #endif  /* (1u == RotaryEncoder_PWM_PERIOD_SWAP) */
+    #endif  /* (RotaryEncoder__PWM_SEL == RotaryEncoder_CONFIG) */
     
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_Enable
+* Function Name: RotaryEncoder_Enable
 ********************************************************************************
 *
 * Summary:
-*  Enables the ResetTimer.
+*  Enables the RotaryEncoder.
 *
 * Parameters:
 *  None
@@ -174,36 +174,36 @@ void ResetTimer_Init(void)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_Enable(void)
+void RotaryEncoder_Enable(void)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
-    ResetTimer_BLOCK_CONTROL_REG |= ResetTimer_MASK;
+    RotaryEncoder_BLOCK_CONTROL_REG |= RotaryEncoder_MASK;
     CyExitCriticalSection(enableInterrupts);
 
     /* Start Timer or PWM if start input is absent */
-    #if (ResetTimer__PWM_SEL == ResetTimer_CONFIG)
-        #if (0u == ResetTimer_PWM_START_SIGNAL_PRESENT)
-            ResetTimer_TriggerCommand(ResetTimer_MASK, ResetTimer_CMD_START);
-        #endif /* (0u == ResetTimer_PWM_START_SIGNAL_PRESENT) */
-    #endif /* (ResetTimer__PWM_SEL == ResetTimer_CONFIG) */
+    #if (RotaryEncoder__PWM_SEL == RotaryEncoder_CONFIG)
+        #if (0u == RotaryEncoder_PWM_START_SIGNAL_PRESENT)
+            RotaryEncoder_TriggerCommand(RotaryEncoder_MASK, RotaryEncoder_CMD_START);
+        #endif /* (0u == RotaryEncoder_PWM_START_SIGNAL_PRESENT) */
+    #endif /* (RotaryEncoder__PWM_SEL == RotaryEncoder_CONFIG) */
 
-    #if (ResetTimer__TIMER == ResetTimer_CONFIG)
-        #if (0u == ResetTimer_TC_START_SIGNAL_PRESENT)
-            ResetTimer_TriggerCommand(ResetTimer_MASK, ResetTimer_CMD_START);
-        #endif /* (0u == ResetTimer_TC_START_SIGNAL_PRESENT) */
-    #endif /* (ResetTimer__TIMER == ResetTimer_CONFIG) */
+    #if (RotaryEncoder__TIMER == RotaryEncoder_CONFIG)
+        #if (0u == RotaryEncoder_TC_START_SIGNAL_PRESENT)
+            RotaryEncoder_TriggerCommand(RotaryEncoder_MASK, RotaryEncoder_CMD_START);
+        #endif /* (0u == RotaryEncoder_TC_START_SIGNAL_PRESENT) */
+    #endif /* (RotaryEncoder__TIMER == RotaryEncoder_CONFIG) */
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_Start
+* Function Name: RotaryEncoder_Start
 ********************************************************************************
 *
 * Summary:
-*  Initializes the ResetTimer with default customizer
-*  values when called the first time and enables the ResetTimer.
+*  Initializes the RotaryEncoder with default customizer
+*  values when called the first time and enables the RotaryEncoder.
 *  For subsequent calls the configuration is left unchanged and the component is
 *  just enabled.
 *
@@ -214,31 +214,31 @@ void ResetTimer_Enable(void)
 *  None
 *
 * Global variables:
-*  ResetTimer_initVar: global variable is used to indicate initial
+*  RotaryEncoder_initVar: global variable is used to indicate initial
 *  configuration of this component.  The variable is initialized to zero and set
-*  to 1 the first time ResetTimer_Start() is called. This allows
+*  to 1 the first time RotaryEncoder_Start() is called. This allows
 *  enabling/disabling a component without re-initialization in all subsequent
-*  calls to the ResetTimer_Start() routine.
+*  calls to the RotaryEncoder_Start() routine.
 *
 *******************************************************************************/
-void ResetTimer_Start(void)
+void RotaryEncoder_Start(void)
 {
-    if (0u == ResetTimer_initVar)
+    if (0u == RotaryEncoder_initVar)
     {
-        ResetTimer_Init();
-        ResetTimer_initVar = 1u;
+        RotaryEncoder_Init();
+        RotaryEncoder_initVar = 1u;
     }
 
-    ResetTimer_Enable();
+    RotaryEncoder_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_Stop
+* Function Name: RotaryEncoder_Stop
 ********************************************************************************
 *
 * Summary:
-*  Disables the ResetTimer.
+*  Disables the RotaryEncoder.
 *
 * Parameters:
 *  None
@@ -247,58 +247,58 @@ void ResetTimer_Start(void)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_Stop(void)
+void RotaryEncoder_Stop(void)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_BLOCK_CONTROL_REG &= (uint32)~ResetTimer_MASK;
+    RotaryEncoder_BLOCK_CONTROL_REG &= (uint32)~RotaryEncoder_MASK;
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetMode
+* Function Name: RotaryEncoder_SetMode
 ********************************************************************************
 *
 * Summary:
-*  Sets the operation mode of the ResetTimer. This function is used when
-*  configured as a generic ResetTimer and the actual mode of operation is
+*  Sets the operation mode of the RotaryEncoder. This function is used when
+*  configured as a generic RotaryEncoder and the actual mode of operation is
 *  set at runtime. The mode must be set while the component is disabled.
 *
 * Parameters:
-*  mode: Mode for the ResetTimer to operate in
+*  mode: Mode for the RotaryEncoder to operate in
 *   Values:
-*   - ResetTimer_MODE_TIMER_COMPARE - Timer / Counter with
+*   - RotaryEncoder_MODE_TIMER_COMPARE - Timer / Counter with
 *                                                 compare capability
-*         - ResetTimer_MODE_TIMER_CAPTURE - Timer / Counter with
+*         - RotaryEncoder_MODE_TIMER_CAPTURE - Timer / Counter with
 *                                                 capture capability
-*         - ResetTimer_MODE_QUAD - Quadrature decoder
-*         - ResetTimer_MODE_PWM - PWM
-*         - ResetTimer_MODE_PWM_DT - PWM with dead time
-*         - ResetTimer_MODE_PWM_PR - PWM with pseudo random capability
+*         - RotaryEncoder_MODE_QUAD - Quadrature decoder
+*         - RotaryEncoder_MODE_PWM - PWM
+*         - RotaryEncoder_MODE_PWM_DT - PWM with dead time
+*         - RotaryEncoder_MODE_PWM_PR - PWM with pseudo random capability
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetMode(uint32 mode)
+void RotaryEncoder_SetMode(uint32 mode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_CONTROL_REG &= (uint32)~ResetTimer_MODE_MASK;
-    ResetTimer_CONTROL_REG |= mode;
+    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_MODE_MASK;
+    RotaryEncoder_CONTROL_REG |= mode;
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetQDMode
+* Function Name: RotaryEncoder_SetQDMode
 ********************************************************************************
 *
 * Summary:
@@ -308,30 +308,30 @@ void ResetTimer_SetMode(uint32 mode)
 * Parameters:
 *  qdMode: Quadrature Decoder mode
 *   Values:
-*         - ResetTimer_MODE_X1 - Counts on phi 1 rising
-*         - ResetTimer_MODE_X2 - Counts on both edges of phi1 (2x faster)
-*         - ResetTimer_MODE_X4 - Counts on both edges of phi1 and phi2
+*         - RotaryEncoder_MODE_X1 - Counts on phi 1 rising
+*         - RotaryEncoder_MODE_X2 - Counts on both edges of phi1 (2x faster)
+*         - RotaryEncoder_MODE_X4 - Counts on both edges of phi1 and phi2
 *                                        (4x faster)
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetQDMode(uint32 qdMode)
+void RotaryEncoder_SetQDMode(uint32 qdMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_CONTROL_REG &= (uint32)~ResetTimer_QUAD_MODE_MASK;
-    ResetTimer_CONTROL_REG |= qdMode;
+    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_QUAD_MODE_MASK;
+    RotaryEncoder_CONTROL_REG |= qdMode;
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetPrescaler
+* Function Name: RotaryEncoder_SetPrescaler
 ********************************************************************************
 *
 * Summary:
@@ -341,40 +341,40 @@ void ResetTimer_SetQDMode(uint32 qdMode)
 * Parameters:
 *  prescaler: Prescaler divider value
 *   Values:
-*         - ResetTimer_PRESCALE_DIVBY1    - Divide by 1 (no prescaling)
-*         - ResetTimer_PRESCALE_DIVBY2    - Divide by 2
-*         - ResetTimer_PRESCALE_DIVBY4    - Divide by 4
-*         - ResetTimer_PRESCALE_DIVBY8    - Divide by 8
-*         - ResetTimer_PRESCALE_DIVBY16   - Divide by 16
-*         - ResetTimer_PRESCALE_DIVBY32   - Divide by 32
-*         - ResetTimer_PRESCALE_DIVBY64   - Divide by 64
-*         - ResetTimer_PRESCALE_DIVBY128  - Divide by 128
+*         - RotaryEncoder_PRESCALE_DIVBY1    - Divide by 1 (no prescaling)
+*         - RotaryEncoder_PRESCALE_DIVBY2    - Divide by 2
+*         - RotaryEncoder_PRESCALE_DIVBY4    - Divide by 4
+*         - RotaryEncoder_PRESCALE_DIVBY8    - Divide by 8
+*         - RotaryEncoder_PRESCALE_DIVBY16   - Divide by 16
+*         - RotaryEncoder_PRESCALE_DIVBY32   - Divide by 32
+*         - RotaryEncoder_PRESCALE_DIVBY64   - Divide by 64
+*         - RotaryEncoder_PRESCALE_DIVBY128  - Divide by 128
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetPrescaler(uint32 prescaler)
+void RotaryEncoder_SetPrescaler(uint32 prescaler)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_CONTROL_REG &= (uint32)~ResetTimer_PRESCALER_MASK;
-    ResetTimer_CONTROL_REG |= prescaler;
+    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_PRESCALER_MASK;
+    RotaryEncoder_CONTROL_REG |= prescaler;
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetOneShot
+* Function Name: RotaryEncoder_SetOneShot
 ********************************************************************************
 *
 * Summary:
-*  Writes the register that controls whether the ResetTimer runs
+*  Writes the register that controls whether the RotaryEncoder runs
 *  continuously or stops when terminal count is reached.  By default the
-*  ResetTimer operates in the continuous mode.
+*  RotaryEncoder operates in the continuous mode.
 *
 * Parameters:
 *  oneShotEnable
@@ -386,22 +386,22 @@ void ResetTimer_SetPrescaler(uint32 prescaler)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetOneShot(uint32 oneShotEnable)
+void RotaryEncoder_SetOneShot(uint32 oneShotEnable)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_CONTROL_REG &= (uint32)~ResetTimer_ONESHOT_MASK;
-    ResetTimer_CONTROL_REG |= ((uint32)((oneShotEnable & ResetTimer_1BIT_MASK) <<
-                                                               ResetTimer_ONESHOT_SHIFT));
+    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_ONESHOT_MASK;
+    RotaryEncoder_CONTROL_REG |= ((uint32)((oneShotEnable & RotaryEncoder_1BIT_MASK) <<
+                                                               RotaryEncoder_ONESHOT_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetPWMMode
+* Function Name: RotaryEncoder_SetPWMMode
 ********************************************************************************
 *
 * Summary:
@@ -440,15 +440,15 @@ void ResetTimer_SetOneShot(uint32 oneShotEnable)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetPWMMode(uint32 modeMask)
+void RotaryEncoder_SetPWMMode(uint32 modeMask)
 {
-    ResetTimer_TRIG_CONTROL2_REG = (modeMask & ResetTimer_6BIT_MASK);
+    RotaryEncoder_TRIG_CONTROL2_REG = (modeMask & RotaryEncoder_6BIT_MASK);
 }
 
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetPWMSyncKill
+* Function Name: RotaryEncoder_SetPWMSyncKill
 ********************************************************************************
 *
 * Summary:
@@ -476,22 +476,22 @@ void ResetTimer_SetPWMMode(uint32 modeMask)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetPWMSyncKill(uint32 syncKillEnable)
+void RotaryEncoder_SetPWMSyncKill(uint32 syncKillEnable)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_CONTROL_REG &= (uint32)~ResetTimer_PWM_SYNC_KILL_MASK;
-    ResetTimer_CONTROL_REG |= ((uint32)((syncKillEnable & ResetTimer_1BIT_MASK)  <<
-                                               ResetTimer_PWM_SYNC_KILL_SHIFT));
+    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_PWM_SYNC_KILL_MASK;
+    RotaryEncoder_CONTROL_REG |= ((uint32)((syncKillEnable & RotaryEncoder_1BIT_MASK)  <<
+                                               RotaryEncoder_PWM_SYNC_KILL_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetPWMStopOnKill
+* Function Name: RotaryEncoder_SetPWMStopOnKill
 ********************************************************************************
 *
 * Summary:
@@ -510,22 +510,22 @@ void ResetTimer_SetPWMSyncKill(uint32 syncKillEnable)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetPWMStopOnKill(uint32 stopOnKillEnable)
+void RotaryEncoder_SetPWMStopOnKill(uint32 stopOnKillEnable)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_CONTROL_REG &= (uint32)~ResetTimer_PWM_STOP_KILL_MASK;
-    ResetTimer_CONTROL_REG |= ((uint32)((stopOnKillEnable & ResetTimer_1BIT_MASK)  <<
-                                                         ResetTimer_PWM_STOP_KILL_SHIFT));
+    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_PWM_STOP_KILL_MASK;
+    RotaryEncoder_CONTROL_REG |= ((uint32)((stopOnKillEnable & RotaryEncoder_1BIT_MASK)  <<
+                                                         RotaryEncoder_PWM_STOP_KILL_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetPWMDeadTime
+* Function Name: RotaryEncoder_SetPWMDeadTime
 ********************************************************************************
 *
 * Summary:
@@ -543,22 +543,22 @@ void ResetTimer_SetPWMStopOnKill(uint32 stopOnKillEnable)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetPWMDeadTime(uint32 deadTime)
+void RotaryEncoder_SetPWMDeadTime(uint32 deadTime)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_CONTROL_REG &= (uint32)~ResetTimer_PRESCALER_MASK;
-    ResetTimer_CONTROL_REG |= ((uint32)((deadTime & ResetTimer_8BIT_MASK) <<
-                                                          ResetTimer_PRESCALER_SHIFT));
+    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_PRESCALER_MASK;
+    RotaryEncoder_CONTROL_REG |= ((uint32)((deadTime & RotaryEncoder_8BIT_MASK) <<
+                                                          RotaryEncoder_PRESCALER_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetPWMInvert
+* Function Name: RotaryEncoder_SetPWMInvert
 ********************************************************************************
 *
 * Summary:
@@ -569,21 +569,21 @@ void ResetTimer_SetPWMDeadTime(uint32 deadTime)
 * Parameters:
 *  mask: Mask of outputs to invert.
 *   Values:
-*         - ResetTimer_INVERT_LINE   - Inverts the line output
-*         - ResetTimer_INVERT_LINE_N - Inverts the line_n output
+*         - RotaryEncoder_INVERT_LINE   - Inverts the line output
+*         - RotaryEncoder_INVERT_LINE_N - Inverts the line_n output
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetPWMInvert(uint32 mask)
+void RotaryEncoder_SetPWMInvert(uint32 mask)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_CONTROL_REG &= (uint32)~ResetTimer_INV_OUT_MASK;
-    ResetTimer_CONTROL_REG |= mask;
+    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_INV_OUT_MASK;
+    RotaryEncoder_CONTROL_REG |= mask;
 
     CyExitCriticalSection(enableInterrupts);
 }
@@ -591,7 +591,7 @@ void ResetTimer_SetPWMInvert(uint32 mask)
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_WriteCounter
+* Function Name: RotaryEncoder_WriteCounter
 ********************************************************************************
 *
 * Summary:
@@ -606,14 +606,14 @@ void ResetTimer_SetPWMInvert(uint32 mask)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_WriteCounter(uint32 count)
+void RotaryEncoder_WriteCounter(uint32 count)
 {
-    ResetTimer_COUNTER_REG = (count & ResetTimer_16BIT_MASK);
+    RotaryEncoder_COUNTER_REG = (count & RotaryEncoder_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_ReadCounter
+* Function Name: RotaryEncoder_ReadCounter
 ********************************************************************************
 *
 * Summary:
@@ -626,14 +626,14 @@ void ResetTimer_WriteCounter(uint32 count)
 *  Current counter value
 *
 *******************************************************************************/
-uint32 ResetTimer_ReadCounter(void)
+uint32 RotaryEncoder_ReadCounter(void)
 {
-    return (ResetTimer_COUNTER_REG & ResetTimer_16BIT_MASK);
+    return (RotaryEncoder_COUNTER_REG & RotaryEncoder_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetCounterMode
+* Function Name: RotaryEncoder_SetCounterMode
 ********************************************************************************
 *
 * Summary:
@@ -643,11 +643,11 @@ uint32 ResetTimer_ReadCounter(void)
 * Parameters:
 *  counterMode: Enumerated counter type values
 *   Values:
-*     - ResetTimer_COUNT_UP       - Counts up
-*     - ResetTimer_COUNT_DOWN     - Counts down
-*     - ResetTimer_COUNT_UPDOWN0  - Counts up and down. Terminal count
+*     - RotaryEncoder_COUNT_UP       - Counts up
+*     - RotaryEncoder_COUNT_DOWN     - Counts down
+*     - RotaryEncoder_COUNT_UPDOWN0  - Counts up and down. Terminal count
 *                                         generated when counter reaches 0
-*     - ResetTimer_COUNT_UPDOWN1  - Counts up and down. Terminal count
+*     - RotaryEncoder_COUNT_UPDOWN1  - Counts up and down. Terminal count
 *                                         generated both when counter reaches 0
 *                                         and period
 *
@@ -655,21 +655,21 @@ uint32 ResetTimer_ReadCounter(void)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetCounterMode(uint32 counterMode)
+void RotaryEncoder_SetCounterMode(uint32 counterMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_CONTROL_REG &= (uint32)~ResetTimer_UPDOWN_MASK;
-    ResetTimer_CONTROL_REG |= counterMode;
+    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_UPDOWN_MASK;
+    RotaryEncoder_CONTROL_REG |= counterMode;
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_WritePeriod
+* Function Name: RotaryEncoder_WritePeriod
 ********************************************************************************
 *
 * Summary:
@@ -684,14 +684,14 @@ void ResetTimer_SetCounterMode(uint32 counterMode)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_WritePeriod(uint32 period)
+void RotaryEncoder_WritePeriod(uint32 period)
 {
-    ResetTimer_PERIOD_REG = (period & ResetTimer_16BIT_MASK);
+    RotaryEncoder_PERIOD_REG = (period & RotaryEncoder_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_ReadPeriod
+* Function Name: RotaryEncoder_ReadPeriod
 ********************************************************************************
 *
 * Summary:
@@ -704,14 +704,14 @@ void ResetTimer_WritePeriod(uint32 period)
 *  Period value
 *
 *******************************************************************************/
-uint32 ResetTimer_ReadPeriod(void)
+uint32 RotaryEncoder_ReadPeriod(void)
 {
-    return (ResetTimer_PERIOD_REG & ResetTimer_16BIT_MASK);
+    return (RotaryEncoder_PERIOD_REG & RotaryEncoder_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetCompareSwap
+* Function Name: RotaryEncoder_SetCompareSwap
 ********************************************************************************
 *
 * Summary:
@@ -730,21 +730,21 @@ uint32 ResetTimer_ReadPeriod(void)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetCompareSwap(uint32 swapEnable)
+void RotaryEncoder_SetCompareSwap(uint32 swapEnable)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_CONTROL_REG &= (uint32)~ResetTimer_RELOAD_CC_MASK;
-    ResetTimer_CONTROL_REG |= (swapEnable & ResetTimer_1BIT_MASK);
+    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_RELOAD_CC_MASK;
+    RotaryEncoder_CONTROL_REG |= (swapEnable & RotaryEncoder_1BIT_MASK);
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_WritePeriodBuf
+* Function Name: RotaryEncoder_WritePeriodBuf
 ********************************************************************************
 *
 * Summary:
@@ -757,14 +757,14 @@ void ResetTimer_SetCompareSwap(uint32 swapEnable)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_WritePeriodBuf(uint32 periodBuf)
+void RotaryEncoder_WritePeriodBuf(uint32 periodBuf)
 {
-    ResetTimer_PERIOD_BUF_REG = (periodBuf & ResetTimer_16BIT_MASK);
+    RotaryEncoder_PERIOD_BUF_REG = (periodBuf & RotaryEncoder_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_ReadPeriodBuf
+* Function Name: RotaryEncoder_ReadPeriodBuf
 ********************************************************************************
 *
 * Summary:
@@ -777,14 +777,14 @@ void ResetTimer_WritePeriodBuf(uint32 periodBuf)
 *  Period value
 *
 *******************************************************************************/
-uint32 ResetTimer_ReadPeriodBuf(void)
+uint32 RotaryEncoder_ReadPeriodBuf(void)
 {
-    return (ResetTimer_PERIOD_BUF_REG & ResetTimer_16BIT_MASK);
+    return (RotaryEncoder_PERIOD_BUF_REG & RotaryEncoder_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetPeriodSwap
+* Function Name: RotaryEncoder_SetPeriodSwap
 ********************************************************************************
 *
 * Summary:
@@ -803,22 +803,22 @@ uint32 ResetTimer_ReadPeriodBuf(void)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetPeriodSwap(uint32 swapEnable)
+void RotaryEncoder_SetPeriodSwap(uint32 swapEnable)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_CONTROL_REG &= (uint32)~ResetTimer_RELOAD_PERIOD_MASK;
-    ResetTimer_CONTROL_REG |= ((uint32)((swapEnable & ResetTimer_1BIT_MASK) <<
-                                                            ResetTimer_RELOAD_PERIOD_SHIFT));
+    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_RELOAD_PERIOD_MASK;
+    RotaryEncoder_CONTROL_REG |= ((uint32)((swapEnable & RotaryEncoder_1BIT_MASK) <<
+                                                            RotaryEncoder_RELOAD_PERIOD_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_WriteCompare
+* Function Name: RotaryEncoder_WriteCompare
 ********************************************************************************
 *
 * Summary:
@@ -832,20 +832,20 @@ void ResetTimer_SetPeriodSwap(uint32 swapEnable)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_WriteCompare(uint32 compare)
+void RotaryEncoder_WriteCompare(uint32 compare)
 {
-    #if (ResetTimer_CY_TCPWM_4000)
+    #if (RotaryEncoder_CY_TCPWM_4000)
         uint32 currentMode;
-    #endif /* (ResetTimer_CY_TCPWM_4000) */
+    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
 
-    #if (ResetTimer_CY_TCPWM_4000)
-        currentMode = ((ResetTimer_CONTROL_REG & ResetTimer_UPDOWN_MASK) >> ResetTimer_UPDOWN_SHIFT);
+    #if (RotaryEncoder_CY_TCPWM_4000)
+        currentMode = ((RotaryEncoder_CONTROL_REG & RotaryEncoder_UPDOWN_MASK) >> RotaryEncoder_UPDOWN_SHIFT);
 
-        if (((uint32)ResetTimer__COUNT_DOWN == currentMode) && (0xFFFFu != compare))
+        if (((uint32)RotaryEncoder__COUNT_DOWN == currentMode) && (0xFFFFu != compare))
         {
             compare++;
         }
-        else if (((uint32)ResetTimer__COUNT_UP == currentMode) && (0u != compare))
+        else if (((uint32)RotaryEncoder__COUNT_UP == currentMode) && (0u != compare))
         {
             compare--;
         }
@@ -854,14 +854,14 @@ void ResetTimer_WriteCompare(uint32 compare)
         }
         
     
-    #endif /* (ResetTimer_CY_TCPWM_4000) */
+    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
     
-    ResetTimer_COMP_CAP_REG = (compare & ResetTimer_16BIT_MASK);
+    RotaryEncoder_COMP_CAP_REG = (compare & RotaryEncoder_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_ReadCompare
+* Function Name: RotaryEncoder_ReadCompare
 ********************************************************************************
 *
 * Summary:
@@ -875,23 +875,23 @@ void ResetTimer_WriteCompare(uint32 compare)
 *  Compare value
 *
 *******************************************************************************/
-uint32 ResetTimer_ReadCompare(void)
+uint32 RotaryEncoder_ReadCompare(void)
 {
-    #if (ResetTimer_CY_TCPWM_4000)
+    #if (RotaryEncoder_CY_TCPWM_4000)
         uint32 currentMode;
         uint32 regVal;
-    #endif /* (ResetTimer_CY_TCPWM_4000) */
+    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
 
-    #if (ResetTimer_CY_TCPWM_4000)
-        currentMode = ((ResetTimer_CONTROL_REG & ResetTimer_UPDOWN_MASK) >> ResetTimer_UPDOWN_SHIFT);
+    #if (RotaryEncoder_CY_TCPWM_4000)
+        currentMode = ((RotaryEncoder_CONTROL_REG & RotaryEncoder_UPDOWN_MASK) >> RotaryEncoder_UPDOWN_SHIFT);
         
-        regVal = ResetTimer_COMP_CAP_REG;
+        regVal = RotaryEncoder_COMP_CAP_REG;
         
-        if (((uint32)ResetTimer__COUNT_DOWN == currentMode) && (0u != regVal))
+        if (((uint32)RotaryEncoder__COUNT_DOWN == currentMode) && (0u != regVal))
         {
             regVal--;
         }
-        else if (((uint32)ResetTimer__COUNT_UP == currentMode) && (0xFFFFu != regVal))
+        else if (((uint32)RotaryEncoder__COUNT_UP == currentMode) && (0xFFFFu != regVal))
         {
             regVal++;
         }
@@ -899,15 +899,15 @@ uint32 ResetTimer_ReadCompare(void)
         {
         }
 
-        return (regVal & ResetTimer_16BIT_MASK);
+        return (regVal & RotaryEncoder_16BIT_MASK);
     #else
-        return (ResetTimer_COMP_CAP_REG & ResetTimer_16BIT_MASK);
-    #endif /* (ResetTimer_CY_TCPWM_4000) */
+        return (RotaryEncoder_COMP_CAP_REG & RotaryEncoder_16BIT_MASK);
+    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_WriteCompareBuf
+* Function Name: RotaryEncoder_WriteCompareBuf
 ********************************************************************************
 *
 * Summary:
@@ -921,34 +921,34 @@ uint32 ResetTimer_ReadCompare(void)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_WriteCompareBuf(uint32 compareBuf)
+void RotaryEncoder_WriteCompareBuf(uint32 compareBuf)
 {
-    #if (ResetTimer_CY_TCPWM_4000)
+    #if (RotaryEncoder_CY_TCPWM_4000)
         uint32 currentMode;
-    #endif /* (ResetTimer_CY_TCPWM_4000) */
+    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
 
-    #if (ResetTimer_CY_TCPWM_4000)
-        currentMode = ((ResetTimer_CONTROL_REG & ResetTimer_UPDOWN_MASK) >> ResetTimer_UPDOWN_SHIFT);
+    #if (RotaryEncoder_CY_TCPWM_4000)
+        currentMode = ((RotaryEncoder_CONTROL_REG & RotaryEncoder_UPDOWN_MASK) >> RotaryEncoder_UPDOWN_SHIFT);
 
-        if (((uint32)ResetTimer__COUNT_DOWN == currentMode) && (0xFFFFu != compareBuf))
+        if (((uint32)RotaryEncoder__COUNT_DOWN == currentMode) && (0xFFFFu != compareBuf))
         {
             compareBuf++;
         }
-        else if (((uint32)ResetTimer__COUNT_UP == currentMode) && (0u != compareBuf))
+        else if (((uint32)RotaryEncoder__COUNT_UP == currentMode) && (0u != compareBuf))
         {
             compareBuf --;
         }
         else
         {
         }
-    #endif /* (ResetTimer_CY_TCPWM_4000) */
+    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
     
-    ResetTimer_COMP_CAP_BUF_REG = (compareBuf & ResetTimer_16BIT_MASK);
+    RotaryEncoder_COMP_CAP_BUF_REG = (compareBuf & RotaryEncoder_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_ReadCompareBuf
+* Function Name: RotaryEncoder_ReadCompareBuf
 ********************************************************************************
 *
 * Summary:
@@ -962,23 +962,23 @@ void ResetTimer_WriteCompareBuf(uint32 compareBuf)
 *  Compare buffer value
 *
 *******************************************************************************/
-uint32 ResetTimer_ReadCompareBuf(void)
+uint32 RotaryEncoder_ReadCompareBuf(void)
 {
-    #if (ResetTimer_CY_TCPWM_4000)
+    #if (RotaryEncoder_CY_TCPWM_4000)
         uint32 currentMode;
         uint32 regVal;
-    #endif /* (ResetTimer_CY_TCPWM_4000) */
+    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
 
-    #if (ResetTimer_CY_TCPWM_4000)
-        currentMode = ((ResetTimer_CONTROL_REG & ResetTimer_UPDOWN_MASK) >> ResetTimer_UPDOWN_SHIFT);
+    #if (RotaryEncoder_CY_TCPWM_4000)
+        currentMode = ((RotaryEncoder_CONTROL_REG & RotaryEncoder_UPDOWN_MASK) >> RotaryEncoder_UPDOWN_SHIFT);
 
-        regVal = ResetTimer_COMP_CAP_BUF_REG;
+        regVal = RotaryEncoder_COMP_CAP_BUF_REG;
         
-        if (((uint32)ResetTimer__COUNT_DOWN == currentMode) && (0u != regVal))
+        if (((uint32)RotaryEncoder__COUNT_DOWN == currentMode) && (0u != regVal))
         {
             regVal--;
         }
-        else if (((uint32)ResetTimer__COUNT_UP == currentMode) && (0xFFFFu != regVal))
+        else if (((uint32)RotaryEncoder__COUNT_UP == currentMode) && (0xFFFFu != regVal))
         {
             regVal++;
         }
@@ -986,15 +986,15 @@ uint32 ResetTimer_ReadCompareBuf(void)
         {
         }
 
-        return (regVal & ResetTimer_16BIT_MASK);
+        return (regVal & RotaryEncoder_16BIT_MASK);
     #else
-        return (ResetTimer_COMP_CAP_BUF_REG & ResetTimer_16BIT_MASK);
-    #endif /* (ResetTimer_CY_TCPWM_4000) */
+        return (RotaryEncoder_COMP_CAP_BUF_REG & RotaryEncoder_16BIT_MASK);
+    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_ReadCapture
+* Function Name: RotaryEncoder_ReadCapture
 ********************************************************************************
 *
 * Summary:
@@ -1008,14 +1008,14 @@ uint32 ResetTimer_ReadCompareBuf(void)
 *  Capture value
 *
 *******************************************************************************/
-uint32 ResetTimer_ReadCapture(void)
+uint32 RotaryEncoder_ReadCapture(void)
 {
-    return (ResetTimer_COMP_CAP_REG & ResetTimer_16BIT_MASK);
+    return (RotaryEncoder_COMP_CAP_REG & RotaryEncoder_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_ReadCaptureBuf
+* Function Name: RotaryEncoder_ReadCaptureBuf
 ********************************************************************************
 *
 * Summary:
@@ -1029,14 +1029,14 @@ uint32 ResetTimer_ReadCapture(void)
 *  Capture buffer value
 *
 *******************************************************************************/
-uint32 ResetTimer_ReadCaptureBuf(void)
+uint32 RotaryEncoder_ReadCaptureBuf(void)
 {
-    return (ResetTimer_COMP_CAP_BUF_REG & ResetTimer_16BIT_MASK);
+    return (RotaryEncoder_COMP_CAP_BUF_REG & RotaryEncoder_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetCaptureMode
+* Function Name: RotaryEncoder_SetCaptureMode
 ********************************************************************************
 *
 * Summary:
@@ -1047,30 +1047,30 @@ uint32 ResetTimer_ReadCaptureBuf(void)
 * Parameters:
 *  triggerMode: Enumerated trigger mode value
 *   Values:
-*     - ResetTimer_TRIG_LEVEL     - Level
-*     - ResetTimer_TRIG_RISING    - Rising edge
-*     - ResetTimer_TRIG_FALLING   - Falling edge
-*     - ResetTimer_TRIG_BOTH      - Both rising and falling edge
+*     - RotaryEncoder_TRIG_LEVEL     - Level
+*     - RotaryEncoder_TRIG_RISING    - Rising edge
+*     - RotaryEncoder_TRIG_FALLING   - Falling edge
+*     - RotaryEncoder_TRIG_BOTH      - Both rising and falling edge
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetCaptureMode(uint32 triggerMode)
+void RotaryEncoder_SetCaptureMode(uint32 triggerMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_TRIG_CONTROL1_REG &= (uint32)~ResetTimer_CAPTURE_MASK;
-    ResetTimer_TRIG_CONTROL1_REG |= triggerMode;
+    RotaryEncoder_TRIG_CONTROL1_REG &= (uint32)~RotaryEncoder_CAPTURE_MASK;
+    RotaryEncoder_TRIG_CONTROL1_REG |= triggerMode;
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetReloadMode
+* Function Name: RotaryEncoder_SetReloadMode
 ********************************************************************************
 *
 * Summary:
@@ -1080,30 +1080,30 @@ void ResetTimer_SetCaptureMode(uint32 triggerMode)
 * Parameters:
 *  triggerMode: Enumerated trigger mode value
 *   Values:
-*     - ResetTimer_TRIG_LEVEL     - Level
-*     - ResetTimer_TRIG_RISING    - Rising edge
-*     - ResetTimer_TRIG_FALLING   - Falling edge
-*     - ResetTimer_TRIG_BOTH      - Both rising and falling edge
+*     - RotaryEncoder_TRIG_LEVEL     - Level
+*     - RotaryEncoder_TRIG_RISING    - Rising edge
+*     - RotaryEncoder_TRIG_FALLING   - Falling edge
+*     - RotaryEncoder_TRIG_BOTH      - Both rising and falling edge
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetReloadMode(uint32 triggerMode)
+void RotaryEncoder_SetReloadMode(uint32 triggerMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_TRIG_CONTROL1_REG &= (uint32)~ResetTimer_RELOAD_MASK;
-    ResetTimer_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << ResetTimer_RELOAD_SHIFT));
+    RotaryEncoder_TRIG_CONTROL1_REG &= (uint32)~RotaryEncoder_RELOAD_MASK;
+    RotaryEncoder_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << RotaryEncoder_RELOAD_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetStartMode
+* Function Name: RotaryEncoder_SetStartMode
 ********************************************************************************
 *
 * Summary:
@@ -1113,30 +1113,30 @@ void ResetTimer_SetReloadMode(uint32 triggerMode)
 * Parameters:
 *  triggerMode: Enumerated trigger mode value
 *   Values:
-*     - ResetTimer_TRIG_LEVEL     - Level
-*     - ResetTimer_TRIG_RISING    - Rising edge
-*     - ResetTimer_TRIG_FALLING   - Falling edge
-*     - ResetTimer_TRIG_BOTH      - Both rising and falling edge
+*     - RotaryEncoder_TRIG_LEVEL     - Level
+*     - RotaryEncoder_TRIG_RISING    - Rising edge
+*     - RotaryEncoder_TRIG_FALLING   - Falling edge
+*     - RotaryEncoder_TRIG_BOTH      - Both rising and falling edge
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetStartMode(uint32 triggerMode)
+void RotaryEncoder_SetStartMode(uint32 triggerMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_TRIG_CONTROL1_REG &= (uint32)~ResetTimer_START_MASK;
-    ResetTimer_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << ResetTimer_START_SHIFT));
+    RotaryEncoder_TRIG_CONTROL1_REG &= (uint32)~RotaryEncoder_START_MASK;
+    RotaryEncoder_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << RotaryEncoder_START_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetStopMode
+* Function Name: RotaryEncoder_SetStopMode
 ********************************************************************************
 *
 * Summary:
@@ -1145,30 +1145,30 @@ void ResetTimer_SetStartMode(uint32 triggerMode)
 * Parameters:
 *  triggerMode: Enumerated trigger mode value
 *   Values:
-*     - ResetTimer_TRIG_LEVEL     - Level
-*     - ResetTimer_TRIG_RISING    - Rising edge
-*     - ResetTimer_TRIG_FALLING   - Falling edge
-*     - ResetTimer_TRIG_BOTH      - Both rising and falling edge
+*     - RotaryEncoder_TRIG_LEVEL     - Level
+*     - RotaryEncoder_TRIG_RISING    - Rising edge
+*     - RotaryEncoder_TRIG_FALLING   - Falling edge
+*     - RotaryEncoder_TRIG_BOTH      - Both rising and falling edge
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetStopMode(uint32 triggerMode)
+void RotaryEncoder_SetStopMode(uint32 triggerMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_TRIG_CONTROL1_REG &= (uint32)~ResetTimer_STOP_MASK;
-    ResetTimer_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << ResetTimer_STOP_SHIFT));
+    RotaryEncoder_TRIG_CONTROL1_REG &= (uint32)~RotaryEncoder_STOP_MASK;
+    RotaryEncoder_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << RotaryEncoder_STOP_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetCountMode
+* Function Name: RotaryEncoder_SetCountMode
 ********************************************************************************
 *
 * Summary:
@@ -1178,30 +1178,30 @@ void ResetTimer_SetStopMode(uint32 triggerMode)
 * Parameters:
 *  triggerMode: Enumerated trigger mode value
 *   Values:
-*     - ResetTimer_TRIG_LEVEL     - Level
-*     - ResetTimer_TRIG_RISING    - Rising edge
-*     - ResetTimer_TRIG_FALLING   - Falling edge
-*     - ResetTimer_TRIG_BOTH      - Both rising and falling edge
+*     - RotaryEncoder_TRIG_LEVEL     - Level
+*     - RotaryEncoder_TRIG_RISING    - Rising edge
+*     - RotaryEncoder_TRIG_FALLING   - Falling edge
+*     - RotaryEncoder_TRIG_BOTH      - Both rising and falling edge
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetCountMode(uint32 triggerMode)
+void RotaryEncoder_SetCountMode(uint32 triggerMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_TRIG_CONTROL1_REG &= (uint32)~ResetTimer_COUNT_MASK;
-    ResetTimer_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << ResetTimer_COUNT_SHIFT));
+    RotaryEncoder_TRIG_CONTROL1_REG &= (uint32)~RotaryEncoder_COUNT_MASK;
+    RotaryEncoder_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << RotaryEncoder_COUNT_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_TriggerCommand
+* Function Name: RotaryEncoder_TriggerCommand
 ********************************************************************************
 *
 * Summary:
@@ -1218,33 +1218,33 @@ void ResetTimer_SetCountMode(uint32 triggerMode)
 *  command: Enumerated command values. Capture command only applicable for
 *           Timer/Counter with Capture and PWM modes.
 *   Values:
-*     - ResetTimer_CMD_CAPTURE    - Trigger Capture command
-*     - ResetTimer_CMD_RELOAD     - Trigger Reload command
-*     - ResetTimer_CMD_STOP       - Trigger Stop command
-*     - ResetTimer_CMD_START      - Trigger Start command
+*     - RotaryEncoder_CMD_CAPTURE    - Trigger Capture command
+*     - RotaryEncoder_CMD_RELOAD     - Trigger Reload command
+*     - RotaryEncoder_CMD_STOP       - Trigger Stop command
+*     - RotaryEncoder_CMD_START      - Trigger Start command
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_TriggerCommand(uint32 mask, uint32 command)
+void RotaryEncoder_TriggerCommand(uint32 mask, uint32 command)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    ResetTimer_COMMAND_REG = ((uint32)(mask << command));
+    RotaryEncoder_COMMAND_REG = ((uint32)(mask << command));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_ReadStatus
+* Function Name: RotaryEncoder_ReadStatus
 ********************************************************************************
 *
 * Summary:
-*  Reads the status of the ResetTimer.
+*  Reads the status of the RotaryEncoder.
 *
 * Parameters:
 *  None
@@ -1252,19 +1252,19 @@ void ResetTimer_TriggerCommand(uint32 mask, uint32 command)
 * Return:
 *  Status
 *   Values:
-*     - ResetTimer_STATUS_DOWN    - Set if counting down
-*     - ResetTimer_STATUS_RUNNING - Set if counter is running
+*     - RotaryEncoder_STATUS_DOWN    - Set if counting down
+*     - RotaryEncoder_STATUS_RUNNING - Set if counter is running
 *
 *******************************************************************************/
-uint32 ResetTimer_ReadStatus(void)
+uint32 RotaryEncoder_ReadStatus(void)
 {
-    return ((ResetTimer_STATUS_REG >> ResetTimer_RUNNING_STATUS_SHIFT) |
-            (ResetTimer_STATUS_REG & ResetTimer_STATUS_DOWN));
+    return ((RotaryEncoder_STATUS_REG >> RotaryEncoder_RUNNING_STATUS_SHIFT) |
+            (RotaryEncoder_STATUS_REG & RotaryEncoder_STATUS_DOWN));
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetInterruptMode
+* Function Name: RotaryEncoder_SetInterruptMode
 ********************************************************************************
 *
 * Summary:
@@ -1274,21 +1274,21 @@ uint32 ResetTimer_ReadStatus(void)
 * Parameters:
 *   interruptMask: Mask of bits to be enabled
 *   Values:
-*     - ResetTimer_INTR_MASK_TC       - Terminal count mask
-*     - ResetTimer_INTR_MASK_CC_MATCH - Compare count / capture mask
+*     - RotaryEncoder_INTR_MASK_TC       - Terminal count mask
+*     - RotaryEncoder_INTR_MASK_CC_MATCH - Compare count / capture mask
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetInterruptMode(uint32 interruptMask)
+void RotaryEncoder_SetInterruptMode(uint32 interruptMask)
 {
-    ResetTimer_INTERRUPT_MASK_REG =  interruptMask;
+    RotaryEncoder_INTERRUPT_MASK_REG =  interruptMask;
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_GetInterruptSourceMasked
+* Function Name: RotaryEncoder_GetInterruptSourceMasked
 ********************************************************************************
 *
 * Summary:
@@ -1300,18 +1300,18 @@ void ResetTimer_SetInterruptMode(uint32 interruptMask)
 * Return:
 *  Masked interrupt source
 *   Values:
-*     - ResetTimer_INTR_MASK_TC       - Terminal count mask
-*     - ResetTimer_INTR_MASK_CC_MATCH - Compare count / capture mask
+*     - RotaryEncoder_INTR_MASK_TC       - Terminal count mask
+*     - RotaryEncoder_INTR_MASK_CC_MATCH - Compare count / capture mask
 *
 *******************************************************************************/
-uint32 ResetTimer_GetInterruptSourceMasked(void)
+uint32 RotaryEncoder_GetInterruptSourceMasked(void)
 {
-    return (ResetTimer_INTERRUPT_MASKED_REG);
+    return (RotaryEncoder_INTERRUPT_MASKED_REG);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_GetInterruptSource
+* Function Name: RotaryEncoder_GetInterruptSource
 ********************************************************************************
 *
 * Summary:
@@ -1323,18 +1323,18 @@ uint32 ResetTimer_GetInterruptSourceMasked(void)
 * Return:
 *  Interrupt request value
 *   Values:
-*     - ResetTimer_INTR_MASK_TC       - Terminal count mask
-*     - ResetTimer_INTR_MASK_CC_MATCH - Compare count / capture mask
+*     - RotaryEncoder_INTR_MASK_TC       - Terminal count mask
+*     - RotaryEncoder_INTR_MASK_CC_MATCH - Compare count / capture mask
 *
 *******************************************************************************/
-uint32 ResetTimer_GetInterruptSource(void)
+uint32 RotaryEncoder_GetInterruptSource(void)
 {
-    return (ResetTimer_INTERRUPT_REQ_REG);
+    return (RotaryEncoder_INTERRUPT_REQ_REG);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_ClearInterrupt
+* Function Name: RotaryEncoder_ClearInterrupt
 ********************************************************************************
 *
 * Summary:
@@ -1343,21 +1343,21 @@ uint32 ResetTimer_GetInterruptSource(void)
 * Parameters:
 *   interruptMask: Mask of interrupts to clear
 *   Values:
-*     - ResetTimer_INTR_MASK_TC       - Terminal count mask
-*     - ResetTimer_INTR_MASK_CC_MATCH - Compare count / capture mask
+*     - RotaryEncoder_INTR_MASK_TC       - Terminal count mask
+*     - RotaryEncoder_INTR_MASK_CC_MATCH - Compare count / capture mask
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_ClearInterrupt(uint32 interruptMask)
+void RotaryEncoder_ClearInterrupt(uint32 interruptMask)
 {
-    ResetTimer_INTERRUPT_REQ_REG = interruptMask;
+    RotaryEncoder_INTERRUPT_REQ_REG = interruptMask;
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SetInterrupt
+* Function Name: RotaryEncoder_SetInterrupt
 ********************************************************************************
 *
 * Summary:
@@ -1366,16 +1366,16 @@ void ResetTimer_ClearInterrupt(uint32 interruptMask)
 * Parameters:
 *   interruptMask: Mask of interrupts to set
 *   Values:
-*     - ResetTimer_INTR_MASK_TC       - Terminal count mask
-*     - ResetTimer_INTR_MASK_CC_MATCH - Compare count / capture mask
+*     - RotaryEncoder_INTR_MASK_TC       - Terminal count mask
+*     - RotaryEncoder_INTR_MASK_CC_MATCH - Compare count / capture mask
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SetInterrupt(uint32 interruptMask)
+void RotaryEncoder_SetInterrupt(uint32 interruptMask)
 {
-    ResetTimer_INTERRUPT_SET_REG = interruptMask;
+    RotaryEncoder_INTERRUPT_SET_REG = interruptMask;
 }
 
 

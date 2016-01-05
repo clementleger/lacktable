@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: ResetClock.c
+* File Name: RotaryEncoderClock.c
 * Version 2.20
 *
 *  Description:
@@ -17,12 +17,12 @@
 *******************************************************************************/
 
 #include <cydevice_trm.h>
-#include "ResetClock.h"
+#include "RotaryEncoderClock.h"
 
 #if defined CYREG_PERI_DIV_CMD
 
 /*******************************************************************************
-* Function Name: ResetClock_StartEx
+* Function Name: RotaryEncoderClock_StartEx
 ********************************************************************************
 *
 * Summary:
@@ -36,24 +36,24 @@
 *  None
 *
 *******************************************************************************/
-void ResetClock_StartEx(uint32 alignClkDiv)
+void RotaryEncoderClock_StartEx(uint32 alignClkDiv)
 {
     /* Make sure any previous start command has finished. */
-    while((ResetClock_CMD_REG & ResetClock_CMD_ENABLE_MASK) != 0u)
+    while((RotaryEncoderClock_CMD_REG & RotaryEncoderClock_CMD_ENABLE_MASK) != 0u)
     {
     }
     
     /* Specify the target divider and it's alignment divider, and enable. */
-    ResetClock_CMD_REG =
-        ((uint32)ResetClock__DIV_ID << ResetClock_CMD_DIV_SHIFT)|
-        (alignClkDiv << ResetClock_CMD_PA_DIV_SHIFT) |
-        (uint32)ResetClock_CMD_ENABLE_MASK;
+    RotaryEncoderClock_CMD_REG =
+        ((uint32)RotaryEncoderClock__DIV_ID << RotaryEncoderClock_CMD_DIV_SHIFT)|
+        (alignClkDiv << RotaryEncoderClock_CMD_PA_DIV_SHIFT) |
+        (uint32)RotaryEncoderClock_CMD_ENABLE_MASK;
 }
 
 #else
 
 /*******************************************************************************
-* Function Name: ResetClock_Start
+* Function Name: RotaryEncoderClock_Start
 ********************************************************************************
 *
 * Summary:
@@ -67,17 +67,17 @@ void ResetClock_StartEx(uint32 alignClkDiv)
 *
 *******************************************************************************/
 
-void ResetClock_Start(void)
+void RotaryEncoderClock_Start(void)
 {
     /* Set the bit to enable the clock. */
-    ResetClock_ENABLE_REG |= ResetClock__ENABLE_MASK;
+    RotaryEncoderClock_ENABLE_REG |= RotaryEncoderClock__ENABLE_MASK;
 }
 
 #endif /* CYREG_PERI_DIV_CMD */
 
 
 /*******************************************************************************
-* Function Name: ResetClock_Stop
+* Function Name: RotaryEncoderClock_Stop
 ********************************************************************************
 *
 * Summary:
@@ -92,31 +92,31 @@ void ResetClock_Start(void)
 *  None
 *
 *******************************************************************************/
-void ResetClock_Stop(void)
+void RotaryEncoderClock_Stop(void)
 {
 #if defined CYREG_PERI_DIV_CMD
 
     /* Make sure any previous start command has finished. */
-    while((ResetClock_CMD_REG & ResetClock_CMD_ENABLE_MASK) != 0u)
+    while((RotaryEncoderClock_CMD_REG & RotaryEncoderClock_CMD_ENABLE_MASK) != 0u)
     {
     }
     
     /* Specify the target divider and it's alignment divider, and disable. */
-    ResetClock_CMD_REG =
-        ((uint32)ResetClock__DIV_ID << ResetClock_CMD_DIV_SHIFT)|
-        ((uint32)ResetClock_CMD_DISABLE_MASK);
+    RotaryEncoderClock_CMD_REG =
+        ((uint32)RotaryEncoderClock__DIV_ID << RotaryEncoderClock_CMD_DIV_SHIFT)|
+        ((uint32)RotaryEncoderClock_CMD_DISABLE_MASK);
 
 #else
 
     /* Clear the bit to disable the clock. */
-    ResetClock_ENABLE_REG &= (uint32)(~ResetClock__ENABLE_MASK);
+    RotaryEncoderClock_ENABLE_REG &= (uint32)(~RotaryEncoderClock__ENABLE_MASK);
     
 #endif /* CYREG_PERI_DIV_CMD */
 }
 
 
 /*******************************************************************************
-* Function Name: ResetClock_SetFractionalDividerRegister
+* Function Name: RotaryEncoderClock_SetFractionalDividerRegister
 ********************************************************************************
 *
 * Summary:
@@ -131,35 +131,35 @@ void ResetClock_Stop(void)
 *  None
 *
 *******************************************************************************/
-void ResetClock_SetFractionalDividerRegister(uint16 clkDivider, uint8 clkFractional)
+void RotaryEncoderClock_SetFractionalDividerRegister(uint16 clkDivider, uint8 clkFractional)
 {
     uint32 maskVal;
     uint32 regVal;
     
-#if defined (ResetClock__FRAC_MASK) || defined (CYREG_PERI_DIV_CMD)
+#if defined (RotaryEncoderClock__FRAC_MASK) || defined (CYREG_PERI_DIV_CMD)
     
 	/* get all but divider bits */
-    maskVal = ResetClock_DIV_REG & 
-                    (uint32)(~(uint32)(ResetClock_DIV_INT_MASK | ResetClock_DIV_FRAC_MASK)); 
+    maskVal = RotaryEncoderClock_DIV_REG & 
+                    (uint32)(~(uint32)(RotaryEncoderClock_DIV_INT_MASK | RotaryEncoderClock_DIV_FRAC_MASK)); 
 	/* combine mask and new divider vals into 32-bit value */
     regVal = maskVal |
-        ((uint32)((uint32)clkDivider <<  ResetClock_DIV_INT_SHIFT) & ResetClock_DIV_INT_MASK) |
-        ((uint32)((uint32)clkFractional << ResetClock_DIV_FRAC_SHIFT) & ResetClock_DIV_FRAC_MASK);
+        ((uint32)((uint32)clkDivider <<  RotaryEncoderClock_DIV_INT_SHIFT) & RotaryEncoderClock_DIV_INT_MASK) |
+        ((uint32)((uint32)clkFractional << RotaryEncoderClock_DIV_FRAC_SHIFT) & RotaryEncoderClock_DIV_FRAC_MASK);
     
 #else
     /* get all but integer divider bits */
-    maskVal = ResetClock_DIV_REG & (uint32)(~(uint32)ResetClock__DIVIDER_MASK);
+    maskVal = RotaryEncoderClock_DIV_REG & (uint32)(~(uint32)RotaryEncoderClock__DIVIDER_MASK);
     /* combine mask and new divider val into 32-bit value */
     regVal = clkDivider | maskVal;
     
-#endif /* ResetClock__FRAC_MASK || CYREG_PERI_DIV_CMD */
+#endif /* RotaryEncoderClock__FRAC_MASK || CYREG_PERI_DIV_CMD */
 
-    ResetClock_DIV_REG = regVal;
+    RotaryEncoderClock_DIV_REG = regVal;
 }
 
 
 /*******************************************************************************
-* Function Name: ResetClock_GetDividerRegister
+* Function Name: RotaryEncoderClock_GetDividerRegister
 ********************************************************************************
 *
 * Summary:
@@ -173,15 +173,15 @@ void ResetClock_SetFractionalDividerRegister(uint16 clkDivider, uint8 clkFractio
 *  divide by 2, the return value will be 1.
 *
 *******************************************************************************/
-uint16 ResetClock_GetDividerRegister(void)
+uint16 RotaryEncoderClock_GetDividerRegister(void)
 {
-    return (uint16)((ResetClock_DIV_REG & ResetClock_DIV_INT_MASK)
-        >> ResetClock_DIV_INT_SHIFT);
+    return (uint16)((RotaryEncoderClock_DIV_REG & RotaryEncoderClock_DIV_INT_MASK)
+        >> RotaryEncoderClock_DIV_INT_SHIFT);
 }
 
 
 /*******************************************************************************
-* Function Name: ResetClock_GetFractionalDividerRegister
+* Function Name: RotaryEncoderClock_GetFractionalDividerRegister
 ********************************************************************************
 *
 * Summary:
@@ -195,15 +195,15 @@ uint16 ResetClock_GetDividerRegister(void)
 *  0 if the fractional divider is not in use.
 *
 *******************************************************************************/
-uint8 ResetClock_GetFractionalDividerRegister(void)
+uint8 RotaryEncoderClock_GetFractionalDividerRegister(void)
 {
-#if defined (ResetClock__FRAC_MASK)
+#if defined (RotaryEncoderClock__FRAC_MASK)
     /* return fractional divider bits */
-    return (uint8)((ResetClock_DIV_REG & ResetClock_DIV_FRAC_MASK)
-        >> ResetClock_DIV_FRAC_SHIFT);
+    return (uint8)((RotaryEncoderClock_DIV_REG & RotaryEncoderClock_DIV_FRAC_MASK)
+        >> RotaryEncoderClock_DIV_FRAC_SHIFT);
 #else
     return 0u;
-#endif /* ResetClock__FRAC_MASK */
+#endif /* RotaryEncoderClock__FRAC_MASK */
 }
 
 
