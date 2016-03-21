@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: RotaryEncoderB.h  
+* File Name: Rot1SW.h  
 * Version 2.10
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_RotaryEncoderB_ALIASES_H) /* Pins RotaryEncoderB_ALIASES_H */
-#define CY_PINS_RotaryEncoderB_ALIASES_H
+#if !defined(CY_PINS_Rot1SW_ALIASES_H) /* Pins Rot1SW_ALIASES_H */
+#define CY_PINS_Rot1SW_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -26,14 +26,14 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define RotaryEncoderB_0		(RotaryEncoderB__0__PC)
-#define RotaryEncoderB_0_PS		(RotaryEncoderB__0__PS)
-#define RotaryEncoderB_0_PC		(RotaryEncoderB__0__PC)
-#define RotaryEncoderB_0_DR		(RotaryEncoderB__0__DR)
-#define RotaryEncoderB_0_SHIFT	(RotaryEncoderB__0__SHIFT)
+#define Rot1SW_0		(Rot1SW__0__PC)
+#define Rot1SW_0_PS		(Rot1SW__0__PS)
+#define Rot1SW_0_PC		(Rot1SW__0__PC)
+#define Rot1SW_0_DR		(Rot1SW__0__DR)
+#define Rot1SW_0_SHIFT	(Rot1SW__0__SHIFT)
 
 
-#endif /* End Pins RotaryEncoderB_ALIASES_H */
+#endif /* End Pins Rot1SW_ALIASES_H */
 
 
 /* [] END OF FILE */

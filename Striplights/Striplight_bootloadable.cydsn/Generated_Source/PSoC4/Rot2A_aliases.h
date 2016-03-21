@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: RotaryEncoderA.h  
+* File Name: Rot2A.h  
 * Version 2.10
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_RotaryEncoderA_ALIASES_H) /* Pins RotaryEncoderA_ALIASES_H */
-#define CY_PINS_RotaryEncoderA_ALIASES_H
+#if !defined(CY_PINS_Rot2A_ALIASES_H) /* Pins Rot2A_ALIASES_H */
+#define CY_PINS_Rot2A_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -26,14 +26,14 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define RotaryEncoderA_0		(RotaryEncoderA__0__PC)
-#define RotaryEncoderA_0_PS		(RotaryEncoderA__0__PS)
-#define RotaryEncoderA_0_PC		(RotaryEncoderA__0__PC)
-#define RotaryEncoderA_0_DR		(RotaryEncoderA__0__DR)
-#define RotaryEncoderA_0_SHIFT	(RotaryEncoderA__0__SHIFT)
+#define Rot2A_0		(Rot2A__0__PC)
+#define Rot2A_0_PS		(Rot2A__0__PS)
+#define Rot2A_0_PC		(Rot2A__0__PC)
+#define Rot2A_0_DR		(Rot2A__0__DR)
+#define Rot2A_0_SHIFT	(Rot2A__0__SHIFT)
 
 
-#endif /* End Pins RotaryEncoderA_ALIASES_H */
+#endif /* End Pins Rot2A_ALIASES_H */
 
 
 /* [] END OF FILE */

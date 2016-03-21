@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: RotSW.h  
+* File Name: Rot1B.h  
 * Version 2.10
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_RotSW_ALIASES_H) /* Pins RotSW_ALIASES_H */
-#define CY_PINS_RotSW_ALIASES_H
+#if !defined(CY_PINS_Rot1B_ALIASES_H) /* Pins Rot1B_ALIASES_H */
+#define CY_PINS_Rot1B_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -26,14 +26,14 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define RotSW_0		(RotSW__0__PC)
-#define RotSW_0_PS		(RotSW__0__PS)
-#define RotSW_0_PC		(RotSW__0__PC)
-#define RotSW_0_DR		(RotSW__0__DR)
-#define RotSW_0_SHIFT	(RotSW__0__SHIFT)
+#define Rot1B_0		(Rot1B__0__PC)
+#define Rot1B_0_PS		(Rot1B__0__PS)
+#define Rot1B_0_PC		(Rot1B__0__PC)
+#define Rot1B_0_DR		(Rot1B__0__DR)
+#define Rot1B_0_SHIFT	(Rot1B__0__SHIFT)
 
 
-#endif /* End Pins RotSW_ALIASES_H */
+#endif /* End Pins Rot1B_ALIASES_H */
 
 
 /* [] END OF FILE */

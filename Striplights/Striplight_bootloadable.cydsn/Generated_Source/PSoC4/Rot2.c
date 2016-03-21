@@ -1,9 +1,9 @@
 /*******************************************************************************
-* File Name: RotaryEncoder.c
+* File Name: Rot2.c
 * Version 2.0
 *
 * Description:
-*  This file provides the source code to the API for the RotaryEncoder
+*  This file provides the source code to the API for the Rot2
 *  component
 *
 * Note:
@@ -16,17 +16,17 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "RotaryEncoder.h"
+#include "Rot2.h"
 
-uint8 RotaryEncoder_initVar = 0u;
+uint8 Rot2_initVar = 0u;
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_Init
+* Function Name: Rot2_Init
 ********************************************************************************
 *
 * Summary:
-*  Initialize/Restore default RotaryEncoder configuration.
+*  Initialize/Restore default Rot2 configuration.
 *
 * Parameters:
 *  None
@@ -35,137 +35,137 @@ uint8 RotaryEncoder_initVar = 0u;
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_Init(void)
+void Rot2_Init(void)
 {
 
     /* Set values from customizer to CTRL */
-    #if (RotaryEncoder__QUAD == RotaryEncoder_CONFIG)
-        RotaryEncoder_CONTROL_REG = RotaryEncoder_CTRL_QUAD_BASE_CONFIG;
+    #if (Rot2__QUAD == Rot2_CONFIG)
+        Rot2_CONTROL_REG = Rot2_CTRL_QUAD_BASE_CONFIG;
         
         /* Set values from customizer to CTRL1 */
-        RotaryEncoder_TRIG_CONTROL1_REG  = RotaryEncoder_QUAD_SIGNALS_MODES;
+        Rot2_TRIG_CONTROL1_REG  = Rot2_QUAD_SIGNALS_MODES;
 
         /* Set values from customizer to INTR */
-        RotaryEncoder_SetInterruptMode(RotaryEncoder_QUAD_INTERRUPT_MASK);
+        Rot2_SetInterruptMode(Rot2_QUAD_INTERRUPT_MASK);
         
          /* Set other values */
-        RotaryEncoder_SetCounterMode(RotaryEncoder_COUNT_DOWN);
-        RotaryEncoder_WritePeriod(RotaryEncoder_QUAD_PERIOD_INIT_VALUE);
-        RotaryEncoder_WriteCounter(RotaryEncoder_QUAD_PERIOD_INIT_VALUE);
-    #endif  /* (RotaryEncoder__QUAD == RotaryEncoder_CONFIG) */
+        Rot2_SetCounterMode(Rot2_COUNT_DOWN);
+        Rot2_WritePeriod(Rot2_QUAD_PERIOD_INIT_VALUE);
+        Rot2_WriteCounter(Rot2_QUAD_PERIOD_INIT_VALUE);
+    #endif  /* (Rot2__QUAD == Rot2_CONFIG) */
 
-    #if (RotaryEncoder__TIMER == RotaryEncoder_CONFIG)
-        RotaryEncoder_CONTROL_REG = RotaryEncoder_CTRL_TIMER_BASE_CONFIG;
+    #if (Rot2__TIMER == Rot2_CONFIG)
+        Rot2_CONTROL_REG = Rot2_CTRL_TIMER_BASE_CONFIG;
         
         /* Set values from customizer to CTRL1 */
-        RotaryEncoder_TRIG_CONTROL1_REG  = RotaryEncoder_TIMER_SIGNALS_MODES;
+        Rot2_TRIG_CONTROL1_REG  = Rot2_TIMER_SIGNALS_MODES;
     
         /* Set values from customizer to INTR */
-        RotaryEncoder_SetInterruptMode(RotaryEncoder_TC_INTERRUPT_MASK);
+        Rot2_SetInterruptMode(Rot2_TC_INTERRUPT_MASK);
         
         /* Set other values from customizer */
-        RotaryEncoder_WritePeriod(RotaryEncoder_TC_PERIOD_VALUE );
+        Rot2_WritePeriod(Rot2_TC_PERIOD_VALUE );
 
-        #if (RotaryEncoder__COMPARE == RotaryEncoder_TC_COMP_CAP_MODE)
-            RotaryEncoder_WriteCompare(RotaryEncoder_TC_COMPARE_VALUE);
+        #if (Rot2__COMPARE == Rot2_TC_COMP_CAP_MODE)
+            Rot2_WriteCompare(Rot2_TC_COMPARE_VALUE);
 
-            #if (1u == RotaryEncoder_TC_COMPARE_SWAP)
-                RotaryEncoder_SetCompareSwap(1u);
-                RotaryEncoder_WriteCompareBuf(RotaryEncoder_TC_COMPARE_BUF_VALUE);
-            #endif  /* (1u == RotaryEncoder_TC_COMPARE_SWAP) */
-        #endif  /* (RotaryEncoder__COMPARE == RotaryEncoder_TC_COMP_CAP_MODE) */
+            #if (1u == Rot2_TC_COMPARE_SWAP)
+                Rot2_SetCompareSwap(1u);
+                Rot2_WriteCompareBuf(Rot2_TC_COMPARE_BUF_VALUE);
+            #endif  /* (1u == Rot2_TC_COMPARE_SWAP) */
+        #endif  /* (Rot2__COMPARE == Rot2_TC_COMP_CAP_MODE) */
 
         /* Initialize counter value */
-        #if (RotaryEncoder_CY_TCPWM_V2 && RotaryEncoder_TIMER_UPDOWN_CNT_USED && !RotaryEncoder_CY_TCPWM_4000)
-            RotaryEncoder_WriteCounter(1u);
-        #elif(RotaryEncoder__COUNT_DOWN == RotaryEncoder_TC_COUNTER_MODE)
-            RotaryEncoder_WriteCounter(RotaryEncoder_TC_PERIOD_VALUE);
+        #if (Rot2_CY_TCPWM_V2 && Rot2_TIMER_UPDOWN_CNT_USED && !Rot2_CY_TCPWM_4000)
+            Rot2_WriteCounter(1u);
+        #elif(Rot2__COUNT_DOWN == Rot2_TC_COUNTER_MODE)
+            Rot2_WriteCounter(Rot2_TC_PERIOD_VALUE);
         #else
-            RotaryEncoder_WriteCounter(0u);
-        #endif /* (RotaryEncoder_CY_TCPWM_V2 && RotaryEncoder_TIMER_UPDOWN_CNT_USED && !RotaryEncoder_CY_TCPWM_4000) */
-    #endif  /* (RotaryEncoder__TIMER == RotaryEncoder_CONFIG) */
+            Rot2_WriteCounter(0u);
+        #endif /* (Rot2_CY_TCPWM_V2 && Rot2_TIMER_UPDOWN_CNT_USED && !Rot2_CY_TCPWM_4000) */
+    #endif  /* (Rot2__TIMER == Rot2_CONFIG) */
 
-    #if (RotaryEncoder__PWM_SEL == RotaryEncoder_CONFIG)
-        RotaryEncoder_CONTROL_REG = RotaryEncoder_CTRL_PWM_BASE_CONFIG;
+    #if (Rot2__PWM_SEL == Rot2_CONFIG)
+        Rot2_CONTROL_REG = Rot2_CTRL_PWM_BASE_CONFIG;
 
-        #if (RotaryEncoder__PWM_PR == RotaryEncoder_PWM_MODE)
-            RotaryEncoder_CONTROL_REG |= RotaryEncoder_CTRL_PWM_RUN_MODE;
-            RotaryEncoder_WriteCounter(RotaryEncoder_PWM_PR_INIT_VALUE);
+        #if (Rot2__PWM_PR == Rot2_PWM_MODE)
+            Rot2_CONTROL_REG |= Rot2_CTRL_PWM_RUN_MODE;
+            Rot2_WriteCounter(Rot2_PWM_PR_INIT_VALUE);
         #else
-            RotaryEncoder_CONTROL_REG |= RotaryEncoder_CTRL_PWM_ALIGN | RotaryEncoder_CTRL_PWM_KILL_EVENT;
+            Rot2_CONTROL_REG |= Rot2_CTRL_PWM_ALIGN | Rot2_CTRL_PWM_KILL_EVENT;
             
             /* Initialize counter value */
-            #if (RotaryEncoder_CY_TCPWM_V2 && RotaryEncoder_PWM_UPDOWN_CNT_USED && !RotaryEncoder_CY_TCPWM_4000)
-                RotaryEncoder_WriteCounter(1u);
-            #elif (RotaryEncoder__RIGHT == RotaryEncoder_PWM_ALIGN)
-                RotaryEncoder_WriteCounter(RotaryEncoder_PWM_PERIOD_VALUE);
+            #if (Rot2_CY_TCPWM_V2 && Rot2_PWM_UPDOWN_CNT_USED && !Rot2_CY_TCPWM_4000)
+                Rot2_WriteCounter(1u);
+            #elif (Rot2__RIGHT == Rot2_PWM_ALIGN)
+                Rot2_WriteCounter(Rot2_PWM_PERIOD_VALUE);
             #else 
-                RotaryEncoder_WriteCounter(0u);
-            #endif  /* (RotaryEncoder_CY_TCPWM_V2 && RotaryEncoder_PWM_UPDOWN_CNT_USED && !RotaryEncoder_CY_TCPWM_4000) */
-        #endif  /* (RotaryEncoder__PWM_PR == RotaryEncoder_PWM_MODE) */
+                Rot2_WriteCounter(0u);
+            #endif  /* (Rot2_CY_TCPWM_V2 && Rot2_PWM_UPDOWN_CNT_USED && !Rot2_CY_TCPWM_4000) */
+        #endif  /* (Rot2__PWM_PR == Rot2_PWM_MODE) */
 
-        #if (RotaryEncoder__PWM_DT == RotaryEncoder_PWM_MODE)
-            RotaryEncoder_CONTROL_REG |= RotaryEncoder_CTRL_PWM_DEAD_TIME_CYCLE;
-        #endif  /* (RotaryEncoder__PWM_DT == RotaryEncoder_PWM_MODE) */
+        #if (Rot2__PWM_DT == Rot2_PWM_MODE)
+            Rot2_CONTROL_REG |= Rot2_CTRL_PWM_DEAD_TIME_CYCLE;
+        #endif  /* (Rot2__PWM_DT == Rot2_PWM_MODE) */
 
-        #if (RotaryEncoder__PWM == RotaryEncoder_PWM_MODE)
-            RotaryEncoder_CONTROL_REG |= RotaryEncoder_CTRL_PWM_PRESCALER;
-        #endif  /* (RotaryEncoder__PWM == RotaryEncoder_PWM_MODE) */
+        #if (Rot2__PWM == Rot2_PWM_MODE)
+            Rot2_CONTROL_REG |= Rot2_CTRL_PWM_PRESCALER;
+        #endif  /* (Rot2__PWM == Rot2_PWM_MODE) */
 
         /* Set values from customizer to CTRL1 */
-        RotaryEncoder_TRIG_CONTROL1_REG  = RotaryEncoder_PWM_SIGNALS_MODES;
+        Rot2_TRIG_CONTROL1_REG  = Rot2_PWM_SIGNALS_MODES;
     
         /* Set values from customizer to INTR */
-        RotaryEncoder_SetInterruptMode(RotaryEncoder_PWM_INTERRUPT_MASK);
+        Rot2_SetInterruptMode(Rot2_PWM_INTERRUPT_MASK);
 
         /* Set values from customizer to CTRL2 */
-        #if (RotaryEncoder__PWM_PR == RotaryEncoder_PWM_MODE)
-            RotaryEncoder_TRIG_CONTROL2_REG =
-                    (RotaryEncoder_CC_MATCH_NO_CHANGE    |
-                    RotaryEncoder_OVERLOW_NO_CHANGE      |
-                    RotaryEncoder_UNDERFLOW_NO_CHANGE);
+        #if (Rot2__PWM_PR == Rot2_PWM_MODE)
+            Rot2_TRIG_CONTROL2_REG =
+                    (Rot2_CC_MATCH_NO_CHANGE    |
+                    Rot2_OVERLOW_NO_CHANGE      |
+                    Rot2_UNDERFLOW_NO_CHANGE);
         #else
-            #if (RotaryEncoder__LEFT == RotaryEncoder_PWM_ALIGN)
-                RotaryEncoder_TRIG_CONTROL2_REG = RotaryEncoder_PWM_MODE_LEFT;
-            #endif  /* ( RotaryEncoder_PWM_LEFT == RotaryEncoder_PWM_ALIGN) */
+            #if (Rot2__LEFT == Rot2_PWM_ALIGN)
+                Rot2_TRIG_CONTROL2_REG = Rot2_PWM_MODE_LEFT;
+            #endif  /* ( Rot2_PWM_LEFT == Rot2_PWM_ALIGN) */
 
-            #if (RotaryEncoder__RIGHT == RotaryEncoder_PWM_ALIGN)
-                RotaryEncoder_TRIG_CONTROL2_REG = RotaryEncoder_PWM_MODE_RIGHT;
-            #endif  /* ( RotaryEncoder_PWM_RIGHT == RotaryEncoder_PWM_ALIGN) */
+            #if (Rot2__RIGHT == Rot2_PWM_ALIGN)
+                Rot2_TRIG_CONTROL2_REG = Rot2_PWM_MODE_RIGHT;
+            #endif  /* ( Rot2_PWM_RIGHT == Rot2_PWM_ALIGN) */
 
-            #if (RotaryEncoder__CENTER == RotaryEncoder_PWM_ALIGN)
-                RotaryEncoder_TRIG_CONTROL2_REG = RotaryEncoder_PWM_MODE_CENTER;
-            #endif  /* ( RotaryEncoder_PWM_CENTER == RotaryEncoder_PWM_ALIGN) */
+            #if (Rot2__CENTER == Rot2_PWM_ALIGN)
+                Rot2_TRIG_CONTROL2_REG = Rot2_PWM_MODE_CENTER;
+            #endif  /* ( Rot2_PWM_CENTER == Rot2_PWM_ALIGN) */
 
-            #if (RotaryEncoder__ASYMMETRIC == RotaryEncoder_PWM_ALIGN)
-                RotaryEncoder_TRIG_CONTROL2_REG = RotaryEncoder_PWM_MODE_ASYM;
-            #endif  /* (RotaryEncoder__ASYMMETRIC == RotaryEncoder_PWM_ALIGN) */
-        #endif  /* (RotaryEncoder__PWM_PR == RotaryEncoder_PWM_MODE) */
+            #if (Rot2__ASYMMETRIC == Rot2_PWM_ALIGN)
+                Rot2_TRIG_CONTROL2_REG = Rot2_PWM_MODE_ASYM;
+            #endif  /* (Rot2__ASYMMETRIC == Rot2_PWM_ALIGN) */
+        #endif  /* (Rot2__PWM_PR == Rot2_PWM_MODE) */
 
         /* Set other values from customizer */
-        RotaryEncoder_WritePeriod(RotaryEncoder_PWM_PERIOD_VALUE );
-        RotaryEncoder_WriteCompare(RotaryEncoder_PWM_COMPARE_VALUE);
+        Rot2_WritePeriod(Rot2_PWM_PERIOD_VALUE );
+        Rot2_WriteCompare(Rot2_PWM_COMPARE_VALUE);
 
-        #if (1u == RotaryEncoder_PWM_COMPARE_SWAP)
-            RotaryEncoder_SetCompareSwap(1u);
-            RotaryEncoder_WriteCompareBuf(RotaryEncoder_PWM_COMPARE_BUF_VALUE);
-        #endif  /* (1u == RotaryEncoder_PWM_COMPARE_SWAP) */
+        #if (1u == Rot2_PWM_COMPARE_SWAP)
+            Rot2_SetCompareSwap(1u);
+            Rot2_WriteCompareBuf(Rot2_PWM_COMPARE_BUF_VALUE);
+        #endif  /* (1u == Rot2_PWM_COMPARE_SWAP) */
 
-        #if (1u == RotaryEncoder_PWM_PERIOD_SWAP)
-            RotaryEncoder_SetPeriodSwap(1u);
-            RotaryEncoder_WritePeriodBuf(RotaryEncoder_PWM_PERIOD_BUF_VALUE);
-        #endif  /* (1u == RotaryEncoder_PWM_PERIOD_SWAP) */
-    #endif  /* (RotaryEncoder__PWM_SEL == RotaryEncoder_CONFIG) */
+        #if (1u == Rot2_PWM_PERIOD_SWAP)
+            Rot2_SetPeriodSwap(1u);
+            Rot2_WritePeriodBuf(Rot2_PWM_PERIOD_BUF_VALUE);
+        #endif  /* (1u == Rot2_PWM_PERIOD_SWAP) */
+    #endif  /* (Rot2__PWM_SEL == Rot2_CONFIG) */
     
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_Enable
+* Function Name: Rot2_Enable
 ********************************************************************************
 *
 * Summary:
-*  Enables the RotaryEncoder.
+*  Enables the Rot2.
 *
 * Parameters:
 *  None
@@ -174,36 +174,36 @@ void RotaryEncoder_Init(void)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_Enable(void)
+void Rot2_Enable(void)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
-    RotaryEncoder_BLOCK_CONTROL_REG |= RotaryEncoder_MASK;
+    Rot2_BLOCK_CONTROL_REG |= Rot2_MASK;
     CyExitCriticalSection(enableInterrupts);
 
     /* Start Timer or PWM if start input is absent */
-    #if (RotaryEncoder__PWM_SEL == RotaryEncoder_CONFIG)
-        #if (0u == RotaryEncoder_PWM_START_SIGNAL_PRESENT)
-            RotaryEncoder_TriggerCommand(RotaryEncoder_MASK, RotaryEncoder_CMD_START);
-        #endif /* (0u == RotaryEncoder_PWM_START_SIGNAL_PRESENT) */
-    #endif /* (RotaryEncoder__PWM_SEL == RotaryEncoder_CONFIG) */
+    #if (Rot2__PWM_SEL == Rot2_CONFIG)
+        #if (0u == Rot2_PWM_START_SIGNAL_PRESENT)
+            Rot2_TriggerCommand(Rot2_MASK, Rot2_CMD_START);
+        #endif /* (0u == Rot2_PWM_START_SIGNAL_PRESENT) */
+    #endif /* (Rot2__PWM_SEL == Rot2_CONFIG) */
 
-    #if (RotaryEncoder__TIMER == RotaryEncoder_CONFIG)
-        #if (0u == RotaryEncoder_TC_START_SIGNAL_PRESENT)
-            RotaryEncoder_TriggerCommand(RotaryEncoder_MASK, RotaryEncoder_CMD_START);
-        #endif /* (0u == RotaryEncoder_TC_START_SIGNAL_PRESENT) */
-    #endif /* (RotaryEncoder__TIMER == RotaryEncoder_CONFIG) */
+    #if (Rot2__TIMER == Rot2_CONFIG)
+        #if (0u == Rot2_TC_START_SIGNAL_PRESENT)
+            Rot2_TriggerCommand(Rot2_MASK, Rot2_CMD_START);
+        #endif /* (0u == Rot2_TC_START_SIGNAL_PRESENT) */
+    #endif /* (Rot2__TIMER == Rot2_CONFIG) */
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_Start
+* Function Name: Rot2_Start
 ********************************************************************************
 *
 * Summary:
-*  Initializes the RotaryEncoder with default customizer
-*  values when called the first time and enables the RotaryEncoder.
+*  Initializes the Rot2 with default customizer
+*  values when called the first time and enables the Rot2.
 *  For subsequent calls the configuration is left unchanged and the component is
 *  just enabled.
 *
@@ -214,31 +214,31 @@ void RotaryEncoder_Enable(void)
 *  None
 *
 * Global variables:
-*  RotaryEncoder_initVar: global variable is used to indicate initial
+*  Rot2_initVar: global variable is used to indicate initial
 *  configuration of this component.  The variable is initialized to zero and set
-*  to 1 the first time RotaryEncoder_Start() is called. This allows
+*  to 1 the first time Rot2_Start() is called. This allows
 *  enabling/disabling a component without re-initialization in all subsequent
-*  calls to the RotaryEncoder_Start() routine.
+*  calls to the Rot2_Start() routine.
 *
 *******************************************************************************/
-void RotaryEncoder_Start(void)
+void Rot2_Start(void)
 {
-    if (0u == RotaryEncoder_initVar)
+    if (0u == Rot2_initVar)
     {
-        RotaryEncoder_Init();
-        RotaryEncoder_initVar = 1u;
+        Rot2_Init();
+        Rot2_initVar = 1u;
     }
 
-    RotaryEncoder_Enable();
+    Rot2_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_Stop
+* Function Name: Rot2_Stop
 ********************************************************************************
 *
 * Summary:
-*  Disables the RotaryEncoder.
+*  Disables the Rot2.
 *
 * Parameters:
 *  None
@@ -247,58 +247,58 @@ void RotaryEncoder_Start(void)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_Stop(void)
+void Rot2_Stop(void)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_BLOCK_CONTROL_REG &= (uint32)~RotaryEncoder_MASK;
+    Rot2_BLOCK_CONTROL_REG &= (uint32)~Rot2_MASK;
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetMode
+* Function Name: Rot2_SetMode
 ********************************************************************************
 *
 * Summary:
-*  Sets the operation mode of the RotaryEncoder. This function is used when
-*  configured as a generic RotaryEncoder and the actual mode of operation is
+*  Sets the operation mode of the Rot2. This function is used when
+*  configured as a generic Rot2 and the actual mode of operation is
 *  set at runtime. The mode must be set while the component is disabled.
 *
 * Parameters:
-*  mode: Mode for the RotaryEncoder to operate in
+*  mode: Mode for the Rot2 to operate in
 *   Values:
-*   - RotaryEncoder_MODE_TIMER_COMPARE - Timer / Counter with
+*   - Rot2_MODE_TIMER_COMPARE - Timer / Counter with
 *                                                 compare capability
-*         - RotaryEncoder_MODE_TIMER_CAPTURE - Timer / Counter with
+*         - Rot2_MODE_TIMER_CAPTURE - Timer / Counter with
 *                                                 capture capability
-*         - RotaryEncoder_MODE_QUAD - Quadrature decoder
-*         - RotaryEncoder_MODE_PWM - PWM
-*         - RotaryEncoder_MODE_PWM_DT - PWM with dead time
-*         - RotaryEncoder_MODE_PWM_PR - PWM with pseudo random capability
+*         - Rot2_MODE_QUAD - Quadrature decoder
+*         - Rot2_MODE_PWM - PWM
+*         - Rot2_MODE_PWM_DT - PWM with dead time
+*         - Rot2_MODE_PWM_PR - PWM with pseudo random capability
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetMode(uint32 mode)
+void Rot2_SetMode(uint32 mode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_MODE_MASK;
-    RotaryEncoder_CONTROL_REG |= mode;
+    Rot2_CONTROL_REG &= (uint32)~Rot2_MODE_MASK;
+    Rot2_CONTROL_REG |= mode;
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetQDMode
+* Function Name: Rot2_SetQDMode
 ********************************************************************************
 *
 * Summary:
@@ -308,30 +308,30 @@ void RotaryEncoder_SetMode(uint32 mode)
 * Parameters:
 *  qdMode: Quadrature Decoder mode
 *   Values:
-*         - RotaryEncoder_MODE_X1 - Counts on phi 1 rising
-*         - RotaryEncoder_MODE_X2 - Counts on both edges of phi1 (2x faster)
-*         - RotaryEncoder_MODE_X4 - Counts on both edges of phi1 and phi2
+*         - Rot2_MODE_X1 - Counts on phi 1 rising
+*         - Rot2_MODE_X2 - Counts on both edges of phi1 (2x faster)
+*         - Rot2_MODE_X4 - Counts on both edges of phi1 and phi2
 *                                        (4x faster)
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetQDMode(uint32 qdMode)
+void Rot2_SetQDMode(uint32 qdMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_QUAD_MODE_MASK;
-    RotaryEncoder_CONTROL_REG |= qdMode;
+    Rot2_CONTROL_REG &= (uint32)~Rot2_QUAD_MODE_MASK;
+    Rot2_CONTROL_REG |= qdMode;
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetPrescaler
+* Function Name: Rot2_SetPrescaler
 ********************************************************************************
 *
 * Summary:
@@ -341,40 +341,40 @@ void RotaryEncoder_SetQDMode(uint32 qdMode)
 * Parameters:
 *  prescaler: Prescaler divider value
 *   Values:
-*         - RotaryEncoder_PRESCALE_DIVBY1    - Divide by 1 (no prescaling)
-*         - RotaryEncoder_PRESCALE_DIVBY2    - Divide by 2
-*         - RotaryEncoder_PRESCALE_DIVBY4    - Divide by 4
-*         - RotaryEncoder_PRESCALE_DIVBY8    - Divide by 8
-*         - RotaryEncoder_PRESCALE_DIVBY16   - Divide by 16
-*         - RotaryEncoder_PRESCALE_DIVBY32   - Divide by 32
-*         - RotaryEncoder_PRESCALE_DIVBY64   - Divide by 64
-*         - RotaryEncoder_PRESCALE_DIVBY128  - Divide by 128
+*         - Rot2_PRESCALE_DIVBY1    - Divide by 1 (no prescaling)
+*         - Rot2_PRESCALE_DIVBY2    - Divide by 2
+*         - Rot2_PRESCALE_DIVBY4    - Divide by 4
+*         - Rot2_PRESCALE_DIVBY8    - Divide by 8
+*         - Rot2_PRESCALE_DIVBY16   - Divide by 16
+*         - Rot2_PRESCALE_DIVBY32   - Divide by 32
+*         - Rot2_PRESCALE_DIVBY64   - Divide by 64
+*         - Rot2_PRESCALE_DIVBY128  - Divide by 128
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetPrescaler(uint32 prescaler)
+void Rot2_SetPrescaler(uint32 prescaler)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_PRESCALER_MASK;
-    RotaryEncoder_CONTROL_REG |= prescaler;
+    Rot2_CONTROL_REG &= (uint32)~Rot2_PRESCALER_MASK;
+    Rot2_CONTROL_REG |= prescaler;
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetOneShot
+* Function Name: Rot2_SetOneShot
 ********************************************************************************
 *
 * Summary:
-*  Writes the register that controls whether the RotaryEncoder runs
+*  Writes the register that controls whether the Rot2 runs
 *  continuously or stops when terminal count is reached.  By default the
-*  RotaryEncoder operates in the continuous mode.
+*  Rot2 operates in the continuous mode.
 *
 * Parameters:
 *  oneShotEnable
@@ -386,22 +386,22 @@ void RotaryEncoder_SetPrescaler(uint32 prescaler)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetOneShot(uint32 oneShotEnable)
+void Rot2_SetOneShot(uint32 oneShotEnable)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_ONESHOT_MASK;
-    RotaryEncoder_CONTROL_REG |= ((uint32)((oneShotEnable & RotaryEncoder_1BIT_MASK) <<
-                                                               RotaryEncoder_ONESHOT_SHIFT));
+    Rot2_CONTROL_REG &= (uint32)~Rot2_ONESHOT_MASK;
+    Rot2_CONTROL_REG |= ((uint32)((oneShotEnable & Rot2_1BIT_MASK) <<
+                                                               Rot2_ONESHOT_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetPWMMode
+* Function Name: Rot2_SetPWMMode
 ********************************************************************************
 *
 * Summary:
@@ -440,15 +440,15 @@ void RotaryEncoder_SetOneShot(uint32 oneShotEnable)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetPWMMode(uint32 modeMask)
+void Rot2_SetPWMMode(uint32 modeMask)
 {
-    RotaryEncoder_TRIG_CONTROL2_REG = (modeMask & RotaryEncoder_6BIT_MASK);
+    Rot2_TRIG_CONTROL2_REG = (modeMask & Rot2_6BIT_MASK);
 }
 
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetPWMSyncKill
+* Function Name: Rot2_SetPWMSyncKill
 ********************************************************************************
 *
 * Summary:
@@ -476,22 +476,22 @@ void RotaryEncoder_SetPWMMode(uint32 modeMask)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetPWMSyncKill(uint32 syncKillEnable)
+void Rot2_SetPWMSyncKill(uint32 syncKillEnable)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_PWM_SYNC_KILL_MASK;
-    RotaryEncoder_CONTROL_REG |= ((uint32)((syncKillEnable & RotaryEncoder_1BIT_MASK)  <<
-                                               RotaryEncoder_PWM_SYNC_KILL_SHIFT));
+    Rot2_CONTROL_REG &= (uint32)~Rot2_PWM_SYNC_KILL_MASK;
+    Rot2_CONTROL_REG |= ((uint32)((syncKillEnable & Rot2_1BIT_MASK)  <<
+                                               Rot2_PWM_SYNC_KILL_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetPWMStopOnKill
+* Function Name: Rot2_SetPWMStopOnKill
 ********************************************************************************
 *
 * Summary:
@@ -510,22 +510,22 @@ void RotaryEncoder_SetPWMSyncKill(uint32 syncKillEnable)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetPWMStopOnKill(uint32 stopOnKillEnable)
+void Rot2_SetPWMStopOnKill(uint32 stopOnKillEnable)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_PWM_STOP_KILL_MASK;
-    RotaryEncoder_CONTROL_REG |= ((uint32)((stopOnKillEnable & RotaryEncoder_1BIT_MASK)  <<
-                                                         RotaryEncoder_PWM_STOP_KILL_SHIFT));
+    Rot2_CONTROL_REG &= (uint32)~Rot2_PWM_STOP_KILL_MASK;
+    Rot2_CONTROL_REG |= ((uint32)((stopOnKillEnable & Rot2_1BIT_MASK)  <<
+                                                         Rot2_PWM_STOP_KILL_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetPWMDeadTime
+* Function Name: Rot2_SetPWMDeadTime
 ********************************************************************************
 *
 * Summary:
@@ -543,22 +543,22 @@ void RotaryEncoder_SetPWMStopOnKill(uint32 stopOnKillEnable)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetPWMDeadTime(uint32 deadTime)
+void Rot2_SetPWMDeadTime(uint32 deadTime)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_PRESCALER_MASK;
-    RotaryEncoder_CONTROL_REG |= ((uint32)((deadTime & RotaryEncoder_8BIT_MASK) <<
-                                                          RotaryEncoder_PRESCALER_SHIFT));
+    Rot2_CONTROL_REG &= (uint32)~Rot2_PRESCALER_MASK;
+    Rot2_CONTROL_REG |= ((uint32)((deadTime & Rot2_8BIT_MASK) <<
+                                                          Rot2_PRESCALER_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetPWMInvert
+* Function Name: Rot2_SetPWMInvert
 ********************************************************************************
 *
 * Summary:
@@ -569,21 +569,21 @@ void RotaryEncoder_SetPWMDeadTime(uint32 deadTime)
 * Parameters:
 *  mask: Mask of outputs to invert.
 *   Values:
-*         - RotaryEncoder_INVERT_LINE   - Inverts the line output
-*         - RotaryEncoder_INVERT_LINE_N - Inverts the line_n output
+*         - Rot2_INVERT_LINE   - Inverts the line output
+*         - Rot2_INVERT_LINE_N - Inverts the line_n output
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetPWMInvert(uint32 mask)
+void Rot2_SetPWMInvert(uint32 mask)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_INV_OUT_MASK;
-    RotaryEncoder_CONTROL_REG |= mask;
+    Rot2_CONTROL_REG &= (uint32)~Rot2_INV_OUT_MASK;
+    Rot2_CONTROL_REG |= mask;
 
     CyExitCriticalSection(enableInterrupts);
 }
@@ -591,7 +591,7 @@ void RotaryEncoder_SetPWMInvert(uint32 mask)
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_WriteCounter
+* Function Name: Rot2_WriteCounter
 ********************************************************************************
 *
 * Summary:
@@ -606,14 +606,14 @@ void RotaryEncoder_SetPWMInvert(uint32 mask)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_WriteCounter(uint32 count)
+void Rot2_WriteCounter(uint32 count)
 {
-    RotaryEncoder_COUNTER_REG = (count & RotaryEncoder_16BIT_MASK);
+    Rot2_COUNTER_REG = (count & Rot2_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_ReadCounter
+* Function Name: Rot2_ReadCounter
 ********************************************************************************
 *
 * Summary:
@@ -626,14 +626,14 @@ void RotaryEncoder_WriteCounter(uint32 count)
 *  Current counter value
 *
 *******************************************************************************/
-uint32 RotaryEncoder_ReadCounter(void)
+uint32 Rot2_ReadCounter(void)
 {
-    return (RotaryEncoder_COUNTER_REG & RotaryEncoder_16BIT_MASK);
+    return (Rot2_COUNTER_REG & Rot2_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetCounterMode
+* Function Name: Rot2_SetCounterMode
 ********************************************************************************
 *
 * Summary:
@@ -643,11 +643,11 @@ uint32 RotaryEncoder_ReadCounter(void)
 * Parameters:
 *  counterMode: Enumerated counter type values
 *   Values:
-*     - RotaryEncoder_COUNT_UP       - Counts up
-*     - RotaryEncoder_COUNT_DOWN     - Counts down
-*     - RotaryEncoder_COUNT_UPDOWN0  - Counts up and down. Terminal count
+*     - Rot2_COUNT_UP       - Counts up
+*     - Rot2_COUNT_DOWN     - Counts down
+*     - Rot2_COUNT_UPDOWN0  - Counts up and down. Terminal count
 *                                         generated when counter reaches 0
-*     - RotaryEncoder_COUNT_UPDOWN1  - Counts up and down. Terminal count
+*     - Rot2_COUNT_UPDOWN1  - Counts up and down. Terminal count
 *                                         generated both when counter reaches 0
 *                                         and period
 *
@@ -655,21 +655,21 @@ uint32 RotaryEncoder_ReadCounter(void)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetCounterMode(uint32 counterMode)
+void Rot2_SetCounterMode(uint32 counterMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_UPDOWN_MASK;
-    RotaryEncoder_CONTROL_REG |= counterMode;
+    Rot2_CONTROL_REG &= (uint32)~Rot2_UPDOWN_MASK;
+    Rot2_CONTROL_REG |= counterMode;
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_WritePeriod
+* Function Name: Rot2_WritePeriod
 ********************************************************************************
 *
 * Summary:
@@ -684,14 +684,14 @@ void RotaryEncoder_SetCounterMode(uint32 counterMode)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_WritePeriod(uint32 period)
+void Rot2_WritePeriod(uint32 period)
 {
-    RotaryEncoder_PERIOD_REG = (period & RotaryEncoder_16BIT_MASK);
+    Rot2_PERIOD_REG = (period & Rot2_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_ReadPeriod
+* Function Name: Rot2_ReadPeriod
 ********************************************************************************
 *
 * Summary:
@@ -704,14 +704,14 @@ void RotaryEncoder_WritePeriod(uint32 period)
 *  Period value
 *
 *******************************************************************************/
-uint32 RotaryEncoder_ReadPeriod(void)
+uint32 Rot2_ReadPeriod(void)
 {
-    return (RotaryEncoder_PERIOD_REG & RotaryEncoder_16BIT_MASK);
+    return (Rot2_PERIOD_REG & Rot2_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetCompareSwap
+* Function Name: Rot2_SetCompareSwap
 ********************************************************************************
 *
 * Summary:
@@ -730,21 +730,21 @@ uint32 RotaryEncoder_ReadPeriod(void)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetCompareSwap(uint32 swapEnable)
+void Rot2_SetCompareSwap(uint32 swapEnable)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_RELOAD_CC_MASK;
-    RotaryEncoder_CONTROL_REG |= (swapEnable & RotaryEncoder_1BIT_MASK);
+    Rot2_CONTROL_REG &= (uint32)~Rot2_RELOAD_CC_MASK;
+    Rot2_CONTROL_REG |= (swapEnable & Rot2_1BIT_MASK);
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_WritePeriodBuf
+* Function Name: Rot2_WritePeriodBuf
 ********************************************************************************
 *
 * Summary:
@@ -757,14 +757,14 @@ void RotaryEncoder_SetCompareSwap(uint32 swapEnable)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_WritePeriodBuf(uint32 periodBuf)
+void Rot2_WritePeriodBuf(uint32 periodBuf)
 {
-    RotaryEncoder_PERIOD_BUF_REG = (periodBuf & RotaryEncoder_16BIT_MASK);
+    Rot2_PERIOD_BUF_REG = (periodBuf & Rot2_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_ReadPeriodBuf
+* Function Name: Rot2_ReadPeriodBuf
 ********************************************************************************
 *
 * Summary:
@@ -777,14 +777,14 @@ void RotaryEncoder_WritePeriodBuf(uint32 periodBuf)
 *  Period value
 *
 *******************************************************************************/
-uint32 RotaryEncoder_ReadPeriodBuf(void)
+uint32 Rot2_ReadPeriodBuf(void)
 {
-    return (RotaryEncoder_PERIOD_BUF_REG & RotaryEncoder_16BIT_MASK);
+    return (Rot2_PERIOD_BUF_REG & Rot2_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetPeriodSwap
+* Function Name: Rot2_SetPeriodSwap
 ********************************************************************************
 *
 * Summary:
@@ -803,22 +803,22 @@ uint32 RotaryEncoder_ReadPeriodBuf(void)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetPeriodSwap(uint32 swapEnable)
+void Rot2_SetPeriodSwap(uint32 swapEnable)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_CONTROL_REG &= (uint32)~RotaryEncoder_RELOAD_PERIOD_MASK;
-    RotaryEncoder_CONTROL_REG |= ((uint32)((swapEnable & RotaryEncoder_1BIT_MASK) <<
-                                                            RotaryEncoder_RELOAD_PERIOD_SHIFT));
+    Rot2_CONTROL_REG &= (uint32)~Rot2_RELOAD_PERIOD_MASK;
+    Rot2_CONTROL_REG |= ((uint32)((swapEnable & Rot2_1BIT_MASK) <<
+                                                            Rot2_RELOAD_PERIOD_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_WriteCompare
+* Function Name: Rot2_WriteCompare
 ********************************************************************************
 *
 * Summary:
@@ -832,20 +832,20 @@ void RotaryEncoder_SetPeriodSwap(uint32 swapEnable)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_WriteCompare(uint32 compare)
+void Rot2_WriteCompare(uint32 compare)
 {
-    #if (RotaryEncoder_CY_TCPWM_4000)
+    #if (Rot2_CY_TCPWM_4000)
         uint32 currentMode;
-    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
+    #endif /* (Rot2_CY_TCPWM_4000) */
 
-    #if (RotaryEncoder_CY_TCPWM_4000)
-        currentMode = ((RotaryEncoder_CONTROL_REG & RotaryEncoder_UPDOWN_MASK) >> RotaryEncoder_UPDOWN_SHIFT);
+    #if (Rot2_CY_TCPWM_4000)
+        currentMode = ((Rot2_CONTROL_REG & Rot2_UPDOWN_MASK) >> Rot2_UPDOWN_SHIFT);
 
-        if (((uint32)RotaryEncoder__COUNT_DOWN == currentMode) && (0xFFFFu != compare))
+        if (((uint32)Rot2__COUNT_DOWN == currentMode) && (0xFFFFu != compare))
         {
             compare++;
         }
-        else if (((uint32)RotaryEncoder__COUNT_UP == currentMode) && (0u != compare))
+        else if (((uint32)Rot2__COUNT_UP == currentMode) && (0u != compare))
         {
             compare--;
         }
@@ -854,14 +854,14 @@ void RotaryEncoder_WriteCompare(uint32 compare)
         }
         
     
-    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
+    #endif /* (Rot2_CY_TCPWM_4000) */
     
-    RotaryEncoder_COMP_CAP_REG = (compare & RotaryEncoder_16BIT_MASK);
+    Rot2_COMP_CAP_REG = (compare & Rot2_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_ReadCompare
+* Function Name: Rot2_ReadCompare
 ********************************************************************************
 *
 * Summary:
@@ -875,23 +875,23 @@ void RotaryEncoder_WriteCompare(uint32 compare)
 *  Compare value
 *
 *******************************************************************************/
-uint32 RotaryEncoder_ReadCompare(void)
+uint32 Rot2_ReadCompare(void)
 {
-    #if (RotaryEncoder_CY_TCPWM_4000)
+    #if (Rot2_CY_TCPWM_4000)
         uint32 currentMode;
         uint32 regVal;
-    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
+    #endif /* (Rot2_CY_TCPWM_4000) */
 
-    #if (RotaryEncoder_CY_TCPWM_4000)
-        currentMode = ((RotaryEncoder_CONTROL_REG & RotaryEncoder_UPDOWN_MASK) >> RotaryEncoder_UPDOWN_SHIFT);
+    #if (Rot2_CY_TCPWM_4000)
+        currentMode = ((Rot2_CONTROL_REG & Rot2_UPDOWN_MASK) >> Rot2_UPDOWN_SHIFT);
         
-        regVal = RotaryEncoder_COMP_CAP_REG;
+        regVal = Rot2_COMP_CAP_REG;
         
-        if (((uint32)RotaryEncoder__COUNT_DOWN == currentMode) && (0u != regVal))
+        if (((uint32)Rot2__COUNT_DOWN == currentMode) && (0u != regVal))
         {
             regVal--;
         }
-        else if (((uint32)RotaryEncoder__COUNT_UP == currentMode) && (0xFFFFu != regVal))
+        else if (((uint32)Rot2__COUNT_UP == currentMode) && (0xFFFFu != regVal))
         {
             regVal++;
         }
@@ -899,15 +899,15 @@ uint32 RotaryEncoder_ReadCompare(void)
         {
         }
 
-        return (regVal & RotaryEncoder_16BIT_MASK);
+        return (regVal & Rot2_16BIT_MASK);
     #else
-        return (RotaryEncoder_COMP_CAP_REG & RotaryEncoder_16BIT_MASK);
-    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
+        return (Rot2_COMP_CAP_REG & Rot2_16BIT_MASK);
+    #endif /* (Rot2_CY_TCPWM_4000) */
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_WriteCompareBuf
+* Function Name: Rot2_WriteCompareBuf
 ********************************************************************************
 *
 * Summary:
@@ -921,34 +921,34 @@ uint32 RotaryEncoder_ReadCompare(void)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_WriteCompareBuf(uint32 compareBuf)
+void Rot2_WriteCompareBuf(uint32 compareBuf)
 {
-    #if (RotaryEncoder_CY_TCPWM_4000)
+    #if (Rot2_CY_TCPWM_4000)
         uint32 currentMode;
-    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
+    #endif /* (Rot2_CY_TCPWM_4000) */
 
-    #if (RotaryEncoder_CY_TCPWM_4000)
-        currentMode = ((RotaryEncoder_CONTROL_REG & RotaryEncoder_UPDOWN_MASK) >> RotaryEncoder_UPDOWN_SHIFT);
+    #if (Rot2_CY_TCPWM_4000)
+        currentMode = ((Rot2_CONTROL_REG & Rot2_UPDOWN_MASK) >> Rot2_UPDOWN_SHIFT);
 
-        if (((uint32)RotaryEncoder__COUNT_DOWN == currentMode) && (0xFFFFu != compareBuf))
+        if (((uint32)Rot2__COUNT_DOWN == currentMode) && (0xFFFFu != compareBuf))
         {
             compareBuf++;
         }
-        else if (((uint32)RotaryEncoder__COUNT_UP == currentMode) && (0u != compareBuf))
+        else if (((uint32)Rot2__COUNT_UP == currentMode) && (0u != compareBuf))
         {
             compareBuf --;
         }
         else
         {
         }
-    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
+    #endif /* (Rot2_CY_TCPWM_4000) */
     
-    RotaryEncoder_COMP_CAP_BUF_REG = (compareBuf & RotaryEncoder_16BIT_MASK);
+    Rot2_COMP_CAP_BUF_REG = (compareBuf & Rot2_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_ReadCompareBuf
+* Function Name: Rot2_ReadCompareBuf
 ********************************************************************************
 *
 * Summary:
@@ -962,23 +962,23 @@ void RotaryEncoder_WriteCompareBuf(uint32 compareBuf)
 *  Compare buffer value
 *
 *******************************************************************************/
-uint32 RotaryEncoder_ReadCompareBuf(void)
+uint32 Rot2_ReadCompareBuf(void)
 {
-    #if (RotaryEncoder_CY_TCPWM_4000)
+    #if (Rot2_CY_TCPWM_4000)
         uint32 currentMode;
         uint32 regVal;
-    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
+    #endif /* (Rot2_CY_TCPWM_4000) */
 
-    #if (RotaryEncoder_CY_TCPWM_4000)
-        currentMode = ((RotaryEncoder_CONTROL_REG & RotaryEncoder_UPDOWN_MASK) >> RotaryEncoder_UPDOWN_SHIFT);
+    #if (Rot2_CY_TCPWM_4000)
+        currentMode = ((Rot2_CONTROL_REG & Rot2_UPDOWN_MASK) >> Rot2_UPDOWN_SHIFT);
 
-        regVal = RotaryEncoder_COMP_CAP_BUF_REG;
+        regVal = Rot2_COMP_CAP_BUF_REG;
         
-        if (((uint32)RotaryEncoder__COUNT_DOWN == currentMode) && (0u != regVal))
+        if (((uint32)Rot2__COUNT_DOWN == currentMode) && (0u != regVal))
         {
             regVal--;
         }
-        else if (((uint32)RotaryEncoder__COUNT_UP == currentMode) && (0xFFFFu != regVal))
+        else if (((uint32)Rot2__COUNT_UP == currentMode) && (0xFFFFu != regVal))
         {
             regVal++;
         }
@@ -986,15 +986,15 @@ uint32 RotaryEncoder_ReadCompareBuf(void)
         {
         }
 
-        return (regVal & RotaryEncoder_16BIT_MASK);
+        return (regVal & Rot2_16BIT_MASK);
     #else
-        return (RotaryEncoder_COMP_CAP_BUF_REG & RotaryEncoder_16BIT_MASK);
-    #endif /* (RotaryEncoder_CY_TCPWM_4000) */
+        return (Rot2_COMP_CAP_BUF_REG & Rot2_16BIT_MASK);
+    #endif /* (Rot2_CY_TCPWM_4000) */
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_ReadCapture
+* Function Name: Rot2_ReadCapture
 ********************************************************************************
 *
 * Summary:
@@ -1008,14 +1008,14 @@ uint32 RotaryEncoder_ReadCompareBuf(void)
 *  Capture value
 *
 *******************************************************************************/
-uint32 RotaryEncoder_ReadCapture(void)
+uint32 Rot2_ReadCapture(void)
 {
-    return (RotaryEncoder_COMP_CAP_REG & RotaryEncoder_16BIT_MASK);
+    return (Rot2_COMP_CAP_REG & Rot2_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_ReadCaptureBuf
+* Function Name: Rot2_ReadCaptureBuf
 ********************************************************************************
 *
 * Summary:
@@ -1029,14 +1029,14 @@ uint32 RotaryEncoder_ReadCapture(void)
 *  Capture buffer value
 *
 *******************************************************************************/
-uint32 RotaryEncoder_ReadCaptureBuf(void)
+uint32 Rot2_ReadCaptureBuf(void)
 {
-    return (RotaryEncoder_COMP_CAP_BUF_REG & RotaryEncoder_16BIT_MASK);
+    return (Rot2_COMP_CAP_BUF_REG & Rot2_16BIT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetCaptureMode
+* Function Name: Rot2_SetCaptureMode
 ********************************************************************************
 *
 * Summary:
@@ -1047,30 +1047,30 @@ uint32 RotaryEncoder_ReadCaptureBuf(void)
 * Parameters:
 *  triggerMode: Enumerated trigger mode value
 *   Values:
-*     - RotaryEncoder_TRIG_LEVEL     - Level
-*     - RotaryEncoder_TRIG_RISING    - Rising edge
-*     - RotaryEncoder_TRIG_FALLING   - Falling edge
-*     - RotaryEncoder_TRIG_BOTH      - Both rising and falling edge
+*     - Rot2_TRIG_LEVEL     - Level
+*     - Rot2_TRIG_RISING    - Rising edge
+*     - Rot2_TRIG_FALLING   - Falling edge
+*     - Rot2_TRIG_BOTH      - Both rising and falling edge
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetCaptureMode(uint32 triggerMode)
+void Rot2_SetCaptureMode(uint32 triggerMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_TRIG_CONTROL1_REG &= (uint32)~RotaryEncoder_CAPTURE_MASK;
-    RotaryEncoder_TRIG_CONTROL1_REG |= triggerMode;
+    Rot2_TRIG_CONTROL1_REG &= (uint32)~Rot2_CAPTURE_MASK;
+    Rot2_TRIG_CONTROL1_REG |= triggerMode;
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetReloadMode
+* Function Name: Rot2_SetReloadMode
 ********************************************************************************
 *
 * Summary:
@@ -1080,30 +1080,30 @@ void RotaryEncoder_SetCaptureMode(uint32 triggerMode)
 * Parameters:
 *  triggerMode: Enumerated trigger mode value
 *   Values:
-*     - RotaryEncoder_TRIG_LEVEL     - Level
-*     - RotaryEncoder_TRIG_RISING    - Rising edge
-*     - RotaryEncoder_TRIG_FALLING   - Falling edge
-*     - RotaryEncoder_TRIG_BOTH      - Both rising and falling edge
+*     - Rot2_TRIG_LEVEL     - Level
+*     - Rot2_TRIG_RISING    - Rising edge
+*     - Rot2_TRIG_FALLING   - Falling edge
+*     - Rot2_TRIG_BOTH      - Both rising and falling edge
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetReloadMode(uint32 triggerMode)
+void Rot2_SetReloadMode(uint32 triggerMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_TRIG_CONTROL1_REG &= (uint32)~RotaryEncoder_RELOAD_MASK;
-    RotaryEncoder_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << RotaryEncoder_RELOAD_SHIFT));
+    Rot2_TRIG_CONTROL1_REG &= (uint32)~Rot2_RELOAD_MASK;
+    Rot2_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << Rot2_RELOAD_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetStartMode
+* Function Name: Rot2_SetStartMode
 ********************************************************************************
 *
 * Summary:
@@ -1113,30 +1113,30 @@ void RotaryEncoder_SetReloadMode(uint32 triggerMode)
 * Parameters:
 *  triggerMode: Enumerated trigger mode value
 *   Values:
-*     - RotaryEncoder_TRIG_LEVEL     - Level
-*     - RotaryEncoder_TRIG_RISING    - Rising edge
-*     - RotaryEncoder_TRIG_FALLING   - Falling edge
-*     - RotaryEncoder_TRIG_BOTH      - Both rising and falling edge
+*     - Rot2_TRIG_LEVEL     - Level
+*     - Rot2_TRIG_RISING    - Rising edge
+*     - Rot2_TRIG_FALLING   - Falling edge
+*     - Rot2_TRIG_BOTH      - Both rising and falling edge
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetStartMode(uint32 triggerMode)
+void Rot2_SetStartMode(uint32 triggerMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_TRIG_CONTROL1_REG &= (uint32)~RotaryEncoder_START_MASK;
-    RotaryEncoder_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << RotaryEncoder_START_SHIFT));
+    Rot2_TRIG_CONTROL1_REG &= (uint32)~Rot2_START_MASK;
+    Rot2_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << Rot2_START_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetStopMode
+* Function Name: Rot2_SetStopMode
 ********************************************************************************
 *
 * Summary:
@@ -1145,30 +1145,30 @@ void RotaryEncoder_SetStartMode(uint32 triggerMode)
 * Parameters:
 *  triggerMode: Enumerated trigger mode value
 *   Values:
-*     - RotaryEncoder_TRIG_LEVEL     - Level
-*     - RotaryEncoder_TRIG_RISING    - Rising edge
-*     - RotaryEncoder_TRIG_FALLING   - Falling edge
-*     - RotaryEncoder_TRIG_BOTH      - Both rising and falling edge
+*     - Rot2_TRIG_LEVEL     - Level
+*     - Rot2_TRIG_RISING    - Rising edge
+*     - Rot2_TRIG_FALLING   - Falling edge
+*     - Rot2_TRIG_BOTH      - Both rising and falling edge
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetStopMode(uint32 triggerMode)
+void Rot2_SetStopMode(uint32 triggerMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_TRIG_CONTROL1_REG &= (uint32)~RotaryEncoder_STOP_MASK;
-    RotaryEncoder_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << RotaryEncoder_STOP_SHIFT));
+    Rot2_TRIG_CONTROL1_REG &= (uint32)~Rot2_STOP_MASK;
+    Rot2_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << Rot2_STOP_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetCountMode
+* Function Name: Rot2_SetCountMode
 ********************************************************************************
 *
 * Summary:
@@ -1178,30 +1178,30 @@ void RotaryEncoder_SetStopMode(uint32 triggerMode)
 * Parameters:
 *  triggerMode: Enumerated trigger mode value
 *   Values:
-*     - RotaryEncoder_TRIG_LEVEL     - Level
-*     - RotaryEncoder_TRIG_RISING    - Rising edge
-*     - RotaryEncoder_TRIG_FALLING   - Falling edge
-*     - RotaryEncoder_TRIG_BOTH      - Both rising and falling edge
+*     - Rot2_TRIG_LEVEL     - Level
+*     - Rot2_TRIG_RISING    - Rising edge
+*     - Rot2_TRIG_FALLING   - Falling edge
+*     - Rot2_TRIG_BOTH      - Both rising and falling edge
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetCountMode(uint32 triggerMode)
+void Rot2_SetCountMode(uint32 triggerMode)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_TRIG_CONTROL1_REG &= (uint32)~RotaryEncoder_COUNT_MASK;
-    RotaryEncoder_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << RotaryEncoder_COUNT_SHIFT));
+    Rot2_TRIG_CONTROL1_REG &= (uint32)~Rot2_COUNT_MASK;
+    Rot2_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << Rot2_COUNT_SHIFT));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_TriggerCommand
+* Function Name: Rot2_TriggerCommand
 ********************************************************************************
 *
 * Summary:
@@ -1218,33 +1218,33 @@ void RotaryEncoder_SetCountMode(uint32 triggerMode)
 *  command: Enumerated command values. Capture command only applicable for
 *           Timer/Counter with Capture and PWM modes.
 *   Values:
-*     - RotaryEncoder_CMD_CAPTURE    - Trigger Capture command
-*     - RotaryEncoder_CMD_RELOAD     - Trigger Reload command
-*     - RotaryEncoder_CMD_STOP       - Trigger Stop command
-*     - RotaryEncoder_CMD_START      - Trigger Start command
+*     - Rot2_CMD_CAPTURE    - Trigger Capture command
+*     - Rot2_CMD_RELOAD     - Trigger Reload command
+*     - Rot2_CMD_STOP       - Trigger Stop command
+*     - Rot2_CMD_START      - Trigger Start command
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_TriggerCommand(uint32 mask, uint32 command)
+void Rot2_TriggerCommand(uint32 mask, uint32 command)
 {
     uint8 enableInterrupts;
 
     enableInterrupts = CyEnterCriticalSection();
 
-    RotaryEncoder_COMMAND_REG = ((uint32)(mask << command));
+    Rot2_COMMAND_REG = ((uint32)(mask << command));
 
     CyExitCriticalSection(enableInterrupts);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_ReadStatus
+* Function Name: Rot2_ReadStatus
 ********************************************************************************
 *
 * Summary:
-*  Reads the status of the RotaryEncoder.
+*  Reads the status of the Rot2.
 *
 * Parameters:
 *  None
@@ -1252,19 +1252,19 @@ void RotaryEncoder_TriggerCommand(uint32 mask, uint32 command)
 * Return:
 *  Status
 *   Values:
-*     - RotaryEncoder_STATUS_DOWN    - Set if counting down
-*     - RotaryEncoder_STATUS_RUNNING - Set if counter is running
+*     - Rot2_STATUS_DOWN    - Set if counting down
+*     - Rot2_STATUS_RUNNING - Set if counter is running
 *
 *******************************************************************************/
-uint32 RotaryEncoder_ReadStatus(void)
+uint32 Rot2_ReadStatus(void)
 {
-    return ((RotaryEncoder_STATUS_REG >> RotaryEncoder_RUNNING_STATUS_SHIFT) |
-            (RotaryEncoder_STATUS_REG & RotaryEncoder_STATUS_DOWN));
+    return ((Rot2_STATUS_REG >> Rot2_RUNNING_STATUS_SHIFT) |
+            (Rot2_STATUS_REG & Rot2_STATUS_DOWN));
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetInterruptMode
+* Function Name: Rot2_SetInterruptMode
 ********************************************************************************
 *
 * Summary:
@@ -1274,21 +1274,21 @@ uint32 RotaryEncoder_ReadStatus(void)
 * Parameters:
 *   interruptMask: Mask of bits to be enabled
 *   Values:
-*     - RotaryEncoder_INTR_MASK_TC       - Terminal count mask
-*     - RotaryEncoder_INTR_MASK_CC_MATCH - Compare count / capture mask
+*     - Rot2_INTR_MASK_TC       - Terminal count mask
+*     - Rot2_INTR_MASK_CC_MATCH - Compare count / capture mask
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetInterruptMode(uint32 interruptMask)
+void Rot2_SetInterruptMode(uint32 interruptMask)
 {
-    RotaryEncoder_INTERRUPT_MASK_REG =  interruptMask;
+    Rot2_INTERRUPT_MASK_REG =  interruptMask;
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_GetInterruptSourceMasked
+* Function Name: Rot2_GetInterruptSourceMasked
 ********************************************************************************
 *
 * Summary:
@@ -1300,18 +1300,18 @@ void RotaryEncoder_SetInterruptMode(uint32 interruptMask)
 * Return:
 *  Masked interrupt source
 *   Values:
-*     - RotaryEncoder_INTR_MASK_TC       - Terminal count mask
-*     - RotaryEncoder_INTR_MASK_CC_MATCH - Compare count / capture mask
+*     - Rot2_INTR_MASK_TC       - Terminal count mask
+*     - Rot2_INTR_MASK_CC_MATCH - Compare count / capture mask
 *
 *******************************************************************************/
-uint32 RotaryEncoder_GetInterruptSourceMasked(void)
+uint32 Rot2_GetInterruptSourceMasked(void)
 {
-    return (RotaryEncoder_INTERRUPT_MASKED_REG);
+    return (Rot2_INTERRUPT_MASKED_REG);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_GetInterruptSource
+* Function Name: Rot2_GetInterruptSource
 ********************************************************************************
 *
 * Summary:
@@ -1323,18 +1323,18 @@ uint32 RotaryEncoder_GetInterruptSourceMasked(void)
 * Return:
 *  Interrupt request value
 *   Values:
-*     - RotaryEncoder_INTR_MASK_TC       - Terminal count mask
-*     - RotaryEncoder_INTR_MASK_CC_MATCH - Compare count / capture mask
+*     - Rot2_INTR_MASK_TC       - Terminal count mask
+*     - Rot2_INTR_MASK_CC_MATCH - Compare count / capture mask
 *
 *******************************************************************************/
-uint32 RotaryEncoder_GetInterruptSource(void)
+uint32 Rot2_GetInterruptSource(void)
 {
-    return (RotaryEncoder_INTERRUPT_REQ_REG);
+    return (Rot2_INTERRUPT_REQ_REG);
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_ClearInterrupt
+* Function Name: Rot2_ClearInterrupt
 ********************************************************************************
 *
 * Summary:
@@ -1343,21 +1343,21 @@ uint32 RotaryEncoder_GetInterruptSource(void)
 * Parameters:
 *   interruptMask: Mask of interrupts to clear
 *   Values:
-*     - RotaryEncoder_INTR_MASK_TC       - Terminal count mask
-*     - RotaryEncoder_INTR_MASK_CC_MATCH - Compare count / capture mask
+*     - Rot2_INTR_MASK_TC       - Terminal count mask
+*     - Rot2_INTR_MASK_CC_MATCH - Compare count / capture mask
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_ClearInterrupt(uint32 interruptMask)
+void Rot2_ClearInterrupt(uint32 interruptMask)
 {
-    RotaryEncoder_INTERRUPT_REQ_REG = interruptMask;
+    Rot2_INTERRUPT_REQ_REG = interruptMask;
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SetInterrupt
+* Function Name: Rot2_SetInterrupt
 ********************************************************************************
 *
 * Summary:
@@ -1366,16 +1366,16 @@ void RotaryEncoder_ClearInterrupt(uint32 interruptMask)
 * Parameters:
 *   interruptMask: Mask of interrupts to set
 *   Values:
-*     - RotaryEncoder_INTR_MASK_TC       - Terminal count mask
-*     - RotaryEncoder_INTR_MASK_CC_MATCH - Compare count / capture mask
+*     - Rot2_INTR_MASK_TC       - Terminal count mask
+*     - Rot2_INTR_MASK_CC_MATCH - Compare count / capture mask
 *
 * Return:
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SetInterrupt(uint32 interruptMask)
+void Rot2_SetInterrupt(uint32 interruptMask)
 {
-    RotaryEncoder_INTERRUPT_SET_REG = interruptMask;
+    Rot2_INTERRUPT_SET_REG = interruptMask;
 }
 
 

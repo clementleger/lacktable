@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: RotB.h  
+* File Name: Rot2B.h  
 * Version 2.10
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_RotB_ALIASES_H) /* Pins RotB_ALIASES_H */
-#define CY_PINS_RotB_ALIASES_H
+#if !defined(CY_PINS_Rot2B_ALIASES_H) /* Pins Rot2B_ALIASES_H */
+#define CY_PINS_Rot2B_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -26,14 +26,14 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define RotB_0		(RotB__0__PC)
-#define RotB_0_PS		(RotB__0__PS)
-#define RotB_0_PC		(RotB__0__PC)
-#define RotB_0_DR		(RotB__0__DR)
-#define RotB_0_SHIFT	(RotB__0__SHIFT)
+#define Rot2B_0		(Rot2B__0__PC)
+#define Rot2B_0_PS		(Rot2B__0__PS)
+#define Rot2B_0_PC		(Rot2B__0__PC)
+#define Rot2B_0_DR		(Rot2B__0__DR)
+#define Rot2B_0_SHIFT	(Rot2B__0__SHIFT)
 
 
-#endif /* End Pins RotB_ALIASES_H */
+#endif /* End Pins Rot2B_ALIASES_H */
 
 
 /* [] END OF FILE */

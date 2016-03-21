@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: SW1.h  
+* File Name: Rot2A.h  
 * Version 2.10
 *
 * Description:
@@ -14,23 +14,23 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_SW1_H) /* Pins SW1_H */
-#define CY_PINS_SW1_H
+#if !defined(CY_PINS_Rot2A_H) /* Pins Rot2A_H */
+#define CY_PINS_Rot2A_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
-#include "SW1_aliases.h"
+#include "Rot2A_aliases.h"
 
 
 /***************************************
 *        Function Prototypes             
 ***************************************/    
 
-void    SW1_Write(uint8 value) ;
-void    SW1_SetDriveMode(uint8 mode) ;
-uint8   SW1_ReadDataReg(void) ;
-uint8   SW1_Read(void) ;
-uint8   SW1_ClearInterrupt(void) ;
+void    Rot2A_Write(uint8 value) ;
+void    Rot2A_SetDriveMode(uint8 mode) ;
+uint8   Rot2A_ReadDataReg(void) ;
+uint8   Rot2A_Read(void) ;
+uint8   Rot2A_ClearInterrupt(void) ;
 
 
 /***************************************
@@ -38,22 +38,22 @@ uint8   SW1_ClearInterrupt(void) ;
 ***************************************/
 
 /* Drive Modes */
-#define SW1_DRIVE_MODE_BITS        (3)
-#define SW1_DRIVE_MODE_IND_MASK    (0xFFFFFFFFu >> (32 - SW1_DRIVE_MODE_BITS))
+#define Rot2A_DRIVE_MODE_BITS        (3)
+#define Rot2A_DRIVE_MODE_IND_MASK    (0xFFFFFFFFu >> (32 - Rot2A_DRIVE_MODE_BITS))
 
-#define SW1_DM_ALG_HIZ         (0x00u)
-#define SW1_DM_DIG_HIZ         (0x01u)
-#define SW1_DM_RES_UP          (0x02u)
-#define SW1_DM_RES_DWN         (0x03u)
-#define SW1_DM_OD_LO           (0x04u)
-#define SW1_DM_OD_HI           (0x05u)
-#define SW1_DM_STRONG          (0x06u)
-#define SW1_DM_RES_UPDWN       (0x07u)
+#define Rot2A_DM_ALG_HIZ         (0x00u)
+#define Rot2A_DM_DIG_HIZ         (0x01u)
+#define Rot2A_DM_RES_UP          (0x02u)
+#define Rot2A_DM_RES_DWN         (0x03u)
+#define Rot2A_DM_OD_LO           (0x04u)
+#define Rot2A_DM_OD_HI           (0x05u)
+#define Rot2A_DM_STRONG          (0x06u)
+#define Rot2A_DM_RES_UPDWN       (0x07u)
 
 /* Digital Port Constants */
-#define SW1_MASK               SW1__MASK
-#define SW1_SHIFT              SW1__SHIFT
-#define SW1_WIDTH              1u
+#define Rot2A_MASK               Rot2A__MASK
+#define Rot2A_SHIFT              Rot2A__SHIFT
+#define Rot2A_WIDTH              1u
 
 
 /***************************************
@@ -62,18 +62,18 @@ uint8   SW1_ClearInterrupt(void) ;
 
 /* Main Port Registers */
 /* Pin State */
-#define SW1_PS                     (* (reg32 *) SW1__PS)
+#define Rot2A_PS                     (* (reg32 *) Rot2A__PS)
 /* Port Configuration */
-#define SW1_PC                     (* (reg32 *) SW1__PC)
+#define Rot2A_PC                     (* (reg32 *) Rot2A__PC)
 /* Data Register */
-#define SW1_DR                     (* (reg32 *) SW1__DR)
+#define Rot2A_DR                     (* (reg32 *) Rot2A__DR)
 /* Input Buffer Disable Override */
-#define SW1_INP_DIS                (* (reg32 *) SW1__PC2)
+#define Rot2A_INP_DIS                (* (reg32 *) Rot2A__PC2)
 
 
-#if defined(SW1__INTSTAT)  /* Interrupt Registers */
+#if defined(Rot2A__INTSTAT)  /* Interrupt Registers */
 
-    #define SW1_INTSTAT                (* (reg32 *) SW1__INTSTAT)
+    #define Rot2A_INTSTAT                (* (reg32 *) Rot2A__INTSTAT)
 
 #endif /* Interrupt Registers */
 
@@ -83,11 +83,11 @@ uint8   SW1_ClearInterrupt(void) ;
 * must not be used.
 ***************************************/
 
-#define SW1_DRIVE_MODE_SHIFT       (0x00u)
-#define SW1_DRIVE_MODE_MASK        (0x07u << SW1_DRIVE_MODE_SHIFT)
+#define Rot2A_DRIVE_MODE_SHIFT       (0x00u)
+#define Rot2A_DRIVE_MODE_MASK        (0x07u << Rot2A_DRIVE_MODE_SHIFT)
 
 
-#endif /* End Pins SW1_H */
+#endif /* End Pins Rot2A_H */
 
 
 /* [] END OF FILE */

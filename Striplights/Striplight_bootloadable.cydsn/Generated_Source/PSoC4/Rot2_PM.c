@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: RotaryEncoder_PM.c
+* File Name: Rot2_PM.c
 * Version 2.0
 *
 * Description:
@@ -16,13 +16,13 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "RotaryEncoder.h"
+#include "Rot2.h"
 
-static RotaryEncoder_BACKUP_STRUCT RotaryEncoder_backup;
+static Rot2_BACKUP_STRUCT Rot2_backup;
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_SaveConfig
+* Function Name: Rot2_SaveConfig
 ********************************************************************************
 *
 * Summary:
@@ -35,14 +35,14 @@ static RotaryEncoder_BACKUP_STRUCT RotaryEncoder_backup;
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_SaveConfig(void)
+void Rot2_SaveConfig(void)
 {
 
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_Sleep
+* Function Name: Rot2_Sleep
 ********************************************************************************
 *
 * Summary:
@@ -55,24 +55,24 @@ void RotaryEncoder_SaveConfig(void)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_Sleep(void)
+void Rot2_Sleep(void)
 {
-    if(0u != (RotaryEncoder_BLOCK_CONTROL_REG & RotaryEncoder_MASK))
+    if(0u != (Rot2_BLOCK_CONTROL_REG & Rot2_MASK))
     {
-        RotaryEncoder_backup.enableState = 1u;
+        Rot2_backup.enableState = 1u;
     }
     else
     {
-        RotaryEncoder_backup.enableState = 0u;
+        Rot2_backup.enableState = 0u;
     }
 
-    RotaryEncoder_Stop();
-    RotaryEncoder_SaveConfig();
+    Rot2_Stop();
+    Rot2_SaveConfig();
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_RestoreConfig
+* Function Name: Rot2_RestoreConfig
 ********************************************************************************
 *
 * Summary:
@@ -85,14 +85,14 @@ void RotaryEncoder_Sleep(void)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_RestoreConfig(void)
+void Rot2_RestoreConfig(void)
 {
 
 }
 
 
 /*******************************************************************************
-* Function Name: RotaryEncoder_Wakeup
+* Function Name: Rot2_Wakeup
 ********************************************************************************
 *
 * Summary:
@@ -105,13 +105,13 @@ void RotaryEncoder_RestoreConfig(void)
 *  None
 *
 *******************************************************************************/
-void RotaryEncoder_Wakeup(void)
+void Rot2_Wakeup(void)
 {
-    RotaryEncoder_RestoreConfig();
+    Rot2_RestoreConfig();
 
-    if(0u != RotaryEncoder_backup.enableState)
+    if(0u != Rot2_backup.enableState)
     {
-        RotaryEncoder_Enable();
+        Rot2_Enable();
     }
 }
 

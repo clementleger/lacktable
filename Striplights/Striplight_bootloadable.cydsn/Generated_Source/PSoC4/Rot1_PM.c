@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: ResetTimer_PM.c
+* File Name: Rot1_PM.c
 * Version 2.0
 *
 * Description:
@@ -16,13 +16,13 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "ResetTimer.h"
+#include "Rot1.h"
 
-static ResetTimer_BACKUP_STRUCT ResetTimer_backup;
+static Rot1_BACKUP_STRUCT Rot1_backup;
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_SaveConfig
+* Function Name: Rot1_SaveConfig
 ********************************************************************************
 *
 * Summary:
@@ -35,14 +35,14 @@ static ResetTimer_BACKUP_STRUCT ResetTimer_backup;
 *  None
 *
 *******************************************************************************/
-void ResetTimer_SaveConfig(void)
+void Rot1_SaveConfig(void)
 {
 
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_Sleep
+* Function Name: Rot1_Sleep
 ********************************************************************************
 *
 * Summary:
@@ -55,24 +55,24 @@ void ResetTimer_SaveConfig(void)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_Sleep(void)
+void Rot1_Sleep(void)
 {
-    if(0u != (ResetTimer_BLOCK_CONTROL_REG & ResetTimer_MASK))
+    if(0u != (Rot1_BLOCK_CONTROL_REG & Rot1_MASK))
     {
-        ResetTimer_backup.enableState = 1u;
+        Rot1_backup.enableState = 1u;
     }
     else
     {
-        ResetTimer_backup.enableState = 0u;
+        Rot1_backup.enableState = 0u;
     }
 
-    ResetTimer_Stop();
-    ResetTimer_SaveConfig();
+    Rot1_Stop();
+    Rot1_SaveConfig();
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_RestoreConfig
+* Function Name: Rot1_RestoreConfig
 ********************************************************************************
 *
 * Summary:
@@ -85,14 +85,14 @@ void ResetTimer_Sleep(void)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_RestoreConfig(void)
+void Rot1_RestoreConfig(void)
 {
 
 }
 
 
 /*******************************************************************************
-* Function Name: ResetTimer_Wakeup
+* Function Name: Rot1_Wakeup
 ********************************************************************************
 *
 * Summary:
@@ -105,13 +105,13 @@ void ResetTimer_RestoreConfig(void)
 *  None
 *
 *******************************************************************************/
-void ResetTimer_Wakeup(void)
+void Rot1_Wakeup(void)
 {
-    ResetTimer_RestoreConfig();
+    Rot1_RestoreConfig();
 
-    if(0u != ResetTimer_backup.enableState)
+    if(0u != Rot1_backup.enableState)
     {
-        ResetTimer_Enable();
+        Rot1_Enable();
     }
 }
 

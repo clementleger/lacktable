@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: RotA.h  
+* File Name: Rot1A.h  
 * Version 2.10
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_RotA_ALIASES_H) /* Pins RotA_ALIASES_H */
-#define CY_PINS_RotA_ALIASES_H
+#if !defined(CY_PINS_Rot1A_ALIASES_H) /* Pins Rot1A_ALIASES_H */
+#define CY_PINS_Rot1A_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -26,14 +26,14 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define RotA_0		(RotA__0__PC)
-#define RotA_0_PS		(RotA__0__PS)
-#define RotA_0_PC		(RotA__0__PC)
-#define RotA_0_DR		(RotA__0__DR)
-#define RotA_0_SHIFT	(RotA__0__SHIFT)
+#define Rot1A_0		(Rot1A__0__PC)
+#define Rot1A_0_PS		(Rot1A__0__PS)
+#define Rot1A_0_PC		(Rot1A__0__PC)
+#define Rot1A_0_DR		(Rot1A__0__DR)
+#define Rot1A_0_SHIFT	(Rot1A__0__SHIFT)
 
 
-#endif /* End Pins RotA_ALIASES_H */
+#endif /* End Pins Rot1A_ALIASES_H */
 
 
 /* [] END OF FILE */

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: RotA.c  
+* File Name: Rot1SW.c  
 * Version 2.10
 *
 * Description:
@@ -15,18 +15,18 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "RotA.h"
+#include "Rot1SW.h"
 
 #define SetP4PinDriveMode(shift, mode)  \
     do { \
-        RotA_PC =   (RotA_PC & \
-                                (uint32)(~(uint32)(RotA_DRIVE_MODE_IND_MASK << (RotA_DRIVE_MODE_BITS * (shift))))) | \
-                                (uint32)((uint32)(mode) << (RotA_DRIVE_MODE_BITS * (shift))); \
+        Rot1SW_PC =   (Rot1SW_PC & \
+                                (uint32)(~(uint32)(Rot1SW_DRIVE_MODE_IND_MASK << (Rot1SW_DRIVE_MODE_BITS * (shift))))) | \
+                                (uint32)((uint32)(mode) << (Rot1SW_DRIVE_MODE_BITS * (shift))); \
     } while (0)
 
 
 /*******************************************************************************
-* Function Name: RotA_Write
+* Function Name: Rot1SW_Write
 ********************************************************************************
 *
 * Summary:
@@ -39,16 +39,16 @@
 *  None 
 *  
 *******************************************************************************/
-void RotA_Write(uint8 value) 
+void Rot1SW_Write(uint8 value) 
 {
-    uint8 drVal = (uint8)(RotA_DR & (uint8)(~RotA_MASK));
-    drVal = (drVal | ((uint8)(value << RotA_SHIFT) & RotA_MASK));
-    RotA_DR = (uint32)drVal;
+    uint8 drVal = (uint8)(Rot1SW_DR & (uint8)(~Rot1SW_MASK));
+    drVal = (drVal | ((uint8)(value << Rot1SW_SHIFT) & Rot1SW_MASK));
+    Rot1SW_DR = (uint32)drVal;
 }
 
 
 /*******************************************************************************
-* Function Name: RotA_SetDriveMode
+* Function Name: Rot1SW_SetDriveMode
 ********************************************************************************
 *
 * Summary:
@@ -57,27 +57,27 @@ void RotA_Write(uint8 value)
 * Parameters:  
 *  mode:  Change the pins to one of the following drive modes.
 *
-*  RotA_DM_STRONG     Strong Drive 
-*  RotA_DM_OD_HI      Open Drain, Drives High 
-*  RotA_DM_OD_LO      Open Drain, Drives Low 
-*  RotA_DM_RES_UP     Resistive Pull Up 
-*  RotA_DM_RES_DWN    Resistive Pull Down 
-*  RotA_DM_RES_UPDWN  Resistive Pull Up/Down 
-*  RotA_DM_DIG_HIZ    High Impedance Digital 
-*  RotA_DM_ALG_HIZ    High Impedance Analog 
+*  Rot1SW_DM_STRONG     Strong Drive 
+*  Rot1SW_DM_OD_HI      Open Drain, Drives High 
+*  Rot1SW_DM_OD_LO      Open Drain, Drives Low 
+*  Rot1SW_DM_RES_UP     Resistive Pull Up 
+*  Rot1SW_DM_RES_DWN    Resistive Pull Down 
+*  Rot1SW_DM_RES_UPDWN  Resistive Pull Up/Down 
+*  Rot1SW_DM_DIG_HIZ    High Impedance Digital 
+*  Rot1SW_DM_ALG_HIZ    High Impedance Analog 
 *
 * Return: 
 *  None
 *
 *******************************************************************************/
-void RotA_SetDriveMode(uint8 mode) 
+void Rot1SW_SetDriveMode(uint8 mode) 
 {
-	SetP4PinDriveMode(RotA__0__SHIFT, mode);
+	SetP4PinDriveMode(Rot1SW__0__SHIFT, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: RotA_Read
+* Function Name: Rot1SW_Read
 ********************************************************************************
 *
 * Summary:
@@ -91,17 +91,17 @@ void RotA_SetDriveMode(uint8 mode)
 *  Returns the current value of the Digital Port as a right justified number
 *  
 * Note:
-*  Macro RotA_ReadPS calls this function. 
+*  Macro Rot1SW_ReadPS calls this function. 
 *  
 *******************************************************************************/
-uint8 RotA_Read(void) 
+uint8 Rot1SW_Read(void) 
 {
-    return (uint8)((RotA_PS & RotA_MASK) >> RotA_SHIFT);
+    return (uint8)((Rot1SW_PS & Rot1SW_MASK) >> Rot1SW_SHIFT);
 }
 
 
 /*******************************************************************************
-* Function Name: RotA_ReadDataReg
+* Function Name: Rot1SW_ReadDataReg
 ********************************************************************************
 *
 * Summary:
@@ -114,17 +114,17 @@ uint8 RotA_Read(void)
 *  Returns the current value assigned to the Digital Port's data output register
 *  
 *******************************************************************************/
-uint8 RotA_ReadDataReg(void) 
+uint8 Rot1SW_ReadDataReg(void) 
 {
-    return (uint8)((RotA_DR & RotA_MASK) >> RotA_SHIFT);
+    return (uint8)((Rot1SW_DR & Rot1SW_MASK) >> Rot1SW_SHIFT);
 }
 
 
 /* If Interrupts Are Enabled for this Pins component */ 
-#if defined(RotA_INTSTAT) 
+#if defined(Rot1SW_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: RotA_ClearInterrupt
+    * Function Name: Rot1SW_ClearInterrupt
     ********************************************************************************
     *
     * Summary:
@@ -138,11 +138,11 @@ uint8 RotA_ReadDataReg(void)
     *  Returns the value of the interrupt status register
     *  
     *******************************************************************************/
-    uint8 RotA_ClearInterrupt(void) 
+    uint8 Rot1SW_ClearInterrupt(void) 
     {
-		uint8 maskedStatus = (uint8)(RotA_INTSTAT & RotA_MASK);
-		RotA_INTSTAT = maskedStatus;
-        return maskedStatus >> RotA_SHIFT;
+		uint8 maskedStatus = (uint8)(Rot1SW_INTSTAT & Rot1SW_MASK);
+		Rot1SW_INTSTAT = maskedStatus;
+        return maskedStatus >> Rot1SW_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

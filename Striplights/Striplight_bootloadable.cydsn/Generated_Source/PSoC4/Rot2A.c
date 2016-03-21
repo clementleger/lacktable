@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: RotB.c  
+* File Name: Rot2A.c  
 * Version 2.10
 *
 * Description:
@@ -15,18 +15,18 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "RotB.h"
+#include "Rot2A.h"
 
 #define SetP4PinDriveMode(shift, mode)  \
     do { \
-        RotB_PC =   (RotB_PC & \
-                                (uint32)(~(uint32)(RotB_DRIVE_MODE_IND_MASK << (RotB_DRIVE_MODE_BITS * (shift))))) | \
-                                (uint32)((uint32)(mode) << (RotB_DRIVE_MODE_BITS * (shift))); \
+        Rot2A_PC =   (Rot2A_PC & \
+                                (uint32)(~(uint32)(Rot2A_DRIVE_MODE_IND_MASK << (Rot2A_DRIVE_MODE_BITS * (shift))))) | \
+                                (uint32)((uint32)(mode) << (Rot2A_DRIVE_MODE_BITS * (shift))); \
     } while (0)
 
 
 /*******************************************************************************
-* Function Name: RotB_Write
+* Function Name: Rot2A_Write
 ********************************************************************************
 *
 * Summary:
@@ -39,16 +39,16 @@
 *  None 
 *  
 *******************************************************************************/
-void RotB_Write(uint8 value) 
+void Rot2A_Write(uint8 value) 
 {
-    uint8 drVal = (uint8)(RotB_DR & (uint8)(~RotB_MASK));
-    drVal = (drVal | ((uint8)(value << RotB_SHIFT) & RotB_MASK));
-    RotB_DR = (uint32)drVal;
+    uint8 drVal = (uint8)(Rot2A_DR & (uint8)(~Rot2A_MASK));
+    drVal = (drVal | ((uint8)(value << Rot2A_SHIFT) & Rot2A_MASK));
+    Rot2A_DR = (uint32)drVal;
 }
 
 
 /*******************************************************************************
-* Function Name: RotB_SetDriveMode
+* Function Name: Rot2A_SetDriveMode
 ********************************************************************************
 *
 * Summary:
@@ -57,27 +57,27 @@ void RotB_Write(uint8 value)
 * Parameters:  
 *  mode:  Change the pins to one of the following drive modes.
 *
-*  RotB_DM_STRONG     Strong Drive 
-*  RotB_DM_OD_HI      Open Drain, Drives High 
-*  RotB_DM_OD_LO      Open Drain, Drives Low 
-*  RotB_DM_RES_UP     Resistive Pull Up 
-*  RotB_DM_RES_DWN    Resistive Pull Down 
-*  RotB_DM_RES_UPDWN  Resistive Pull Up/Down 
-*  RotB_DM_DIG_HIZ    High Impedance Digital 
-*  RotB_DM_ALG_HIZ    High Impedance Analog 
+*  Rot2A_DM_STRONG     Strong Drive 
+*  Rot2A_DM_OD_HI      Open Drain, Drives High 
+*  Rot2A_DM_OD_LO      Open Drain, Drives Low 
+*  Rot2A_DM_RES_UP     Resistive Pull Up 
+*  Rot2A_DM_RES_DWN    Resistive Pull Down 
+*  Rot2A_DM_RES_UPDWN  Resistive Pull Up/Down 
+*  Rot2A_DM_DIG_HIZ    High Impedance Digital 
+*  Rot2A_DM_ALG_HIZ    High Impedance Analog 
 *
 * Return: 
 *  None
 *
 *******************************************************************************/
-void RotB_SetDriveMode(uint8 mode) 
+void Rot2A_SetDriveMode(uint8 mode) 
 {
-	SetP4PinDriveMode(RotB__0__SHIFT, mode);
+	SetP4PinDriveMode(Rot2A__0__SHIFT, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: RotB_Read
+* Function Name: Rot2A_Read
 ********************************************************************************
 *
 * Summary:
@@ -91,17 +91,17 @@ void RotB_SetDriveMode(uint8 mode)
 *  Returns the current value of the Digital Port as a right justified number
 *  
 * Note:
-*  Macro RotB_ReadPS calls this function. 
+*  Macro Rot2A_ReadPS calls this function. 
 *  
 *******************************************************************************/
-uint8 RotB_Read(void) 
+uint8 Rot2A_Read(void) 
 {
-    return (uint8)((RotB_PS & RotB_MASK) >> RotB_SHIFT);
+    return (uint8)((Rot2A_PS & Rot2A_MASK) >> Rot2A_SHIFT);
 }
 
 
 /*******************************************************************************
-* Function Name: RotB_ReadDataReg
+* Function Name: Rot2A_ReadDataReg
 ********************************************************************************
 *
 * Summary:
@@ -114,17 +114,17 @@ uint8 RotB_Read(void)
 *  Returns the current value assigned to the Digital Port's data output register
 *  
 *******************************************************************************/
-uint8 RotB_ReadDataReg(void) 
+uint8 Rot2A_ReadDataReg(void) 
 {
-    return (uint8)((RotB_DR & RotB_MASK) >> RotB_SHIFT);
+    return (uint8)((Rot2A_DR & Rot2A_MASK) >> Rot2A_SHIFT);
 }
 
 
 /* If Interrupts Are Enabled for this Pins component */ 
-#if defined(RotB_INTSTAT) 
+#if defined(Rot2A_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: RotB_ClearInterrupt
+    * Function Name: Rot2A_ClearInterrupt
     ********************************************************************************
     *
     * Summary:
@@ -138,11 +138,11 @@ uint8 RotB_ReadDataReg(void)
     *  Returns the value of the interrupt status register
     *  
     *******************************************************************************/
-    uint8 RotB_ClearInterrupt(void) 
+    uint8 Rot2A_ClearInterrupt(void) 
     {
-		uint8 maskedStatus = (uint8)(RotB_INTSTAT & RotB_MASK);
-		RotB_INTSTAT = maskedStatus;
-        return maskedStatus >> RotB_SHIFT;
+		uint8 maskedStatus = (uint8)(Rot2A_INTSTAT & Rot2A_MASK);
+		Rot2A_INTSTAT = maskedStatus;
+        return maskedStatus >> Rot2A_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 
