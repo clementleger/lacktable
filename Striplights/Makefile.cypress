@@ -23,7 +23,7 @@ GEN_SRC_DIR := Generated_Source/$(PSOC_TYPE)/
 
 COMMON_FLAGS := -mcpu=$($(CPU_TYPE)_mcpu) -mthumb
 
-CFLAGS :=  $(COMMON_FLAGS) -Wno-main -Wall -ffunction-sections -ffat-lto-objects
+CFLAGS :=  $(COMMON_FLAGS) -Wno-main -Wall -Werror -ffunction-sections -ffat-lto-objects
 ASFLAGS := $(COMMON_FLAGS)
 INCLUDE_CFLAGS := -I$(PROJECT_DIR)/$(GEN_SRC_DIR) -I$(PROJECT_DIR)/
 

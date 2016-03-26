@@ -2,8 +2,12 @@
 #include <project.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 #include <stdint.h>
+#include <stdarg.h>
+#include <stdio.h>
+
+#define LED_HEIGHT      12
+#define LED_WIDTH      12
 
 extern const uint32 StripLights_CLUT[];
 
@@ -17,14 +21,34 @@ CY_ISR( ResetISR_Handler )
     Bootloadable_Load();        /* Force a bootloader restart */
 }
    
+static inline void
+myprintf(const char *fmt , ...)
+{
+	va_list args;
+        char buffer[512];
+
+        va_start(args, fmt);
+        vsnprintf(buffer, 512, fmt, args);
+        va_end(args);
+
+        PC_Uart_UartPutString(buffer);
+}
+
+
 static void
-set_pixel(unsigned int i, unsigned int j, uint32_t color) {
-        
+set_pixel(int i, int j, uint32 color)
+{
+        int row = i / 2;
+        int column =  ((i % 2) * LED_HEIGHT) + j;
+         
+        StripLights_Pixel(column, row, color);
+        myprintf("Drawing col %d, row %d, color %x\r\n", column, row, color);
 }
 
 static void
 clear_pixels()
 {
+	while(StripLights_Ready() == 0);
 	StripLights_MemClear(StripLights_BLACK);
 	StripLights_Trigger(1); 
 }
@@ -36,7 +60,7 @@ static int get_rot1_dir()
 	int ret;
 	int cur = Rot1_ReadCounter();
 
-	if (cur == rot1_pos) {
+	if (cur == rot1_pos)
 		ret = 0;
 	else if (cur < rot1_pos)
 		ret = -1;
@@ -52,7 +76,7 @@ static int get_rot2_dir()
 	int ret;
 	int cur = Rot2_ReadCounter();
 
-	if (cur == rot2_pos) {
+	if (cur == rot2_pos)
 		ret = 0;
 	else if (cur < rot2_pos)
 		ret = -1;
@@ -62,6 +86,7 @@ static int get_rot2_dir()
 	rot2_pos = cur;
 	return ret;
 }
+
 
 static void
 filter_coor(int *coor)
@@ -75,17 +100,18 @@ filter_coor(int *coor)
 static void drawing_mode()
 {
 	int x = 0, y = 0, old_x = 0, old_y = 0;
-	int sw_status = 0;
 	int drawing = 0;
 	int draw_pixel = 1;
-	int reg_status;
-	uint32_t draw_color;
+	uint8_t reg_status;
+	uint32 draw_color;
 
 	do {
-		x += get_rot1_dir;
+		x += get_rot1_dir();
 		filter_coor(&x);
-		y += get_rot2_dir;
+		y += get_rot2_dir();
 		filter_coor(&y);
+                
+                myprintf("x: %d, y = %d\r\n", x, y);
 
 		/* Draw the cursor */
 		if (old_x != x || old_y != y) {
@@ -93,40 +119,46 @@ static void drawing_mode()
 		}
 
 		if (draw_pixel) {
+                        /* Wait led update */
+                        while(StripLights_Ready() == 0);
+                        myprintf("Drawing, mode: %d\r\n", drawing);
 			/* Draw or clear old pixel depending on mode*/
 			draw_color = drawing ? StripLights_RED : StripLights_BLACK;
 			set_pixel(old_x, old_y, draw_color);
 			/* Draw new pixel */
 			set_pixel(x, y, StripLights_YELLOW);
+			StripLights_Trigger(1); 
 			draw_pixel = 0;
 		}
 
 		reg_status = RotSWReg_Read();
 		/* Draw mode on/off */
-		if (reg_status & 0x1) {
+		if (!(reg_status & 0x1)) {
 			drawing = !drawing;
+                        myprintf("Change mode\r\n");
 		}
 
 		/* Clear */
-		if (reg_status & 0x2) {
+		if (!(reg_status & 0x2)) {
+                        myprintf("Reset\r\n");
 			clear_pixels();
 			x = 0;
 			old_x = 0;
 			y = 0;
 			old_y = 0;
+                        draw_pixel = 1;
+                        drawing = 0;
 		}
 
-		/* Wait led update */
-		while( StripLights_Ready() == 0);
-	} while(reg_status != 0x3);
+                old_x = x;
+                old_y = y;
+                CyDelay(100);
+
+	} while(reg_status != 0);
 }
 
 int main()
 {
-	int i = 0, j;
-	char tmp[512];
-	uint8_t reg_status;
-
 	StripLights_Start();
 	ESP_Start();
 	PC_Uart_Start();
@@ -146,29 +178,15 @@ int main()
 	// Set dim level 0 = full power, 4 = lowest power
 	StripLights_Dim(0); 
 
-	// Clear all memory to black
-	StripLights_MemClear(StripLights_BLACK);
 	// Enable global interrupts, required for StripLights
 	CyGlobalIntEnable;
-	
-	//~ 
-	//~ for(;;)
-	//~ {
-		//~ /* Set LED output to logic HIGH */
-		//~ sprintf(tmp, "Counter 1: %ld\r\n", Rot1_ReadCounter());
-		//~ PC_Uart_UartPutString(tmp);
-		//~ sprintf(tmp, "Counter 1: %ld\r\n", Rot2_ReadCounter());
-		//~ PC_Uart_UartPutString(tmp);
-		//~ reg_status = RotSWReg_Read();
-		//~ sprintf(tmp, "Counter 1: %x\r\n", reg_status);
-		//~ PC_Uart_UartPutString(tmp);
-		//~ /* Delay of 500 ms */
-		//~ CyDelay(100u);
-	//~ }
+        clear_pixels();
     
 	rot1_pos = Rot1_ReadCounter();
 	rot2_pos = Rot2_ReadCounter();
-	while(1) {
+
+        
+        while(1) {
 		drawing_mode();
 	}
 }
