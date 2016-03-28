@@ -9,6 +9,11 @@
 #define LED_HEIGHT      12
 #define LED_WIDTH      12
 
+enum disp_mode {
+	MODE_DRAW = 0,
+	MODE_SNAKE,
+};
+
 extern const uint32 StripLights_CLUT[];
 
 /* Prototype the ISR handler */
@@ -157,8 +162,21 @@ static void drawing_mode()
 	} while(reg_status != 0);
 }
 
+static void snake_mode()
+{
+	
+}
+
+
+static void select_mode()
+{
+	return MODE_DRAW;
+}
+
 int main()
 {
+	int mode;
+
 	StripLights_Start();
 	ESP_Start();
 	PC_Uart_Start();
@@ -187,6 +205,14 @@ int main()
 
         
         while(1) {
-		drawing_mode();
+		mode = select_mode();
+		switch (mode) {
+		case MODE_DRAW:
+			drawing_mode();
+		break;
+		case MODE_SNAKE:
+			snake_mode();
+		break;
+		}
 	}
 }
