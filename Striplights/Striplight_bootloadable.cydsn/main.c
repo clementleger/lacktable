@@ -6,15 +6,19 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+#include "fonts.h"
+
 #define LED_HEIGHT      12
 #define LED_WIDTH      12
 
 enum disp_mode {
 	MODE_DRAW = 0,
+	MODE_STAR,
 	MODE_SNAKE,
+	MODE_MATRIX,
+	MODE_RAINBOW,
+	MODE_COUNT,
 };
-
-extern const uint32 StripLights_CLUT[];
 
 /* Prototype the ISR handler */
 CY_ISR_PROTO( ResetISR_Handler );
@@ -39,7 +43,6 @@ myprintf(const char *fmt , ...)
         PC_Uart_UartPutString(buffer);
 }
 
-
 static void
 set_pixel(int i, int j, uint32 color)
 {
@@ -47,14 +50,41 @@ set_pixel(int i, int j, uint32 color)
         int column =  ((i % 2) * LED_HEIGHT) + j;
          
         StripLights_Pixel(column, row, color);
-        myprintf("Drawing col %d, row %d, color %x\r\n", column, row, color);
 }
 
+static void draw_char(char c, int x, int y, uint32_t color)
+{
+	int ir = 0, jr = 0, i, j;
+	uint8_t *letter = &Font5x7[(c - 32) * 5];
+
+	while(StripLights_Ready() == 0);
+	for (i = x; i < LED_WIDTH; i++) {
+		for (j = y; j < LED_HEIGHT; j++) {
+			if (letter[ir] & (1 << jr)) {
+				set_pixel(i, j, color);
+			} else {
+				set_pixel(i, j, 0x000000);
+			}	
+			jr++;
+			if (jr == FONT_HEIGHT)
+				break;
+		}
+		jr = 0;
+		ir++;
+		if (ir == FONT_WIDTH)
+			break;
+
+	}
+
+	StripLights_Trigger(1); 
+}
+
+
 static void
-clear_pixels()
+clear_pixels(uint32_t color)
 {
 	while(StripLights_Ready() == 0);
-	StripLights_MemClear(StripLights_BLACK);
+	StripLights_MemClear(color);
 	StripLights_Trigger(1); 
 }
 
@@ -94,12 +124,12 @@ static int get_rot2_dir()
 
 
 static void
-filter_coor(int *coor)
+filter_value(int *value, int max)
 {
-	if (*coor > 11)
-		*coor = 11;
-	else if (*coor < 0)
-		*coor = 0;
+	if (*value > max)
+		*value = max;
+	else if (*value < 0)
+		*value = 0;
 }
 
 static void drawing_mode()
@@ -110,13 +140,12 @@ static void drawing_mode()
 	uint8_t reg_status;
 	uint32 draw_color;
 
+	myprintf("Drawing mode started\n");
 	do {
 		x += get_rot1_dir();
-		filter_coor(&x);
+		filter_value(&x, LED_WIDTH - 1);
 		y += get_rot2_dir();
-		filter_coor(&y);
-                
-                myprintf("x: %d, y = %d\r\n", x, y);
+		filter_value(&y, LED_HEIGHT - 1);
 
 		/* Draw the cursor */
 		if (old_x != x || old_y != y) {
@@ -126,12 +155,11 @@ static void drawing_mode()
 		if (draw_pixel) {
                         /* Wait led update */
                         while(StripLights_Ready() == 0);
-                        myprintf("Drawing, mode: %d\r\n", drawing);
 			/* Draw or clear old pixel depending on mode*/
-			draw_color = drawing ? StripLights_RED : StripLights_BLACK;
+			draw_color = drawing ? 0xFF0000 : 0x000000;
 			set_pixel(old_x, old_y, draw_color);
 			/* Draw new pixel */
-			set_pixel(x, y, StripLights_YELLOW);
+			set_pixel(x, y, 0x00FF00);
 			StripLights_Trigger(1); 
 			draw_pixel = 0;
 		}
@@ -140,13 +168,11 @@ static void drawing_mode()
 		/* Draw mode on/off */
 		if (!(reg_status & 0x1)) {
 			drawing = !drawing;
-                        myprintf("Change mode\r\n");
 		}
 
 		/* Clear */
 		if (!(reg_status & 0x2)) {
-                        myprintf("Reset\r\n");
-			clear_pixels();
+			clear_pixels(0x000000 );
 			x = 0;
 			old_x = 0;
 			y = 0;
@@ -162,15 +188,35 @@ static void drawing_mode()
 	} while(reg_status != 0);
 }
 
-static void snake_mode()
+static void star_mode()
 {
 	
 }
 
-
-static void select_mode()
+static int select_mode()
 {
-	return MODE_DRAW;
+	uint8_t reg_status;
+	int mode = 0, old_mode = -1;
+
+	myprintf("Entering mode selection\n");
+	CyDelay(200);
+	do {
+		reg_status = RotSWReg_Read();
+		mode += get_rot1_dir();
+		filter_value(&mode, MODE_COUNT - 1);
+
+		if (mode != old_mode) {
+			draw_char('0' + mode, 3, 2, 0x0000FF);
+			myprintf("Mode change: %d\n", mode);
+		}
+
+		old_mode = mode;
+	} while (reg_status == 0x3 );
+
+	myprintf("Mode selected: %d\n", mode);
+	CyDelay(200);
+
+	return mode;
 }
 
 int main()
@@ -198,7 +244,7 @@ int main()
 
 	// Enable global interrupts, required for StripLights
 	CyGlobalIntEnable;
-        clear_pixels();
+        clear_pixels(0x000000);
     
 	rot1_pos = Rot1_ReadCounter();
 	rot2_pos = Rot2_ReadCounter();
@@ -210,9 +256,11 @@ int main()
 		case MODE_DRAW:
 			drawing_mode();
 		break;
-		case MODE_SNAKE:
-			snake_mode();
+		case MODE_STAR:
+			star_mode();
 		break;
+		default:
+			break;
 		}
 	}
 }
