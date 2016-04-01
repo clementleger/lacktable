@@ -64,7 +64,8 @@ set_pixel(int i, int j, uint32 color)
         StripLights_Pixel(column, row, color);
 }
 
-static void draw_char(char c, int x, int y, uint32_t color)
+static void
+draw_char(char c, int x, int y, uint32_t color)
 {
 	int ir = 0, jr = 0, i, j;
 	uint8_t *letter = &Font5x7[(c - 32) * 5];
@@ -102,7 +103,8 @@ clear_pixels(uint32_t color)
 
 static int rot1_pos, rot2_pos;
 
-static int get_rot1_dir()
+static int
+get_rot1_dir()
 {
 	int ret;
 	int cur = Rot1_ReadCounter();
@@ -118,7 +120,8 @@ static int get_rot1_dir()
 	return ret;
 }
 
-static int get_rot2_dir()
+static int
+get_rot2_dir()
 {
 	int ret;
 	int cur = Rot2_ReadCounter();
@@ -144,7 +147,8 @@ filter_value(int *value, int max)
 		*value = 0;
 }
 
-static void drawing_mode()
+static void
+drawing_mode()
 {
 	int x = 0, y = 0, old_x = 0, old_y = 0;
 	int drawing = 0;
@@ -201,9 +205,28 @@ static void drawing_mode()
 }
 
 
-static void star_mode()
+static void
+star_mode()
 {
 	
+}
+ 
+static void
+rainbow_mode()
+{
+	int sleep_time = 100;
+	uint8_t reg_status;
+
+	myprintf("Drawing mode started\n");
+	do {
+		sleep_time += (get_rot1_dir() * 10);
+		filter_value(&sleep_time, LED_WIDTH - 1);
+
+		reg_status = RotSWReg_Read();
+
+                CyDelay(100);
+
+	} while(reg_status != 0);
 }
 
 void (* mode_handler[MODE_COUNT])() = 
@@ -212,10 +235,11 @@ void (* mode_handler[MODE_COUNT])() =
 	[MODE_STAR] = star_mode,
 	[MODE_SNAKE] = star_mode,
 	[MODE_MATRIX] = star_mode,
-	[MODE_RAINBOW] = star_mode,
-}
+	[MODE_RAINBOW] = rainbow_mode,
+};
 
-static int select_mode()
+static int
+select_mode()
 {
 	uint8_t reg_status;
 	int mode = 0, old_mode = -1;
@@ -241,7 +265,8 @@ static int select_mode()
 	return mode;
 }
 
-int main()
+int
+main()
 {
 	int mode;
 
@@ -282,15 +307,6 @@ int main()
 		mode = select_mode();
 
 		clear_pixels(0x000000);
-		switch (mode) {
-		case MODE_DRAW:
-			drawing_mode();
-		break;
-		case MODE_STAR:
-			star_mode();
-		break;
-		default:
-			break;
-		}
+		mode_handler[mode]();
 	}
 }
