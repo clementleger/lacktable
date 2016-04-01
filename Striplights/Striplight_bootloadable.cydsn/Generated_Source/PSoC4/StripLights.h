@@ -149,47 +149,6 @@ CY_ISR_PROTO(StripLights_FISR);
 #define StripLights_BLUE_MASK  0x00FF0000	
 #endif
 
-#if(StripLights_MEMORY_TYPE == StripLights_MEMORY_RGB)
-   #define StripLights_getColor( a ) StripLights_CLUT[a]
-#else  /* Else use lookup table */
-   #define StripLights_getColor( a ) a
-#endif
-
-
-#define StripLights_CWHEEL_SIZE 24
-#define StripLights_YELLOW      StripLights_getColor(1)
-#define StripLights_GREEN       StripLights_getColor((70 + StripLights_CWHEEL_SIZE))
-#define StripLights_ORANGE      StripLights_getColor(20)
-#define StripLights_BLACK       StripLights_getColor((0 + StripLights_CWHEEL_SIZE))
-#define StripLights_OFF         StripLights_getColor((0 + StripLights_CWHEEL_SIZE))
-#define StripLights_LTBLUE      StripLights_getColor((1 + StripLights_CWHEEL_SIZE))
-#define StripLights_MBLUE       StripLights_getColor((2 + StripLights_CWHEEL_SIZE))
-#define StripLights_BLUE        StripLights_getColor((3 + StripLights_CWHEEL_SIZE))
-#define StripLights_LTGREEN     StripLights_getColor((4 + StripLights_CWHEEL_SIZE))
-#define StripLights_MGREEN      StripLights_getColor((8 + StripLights_CWHEEL_SIZE))
-//#define StripLights_GREEN       (12 + StripLights_CWHEEL_SIZE) 
-#define StripLights_LTRED       StripLights_getColor((16 + StripLights_CWHEEL_SIZE)) 
-#define StripLights_LTYELLOW    StripLights_getColor((20 + StripLights_CWHEEL_SIZE))
-#define StripLights_MGRED       StripLights_getColor((32 + StripLights_CWHEEL_SIZE)) 
-#define StripLights_RED         StripLights_getColor((48 + StripLights_CWHEEL_SIZE)) 
-#define StripLights_MAGENTA     StripLights_getColor((51 + StripLights_CWHEEL_SIZE))
-#define StripLights_WHITE       StripLights_getColor((63 + StripLights_CWHEEL_SIZE)) 
-
-#define StripLights_SPRING_GREEN StripLights_getColor((64 + StripLights_CWHEEL_SIZE)) 
-#define StripLights_TURQUOSE    StripLights_getColor((65 + StripLights_CWHEEL_SIZE)) 
-#define StripLights_CYAN        StripLights_getColor((66 + StripLights_CWHEEL_SIZE)) 
-#define StripLights_OCEAN       StripLights_getColor((67 + StripLights_CWHEEL_SIZE)) 
-#define StripLights_VIOLET      StripLights_getColor((68 + StripLights_CWHEEL_SIZE)) 
-#define StripLights_RASPBERRY   StripLights_getColor((69 + StripLights_CWHEEL_SIZE)) 
-#define StripLights_DIM_WHITE   StripLights_getColor((71 + StripLights_CWHEEL_SIZE)) 
-#define StripLights_DIM_BLUE    StripLights_getColor((72 + StripLights_CWHEEL_SIZE)) 
-#define StripLights_INVISIBLE   StripLights_getColor((73 + StripLights_CWHEEL_SIZE))
-
-#define StripLights_COLD_TEMP   StripLights_getColor((80 + StripLights_CWHEEL_SIZE)) 
-#define StripLights_HOT_TEMP    StripLights_getColor((95 + StripLights_CWHEEL_SIZE)) 
-
-#define StripLights_CLUT_SIZE  (96 + StripLights_CWHEEL_SIZE)
-
 #define StripLights_RESET_DELAY_US  55
 
 #endif  /* CY_SLIGHTS_StripLights_H */

@@ -19,7 +19,6 @@
 #include "cyfitter.h"
 #include "cydisabledsheets.h"
 #include "StripLights.h"
-#include "StripLights_fonts.h"
 #include "Strip_2.h"
 #include "Strip_2_aliases.h"
 #include "Strip_0.h"
