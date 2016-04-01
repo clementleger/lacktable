@@ -7,9 +7,12 @@
 #include <stdio.h>
 
 #include "fonts.h"
+#include "color.h"
 
-#define LED_HEIGHT      12
-#define LED_WIDTH      12
+#define NUMBER_OF_TICKS		 24000
+
+#define LED_HEIGHT	12
+#define LED_WIDTH	12
 
 enum disp_mode {
 	MODE_DRAW = 0,
@@ -20,6 +23,8 @@ enum disp_mode {
 	MODE_COUNT,
 };
 
+static uint32_t ms_count = 0;
+
 /* Prototype the ISR handler */
 CY_ISR_PROTO( ResetISR_Handler );
  
@@ -28,6 +33,13 @@ CY_ISR( ResetISR_Handler )
 {
     PC_Uart_Stop();
     Bootloadable_Load();        /* Force a bootloader restart */
+}
+
+CY_ISR_PROTO(SystickISR_Handler);
+
+CY_ISR(SystickISR_Handler)
+{
+	ms_count++;
 }
    
 static inline void
@@ -188,9 +200,19 @@ static void drawing_mode()
 	} while(reg_status != 0);
 }
 
+
 static void star_mode()
 {
 	
+}
+
+void (* mode_handler[MODE_COUNT])() = 
+{
+	[MODE_DRAW] = drawing_mode,
+	[MODE_STAR] = star_mode,
+	[MODE_SNAKE] = star_mode,
+	[MODE_MATRIX] = star_mode,
+	[MODE_RAINBOW] = star_mode,
 }
 
 static int select_mode()
@@ -238,6 +260,12 @@ int main()
 	Rot1_TriggerCommand(Rot1_MASK, Rot1_CMD_RELOAD);
 	Rot2_Start();
 	Rot2_TriggerCommand(Rot2_MASK, Rot2_CMD_RELOAD);
+	
+	/* Map systick ISR to the user defined ISR. SysTick_IRQn is already defined in core_cm0.h file */
+	CyIntSetSysVector((SysTick_IRQn + 16), SystickISR_Handler);
+	
+	/* Enable Systick timer with desired period/number of ticks */
+	SysTick_Config(NUMBER_OF_TICKS);
 
 	// Set dim level 0 = full power, 4 = lowest power
 	StripLights_Dim(0); 
@@ -245,13 +273,15 @@ int main()
 	// Enable global interrupts, required for StripLights
 	CyGlobalIntEnable;
         clear_pixels(0x000000);
-    
+
 	rot1_pos = Rot1_ReadCounter();
 	rot2_pos = Rot2_ReadCounter();
 
         
         while(1) {
 		mode = select_mode();
+
+		clear_pixels(0x000000);
 		switch (mode) {
 		case MODE_DRAW:
 			drawing_mode();
