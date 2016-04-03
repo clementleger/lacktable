@@ -14,6 +14,11 @@
 #define LED_HEIGHT	12
 #define LED_WIDTH	12
 
+#define MIN_SPAWN_TIME		2000
+#define MAX_SPAWN_TIME		5000
+#define STAR_DURATION		6000
+#define LIGHTING_CURVE		500
+
 enum disp_mode {
 	MODE_DRAW = 0,
 	MODE_BLINK,
@@ -41,7 +46,12 @@ CY_ISR(SystickISR_Handler)
 {
 	ms_count++;
 }
-   
+
+int
+randr(unsigned int min, unsigned int max)
+{
+       return rand()%(max + 1 - min) + min;
+}
 static inline void
 myprintf(const char *fmt , ...)
 {
@@ -153,7 +163,6 @@ drawing_mode()
 	uint8_t reg_status;
 	uint32 draw_color;
 
-	myprintf("Drawing mode started\n");
 	do {
 		x += get_rot1_dir();
 		FILTER_VALUE(x, LED_WIDTH - 1);
@@ -207,9 +216,72 @@ star_mode()
 	
 }
 
+#define UPDATE_TIME	50
+
+
+static void
+update_leds (uint16_t state[LED_WIDTH][LED_HEIGHT])
+{
+	int x, y;
+	uint16_t value;
+	
+	while(StripLights_Ready() == 0);
+	for (x = 0; x < LED_WIDTH; x++) {
+		for (y = 0; y < LED_HEIGHT; y++) {
+			value = state[x][y];
+			if (value != 0) {
+				set_pixel(x, y, hsv_to_rgb(255, 200, 200));
+				state[x][y] -= UPDATE_TIME;
+			} else {
+				set_pixel(x, y, 0x000000);
+			}
+		}
+	}
+	StripLights_Trigger(1);
+}
+
 static void
 blink_mode()
 {
+	uint16_t state[LED_WIDTH][LED_HEIGHT] = {{0}};
+	uint8_t reg_status;
+	int x, y;
+	uint32_t next_spawn_time = 0, last_spawn_ms = 0, last_update_ms= 0;
+
+	srand(ms_count);
+
+	do {
+		/* Spawn a random "star" */
+		if ((ms_count - last_spawn_ms) > next_spawn_time) {
+			do {
+				x = randr(0, LED_WIDTH - 1);
+				y = randr(0, LED_HEIGHT - 1);
+			} while (state[x][y] != 0);
+			state[x][y] = STAR_DURATION;
+			next_spawn_time = randr(MIN_SPAWN_TIME, MAX_SPAWN_TIME);
+			last_spawn_ms = ms_count;
+			
+		}
+
+		/* Update every 50 msec */
+		if ((ms_count - last_update_ms) > UPDATE_TIME) {
+			update_leds(state);
+			last_update_ms = ms_count;
+		}
+
+		reg_status = RotSWReg_Read();
+		/* Draw mode on/off */
+		if (!(reg_status & 0x1)) {
+			for (x = 0; x < LED_WIDTH; x++) {
+				for (y = 0; y < LED_HEIGHT; y++) {
+					state[x][y] = 0;
+				}
+			}
+		}
+
+	} while(reg_status != 0);
+	
+	
 	
 }
  
@@ -223,7 +295,6 @@ rainbow_mode()
 	uint32_t color;
 	uint32_t last_ms = 0;
 
-	myprintf("Rainbow mode started\n");
 	do {
 		sleep_time += (get_rot1_dir() * 10);
 		FILTER_VALUE(sleep_time, INT_MAX - 20);
@@ -277,13 +348,13 @@ select_mode()
 		if (mode != old_mode) {
 			
 			draw_char(mode_desc[mode].sign, 3, 2, 0x0000FF);
-			myprintf("Mode change: %d\n", mode);
+			myprintf("Mode change: %s\n", mode_desc[mode].sign);
 		}
 
 		old_mode = mode;
 	} while (reg_status == 0x3 );
 
-	myprintf("Mode selected: %d\n", mode);
+	myprintf("Mode selected: %s\n", mode_desc[mode].sign);
 	CyDelay(200);
 
 	return mode;
@@ -326,7 +397,6 @@ main()
 	rot1_pos = Rot1_ReadCounter();
 	rot2_pos = Rot2_ReadCounter();
 
-        
         while(1) {
 		mode = select_mode();
 
