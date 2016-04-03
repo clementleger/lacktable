@@ -16,7 +16,7 @@
 
 enum disp_mode {
 	MODE_DRAW = 0,
-	MODE_STAR,
+	MODE_BLINK,
 	MODE_SNAKE,
 	MODE_MATRIX,
 	MODE_RAINBOW,
@@ -138,14 +138,11 @@ get_rot2_dir()
 }
 
 
-static void
-filter_value(int *value, int max)
-{
-	if (*value > max)
-		*value = max;
-	else if (*value < 0)
-		*value = 0;
-}
+#define FILTER_VALUE(_value, _max) \
+	if ((_value) > (_max)) \
+		(_value) = (_max); \
+	else if ((_value) < 0) \
+		(_value) = 0;
 
 static void
 drawing_mode()
@@ -159,9 +156,9 @@ drawing_mode()
 	myprintf("Drawing mode started\n");
 	do {
 		x += get_rot1_dir();
-		filter_value(&x, LED_WIDTH - 1);
+		FILTER_VALUE(x, LED_WIDTH - 1);
 		y += get_rot2_dir();
-		filter_value(&y, LED_HEIGHT - 1);
+		FILTER_VALUE(y, LED_HEIGHT - 1);
 
 		/* Draw the cursor */
 		if (old_x != x || old_y != y) {
@@ -204,9 +201,14 @@ drawing_mode()
 	} while(reg_status != 0);
 }
 
-
 static void
 star_mode()
+{
+	
+}
+
+static void
+blink_mode()
 {
 	
 }
@@ -214,28 +216,49 @@ star_mode()
 static void
 rainbow_mode()
 {
-	int sleep_time = 100;
-	uint8_t reg_status;
+	int sleep_time = 500;
+	int increment = 255 / LED_HEIGHT;
+	int x, y;
+	uint8_t reg_status, starth = 0;
+	uint32_t color;
+	uint32_t last_ms = 0;
 
-	myprintf("Drawing mode started\n");
+	myprintf("Rainbow mode started\n");
 	do {
 		sleep_time += (get_rot1_dir() * 10);
-		filter_value(&sleep_time, LED_WIDTH - 1);
+		FILTER_VALUE(sleep_time, INT_MAX - 20);
+
+		if ((ms_count - last_ms) > sleep_time) {
+			while(StripLights_Ready() == 0);
+			color = hsv_to_rgb(starth, 200, 200);
+			for (x = 0; x < LED_WIDTH; x++) {
+				for (y = 0; y < LED_HEIGHT; y++) {
+					set_pixel(x, y, color);
+				}
+				color = hsv_to_rgb(starth + x * increment, 200, 200);
+			}
+			StripLights_Trigger(1);
+
+			starth += increment;
+			last_ms = ms_count;
+		}
 
 		reg_status = RotSWReg_Read();
-
-                CyDelay(100);
-
 	} while(reg_status != 0);
 }
 
-void (* mode_handler[MODE_COUNT])() = 
+struct mode_description {
+	char sign;
+	void (* handler)(void);
+};
+
+struct mode_description mode_desc[] = 
 {
-	[MODE_DRAW] = drawing_mode,
-	[MODE_STAR] = star_mode,
-	[MODE_SNAKE] = star_mode,
-	[MODE_MATRIX] = star_mode,
-	[MODE_RAINBOW] = rainbow_mode,
+	[MODE_DRAW] = { 'D', drawing_mode},
+	[MODE_BLINK] = { 'B', blink_mode},
+	[MODE_SNAKE] = { 'S', star_mode},
+	[MODE_MATRIX] = { 'M', star_mode},
+	[MODE_RAINBOW] = { 'R', rainbow_mode},
 };
 
 static int
@@ -249,10 +272,11 @@ select_mode()
 	do {
 		reg_status = RotSWReg_Read();
 		mode += get_rot1_dir();
-		filter_value(&mode, MODE_COUNT - 1);
+		FILTER_VALUE(mode, MODE_COUNT - 1);
 
 		if (mode != old_mode) {
-			draw_char('0' + mode, 3, 2, 0x0000FF);
+			
+			draw_char(mode_desc[mode].sign, 3, 2, 0x0000FF);
 			myprintf("Mode change: %d\n", mode);
 		}
 
@@ -307,6 +331,7 @@ main()
 		mode = select_mode();
 
 		clear_pixels(0x000000);
-		mode_handler[mode]();
+		mode_desc[mode].handler();
+		clear_pixels(0x000000);
 	}
 }

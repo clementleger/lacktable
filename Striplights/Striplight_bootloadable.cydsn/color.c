@@ -1,47 +1,39 @@
 
 #include "color.h"
 
-rgb_color_t hsv_to_rgb(hsv_color_t hsv)
+uint32_t hsv_to_rgb(uint8_t h, uint8_t s, uint8_t v)
 {
-    rgb_color_t rgb;
+    uint8_t r, g, b;
     unsigned char region, remainder, p, q, t;
 
-    if (hsv.s == 0)
-    {
-        rgb.r = hsv.v;
-        rgb.g = hsv.v;
-        rgb.b = hsv.v;
-        return rgb;
-    }
+    region = h / 43;
+    remainder = (h - (region * 43)) * 6; 
 
-    region = hsv.h / 43;
-    remainder = (hsv.h - (region * 43)) * 6; 
-
-    p = (hsv.v * (255 - hsv.s)) >> 8;
-    q = (hsv.v * (255 - ((hsv.s * remainder) >> 8))) >> 8;
-    t = (hsv.v * (255 - ((hsv.s * (255 - remainder)) >> 8))) >> 8;
+    p = (v * (255 - s)) >> 8;
+    q = (v * (255 - ((s * remainder) >> 8))) >> 8;
+    t = (v * (255 - ((s * (255 - remainder)) >> 8))) >> 8;
 
     switch (region)
     {
         case 0:
-            rgb.r = hsv.v; rgb.g = t; rgb.b = p;
+            r = v; g = t; b = p;
             break;
         case 1:
-            rgb.r = q; rgb.g = hsv.v; rgb.b = p;
+            r = q; g = v; b = p;
             break;
         case 2:
-            rgb.r = p; rgb.g = hsv.v; rgb.b = t;
+            r = p; g = v; b = t;
             break;
         case 3:
-            rgb.r = p; rgb.g = q; rgb.b = hsv.v;
+            r = p; g = q; b = v;
             break;
         case 4:
-            rgb.r = t; rgb.g = p; rgb.b = hsv.v;
+            r = t; g = p; b = v;
             break;
         default:
-            rgb.r = hsv.v; rgb.g = p; rgb.b = q;
+            r = v; g = p; b = q;
             break;
     }
 
-    return rgb;
+    return (r << 16 | g << 8 | b);
 }
