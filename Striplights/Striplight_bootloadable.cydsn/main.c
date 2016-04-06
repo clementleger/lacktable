@@ -7,22 +7,9 @@
 #include <stdio.h>
 
 #include "fonts.h"
-#include "color.h"
+#include "shared.h"
 
 #define NUMBER_OF_TICKS		 24000
-
-#define LED_HEIGHT	12
-#define LED_WIDTH	12
-
-/* Blink stuff */
-#define MIN_SPAWN_TIME			0
-#define MAX_SPAWN_TIME			1000
-#define STAR_MIN_DURATION		7000
-#define STAR_MAX_DURATION		15000
-#define LIGHTING_CURVE			1000
-#define BLINK_UPDATE_TIME		50
-#define BLINK_SATURATION		200
-#define MAX_BLINK_COUNT			20
 
 enum disp_mode {
 	MODE_DRAW = 0,
@@ -34,7 +21,7 @@ enum disp_mode {
 	MODE_COUNT,
 };
 
-static uint32_t ms_count = 0;
+uint32_t ms_count = 0;
 
 /* Prototype the ISR handler */
 CY_ISR_PROTO( ResetISR_Handler );
@@ -53,12 +40,7 @@ CY_ISR(SystickISR_Handler)
 	ms_count++;
 }
 
-int
-randr(unsigned int min, unsigned int max)
-{
-       return rand()%(max + 1 - min) + min;
-}
-static inline void
+void
 myprintf(const char *fmt , ...)
 {
 #ifndef NDEBUG
@@ -73,7 +55,7 @@ myprintf(const char *fmt , ...)
 #endif
 }
 
-static void
+void
 set_pixel(int i, int j, uint32 color)
 {
         int row = i / 2;
@@ -82,7 +64,7 @@ set_pixel(int i, int j, uint32 color)
         StripLights_Pixel(column, row, color);
 }
 
-static void
+void
 draw_char(char c, int x, int y, uint32_t color)
 {
 	int ir = 0, jr = 0, i, j;
@@ -111,7 +93,7 @@ draw_char(char c, int x, int y, uint32_t color)
 }
 
 
-static void
+void
 clear_pixels(uint32_t color)
 {
 	while(StripLights_Ready() == 0);
@@ -121,7 +103,7 @@ clear_pixels(uint32_t color)
 
 static int rot1_pos, rot2_pos;
 
-static int
+int
 get_rot1_dir()
 {
 	int ret;
@@ -138,7 +120,7 @@ get_rot1_dir()
 	return ret;
 }
 
-static int
+int
 get_rot2_dir()
 {
 	int ret;
@@ -224,154 +206,9 @@ star_mode()
 	
 }
 
-struct blink_led_state {
-	uint16_t duration;	/* Led lit duration */
-	uint16_t value;		/* Current duration */
-};
 
-static int
-blink_update_leds (struct blink_led_state state[LED_WIDTH][LED_HEIGHT], uint8_t h)
-{
-	int x, y;
-	uint32_t color;
-	uint8_t sat;
-	uint16_t value, duration;
-	int star_count = 0;
-	
-	while(StripLights_Ready() == 0);
-	for (x = 0; x < LED_WIDTH; x++) {
-		for (y = 0; y < LED_HEIGHT; y++) {
-			duration = state[x][y].duration;
-			/* Star is off */
-			if (duration == 0)
-				continue;
-			
-			value = state[x][y].value;
-			/* Slow lighting curve */
-			if (value < LIGHTING_CURVE) {
-				sat = value * BLINK_SATURATION / LIGHTING_CURVE;
-				color = hsv_to_rgb(h, 200, sat);
-			} else if (value > (duration - LIGHTING_CURVE)) {
-				sat = (duration - value) * BLINK_SATURATION / LIGHTING_CURVE;
-				color = hsv_to_rgb(h, 200, sat);
-			} else {
-				color = hsv_to_rgb(h, 200, BLINK_SATURATION);
-			}
+/* TODO: add square raindow mode */
 
-			set_pixel(x, y, color);
-			state[x][y].value += BLINK_UPDATE_TIME;
-			if (state[x][y].value == state[x][y].duration) {
-				state[x][y].duration = 0;
-				set_pixel(x, y, 0x000000);
-			} else {
-				star_count++;	
-			}
-		}
-	}
-	StripLights_Trigger(1);
-	
-	return star_count;
-}
-
-static void
-blink_spawn_star (struct blink_led_state state[LED_WIDTH][LED_HEIGHT])
-{
-	int x, y;
-	int duration;
-
-again:
-	x = randr(0, LED_WIDTH - 1);
-	y = randr(0, LED_HEIGHT - 1);
-
-	if (state[x][y].duration != 0)
-		goto again;
-
-	if (x > 0) {
-		if (state[x - 1][y].duration != 0) {
-			goto again;
-		}
-	}
-
-	if (x < (LED_WIDTH - 1)) {
-		if (state[x + 1][y].duration != 0) {
-			goto again;
-		}
-	}
-	
-	if (y > 0) {
-		if (state[x][y - 1].duration != 0) {
-			goto again;
-		}
-	}
-
-	if (y < (LED_HEIGHT - 1)) {
-		if (state[x][y + 1].duration != 0) {
-			goto again;
-		}
-	}
-
-	
-	duration = randr(STAR_MIN_DURATION, STAR_MAX_DURATION);
-	/* Round it for better sync with update func */
-	duration -= (duration % BLINK_UPDATE_TIME);
-
-	state[x][y].duration = duration;
-	state[x][y].value = 0;
-}
-
-static void
-blink_mode()
-{
-	struct blink_led_state state[LED_WIDTH][LED_HEIGHT] = {{{0, 0}}};
-	uint8_t reg_status;
-	int h = 255;
-	int x, y;
-	uint32_t next_spawn_time = 0, last_spawn_ms = 0, last_update_ms= 0;
-	int blink_count = 0, max_blink_count = 6;
-
-	srand(ms_count);
-
-	do {
-		
-		h += (get_rot2_dir() * 5);
-		FILTER_VALUE(h, 255);
-		max_blink_count += get_rot1_dir();
-		FILTER_VALUE(max_blink_count, MAX_BLINK_COUNT);
-
-		/* Spawn a random "star" */
-		if (blink_count < max_blink_count) {
-			if ((ms_count - last_spawn_ms) > next_spawn_time) {
-				blink_spawn_star(state);
-				next_spawn_time = randr(MIN_SPAWN_TIME, MAX_SPAWN_TIME);
-				last_spawn_ms = ms_count;
-			}
-		}
-
-		/* Update every 50 msec */
-		if ((ms_count - last_update_ms) > BLINK_UPDATE_TIME) {
-			blink_count = blink_update_leds(state, h);
-			last_update_ms = ms_count;
-		}
-
-		reg_status = RotSWReg_Read();
-
-		/* Reset */
-		if (!(reg_status & 0x1)) {
-			for (x = 0; x < LED_WIDTH; x++) {
-				for (y = 0; y < LED_HEIGHT; y++) {
-					state[x][y].duration = 0;
-					state[x][y].value = 0;
-					blink_count = 0;
-				}
-			}
-		}
-
-	} while(reg_status != 0);
-	
-	
-	
-}
- 
 static void
 rainbow_mode()
 {
@@ -405,14 +242,6 @@ rainbow_mode()
 	} while(reg_status != 0);
 }
 
-
-static void
-symbol_mode()
-{
-	
-}
-
-
 struct mode_description {
 	char sign;
 	void (* handler)(void);
@@ -422,10 +251,10 @@ struct mode_description {
 struct mode_description mode_desc[] = 
 {
 	[MODE_DRAW] = { 'D', drawing_mode, 0xFF9D1D},
-	[MODE_BLINK] = { 'B', blink_mode, 0xE84C27},
+	[MODE_BLINK] = { 'E', blink_mode, 0xE84C27},
 	[MODE_SNAKE] = { 'S', star_mode, 0xFF2AB0},
 	[MODE_MATRIX] = { 'M', star_mode, 0x8827E8},
-	[MODE_RAINBOW] = { 'R', rainbow_mode, 0x2A53FF},
+	[MODE_RAINBOW] = { 'A', rainbow_mode, 0x2A53FF},
 	[MODE_WINDINGS] = { 'W', symbol_mode, 0xFF9D1D},
 };
 
