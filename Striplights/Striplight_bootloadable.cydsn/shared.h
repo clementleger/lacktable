@@ -7,6 +7,15 @@
 #define LED_HEIGHT	12
 #define LED_WIDTH	12
 
+
+#define FILTER_VALUE(_value, _max) \
+	if ((_value) > (_max)) \
+		(_value) = (_max); \
+	else if ((_value) < 0) \
+		(_value) = 0;
+
+#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
+
 extern uint32_t ms_count;
 
 uint32_t
@@ -31,7 +40,7 @@ void
 clear_pixels(uint32_t color);
 
 void
-set_pixel(int i, int j, uint32 color);
+set_pixel(int i, int j, uint32_t color);
 
 void
 draw_char(char c, int x, int y, uint32_t color);

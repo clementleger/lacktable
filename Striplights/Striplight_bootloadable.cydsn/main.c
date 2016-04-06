@@ -56,7 +56,7 @@ myprintf(const char *fmt , ...)
 }
 
 void
-set_pixel(int i, int j, uint32 color)
+set_pixel(int i, int j, uint32_t color)
 {
         int row = i / 2;
         int column =  ((i % 2) * LED_HEIGHT) + j;
@@ -136,13 +136,6 @@ get_rot2_dir()
 	rot2_pos = cur;
 	return ret;
 }
-
-
-#define FILTER_VALUE(_value, _max) \
-	if ((_value) > (_max)) \
-		(_value) = (_max); \
-	else if ((_value) < 0) \
-		(_value) = 0;
 
 static void
 drawing_mode()

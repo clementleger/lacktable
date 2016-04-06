@@ -1,4 +1,5 @@
 
+#include <project.h>
 #include "shared.h"
 
 /* Blink stuff */
