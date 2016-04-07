@@ -235,6 +235,72 @@ rainbow_mode()
 	} while(reg_status != 0);
 }
 
+#define MAX_FALLING_PIX		4
+
+static void
+gen_fall(uint8_t led[LED_WIDTH][LED_HEIGHT])
+{
+	int count_of_falling = randr(0, MAX_FALLING_PIX);
+	int x, y, i;
+
+	for (i = 0; i < count_of_falling; i++) {
+		while(1) {
+			x = randr(0, LED_WIDTH - 1);
+			y = randr(0, LED_HEIGHT - 1);
+			
+			if (led[x][y] != 0 || led[x][y + 1] != 0)
+				continue;
+
+			break;
+		}
+		led[x][y] = 1;
+		
+	}
+}
+
+
+static void
+draw_fall(uint8_t led[LED_WIDTH][LED_HEIGHT], int fading)
+{
+	int x, y;
+
+	while(StripLights_Ready() == 0);
+
+	for (x = 0; x < LED_WIDTH; x++) {
+		for (y = LED_HEIGHT - 1; y >= 0 ; y--) {
+			set_pixel(x, y, RGB_TO_STRIP(0, 255, 0));
+		}
+	}
+
+	StripLights_Trigger(1);
+}
+
+
+static void
+matrix_mode()
+{
+	uint8_t leds_state[LED_WIDTH][LED_HEIGHT] = {0};
+
+	int sleep_time = 500;
+	int x, y;
+	uint8_t reg_status;
+	uint32_t last_ms = 0;
+
+	do {
+		sleep_time += (get_rot1_dir() * 5);
+		FILTER_VALUE(sleep_time, INT_MAX - 20);
+
+		if ((ms_count - last_ms) > sleep_time) {
+			gen_fall(leds_state);
+			draw_fall(leds_state, fading);
+
+			last_ms = ms_count;
+		}
+
+		reg_status = RotSWReg_Read();
+	} while(reg_status != 0);
+}
+
 struct mode_description {
 	char sign;
 	void (* handler)(void);
@@ -246,7 +312,7 @@ struct mode_description mode_desc[] =
 	[MODE_DRAW] = { 'D', drawing_mode, 0xFF9D1D},
 	[MODE_BLINK] = { 'E', blink_mode, 0xE84C27},
 	[MODE_SNAKE] = { 'S', star_mode, 0xFF2AB0},
-	[MODE_MATRIX] = { 'M', star_mode, 0x8827E8},
+	[MODE_MATRIX] = { 'M', matrix_mode, 0x8827E8},
 	[MODE_RAINBOW] = { 'A', rainbow_mode, 0x2A53FF},
 	[MODE_WINDINGS] = { 'W', symbol_mode, 0xFF9D1D},
 };

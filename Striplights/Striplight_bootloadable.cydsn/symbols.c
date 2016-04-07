@@ -40,32 +40,6 @@ static const uint32_t invader_data[2][144] = {
 };
 
 
-#define POKEBALL_FRAME_COUNT 1
-#define POKEBALL_FRAME_WIDTH 12
-#define POKEBALL_FRAME_HEIGHT 12
-
-
-
-/* Piskel data for "pokeball" */
-
-static const uint32_t pokeball_data[1][144] = {
-{
-0xffffff, 0xffffff, 0xffffff, 0xffffff, 0x000000, 0x000000, 0x000000, 0x000000, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 
-0xffffff, 0xffffff, 0x000000, 0x000000, 0xff0000, 0xff0000, 0xff0000, 0xff0000, 0x000000, 0x000000, 0xffffff, 0xffffff, 
-0xffffff, 0x000000, 0xff0000, 0xff0000, 0xcacaca, 0xff0000, 0xff0000, 0xff0000, 0xff0000, 0xff0000, 0x000000, 0xffffff, 
-0xffffff, 0x000000, 0xff0000, 0xcacaca, 0xcacaca, 0xcacaca, 0xff0000, 0xff0000, 0xff0000, 0xff0000, 0x000000, 0xffffff, 
-0x000000, 0xff0000, 0xff0000, 0xff0000, 0xcacaca, 0xff0000, 0xff0000, 0xff0000, 0xff0000, 0xff0000, 0xff0000, 0x000000, 
-0x000000, 0xff0000, 0xff0000, 0xff0000, 0xff0000, 0x000000, 0x000000, 0xff0000, 0xff0000, 0xff0000, 0xff0000, 0x000000, 
-0x000000, 0x000000, 0xff0000, 0xff0000, 0x000000, 0xcacaca, 0x767676, 0x000000, 0xff0000, 0xff0000, 0x000000, 0x000000, 
-0x000000, 0xcacaca, 0x000000, 0x000000, 0x000000, 0x767676, 0x767676, 0x000000, 0x000000, 0x000000, 0x767676, 0x000000, 
-0xffffff, 0x000000, 0xcacaca, 0xcacaca, 0xcacaca, 0x000000, 0x000000, 0x767676, 0x767676, 0x767676, 0x000000, 0xffffff, 
-0xffffff, 0x000000, 0x767676, 0xcacaca, 0xcacaca, 0xcacaca, 0x767676, 0x767676, 0x767676, 0x767676, 0x000000, 0xffffff, 
-0xffffff, 0xffffff, 0x000000, 0x000000, 0x767676, 0x767676, 0x767676, 0x767676, 0x000000, 0x000000, 0xffffff, 0xffffff, 
-0xffffff, 0xffffff, 0xffffff, 0xffffff, 0x000000, 0x000000, 0x000000, 0x000000, 0xffffff, 0xffffff, 0xffffff, 0xffffff
-}
-};
-
-
 #define MINION_FRAME_COUNT 1
 #define MINION_FRAME_WIDTH 12
 #define MINION_FRAME_HEIGHT 12
@@ -110,29 +84,48 @@ static const uint32_t heart_data[1][144] = {
 };
 
 
-struct symbols {
+struct symbol {
 	int frame_count;
 	int width;
 	int height;
+	uint32_t refresh_time;
 	uint32_t *data;
 };
 
 #define SYM_COUNT	3
 
-struct symbols syms[SYM_COUNT] = {
-	{ HEART_FRAME_COUNT, HEART_FRAME_WIDTH, HEART_FRAME_HEIGHT, (void *) heart_data },
-	{ MINION_FRAME_COUNT, MINION_FRAME_WIDTH, MINION_FRAME_HEIGHT, (void *) minion_data },
-	{ POKEBALL_FRAME_COUNT, POKEBALL_FRAME_WIDTH, POKEBALL_FRAME_HEIGHT, (void *) pokeball_data }
+struct symbol syms[SYM_COUNT] = {
+	{ HEART_FRAME_COUNT, HEART_FRAME_WIDTH, HEART_FRAME_HEIGHT, 0, (void *) heart_data },
+	{ MINION_FRAME_COUNT, MINION_FRAME_WIDTH, MINION_FRAME_HEIGHT, 0, (void *) minion_data },
+	{ INVADER_FRAME_COUNT, INVADER_FRAME_WIDTH, INVADER_FRAME_HEIGHT, 1000, (void *) invader_data }
 };
+
+static void
+draw_symbol(struct symbol *sym, int frame)
+{
+	int x, y;
+	int frame_off = (frame * sym->width * sym->height);
+
+	while(StripLights_Ready() == 0);
+	for (x = 0; x < sym->width; x++) {
+		for (y = 0; y < sym->height; y++) {
+			color = sym->data[frame_off + x * sym->width + y];
+			color = ((color >> 8) & 0xFFFF) | ((color & 0xFF) << 16 );
+			set_pixel(x, y, color);
+		}
+	}
+	StripLights_Trigger(1);
+}
 
 void
 symbol_mode()
 {
 	int cur_sym = 0, old_sym = -1;
 	uint8_t reg_status;
-	struct symbols *sym;
-	int x, y;
+	struct symbols *sym = NULL;
 	uint32_t color;
+	uint32_t last_update_time = 0;
+	int cur_frame = 0;
 
 	do {
 		cur_sym += get_rot1_dir();
@@ -140,16 +133,18 @@ symbol_mode()
 
 		if (cur_sym != old_sym) {
 			sym = &syms[cur_sym];
-			
-			while(StripLights_Ready() == 0);
-			for (x = 0; x < sym->width; x++) {
-				for (y = 0; y < sym->height; y++) {
-					color = sym->data[x * sym->width + y];
-					color = ((color >> 8) & 0xFFFF) | ((color & 0xFF) << 16 );
-					set_pixel(x, y, color);
-				}
-			}
-			StripLights_Trigger(1);
+			draw_symbol(sym, 0);
+			cur_frame = 0;
+		}
+		
+		/* Refresh if there is a refresh time set and timer expire*/
+		if (sym->refresh_time &&
+			(ms_count - last_update_time) > sym->refresh_time) {
+
+			draw_symbol(sym, cur_frame);
+
+			cur_frame = (cur_frame + 1) % sym->frame_count;
+			last_update_time = ms_count;
 		}
 		
 		old_sym = cur_sym;

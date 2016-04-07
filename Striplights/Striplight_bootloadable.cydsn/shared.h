@@ -7,6 +7,7 @@
 #define LED_HEIGHT	12
 #define LED_WIDTH	12
 
+#define RGB_TO_STRIP(_r, _g, _b)  (((_) << 16) | ((_r) << 8) | (_g))
 
 #define FILTER_VALUE(_value, _max) \
 	if ((_value) > (_max)) \
