@@ -253,8 +253,7 @@ gen_fall(uint8_t led[LED_WIDTH][LED_HEIGHT])
 
 			break;
 		}
-		led[x][y] = 1;
-		
+		led[x][y] = 1;	
 	}
 }
 
@@ -268,7 +267,14 @@ draw_fall(uint8_t led[LED_WIDTH][LED_HEIGHT], int fading)
 
 	for (x = 0; x < LED_WIDTH; x++) {
 		for (y = LED_HEIGHT - 1; y >= 0 ; y--) {
+			if (!led[x][y])
+				continue;
+
 			set_pixel(x, y, RGB_TO_STRIP(0, 255, 0));
+			if (y < (LED_HEIGHT - 1)) {
+				led[x][y + 1] = 1;
+				led[x][y] = 0;
+			}
 		}
 	}
 
@@ -279,12 +285,12 @@ draw_fall(uint8_t led[LED_WIDTH][LED_HEIGHT], int fading)
 static void
 matrix_mode()
 {
-	uint8_t leds_state[LED_WIDTH][LED_HEIGHT] = {0};
+	uint8_t leds_state[LED_WIDTH][LED_HEIGHT] = {{0}};
 
 	int sleep_time = 500;
-	int x, y;
 	uint8_t reg_status;
 	uint32_t last_ms = 0;
+	int fading = 3;
 
 	do {
 		sleep_time += (get_rot1_dir() * 5);

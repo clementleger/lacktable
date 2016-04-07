@@ -94,17 +94,18 @@ struct symbol {
 
 #define SYM_COUNT	3
 
-struct symbol syms[SYM_COUNT] = {
+static const struct symbol syms[SYM_COUNT] = {
 	{ HEART_FRAME_COUNT, HEART_FRAME_WIDTH, HEART_FRAME_HEIGHT, 0, (void *) heart_data },
 	{ MINION_FRAME_COUNT, MINION_FRAME_WIDTH, MINION_FRAME_HEIGHT, 0, (void *) minion_data },
 	{ INVADER_FRAME_COUNT, INVADER_FRAME_WIDTH, INVADER_FRAME_HEIGHT, 1000, (void *) invader_data }
 };
 
 static void
-draw_symbol(struct symbol *sym, int frame)
+draw_symbol(const struct symbol *sym, int frame)
 {
 	int x, y;
 	int frame_off = (frame * sym->width * sym->height);
+	uint32_t color;
 
 	while(StripLights_Ready() == 0);
 	for (x = 0; x < sym->width; x++) {
@@ -122,8 +123,7 @@ symbol_mode()
 {
 	int cur_sym = 0, old_sym = -1;
 	uint8_t reg_status;
-	struct symbols *sym = NULL;
-	uint32_t color;
+	const struct symbol *sym = NULL;
 	uint32_t last_update_time = 0;
 	int cur_frame = 0;
 
