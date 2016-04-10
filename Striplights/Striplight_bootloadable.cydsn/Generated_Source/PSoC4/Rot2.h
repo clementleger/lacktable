@@ -67,7 +67,7 @@ extern uint8  Rot2_initVar;
 #define Rot2_QUAD_STOP_SIGNAL_PRESENT       (0lu)
 
 /* Interrupt Mask */
-#define Rot2_QUAD_INTERRUPT_MASK            (1lu)
+#define Rot2_QUAD_INTERRUPT_MASK            (0lu)
 
 /* Timer/Counter Mode */
 /* Parameters */

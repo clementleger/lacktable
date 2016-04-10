@@ -241,19 +241,18 @@ static void
 gen_fall(uint8_t led[LED_WIDTH][LED_HEIGHT])
 {
 	int count_of_falling = randr(0, MAX_FALLING_PIX);
-	int x, y, i;
+	int x, i;
 
 	for (i = 0; i < count_of_falling; i++) {
 		while(1) {
 			x = randr(0, LED_WIDTH - 1);
-			y = randr(0, LED_HEIGHT - 1);
 			
-			if (led[x][y] != 0 || led[x][y + 1] != 0)
+			if (led[x][0] != 0 || led[x][1] != 0)
 				continue;
 
 			break;
 		}
-		led[x][y] = 1;	
+		led[x][0] = 1;	
 	}
 }
 
@@ -268,9 +267,10 @@ draw_fall(uint8_t led[LED_WIDTH][LED_HEIGHT], int fading)
 	for (x = 0; x < LED_WIDTH; x++) {
 		for (y = LED_HEIGHT - 1; y >= 0 ; y--) {
 			if (!led[x][y])
-				continue;
+				set_pixel(x, y, RGB_TO_STRIP(0, 255, 0));
+			else                         
+				set_pixel(x, y, RGB_TO_STRIP(0, 0, 0));
 
-			set_pixel(x, y, RGB_TO_STRIP(0, 255, 0));
 			if (y < (LED_HEIGHT - 1)) {
 				led[x][y + 1] = 1;
 				led[x][y] = 0;
@@ -287,13 +287,13 @@ matrix_mode()
 {
 	uint8_t leds_state[LED_WIDTH][LED_HEIGHT] = {{0}};
 
-	int sleep_time = 500;
+	int sleep_time = 200;
 	uint8_t reg_status;
 	uint32_t last_ms = 0;
 	int fading = 3;
 
 	do {
-		sleep_time += (get_rot1_dir() * 5);
+		sleep_time += (get_rot1_dir() * 10);
 		FILTER_VALUE(sleep_time, INT_MAX - 20);
 
 		if ((ms_count - last_ms) > sleep_time) {
