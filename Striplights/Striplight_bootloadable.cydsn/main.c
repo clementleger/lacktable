@@ -351,11 +351,30 @@ select_mode()
 	return mode;
 }
 
+void ReadButton0(void)
+{
+	uint8 cap_value = 0;
+	
+	/* Update all baselines */
+	CapSense_UpdateEnabledBaselines();
+
+	/* Start scanning all enabled sensors */
+	CapSense_ScanEnabledWidgets();	
+	
+	/* Wait for scanning to complete */
+	while(CapSense_IsBusy()); 
+		
+	cap_value = CapSense_CheckIsSensorActive(CapSense_BUTTON0__BTN);
+	
+	myprintf("Button: %x\n", cap_value);
+
+}
+
 int
 main()
 {
 	int mode;
-
+	uint32_t c;
 	StripLights_Start();
 	ESP_Start();
 	PC_Uart_Start();
@@ -383,6 +402,12 @@ main()
 
 	// Enable global interrupts, required for StripLights
 	CyGlobalIntEnable;
+
+	CapSense_Start();
+
+	/* Initialize baselines */ 
+	CapSense_InitializeAllBaselines();
+
         clear_pixels(0x000000);
 
 	rot1_pos = Rot1_ReadCounter();
