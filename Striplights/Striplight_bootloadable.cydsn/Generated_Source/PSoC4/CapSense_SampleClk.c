@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: CapSense_1_SenseClk.c
+* File Name: CapSense_SampleClk.c
 * Version 2.20
 *
 *  Description:
@@ -17,12 +17,12 @@
 *******************************************************************************/
 
 #include <cydevice_trm.h>
-#include "CapSense_1_SenseClk.h"
+#include "CapSense_SampleClk.h"
 
 #if defined CYREG_PERI_DIV_CMD
 
 /*******************************************************************************
-* Function Name: CapSense_1_SenseClk_StartEx
+* Function Name: CapSense_SampleClk_StartEx
 ********************************************************************************
 *
 * Summary:
@@ -36,24 +36,24 @@
 *  None
 *
 *******************************************************************************/
-void CapSense_1_SenseClk_StartEx(uint32 alignClkDiv)
+void CapSense_SampleClk_StartEx(uint32 alignClkDiv)
 {
     /* Make sure any previous start command has finished. */
-    while((CapSense_1_SenseClk_CMD_REG & CapSense_1_SenseClk_CMD_ENABLE_MASK) != 0u)
+    while((CapSense_SampleClk_CMD_REG & CapSense_SampleClk_CMD_ENABLE_MASK) != 0u)
     {
     }
     
     /* Specify the target divider and it's alignment divider, and enable. */
-    CapSense_1_SenseClk_CMD_REG =
-        ((uint32)CapSense_1_SenseClk__DIV_ID << CapSense_1_SenseClk_CMD_DIV_SHIFT)|
-        (alignClkDiv << CapSense_1_SenseClk_CMD_PA_DIV_SHIFT) |
-        (uint32)CapSense_1_SenseClk_CMD_ENABLE_MASK;
+    CapSense_SampleClk_CMD_REG =
+        ((uint32)CapSense_SampleClk__DIV_ID << CapSense_SampleClk_CMD_DIV_SHIFT)|
+        (alignClkDiv << CapSense_SampleClk_CMD_PA_DIV_SHIFT) |
+        (uint32)CapSense_SampleClk_CMD_ENABLE_MASK;
 }
 
 #else
 
 /*******************************************************************************
-* Function Name: CapSense_1_SenseClk_Start
+* Function Name: CapSense_SampleClk_Start
 ********************************************************************************
 *
 * Summary:
@@ -67,17 +67,17 @@ void CapSense_1_SenseClk_StartEx(uint32 alignClkDiv)
 *
 *******************************************************************************/
 
-void CapSense_1_SenseClk_Start(void)
+void CapSense_SampleClk_Start(void)
 {
     /* Set the bit to enable the clock. */
-    CapSense_1_SenseClk_ENABLE_REG |= CapSense_1_SenseClk__ENABLE_MASK;
+    CapSense_SampleClk_ENABLE_REG |= CapSense_SampleClk__ENABLE_MASK;
 }
 
 #endif /* CYREG_PERI_DIV_CMD */
 
 
 /*******************************************************************************
-* Function Name: CapSense_1_SenseClk_Stop
+* Function Name: CapSense_SampleClk_Stop
 ********************************************************************************
 *
 * Summary:
@@ -92,31 +92,31 @@ void CapSense_1_SenseClk_Start(void)
 *  None
 *
 *******************************************************************************/
-void CapSense_1_SenseClk_Stop(void)
+void CapSense_SampleClk_Stop(void)
 {
 #if defined CYREG_PERI_DIV_CMD
 
     /* Make sure any previous start command has finished. */
-    while((CapSense_1_SenseClk_CMD_REG & CapSense_1_SenseClk_CMD_ENABLE_MASK) != 0u)
+    while((CapSense_SampleClk_CMD_REG & CapSense_SampleClk_CMD_ENABLE_MASK) != 0u)
     {
     }
     
     /* Specify the target divider and it's alignment divider, and disable. */
-    CapSense_1_SenseClk_CMD_REG =
-        ((uint32)CapSense_1_SenseClk__DIV_ID << CapSense_1_SenseClk_CMD_DIV_SHIFT)|
-        ((uint32)CapSense_1_SenseClk_CMD_DISABLE_MASK);
+    CapSense_SampleClk_CMD_REG =
+        ((uint32)CapSense_SampleClk__DIV_ID << CapSense_SampleClk_CMD_DIV_SHIFT)|
+        ((uint32)CapSense_SampleClk_CMD_DISABLE_MASK);
 
 #else
 
     /* Clear the bit to disable the clock. */
-    CapSense_1_SenseClk_ENABLE_REG &= (uint32)(~CapSense_1_SenseClk__ENABLE_MASK);
+    CapSense_SampleClk_ENABLE_REG &= (uint32)(~CapSense_SampleClk__ENABLE_MASK);
     
 #endif /* CYREG_PERI_DIV_CMD */
 }
 
 
 /*******************************************************************************
-* Function Name: CapSense_1_SenseClk_SetFractionalDividerRegister
+* Function Name: CapSense_SampleClk_SetFractionalDividerRegister
 ********************************************************************************
 *
 * Summary:
@@ -131,35 +131,35 @@ void CapSense_1_SenseClk_Stop(void)
 *  None
 *
 *******************************************************************************/
-void CapSense_1_SenseClk_SetFractionalDividerRegister(uint16 clkDivider, uint8 clkFractional)
+void CapSense_SampleClk_SetFractionalDividerRegister(uint16 clkDivider, uint8 clkFractional)
 {
     uint32 maskVal;
     uint32 regVal;
     
-#if defined (CapSense_1_SenseClk__FRAC_MASK) || defined (CYREG_PERI_DIV_CMD)
+#if defined (CapSense_SampleClk__FRAC_MASK) || defined (CYREG_PERI_DIV_CMD)
     
 	/* get all but divider bits */
-    maskVal = CapSense_1_SenseClk_DIV_REG & 
-                    (uint32)(~(uint32)(CapSense_1_SenseClk_DIV_INT_MASK | CapSense_1_SenseClk_DIV_FRAC_MASK)); 
+    maskVal = CapSense_SampleClk_DIV_REG & 
+                    (uint32)(~(uint32)(CapSense_SampleClk_DIV_INT_MASK | CapSense_SampleClk_DIV_FRAC_MASK)); 
 	/* combine mask and new divider vals into 32-bit value */
     regVal = maskVal |
-        ((uint32)((uint32)clkDivider <<  CapSense_1_SenseClk_DIV_INT_SHIFT) & CapSense_1_SenseClk_DIV_INT_MASK) |
-        ((uint32)((uint32)clkFractional << CapSense_1_SenseClk_DIV_FRAC_SHIFT) & CapSense_1_SenseClk_DIV_FRAC_MASK);
+        ((uint32)((uint32)clkDivider <<  CapSense_SampleClk_DIV_INT_SHIFT) & CapSense_SampleClk_DIV_INT_MASK) |
+        ((uint32)((uint32)clkFractional << CapSense_SampleClk_DIV_FRAC_SHIFT) & CapSense_SampleClk_DIV_FRAC_MASK);
     
 #else
     /* get all but integer divider bits */
-    maskVal = CapSense_1_SenseClk_DIV_REG & (uint32)(~(uint32)CapSense_1_SenseClk__DIVIDER_MASK);
+    maskVal = CapSense_SampleClk_DIV_REG & (uint32)(~(uint32)CapSense_SampleClk__DIVIDER_MASK);
     /* combine mask and new divider val into 32-bit value */
     regVal = clkDivider | maskVal;
     
-#endif /* CapSense_1_SenseClk__FRAC_MASK || CYREG_PERI_DIV_CMD */
+#endif /* CapSense_SampleClk__FRAC_MASK || CYREG_PERI_DIV_CMD */
 
-    CapSense_1_SenseClk_DIV_REG = regVal;
+    CapSense_SampleClk_DIV_REG = regVal;
 }
 
 
 /*******************************************************************************
-* Function Name: CapSense_1_SenseClk_GetDividerRegister
+* Function Name: CapSense_SampleClk_GetDividerRegister
 ********************************************************************************
 *
 * Summary:
@@ -173,15 +173,15 @@ void CapSense_1_SenseClk_SetFractionalDividerRegister(uint16 clkDivider, uint8 c
 *  divide by 2, the return value will be 1.
 *
 *******************************************************************************/
-uint16 CapSense_1_SenseClk_GetDividerRegister(void)
+uint16 CapSense_SampleClk_GetDividerRegister(void)
 {
-    return (uint16)((CapSense_1_SenseClk_DIV_REG & CapSense_1_SenseClk_DIV_INT_MASK)
-        >> CapSense_1_SenseClk_DIV_INT_SHIFT);
+    return (uint16)((CapSense_SampleClk_DIV_REG & CapSense_SampleClk_DIV_INT_MASK)
+        >> CapSense_SampleClk_DIV_INT_SHIFT);
 }
 
 
 /*******************************************************************************
-* Function Name: CapSense_1_SenseClk_GetFractionalDividerRegister
+* Function Name: CapSense_SampleClk_GetFractionalDividerRegister
 ********************************************************************************
 *
 * Summary:
@@ -195,15 +195,15 @@ uint16 CapSense_1_SenseClk_GetDividerRegister(void)
 *  0 if the fractional divider is not in use.
 *
 *******************************************************************************/
-uint8 CapSense_1_SenseClk_GetFractionalDividerRegister(void)
+uint8 CapSense_SampleClk_GetFractionalDividerRegister(void)
 {
-#if defined (CapSense_1_SenseClk__FRAC_MASK)
+#if defined (CapSense_SampleClk__FRAC_MASK)
     /* return fractional divider bits */
-    return (uint8)((CapSense_1_SenseClk_DIV_REG & CapSense_1_SenseClk_DIV_FRAC_MASK)
-        >> CapSense_1_SenseClk_DIV_FRAC_SHIFT);
+    return (uint8)((CapSense_SampleClk_DIV_REG & CapSense_SampleClk_DIV_FRAC_MASK)
+        >> CapSense_SampleClk_DIV_FRAC_SHIFT);
 #else
     return 0u;
-#endif /* CapSense_1_SenseClk__FRAC_MASK */
+#endif /* CapSense_SampleClk__FRAC_MASK */
 }
 
 

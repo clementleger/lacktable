@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: CapSense_1_PVT.h
+* File Name: CapSense_PVT.h
 * Version 2.30
 *
 * Description:
@@ -16,24 +16,24 @@
 *******************************************************************************/
 
 
-#if !defined(CY_CAPSENSE_CSD_PVT_CapSense_1_H)
-#define CY_CAPSENSE_CSD_PVT_CapSense_1_H
+#if !defined(CY_CAPSENSE_CSD_PVT_CapSense_H)
+#define CY_CAPSENSE_CSD_PVT_CapSense_H
 
-#include "CapSense_1.h"
+#include "CapSense.h"
 
-#if(0u != CapSense_1_CSHL_API_GENERATE)
-    #include "CapSense_1_CSHL.h"
-#endif /* (0u != CapSense_1_CSHL_API_GENERATE) */
+#if(0u != CapSense_CSHL_API_GENERATE)
+    #include "CapSense_CSHL.h"
+#endif /* (0u != CapSense_CSHL_API_GENERATE) */
 
-#if(CapSense_1_TOTAL_TRACKPAD_GESTURES_COUNT > 0u)
-    #include "CapSense_1_GESTURE.h"
-#endif /* (CapSense_1_TOTAL_TRACKPAD_GESTURES_COUNT > 0u) */
+#if(CapSense_TOTAL_TRACKPAD_GESTURES_COUNT > 0u)
+    #include "CapSense_GESTURE.h"
+#endif /* (CapSense_TOTAL_TRACKPAD_GESTURES_COUNT > 0u) */
 
 typedef struct
 {
-    #if (CapSense_1_IS_COMPLEX_SCANSLOTS)
+    #if (CapSense_IS_COMPLEX_SCANSLOTS)
     uint8 sensor;
-    #endif  /* CapSense_1_IS_COMPLEX_SCANSLOTS */
+    #endif  /* CapSense_IS_COMPLEX_SCANSLOTS */
     uint8 pinNumber;
     uint8 portNumber;
     uint8 idacValue;
@@ -42,7 +42,7 @@ typedef struct
     uint8 avgSamplesNum;
     uint16 calibrationCount;
     uint32 scanResolution;
-}CapSense_1_CP_MEASURE_CONFIG;
+}CapSense_CP_MEASURE_CONFIG;
 
 typedef struct
 {
@@ -69,7 +69,7 @@ typedef struct
     uint16 (*ptrReadSensorRaw)(uint32 sensor);
     uint32 (*ptrGetBitValue)(const uint8 table[], uint32 position);
     void (*ptrSetBitValue)(uint8 table[], uint32 position, uint32 value);
-}CapSense_1_CONFIG_TYPE_POINTERS_P4_v2_30;
+}CapSense_CONFIG_TYPE_POINTERS_P4_v2_30;
 
 typedef struct
 {
@@ -78,51 +78,51 @@ typedef struct
     uint8 totalSensorsNum;
     uint16 sensetivitySeed;
     uint16 hfclkFreq_MHz;
-    CapSense_1_CONFIG_TYPE_POINTERS_P4_v2_30 const * pointers;
-}CapSense_1_CONFIG_TYPE_P4_v2_30;
+    CapSense_CONFIG_TYPE_POINTERS_P4_v2_30 const * pointers;
+}CapSense_CONFIG_TYPE_P4_v2_30;
 
-#define CapSense_1_AVG_SAMPLES_NUM        (1u)
+#define CapSense_AVG_SAMPLES_NUM        (1u)
 
 
 /***************************************
 *        Function Prototypes
 ***************************************/
-void CapSense_1_PreScan(uint32 sensor);
-void CapSense_1_PostScan(uint32 sensor);
+void CapSense_PreScan(uint32 sensor);
+void CapSense_PostScan(uint32 sensor);
 
-void CapSense_1_EnableSensor(uint32 sensor);
-void CapSense_1_DisableSensor(uint32 sensor);
+void CapSense_EnableSensor(uint32 sensor);
+void CapSense_DisableSensor(uint32 sensor);
 
-#if (CapSense_1_IS_COMPLEX_SCANSLOTS)
-    void CapSense_1_EnableScanSlot(uint32 slot);
-    void CapSense_1_DisableScanSlot(uint32 slot);
+#if (CapSense_IS_COMPLEX_SCANSLOTS)
+    void CapSense_EnableScanSlot(uint32 slot);
+    void CapSense_DisableScanSlot(uint32 slot);
 #else
-    #define CapSense_1_EnableScanSlot(slot)   CapSense_1_EnableSensor(slot)
-    #define CapSense_1_DisableScanSlot(slot)  CapSense_1_DisableSensor(slot)
-#endif  /* End CapSense_1_IS_COMPLEX_SCANSLOTS */
+    #define CapSense_EnableScanSlot(slot)   CapSense_EnableSensor(slot)
+    #define CapSense_DisableScanSlot(slot)  CapSense_DisableSensor(slot)
+#endif  /* End CapSense_IS_COMPLEX_SCANSLOTS */
 
-void CapSense_1_EnableShieldElectrode(uint32 pinNumber, uint32 portNumber);
+void CapSense_EnableShieldElectrode(uint32 pinNumber, uint32 portNumber);
 
-uint32 CapSense_1_GetBitValue(const uint8 table[], uint32 position);
-void CapSense_1_SetBitValue(uint8 table[], uint32 position, uint32 value);
+uint32 CapSense_GetBitValue(const uint8 table[], uint32 position);
+void CapSense_SetBitValue(uint8 table[], uint32 position, uint32 value);
 
 /* Find next sensor for One Channel design */
-uint8 CapSense_1_FindNextSensor(uint8 snsIndex);
+uint8 CapSense_FindNextSensor(uint8 snsIndex);
 
-void CapSense_1_SetPinDriveMode(uint32 driveMode, uint32 pinNumber, uint32 portNumber);
-void CapSense_1_CalibrateSensor(uint32 sensor, uint32 rawLevel, uint8 idacLevelsTbl[]);
-uint16  CapSense_1_GetSensorRaw(uint32 sensor);
+void CapSense_SetPinDriveMode(uint32 driveMode, uint32 pinNumber, uint32 portNumber);
+void CapSense_CalibrateSensor(uint32 sensor, uint32 rawLevel, uint8 idacLevelsTbl[]);
+uint16  CapSense_GetSensorRaw(uint32 sensor);
 
-void CapSense_1_DisableBaselineIDAC(void);
-void CapSense_1_EnableBaselineIDAC(const CapSense_1_CONFIG_TYPE_P4_v2_30 *config);
+void CapSense_DisableBaselineIDAC(void);
+void CapSense_EnableBaselineIDAC(const CapSense_CONFIG_TYPE_P4_v2_30 *config);
 
-uint32 CapSense_1_GetLowCp(CapSense_1_CP_MEASURE_CONFIG *config);
-uint32 CapSense_1_GetHighCp(const CapSense_1_CP_MEASURE_CONFIG *config);
-uint32 CapSense_1_CalibrateIDAC(CapSense_1_CP_MEASURE_CONFIG *config);
-uint16 CapSense_1_ScanSensorCp(const CapSense_1_CP_MEASURE_CONFIG *config);
+uint32 CapSense_GetLowCp(CapSense_CP_MEASURE_CONFIG *config);
+uint32 CapSense_GetHighCp(const CapSense_CP_MEASURE_CONFIG *config);
+uint32 CapSense_CalibrateIDAC(CapSense_CP_MEASURE_CONFIG *config);
+uint16 CapSense_ScanSensorCp(const CapSense_CP_MEASURE_CONFIG *config);
 
-void CapSense_1_ConnectElectrode(uint32 pinNumber, uint32 portNumber);
-void CapSense_1_DisconnectElectrode(uint32 pinNumber, uint32 portNumber);
+void CapSense_ConnectElectrode(uint32 pinNumber, uint32 portNumber);
+void CapSense_DisconnectElectrode(uint32 pinNumber, uint32 portNumber);
 
 void TunePrescalers_P4_v2_30(void *config);
 void TuneSensitivity_P4_v2_30(void *config);
@@ -132,4 +132,4 @@ void CalibrateSensors_P4_v2_30(void *config, uint16 rawLevel);
 void CalibrateOneDAC_P4_v2_30(void *config, uint16 rawLevel, uint32 curSensor, uint8 *idacLevelsTbl);
 
 
-#endif /* CY_CAPSENSE_CSD_PVT_CapSense_1_H */
+#endif /* CY_CAPSENSE_CSD_PVT_CapSense_H */

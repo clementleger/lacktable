@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.148ms
+Loading plugins phase: Elapsed time ==> 0s.136ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p D:\lacktable\Striplights\Striplight_bootloadable.cydsn\Striplight_bootloadable.cyprj -d CY8C4245AXI-483 -s D:\lacktable\Striplights\Striplight_bootloadable.cydsn\Generated_Source\PSoC4 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 2s.207ms
+Elaboration phase: Elapsed time ==> 2s.210ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.131ms
+HDL generation phase: Elapsed time ==> 0s.065ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -41,7 +41,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=D:\lacktable\S
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Sun Apr 10 02:53:28 2016
+Wed Apr 13 18:19:59 2016
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 Striplight_bootloadable.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Sun Apr 10 02:53:28 2016
+Wed Apr 13 18:19:59 2016
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\demux_v1_10\demux_v1_10.v'
@@ -97,7 +97,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=D:\lacktable\S
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Sun Apr 10 02:53:28 2016
+Wed Apr 13 18:19:59 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -135,7 +135,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=D:\lacktable\S
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Sun Apr 10 02:53:28 2016
+Wed Apr 13 18:19:59 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -216,8 +216,8 @@ Detecting unused logic.
 	\PC_Uart:Net_891\
 	\PC_Uart:Net_1001\
 	\PC_Uart:Net_899\
-	\CapSense_1:Net_545\
-	\CapSense_1:Net_544\
+	\CapSense:Net_545\
+	\CapSense:Net_544\
 
 
 Deleted 50 User equations/components.
@@ -299,19 +299,19 @@ Aliasing \RotSWReg:status_6\ to \StripLights:Net_7\
 Aliasing \RotSWReg:status_7\ to \StripLights:Net_7\
 Aliasing tmpOE__Rot1SW_net_0 to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
 Aliasing tmpOE__Rot2SW_net_0 to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
-Aliasing \CapSense_1:Net_104\ to \StripLights:Net_7\
-Aliasing \CapSense_1:Net_312\ to \StripLights:Net_7\
-Aliasing \CapSense_1:tmpOE__Cmod_net_0\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
-Aliasing \CapSense_1:IDAC2:Net_3\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
-Aliasing \CapSense_1:tmpOE__Sns_net_7\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
-Aliasing \CapSense_1:tmpOE__Sns_net_6\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
-Aliasing \CapSense_1:tmpOE__Sns_net_5\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
-Aliasing \CapSense_1:tmpOE__Sns_net_4\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
-Aliasing \CapSense_1:tmpOE__Sns_net_3\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
-Aliasing \CapSense_1:tmpOE__Sns_net_2\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
-Aliasing \CapSense_1:tmpOE__Sns_net_1\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
-Aliasing \CapSense_1:tmpOE__Sns_net_0\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
-Aliasing \CapSense_1:IDAC1:Net_3\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
+Aliasing \CapSense:Net_104\ to \StripLights:Net_7\
+Aliasing \CapSense:Net_312\ to \StripLights:Net_7\
+Aliasing \CapSense:tmpOE__Cmod_net_0\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
+Aliasing \CapSense:IDAC2:Net_3\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
+Aliasing \CapSense:tmpOE__Sns_net_7\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
+Aliasing \CapSense:tmpOE__Sns_net_6\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
+Aliasing \CapSense:tmpOE__Sns_net_5\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
+Aliasing \CapSense:tmpOE__Sns_net_4\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
+Aliasing \CapSense:tmpOE__Sns_net_3\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
+Aliasing \CapSense:tmpOE__Sns_net_2\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
+Aliasing \CapSense:tmpOE__Sns_net_1\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
+Aliasing \CapSense:tmpOE__Sns_net_0\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
+Aliasing \CapSense:IDAC1:Net_3\ to \StripLights:B_WS2811:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\
 Aliasing \Deb2:DEBOUNCER[0]:d_sync_1\\D\ to Net_413
 Aliasing Net_439D to \StripLights:Net_7\
 Aliasing Net_437D to \StripLights:Net_7\
@@ -452,19 +452,19 @@ Removing Lhs of wire \RotSWReg:status_6\[459] = zero[75]
 Removing Lhs of wire \RotSWReg:status_7\[460] = zero[75]
 Removing Lhs of wire tmpOE__Rot1SW_net_0[465] = tmpOE__Strip_2_net_0[213]
 Removing Lhs of wire tmpOE__Rot2SW_net_0[470] = tmpOE__Strip_2_net_0[213]
-Removing Lhs of wire \CapSense_1:Net_104\[490] = zero[75]
-Removing Lhs of wire \CapSense_1:Net_312\[494] = zero[75]
-Removing Lhs of wire \CapSense_1:tmpOE__Cmod_net_0\[497] = tmpOE__Strip_2_net_0[213]
-Removing Lhs of wire \CapSense_1:IDAC2:Net_3\[504] = tmpOE__Strip_2_net_0[213]
-Removing Lhs of wire \CapSense_1:tmpOE__Sns_net_7\[506] = tmpOE__Strip_2_net_0[213]
-Removing Lhs of wire \CapSense_1:tmpOE__Sns_net_6\[507] = tmpOE__Strip_2_net_0[213]
-Removing Lhs of wire \CapSense_1:tmpOE__Sns_net_5\[508] = tmpOE__Strip_2_net_0[213]
-Removing Lhs of wire \CapSense_1:tmpOE__Sns_net_4\[509] = tmpOE__Strip_2_net_0[213]
-Removing Lhs of wire \CapSense_1:tmpOE__Sns_net_3\[510] = tmpOE__Strip_2_net_0[213]
-Removing Lhs of wire \CapSense_1:tmpOE__Sns_net_2\[511] = tmpOE__Strip_2_net_0[213]
-Removing Lhs of wire \CapSense_1:tmpOE__Sns_net_1\[512] = tmpOE__Strip_2_net_0[213]
-Removing Lhs of wire \CapSense_1:tmpOE__Sns_net_0\[513] = tmpOE__Strip_2_net_0[213]
-Removing Lhs of wire \CapSense_1:IDAC1:Net_3\[533] = tmpOE__Strip_2_net_0[213]
+Removing Lhs of wire \CapSense:Net_104\[490] = zero[75]
+Removing Lhs of wire \CapSense:Net_312\[494] = zero[75]
+Removing Lhs of wire \CapSense:tmpOE__Cmod_net_0\[497] = tmpOE__Strip_2_net_0[213]
+Removing Lhs of wire \CapSense:IDAC2:Net_3\[504] = tmpOE__Strip_2_net_0[213]
+Removing Lhs of wire \CapSense:tmpOE__Sns_net_7\[506] = tmpOE__Strip_2_net_0[213]
+Removing Lhs of wire \CapSense:tmpOE__Sns_net_6\[507] = tmpOE__Strip_2_net_0[213]
+Removing Lhs of wire \CapSense:tmpOE__Sns_net_5\[508] = tmpOE__Strip_2_net_0[213]
+Removing Lhs of wire \CapSense:tmpOE__Sns_net_4\[509] = tmpOE__Strip_2_net_0[213]
+Removing Lhs of wire \CapSense:tmpOE__Sns_net_3\[510] = tmpOE__Strip_2_net_0[213]
+Removing Lhs of wire \CapSense:tmpOE__Sns_net_2\[511] = tmpOE__Strip_2_net_0[213]
+Removing Lhs of wire \CapSense:tmpOE__Sns_net_1\[512] = tmpOE__Strip_2_net_0[213]
+Removing Lhs of wire \CapSense:tmpOE__Sns_net_0\[513] = tmpOE__Strip_2_net_0[213]
+Removing Lhs of wire \CapSense:IDAC1:Net_3\[533] = tmpOE__Strip_2_net_0[213]
 Removing Lhs of wire \Deb2:DEBOUNCER[0]:d_sync_0\\D\[547] = Net_434[317]
 Removing Lhs of wire \Deb2:DEBOUNCER[0]:d_sync_1\\D\[548] = Net_413[319]
 Removing Lhs of wire Net_439D[549] = zero[75]
@@ -554,14 +554,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=D:\lacktable\Striplights\Striplight_bootloadable.cydsn\Striplight_bootloadable.cyprj -dcpsoc3 Striplight_bootloadable.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 0s.591ms
+Warp synthesis phase: Elapsed time ==> 0s.548ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.410, Family: PSoC3, Started at: Sunday, 10 April 2016 02:53:28
+cyp3fit: V3.3.0.410, Family: PSoC3, Started at: Wednesday, 13 April 2016 18:19:59
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=D:\lacktable\Striplights\Striplight_bootloadable.cydsn\Striplight_bootloadable.cyprj -d CY8C4245AXI-483 Striplight_bootloadable.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.016ms
+Design parsing phase: Elapsed time ==> 0s.017ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -577,8 +577,8 @@ Assigning clock RegClock to clock LFCLK because it is a pass-through
 Removing unused cells resulting from optimization
 Done removing unused cells.
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
-    Fixed Function Clock 6: Automatic-assigning  clock 'CapSense_1_SampleClk'. Signal=\CapSense_1:Net_420_ff6\
-    Fixed Function Clock 5: Automatic-assigning  clock 'CapSense_1_SenseClk'. Signal=\CapSense_1:Net_429_ff5\
+    Fixed Function Clock 6: Automatic-assigning  clock 'CapSense_SampleClk'. Signal=\CapSense:Net_420_ff6\
+    Fixed Function Clock 5: Automatic-assigning  clock 'CapSense_SenseClk'. Signal=\CapSense:Net_429_ff5\
     Fixed Function Clock 2: Automatic-assigning  clock 'ESP_SCBCLK'. Signal=\ESP:Net_847_ff2\
     Fixed Function Clock 3: Automatic-assigning  clock 'PC_Uart_SCBCLK'. Signal=\PC_Uart:Net_847_ff3\
     Fixed Function Clock 8: Automatic-assigning  clock 'ResetClock'. Signal=Net_194_ff8
@@ -1295,7 +1295,7 @@ Design Equations
         {
         }
 
-    Pin : Name = \CapSense_1:Cmod(0)\
+    Pin : Name = \CapSense:Cmod(0)\
         Attributes:
             Alias: Cmod
             In Group/Port: True
@@ -1329,14 +1329,14 @@ Design Equations
             Initial Value: 1
             IO Voltage: 0
         PORT MAP (
-            pa_out => \CapSense_1:Cmod(0)\__PA ,
-            analog_term => \CapSense_1:Net_398\ ,
-            pad => \CapSense_1:Cmod(0)_PAD\ );
+            pa_out => \CapSense:Cmod(0)\__PA ,
+            analog_term => \CapSense:Net_398\ ,
+            pad => \CapSense:Cmod(0)_PAD\ );
         Properties:
         {
         }
 
-    Pin : Name = \CapSense_1:Sns(0)\
+    Pin : Name = \CapSense:Sns(0)\
         Attributes:
             Alias: Button0__BTN
             In Group/Port: True
@@ -1370,14 +1370,14 @@ Design Equations
             Initial Value: 1
             IO Voltage: 0
         PORT MAP (
-            pa_out => \CapSense_1:Sns(0)\__PA ,
-            analog_term => \CapSense_1:Net_245_0\ ,
-            pad => \CapSense_1:Sns(0)_PAD\ );
+            pa_out => \CapSense:Sns(0)\__PA ,
+            analog_term => \CapSense:Net_245_0\ ,
+            pad => \CapSense:Sns(0)_PAD\ );
         Properties:
         {
         }
 
-    Pin : Name = \CapSense_1:Sns(1)\
+    Pin : Name = \CapSense:Sns(1)\
         Attributes:
             Alias: Button1__BTN
             In Group/Port: True
@@ -1411,14 +1411,14 @@ Design Equations
             Initial Value: 1
             IO Voltage: 0
         PORT MAP (
-            pa_out => \CapSense_1:Sns(1)\__PA ,
-            analog_term => \CapSense_1:Net_245_0\ ,
-            pad => \CapSense_1:Sns(1)_PAD\ );
+            pa_out => \CapSense:Sns(1)\__PA ,
+            analog_term => \CapSense:Net_245_0\ ,
+            pad => \CapSense:Sns(1)_PAD\ );
         Properties:
         {
         }
 
-    Pin : Name = \CapSense_1:Sns(2)\
+    Pin : Name = \CapSense:Sns(2)\
         Attributes:
             Alias: Button2__BTN
             In Group/Port: True
@@ -1452,14 +1452,14 @@ Design Equations
             Initial Value: 1
             IO Voltage: 0
         PORT MAP (
-            pa_out => \CapSense_1:Sns(2)\__PA ,
-            analog_term => \CapSense_1:Net_245_0\ ,
-            pad => \CapSense_1:Sns(2)_PAD\ );
+            pa_out => \CapSense:Sns(2)\__PA ,
+            analog_term => \CapSense:Net_245_0\ ,
+            pad => \CapSense:Sns(2)_PAD\ );
         Properties:
         {
         }
 
-    Pin : Name = \CapSense_1:Sns(3)\
+    Pin : Name = \CapSense:Sns(3)\
         Attributes:
             Alias: Button3__BTN
             In Group/Port: True
@@ -1493,14 +1493,14 @@ Design Equations
             Initial Value: 1
             IO Voltage: 0
         PORT MAP (
-            pa_out => \CapSense_1:Sns(3)\__PA ,
-            analog_term => \CapSense_1:Net_245_0\ ,
-            pad => \CapSense_1:Sns(3)_PAD\ );
+            pa_out => \CapSense:Sns(3)\__PA ,
+            analog_term => \CapSense:Net_245_0\ ,
+            pad => \CapSense:Sns(3)_PAD\ );
         Properties:
         {
         }
 
-    Pin : Name = \CapSense_1:Sns(4)\
+    Pin : Name = \CapSense:Sns(4)\
         Attributes:
             Alias: Button4__BTN
             In Group/Port: True
@@ -1534,14 +1534,14 @@ Design Equations
             Initial Value: 1
             IO Voltage: 0
         PORT MAP (
-            pa_out => \CapSense_1:Sns(4)\__PA ,
-            analog_term => \CapSense_1:Net_245_0\ ,
-            pad => \CapSense_1:Sns(4)_PAD\ );
+            pa_out => \CapSense:Sns(4)\__PA ,
+            analog_term => \CapSense:Net_245_0\ ,
+            pad => \CapSense:Sns(4)_PAD\ );
         Properties:
         {
         }
 
-    Pin : Name = \CapSense_1:Sns(5)\
+    Pin : Name = \CapSense:Sns(5)\
         Attributes:
             Alias: Button5__BTN
             In Group/Port: True
@@ -1575,14 +1575,14 @@ Design Equations
             Initial Value: 1
             IO Voltage: 0
         PORT MAP (
-            pa_out => \CapSense_1:Sns(5)\__PA ,
-            analog_term => \CapSense_1:Net_245_0\ ,
-            pad => \CapSense_1:Sns(5)_PAD\ );
+            pa_out => \CapSense:Sns(5)\__PA ,
+            analog_term => \CapSense:Net_245_0\ ,
+            pad => \CapSense:Sns(5)_PAD\ );
         Properties:
         {
         }
 
-    Pin : Name = \CapSense_1:Sns(6)\
+    Pin : Name = \CapSense:Sns(6)\
         Attributes:
             Alias: Button6__BTN
             In Group/Port: True
@@ -1616,14 +1616,14 @@ Design Equations
             Initial Value: 1
             IO Voltage: 0
         PORT MAP (
-            pa_out => \CapSense_1:Sns(6)\__PA ,
-            analog_term => \CapSense_1:Net_245_0\ ,
-            pad => \CapSense_1:Sns(6)_PAD\ );
+            pa_out => \CapSense:Sns(6)\__PA ,
+            analog_term => \CapSense:Net_245_0\ ,
+            pad => \CapSense:Sns(6)_PAD\ );
         Properties:
         {
         }
 
-    Pin : Name = \CapSense_1:Sns(7)\
+    Pin : Name = \CapSense:Sns(7)\
         Attributes:
             Alias: Button7__BTN
             In Group/Port: True
@@ -1657,9 +1657,9 @@ Design Equations
             Initial Value: 1
             IO Voltage: 0
         PORT MAP (
-            pa_out => \CapSense_1:Sns(7)\__PA ,
-            analog_term => \CapSense_1:Net_245_0\ ,
-            pad => \CapSense_1:Sns(7)_PAD\ );
+            pa_out => \CapSense:Sns(7)\__PA ,
+            analog_term => \CapSense:Net_245_0\ ,
+            pad => \CapSense:Sns(7)_PAD\ );
         Properties:
         {
         }
@@ -2178,9 +2178,9 @@ Design Equations
             int_type = "10"
         }
 
-    interrupt: Name =\CapSense_1:ISR\
+    interrupt: Name =\CapSense:ISR\
         PORT MAP (
-            interrupt => \CapSense_1:Net_248\ );
+            interrupt => \CapSense:Net_248\ );
         Properties:
         {
             int_type = "10"
@@ -2219,18 +2219,18 @@ DAC                           :      :      :      :
   7-bit IDAC                  :    1 :    0 :    1 : 100.00 %
   8-bit IDAC                  :    1 :    0 :    1 : 100.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.031ms
-Tech mapping phase: Elapsed time ==> 0s.045ms
+Technology Mapping: Elapsed time ==> 0s.033ms
+Tech mapping phase: Elapsed time ==> 0s.047ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 <CYPRESSTAG name="Analog Placement">
-Elapsed time ==> 0.1214316s
+Elapsed time ==> 0.1174432s
 </CYPRESSTAG>
-Analog Placement phase: Elapsed time ==> 0s.257ms
+Analog Placement phase: Elapsed time ==> 0s.254ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 <CYPRESSTAG name="Analog Routing">
-Route success=True, Iterations=1 Elapsed=0.0026000 secs
+Route success=True, Iterations=1 Elapsed=0.0026801 secs
 </CYPRESSTAG>
 Analog Routing phase: Elapsed time ==> 0s.003ms
 </CYPRESSTAG>
@@ -2238,7 +2238,7 @@ Analog Routing phase: Elapsed time ==> 0s.003ms
 ============ Analog Final Answer Routes ============
 Dump of CyAnalogRoutingResultsDB
 Map of net to items {
-  Net: \CapSense_1:Net_245_0\ {
+  Net: \CapSense:Net_245_0\ {
     source
     swhv_3
     amuxbusa
@@ -2259,11 +2259,11 @@ Map of net to items {
     P1_P46
     p1_6
   }
-  Net: \CapSense_1:Net_270\ {
+  Net: \CapSense:Net_270\ {
     idac0_out
     swhv_1
   }
-  Net: \CapSense_1:Net_398\ {
+  Net: \CapSense:Net_398\ {
     Net_2110
     swh_2
     p4_2
@@ -2271,31 +2271,31 @@ Map of net to items {
   }
 }
 Map of item to net {
-  source                                           -> \CapSense_1:Net_245_0\
-  swhv_3                                           -> \CapSense_1:Net_245_0\
-  amuxbusa                                         -> \CapSense_1:Net_245_0\
-  P1_P40                                           -> \CapSense_1:Net_245_0\
-  p1_0                                             -> \CapSense_1:Net_245_0\
-  P1_P43                                           -> \CapSense_1:Net_245_0\
-  p1_3                                             -> \CapSense_1:Net_245_0\
-  P1_P41                                           -> \CapSense_1:Net_245_0\
-  p1_1                                             -> \CapSense_1:Net_245_0\
-  P1_P42                                           -> \CapSense_1:Net_245_0\
-  p1_2                                             -> \CapSense_1:Net_245_0\
-  P1_P45                                           -> \CapSense_1:Net_245_0\
-  p1_5                                             -> \CapSense_1:Net_245_0\
-  P1_P44                                           -> \CapSense_1:Net_245_0\
-  p1_4                                             -> \CapSense_1:Net_245_0\
-  P1_P47                                           -> \CapSense_1:Net_245_0\
-  p1_7                                             -> \CapSense_1:Net_245_0\
-  P1_P46                                           -> \CapSense_1:Net_245_0\
-  p1_6                                             -> \CapSense_1:Net_245_0\
-  idac0_out                                        -> \CapSense_1:Net_270\
-  swhv_1                                           -> \CapSense_1:Net_270\
-  Net_2110                                         -> \CapSense_1:Net_398\
-  swh_2                                            -> \CapSense_1:Net_398\
-  p4_2                                             -> \CapSense_1:Net_398\
-  P4_P42                                           -> \CapSense_1:Net_398\
+  source                                           -> \CapSense:Net_245_0\
+  swhv_3                                           -> \CapSense:Net_245_0\
+  amuxbusa                                         -> \CapSense:Net_245_0\
+  P1_P40                                           -> \CapSense:Net_245_0\
+  p1_0                                             -> \CapSense:Net_245_0\
+  P1_P43                                           -> \CapSense:Net_245_0\
+  p1_3                                             -> \CapSense:Net_245_0\
+  P1_P41                                           -> \CapSense:Net_245_0\
+  p1_1                                             -> \CapSense:Net_245_0\
+  P1_P42                                           -> \CapSense:Net_245_0\
+  p1_2                                             -> \CapSense:Net_245_0\
+  P1_P45                                           -> \CapSense:Net_245_0\
+  p1_5                                             -> \CapSense:Net_245_0\
+  P1_P44                                           -> \CapSense:Net_245_0\
+  p1_4                                             -> \CapSense:Net_245_0\
+  P1_P47                                           -> \CapSense:Net_245_0\
+  p1_7                                             -> \CapSense:Net_245_0\
+  P1_P46                                           -> \CapSense:Net_245_0\
+  p1_6                                             -> \CapSense:Net_245_0\
+  idac0_out                                        -> \CapSense:Net_270\
+  swhv_1                                           -> \CapSense:Net_270\
+  Net_2110                                         -> \CapSense:Net_398\
+  swh_2                                            -> \CapSense:Net_398\
+  p4_2                                             -> \CapSense:Net_398\
+  P4_P42                                           -> \CapSense:Net_398\
 }
 Mux Info {
 }
@@ -2327,17 +2327,17 @@ PLD Packing Summary
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.001ms
+PLD Packing: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.019ms
+Partitioning: Elapsed time ==> 0s.018ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
-Annealing: Elapsed time ==> 0s.000ms
+Annealing: Elapsed time ==> 0s.001ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
 Inital cost was 170, final cost is 170 (0.00% improvement).</CYPRESSTAG>
@@ -2932,9 +2932,9 @@ Intr container @ [IntrContainer=(0)]:
             int_type = "10"
         }
   Intr@ [IntrContainer=(0)][IntrId=(15)] 
-    interrupt: Name =\CapSense_1:ISR\
+    interrupt: Name =\CapSense:ISR\
         PORT MAP (
-            interrupt => \CapSense_1:Net_248\ );
+            interrupt => \CapSense:Net_248\ );
         Properties:
         {
             int_type = "10"
@@ -3073,7 +3073,7 @@ Pin : Name = SW1(0)
 
 Port 1 contains the following IO cells:
 [IoId=0]: 
-Pin : Name = \CapSense_1:Sns(0)\
+Pin : Name = \CapSense:Sns(0)\
     Attributes:
         Alias: Button0__BTN
         In Group/Port: True
@@ -3107,14 +3107,14 @@ Pin : Name = \CapSense_1:Sns(0)\
         Initial Value: 1
         IO Voltage: 0
     PORT MAP (
-        pa_out => \CapSense_1:Sns(0)\__PA ,
-        pad => \CapSense_1:Sns(0)_PAD\ );
+        pa_out => \CapSense:Sns(0)\__PA ,
+        pad => \CapSense:Sns(0)_PAD\ );
     Properties:
     {
     }
 
 [IoId=1]: 
-Pin : Name = \CapSense_1:Sns(1)\
+Pin : Name = \CapSense:Sns(1)\
     Attributes:
         Alias: Button1__BTN
         In Group/Port: True
@@ -3148,14 +3148,14 @@ Pin : Name = \CapSense_1:Sns(1)\
         Initial Value: 1
         IO Voltage: 0
     PORT MAP (
-        pa_out => \CapSense_1:Sns(1)\__PA ,
-        pad => \CapSense_1:Sns(1)_PAD\ );
+        pa_out => \CapSense:Sns(1)\__PA ,
+        pad => \CapSense:Sns(1)_PAD\ );
     Properties:
     {
     }
 
 [IoId=2]: 
-Pin : Name = \CapSense_1:Sns(2)\
+Pin : Name = \CapSense:Sns(2)\
     Attributes:
         Alias: Button2__BTN
         In Group/Port: True
@@ -3189,14 +3189,14 @@ Pin : Name = \CapSense_1:Sns(2)\
         Initial Value: 1
         IO Voltage: 0
     PORT MAP (
-        pa_out => \CapSense_1:Sns(2)\__PA ,
-        pad => \CapSense_1:Sns(2)_PAD\ );
+        pa_out => \CapSense:Sns(2)\__PA ,
+        pad => \CapSense:Sns(2)_PAD\ );
     Properties:
     {
     }
 
 [IoId=3]: 
-Pin : Name = \CapSense_1:Sns(3)\
+Pin : Name = \CapSense:Sns(3)\
     Attributes:
         Alias: Button3__BTN
         In Group/Port: True
@@ -3230,14 +3230,14 @@ Pin : Name = \CapSense_1:Sns(3)\
         Initial Value: 1
         IO Voltage: 0
     PORT MAP (
-        pa_out => \CapSense_1:Sns(3)\__PA ,
-        pad => \CapSense_1:Sns(3)_PAD\ );
+        pa_out => \CapSense:Sns(3)\__PA ,
+        pad => \CapSense:Sns(3)_PAD\ );
     Properties:
     {
     }
 
 [IoId=4]: 
-Pin : Name = \CapSense_1:Sns(4)\
+Pin : Name = \CapSense:Sns(4)\
     Attributes:
         Alias: Button4__BTN
         In Group/Port: True
@@ -3271,14 +3271,14 @@ Pin : Name = \CapSense_1:Sns(4)\
         Initial Value: 1
         IO Voltage: 0
     PORT MAP (
-        pa_out => \CapSense_1:Sns(4)\__PA ,
-        pad => \CapSense_1:Sns(4)_PAD\ );
+        pa_out => \CapSense:Sns(4)\__PA ,
+        pad => \CapSense:Sns(4)_PAD\ );
     Properties:
     {
     }
 
 [IoId=5]: 
-Pin : Name = \CapSense_1:Sns(5)\
+Pin : Name = \CapSense:Sns(5)\
     Attributes:
         Alias: Button5__BTN
         In Group/Port: True
@@ -3312,14 +3312,14 @@ Pin : Name = \CapSense_1:Sns(5)\
         Initial Value: 1
         IO Voltage: 0
     PORT MAP (
-        pa_out => \CapSense_1:Sns(5)\__PA ,
-        pad => \CapSense_1:Sns(5)_PAD\ );
+        pa_out => \CapSense:Sns(5)\__PA ,
+        pad => \CapSense:Sns(5)_PAD\ );
     Properties:
     {
     }
 
 [IoId=6]: 
-Pin : Name = \CapSense_1:Sns(6)\
+Pin : Name = \CapSense:Sns(6)\
     Attributes:
         Alias: Button6__BTN
         In Group/Port: True
@@ -3353,14 +3353,14 @@ Pin : Name = \CapSense_1:Sns(6)\
         Initial Value: 1
         IO Voltage: 0
     PORT MAP (
-        pa_out => \CapSense_1:Sns(6)\__PA ,
-        pad => \CapSense_1:Sns(6)_PAD\ );
+        pa_out => \CapSense:Sns(6)\__PA ,
+        pad => \CapSense:Sns(6)_PAD\ );
     Properties:
     {
     }
 
 [IoId=7]: 
-Pin : Name = \CapSense_1:Sns(7)\
+Pin : Name = \CapSense:Sns(7)\
     Attributes:
         Alias: Button7__BTN
         In Group/Port: True
@@ -3394,8 +3394,8 @@ Pin : Name = \CapSense_1:Sns(7)\
         Initial Value: 1
         IO Voltage: 0
     PORT MAP (
-        pa_out => \CapSense_1:Sns(7)\__PA ,
-        pad => \CapSense_1:Sns(7)_PAD\ );
+        pa_out => \CapSense:Sns(7)\__PA ,
+        pad => \CapSense:Sns(7)_PAD\ );
     Properties:
     {
     }
@@ -3978,7 +3978,7 @@ Pin : Name = \PC_Uart:tx(0)\
     }
 
 [IoId=2]: 
-Pin : Name = \CapSense_1:Cmod(0)\
+Pin : Name = \CapSense:Cmod(0)\
     Attributes:
         Alias: Cmod
         In Group/Port: True
@@ -4012,9 +4012,9 @@ Pin : Name = \CapSense_1:Cmod(0)\
         Initial Value: 1
         IO Voltage: 0
     PORT MAP (
-        pa_out => \CapSense_1:Cmod(0)\__PA ,
-        analog_term => \CapSense_1:Net_398\ ,
-        pad => \CapSense_1:Cmod(0)_PAD\ ,
+        pa_out => \CapSense:Cmod(0)\__PA ,
+        analog_term => \CapSense:Net_398\ ,
+        pad => \CapSense:Cmod(0)_PAD\ ,
         input => __ONE__ );
     Properties:
     {
@@ -4031,8 +4031,8 @@ Clock group 0:
             ilo => ClockBlock_ILO ,
             lfclk => ClockBlock_LFCLK ,
             dsi_in_0 => ClockBlock_Routed1 ,
-            ff_div_6 => \CapSense_1:Net_420_ff6\ ,
-            ff_div_5 => \CapSense_1:Net_429_ff5\ ,
+            ff_div_6 => \CapSense:Net_420_ff6\ ,
+            ff_div_5 => \CapSense:Net_429_ff5\ ,
             ff_div_2 => \ESP:Net_847_ff2\ ,
             ff_div_3 => \PC_Uart:Net_847_ff3\ ,
             ff_div_8 => Net_194_ff8 ,
@@ -4094,16 +4094,16 @@ Serial Communication (SCB) group 0:
         }
 CapSense group 0: 
     PSoC4 CapSense @ F(CSD,0): 
-    p4csdcell: Name =\CapSense_1:CSD_FFB\
+    p4csdcell: Name =\CapSense:CSD_FFB\
         PORT MAP (
-            shield => \CapSense_1:Net_241\ ,
-            csh => \CapSense_1:Net_246\ ,
-            cmod => \CapSense_1:Net_398\ ,
-            sense_out => \CapSense_1:Net_329\ ,
-            sample_out => \CapSense_1:Net_328\ ,
-            clk1 => \CapSense_1:Net_429_ff5\ ,
-            clk2 => \CapSense_1:Net_420_ff6\ ,
-            irq => \CapSense_1:Net_248\ );
+            shield => \CapSense:Net_241\ ,
+            csh => \CapSense:Net_246\ ,
+            cmod => \CapSense:Net_398\ ,
+            sense_out => \CapSense:Net_329\ ,
+            sample_out => \CapSense:Net_328\ ,
+            clk1 => \CapSense:Net_429_ff5\ ,
+            clk2 => \CapSense:Net_420_ff6\ ,
+            irq => \CapSense:Net_248\ );
         Properties:
         {
             cy_registers = ""
@@ -4116,7 +4116,7 @@ CapSense group 0:
         }
 8-bit IDAC group 0: 
     PSoC4 8-bit IDAC @ F(CSIDAC8,0): 
-    p4csidac8cell: Name =\CapSense_1:IDAC1:cy_psoc4_idac\
+    p4csidac8cell: Name =\CapSense:IDAC1:cy_psoc4_idac\
         PORT MAP (
             en => __ONE__ );
         Properties:
@@ -4126,7 +4126,7 @@ CapSense group 0:
         }
 7-bit IDAC group 0: 
     PSoC4 7-bit IDAC @ F(CSIDAC7,0): 
-    p4csidac7cell: Name =\CapSense_1:IDAC2:cy_psoc4_idac\
+    p4csidac7cell: Name =\CapSense:IDAC2:cy_psoc4_idac\
         PORT MAP (
             en => __ONE__ );
         Properties:
@@ -4214,55 +4214,55 @@ ANAPUMP group 0: empty
 ------------------------------------------------------------
 Port Configuration report
 ------------------------------------------------------------
-     |     |       | Interrupt |                  |                      | 
-Port | Pin | Fixed |      Type |       Drive Mode |                 Name | Connections
------+-----+-------+-----------+------------------+----------------------+------------------------------------------
-   0 |   4 |     * |      NONE |     HI_Z_DIGITAL |          \ESP:rx(0)\ | FB(\ESP:Net_654\)
-     |   5 |     * |      NONE |         CMOS_OUT |          \ESP:tx(0)\ | In(\ESP:Net_1062\)
-     |   7 |     * |      NONE |      RES_PULL_UP |               SW1(0) | FB(Net_239)
------+-----+-------+-----------+------------------+----------------------+------------------------------------------
-   1 |   0 |     * |      NONE |      HI_Z_ANALOG |  \CapSense_1:Sns(0)\ | 
-     |   1 |     * |      NONE |      HI_Z_ANALOG |  \CapSense_1:Sns(1)\ | 
-     |   2 |     * |      NONE |      HI_Z_ANALOG |  \CapSense_1:Sns(2)\ | 
-     |   3 |     * |      NONE |      HI_Z_ANALOG |  \CapSense_1:Sns(3)\ | 
-     |   4 |     * |      NONE |      HI_Z_ANALOG |  \CapSense_1:Sns(4)\ | 
-     |   5 |     * |      NONE |      HI_Z_ANALOG |  \CapSense_1:Sns(5)\ | 
-     |   6 |     * |      NONE |      HI_Z_ANALOG |  \CapSense_1:Sns(6)\ | 
-     |   7 |     * |      NONE |      HI_Z_ANALOG |  \CapSense_1:Sns(7)\ | 
------+-----+-------+-----------+------------------+----------------------+------------------------------------------
-   2 |   0 |     * |      NONE |         CMOS_OUT |           Strip_0(0) | In(Net_80)
-     |   1 |     * |      NONE |         CMOS_OUT |           Strip_1(0) | In(Net_81)
-     |   2 |     * |      NONE |         CMOS_OUT |           Strip_2(0) | In(Net_82)
-     |   3 |     * |      NONE |         CMOS_OUT |           Strip_3(0) | In(Net_83)
-     |   4 |     * |      NONE |         CMOS_OUT |           Strip_4(0) | In(Net_84)
-     |   5 |     * |      NONE |         CMOS_OUT |           Strip_5(0) | In(Net_87)
-     |   6 |     * |      NONE |     HI_Z_DIGITAL |             Rot1A(0) | FB(Net_268)
-     |   7 |     * |      NONE |     HI_Z_DIGITAL |             Rot1B(0) | FB(Net_267)
------+-----+-------+-----------+------------------+----------------------+------------------------------------------
-   3 |   0 |     * |      NONE |     HI_Z_DIGITAL |            Rot1SW(0) | FB(Net_428)
-     |   5 |     * |      NONE |     HI_Z_DIGITAL |            Rot2SW(0) | FB(Net_434)
-     |   6 |     * |      NONE |     HI_Z_DIGITAL |             Rot2B(0) | FB(Net_327)
-     |   7 |     * |      NONE |     HI_Z_DIGITAL |             Rot2A(0) | FB(Net_328)
------+-----+-------+-----------+------------------+----------------------+------------------------------------------
-   4 |   0 |     * |      NONE |     HI_Z_DIGITAL |      \PC_Uart:rx(0)\ | FB(\PC_Uart:Net_654\)
-     |   1 |     * |      NONE |         CMOS_OUT |      \PC_Uart:tx(0)\ | In(\PC_Uart:Net_1062\)
-     |   2 |     * |      NONE |      HI_Z_ANALOG | \CapSense_1:Cmod(0)\ | In(__ONE__), Analog(\CapSense_1:Net_398\)
---------------------------------------------------------------------------------------------------------------------
+     |     |       | Interrupt |                  |                    | 
+Port | Pin | Fixed |      Type |       Drive Mode |               Name | Connections
+-----+-----+-------+-----------+------------------+--------------------+----------------------------------------
+   0 |   4 |     * |      NONE |     HI_Z_DIGITAL |        \ESP:rx(0)\ | FB(\ESP:Net_654\)
+     |   5 |     * |      NONE |         CMOS_OUT |        \ESP:tx(0)\ | In(\ESP:Net_1062\)
+     |   7 |     * |      NONE |      RES_PULL_UP |             SW1(0) | FB(Net_239)
+-----+-----+-------+-----------+------------------+--------------------+----------------------------------------
+   1 |   0 |     * |      NONE |      HI_Z_ANALOG |  \CapSense:Sns(0)\ | 
+     |   1 |     * |      NONE |      HI_Z_ANALOG |  \CapSense:Sns(1)\ | 
+     |   2 |     * |      NONE |      HI_Z_ANALOG |  \CapSense:Sns(2)\ | 
+     |   3 |     * |      NONE |      HI_Z_ANALOG |  \CapSense:Sns(3)\ | 
+     |   4 |     * |      NONE |      HI_Z_ANALOG |  \CapSense:Sns(4)\ | 
+     |   5 |     * |      NONE |      HI_Z_ANALOG |  \CapSense:Sns(5)\ | 
+     |   6 |     * |      NONE |      HI_Z_ANALOG |  \CapSense:Sns(6)\ | 
+     |   7 |     * |      NONE |      HI_Z_ANALOG |  \CapSense:Sns(7)\ | 
+-----+-----+-------+-----------+------------------+--------------------+----------------------------------------
+   2 |   0 |     * |      NONE |         CMOS_OUT |         Strip_0(0) | In(Net_80)
+     |   1 |     * |      NONE |         CMOS_OUT |         Strip_1(0) | In(Net_81)
+     |   2 |     * |      NONE |         CMOS_OUT |         Strip_2(0) | In(Net_82)
+     |   3 |     * |      NONE |         CMOS_OUT |         Strip_3(0) | In(Net_83)
+     |   4 |     * |      NONE |         CMOS_OUT |         Strip_4(0) | In(Net_84)
+     |   5 |     * |      NONE |         CMOS_OUT |         Strip_5(0) | In(Net_87)
+     |   6 |     * |      NONE |     HI_Z_DIGITAL |           Rot1A(0) | FB(Net_268)
+     |   7 |     * |      NONE |     HI_Z_DIGITAL |           Rot1B(0) | FB(Net_267)
+-----+-----+-------+-----------+------------------+--------------------+----------------------------------------
+   3 |   0 |     * |      NONE |     HI_Z_DIGITAL |          Rot1SW(0) | FB(Net_428)
+     |   5 |     * |      NONE |     HI_Z_DIGITAL |          Rot2SW(0) | FB(Net_434)
+     |   6 |     * |      NONE |     HI_Z_DIGITAL |           Rot2B(0) | FB(Net_327)
+     |   7 |     * |      NONE |     HI_Z_DIGITAL |           Rot2A(0) | FB(Net_328)
+-----+-----+-------+-----------+------------------+--------------------+----------------------------------------
+   4 |   0 |     * |      NONE |     HI_Z_DIGITAL |    \PC_Uart:rx(0)\ | FB(\PC_Uart:Net_654\)
+     |   1 |     * |      NONE |         CMOS_OUT |    \PC_Uart:tx(0)\ | In(\PC_Uart:Net_1062\)
+     |   2 |     * |      NONE |      HI_Z_ANALOG | \CapSense:Cmod(0)\ | In(__ONE__), Analog(\CapSense:Net_398\)
+----------------------------------------------------------------------------------------------------------------
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
 Digital component placer commit/Report: Elapsed time ==> 0s.002ms
-Digital Placement phase: Elapsed time ==> 0s.583ms
+Digital Placement phase: Elapsed time ==> 0s.560ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
 Digital Routing phase: Elapsed time ==> 0s.564ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.181ms
+Bitstream and API generation phase: Elapsed time ==> 0s.191ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.030ms
+Bitstream verification phase: Elapsed time ==> 0s.026ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in Striplight_bootloadable_timing.html.
@@ -4272,11 +4272,11 @@ Static timing analysis phase: Elapsed time ==> 0s.197ms
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.175ms
+Design database save phase: Elapsed time ==> 0s.186ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 2s.079ms
+cydsfit: Elapsed time ==> 2s.073ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 2s.114ms
-API generation phase: Elapsed time ==> 1s.770ms
+Fitter phase: Elapsed time ==> 2s.107ms
+API generation phase: Elapsed time ==> 1s.616ms
 Dependency generation phase: Elapsed time ==> 0s.015ms
 Cleanup phase: Elapsed time ==> 0s.000ms

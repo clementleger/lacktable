@@ -370,10 +370,10 @@
   <block name="Rot1B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Deb1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DebClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="CapSense_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+  <block name="CapSense" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="CapSense_1_IDAC1" BASE="0x0" SIZE="0x0" desc="IDAC" visible="true" hidden="false">
+    <block name="CapSense_IDAC1" BASE="0x0" SIZE="0x0" desc="IDAC" visible="true" hidden="false">
       <block name="cy_psoc4_idac" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
       <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
       <register name="CSD_IDAC_POLARITY" address="0x40080004" bitWidth="32" desc=" CSD IDAC Polarity" hidden="false" />
@@ -388,7 +388,7 @@
     <block name="SampleClk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="CSD_FFB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="Sns" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="CapSense_1_IDAC2" BASE="0x0" SIZE="0x0" desc="IDAC" visible="true" hidden="false">
+    <block name="CapSense_IDAC2" BASE="0x0" SIZE="0x0" desc="IDAC" visible="true" hidden="false">
       <block name="cy_psoc4_idac" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
       <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
       <register name="CSD_IDAC_POLARITY" address="0x40080004" bitWidth="32" desc=" CSD IDAC Polarity" hidden="false" />

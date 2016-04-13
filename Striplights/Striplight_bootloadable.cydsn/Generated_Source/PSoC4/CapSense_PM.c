@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: CapSense_1_PM.c
+* File Name: CapSense_PM.c
 * Version 2.30
 *
 * Description:
@@ -14,16 +14,16 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "CapSense_1.h"
+#include "CapSense.h"
 
-static CapSense_1_BACKUP_STRUCT CapSense_1_backup =
+static CapSense_BACKUP_STRUCT CapSense_backup =
 {
     0x00u, /* enableState; */
 };
 
 
 /*******************************************************************************
-* Function Name: CapSense_1_SaveConfig
+* Function Name: CapSense_SaveConfig
 ********************************************************************************
 *
 * Summary:
@@ -36,24 +36,24 @@ static CapSense_1_BACKUP_STRUCT CapSense_1_backup =
 *  None
 *
 * Global Variables:
-*  CapSense_1_backup - used to save the component state before entering the  sleep
+*  CapSense_backup - used to save the component state before entering the  sleep
 *  mode and none-retention registers.
 *
 * Side Effects:
 *  None
 *
 *******************************************************************************/
-void CapSense_1_SaveConfig(void)
+void CapSense_SaveConfig(void)
 {
-    if ((CapSense_1_CSD_CFG_REG & CapSense_1_CSD_CFG_ENABLE) != 0u)
+    if ((CapSense_CSD_CFG_REG & CapSense_CSD_CFG_ENABLE) != 0u)
     {
-        CapSense_1_backup.enableState = 1u;
+        CapSense_backup.enableState = 1u;
     }
 }
 
 
 /*******************************************************************************
-* Function Name: CapSense_1_Sleep
+* Function Name: CapSense_Sleep
 ********************************************************************************
 *
 * Summary:
@@ -66,31 +66,31 @@ void CapSense_1_SaveConfig(void)
 *  None
 *
 * Global Variables:
-*  CapSense_1_backup - used to save the component state before entering the sleep
+*  CapSense_backup - used to save the component state before entering the sleep
 *  mode.
 *
 *******************************************************************************/
-void CapSense_1_Sleep(void)
+void CapSense_Sleep(void)
 {
-    CapSense_1_SaveConfig();
+    CapSense_SaveConfig();
 
     /* Disable interrupt */
-    CyIntDisable(CapSense_1_ISR_NUMBER);
+    CyIntDisable(CapSense_ISR_NUMBER);
 
-    CapSense_1_CSD_CFG_REG &= ~(CapSense_1_CSD_CFG_SENSE_COMP_EN | CapSense_1_CSD_CFG_SENSE_EN);
+    CapSense_CSD_CFG_REG &= ~(CapSense_CSD_CFG_SENSE_COMP_EN | CapSense_CSD_CFG_SENSE_EN);
 
-    #if(CapSense_1_IDAC_CNT == 2u)
-        CapSense_1_CSD_CFG_REG &= ~(CapSense_1_CSD_CFG_ENABLE);
-    #endif /* (CapSense_1_IDAC_CNT == 2u) */
+    #if(CapSense_IDAC_CNT == 2u)
+        CapSense_CSD_CFG_REG &= ~(CapSense_CSD_CFG_ENABLE);
+    #endif /* (CapSense_IDAC_CNT == 2u) */
 
     /* Disable Clocks */
-    CapSense_1_SenseClk_Stop();
-    CapSense_1_SampleClk_Stop();
+    CapSense_SenseClk_Stop();
+    CapSense_SampleClk_Stop();
 }
 
 
 /*******************************************************************************
-* Function Name: CapSense_1_RestoreConfig
+* Function Name: CapSense_RestoreConfig
 ********************************************************************************
 *
 * Summary:
@@ -103,22 +103,22 @@ void CapSense_1_Sleep(void)
 *  None
 *
 * Side Effects:
-*  Must be called only after CapSense_1_SaveConfig() routine. Otherwise
+*  Must be called only after CapSense_SaveConfig() routine. Otherwise
 *  the component configuration will be overwritten with its initial setting.
 *
 * Global Variables:
-*  CapSense_1_backup - used to save the component state before entering the sleep
+*  CapSense_backup - used to save the component state before entering the sleep
 *  mode and none-retention registers.
 *
 *******************************************************************************/
-void CapSense_1_RestoreConfig(void)
+void CapSense_RestoreConfig(void)
 {
 
 }
 
 
 /*******************************************************************************
-* Function Name: CapSense_1_Wakeup
+* Function Name: CapSense_Wakeup
 ********************************************************************************
 *
 * Summary:
@@ -133,20 +133,20 @@ void CapSense_1_RestoreConfig(void)
 *  None
 *
 * Global Variables:
-*  CapSense_1_backup - used to save the component state before entering the sleep
+*  CapSense_backup - used to save the component state before entering the sleep
 *  mode and none-retention registers.
 *
 *******************************************************************************/
-void CapSense_1_Wakeup(void)
+void CapSense_Wakeup(void)
 {
     /* Enable the Clocks */
-    CapSense_1_SenseClk_Start();
-    CapSense_1_SampleClk_Start();
+    CapSense_SenseClk_Start();
+    CapSense_SampleClk_Start();
 
     /* Restore CapSense Enable state */
-    if (CapSense_1_backup.enableState != 0u)
+    if (CapSense_backup.enableState != 0u)
     {
-        CapSense_1_Enable();
+        CapSense_Enable();
     }
 }
 

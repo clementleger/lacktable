@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: CapSense_1_INT.c
+* File Name: CapSense_INT.c
 * Version 2.30
 *
 * Description:
@@ -15,21 +15,21 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "CapSense_1.h"
-#include "CapSense_1_PVT.h"
+#include "CapSense.h"
+#include "CapSense_PVT.h"
 
 
 
 /*******************************************************************************
 *  Place your includes, defines and code here
 ********************************************************************************/
-/* `#START CapSense_1_ISR_INTC` */
+/* `#START CapSense_ISR_INTC` */
 
 /* `#END` */
 
 
 /*******************************************************************************
-* Function Name: CapSense_1_ISR
+* Function Name: CapSense_ISR
 ********************************************************************************
 *
 * Summary:
@@ -48,76 +48,76 @@
 *  None
 *
 * Global Variables:
-*  CapSense_1_csv - used to provide the status and mode of the scanning process.
+*  CapSense_csv - used to provide the status and mode of the scanning process.
 *   Mode - a single scan or scan of all the enabled sensors.
 *   Status - scan is in progress or ready for new scan.
-*  CapSense_1_sensorIndex - used to store a sensor scanning sensor number.
+*  CapSense_sensorIndex - used to store a sensor scanning sensor number.
 *
 * Reentrant:
 *  No
 *
 *******************************************************************************/
-CY_ISR(CapSense_1_ISR)
+CY_ISR(CapSense_ISR)
 {
-    static uint8 CapSense_1_snsIndexTmp;
+    static uint8 CapSense_snsIndexTmp;
 
-    #ifdef CapSense_1_ISR_ENTRY_CALLBACK
-        CapSense_1_ISR_EntryCallback();
-    #endif /* CapSense_1_ISR_ENTRY_CALLBACK */
+    #ifdef CapSense_ISR_ENTRY_CALLBACK
+        CapSense_ISR_EntryCallback();
+    #endif /* CapSense_ISR_ENTRY_CALLBACK */
 
     /*  Place your Interrupt code here. */
-    /* `#START CapSense_1_ISR_ENTER` */
+    /* `#START CapSense_ISR_ENTER` */
 
     /* `#END` */
 
-    CyIntDisable(CapSense_1_ISR_NUMBER);
+    CyIntDisable(CapSense_ISR_NUMBER);
 
-    CapSense_1_CSD_INTR_REG = 1u;
+    CapSense_CSD_INTR_REG = 1u;
 
-    CapSense_1_PostScan((uint32)CapSense_1_sensorIndex);
+    CapSense_PostScan((uint32)CapSense_sensorIndex);
 
-    if ((CapSense_1_csdStatusVar & CapSense_1_SW_CTRL_SINGLE_SCAN) != 0u)
+    if ((CapSense_csdStatusVar & CapSense_SW_CTRL_SINGLE_SCAN) != 0u)
     {
-        CapSense_1_csdStatusVar &= (uint8)~CapSense_1_SW_STS_BUSY;
+        CapSense_csdStatusVar &= (uint8)~CapSense_SW_STS_BUSY;
     }
     else
     {
         /* Proceed scanning */
-        CapSense_1_sensorIndex = CapSense_1_FindNextSensor(CapSense_1_sensorIndex);
+        CapSense_sensorIndex = CapSense_FindNextSensor(CapSense_sensorIndex);
 
         /* Check end of scan */
-        if(CapSense_1_sensorIndex < CapSense_1_TOTAL_SENSOR_COUNT)
+        if(CapSense_sensorIndex < CapSense_TOTAL_SENSOR_COUNT)
         {
-            CapSense_1_PreScan((uint32)CapSense_1_sensorIndex);
+            CapSense_PreScan((uint32)CapSense_sensorIndex);
         }
         else
         {
-            CapSense_1_csdStatusVar &= (uint8)~CapSense_1_SW_STS_BUSY;
+            CapSense_csdStatusVar &= (uint8)~CapSense_SW_STS_BUSY;
 
              /* Check if widget has been scanned */
-            if((CapSense_1_csdStatusVar & CapSense_1_SW_CTRL_WIDGET_SCAN) != 0u)
+            if((CapSense_csdStatusVar & CapSense_SW_CTRL_WIDGET_SCAN) != 0u)
             {
                 /* Restore sensorEnableMask array */
-                for(CapSense_1_snsIndexTmp = 0u;
-                    CapSense_1_snsIndexTmp < CapSense_1_TOTAL_SENSOR_MASK;
-                    CapSense_1_snsIndexTmp++)
+                for(CapSense_snsIndexTmp = 0u;
+                    CapSense_snsIndexTmp < CapSense_TOTAL_SENSOR_MASK;
+                    CapSense_snsIndexTmp++)
                 {
                     /* Backup sensorEnableMask array */
-                    CapSense_1_sensorEnableMask[CapSense_1_snsIndexTmp] = CapSense_1_sensorEnableMaskBackup[CapSense_1_snsIndexTmp];
+                    CapSense_sensorEnableMask[CapSense_snsIndexTmp] = CapSense_sensorEnableMaskBackup[CapSense_snsIndexTmp];
                 }
             }
         }
     }
-    CyIntEnable(CapSense_1_ISR_NUMBER);
+    CyIntEnable(CapSense_ISR_NUMBER);
 
     /*  Place your Interrupt code here. */
-    /* `#START CapSense_1_ISR_EXIT` */
+    /* `#START CapSense_ISR_EXIT` */
 
     /* `#END` */
 
-    #ifdef CapSense_1_ISR_EXIT_CALLBACK
-        CapSense_1_ISR_ExitCallback();
-    #endif /* CapSense_1_ISR_EXIT_CALLBACK */
+    #ifdef CapSense_ISR_EXIT_CALLBACK
+        CapSense_ISR_ExitCallback();
+    #endif /* CapSense_ISR_EXIT_CALLBACK */
 }
 
 /* [] END OF FILE */

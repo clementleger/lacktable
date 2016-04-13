@@ -2201,7 +2201,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>CapSense_1_IDAC1</name>
+      <name>CapSense_IDAC1</name>
       <description>IDAC</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -2249,7 +2249,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>CapSense_1_IDAC2</name>
+      <name>CapSense_IDAC2</name>
       <description>IDAC</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>

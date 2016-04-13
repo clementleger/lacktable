@@ -590,7 +590,7 @@ void StripLights_Pixel(int32 x, int32 y, uint32 color)
 *******************************************************************************/
 uint32 StripLights_GetPixel(int32 x, int32 y)
 {
-    uint32 color = 0;
+    uint32 color;
     if((x>=0) && (y>=0) && (x < StripLights_ARRAY_COLS) && (y < StripLights_ARRAY_ROWS))
     {
     #if(StripLights_MEMORY_TYPE == StripLights_MEMORY_RGB)
