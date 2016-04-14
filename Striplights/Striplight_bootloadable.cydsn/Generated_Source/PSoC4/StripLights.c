@@ -18,7 +18,6 @@
 #include "stdlib.h"
 #include "cyfitter.h"
 #include "StripLights.h"
-#include "StripLights_fonts.h"
 
 uint8  StripLights_initvar = 0;
 
@@ -216,8 +215,6 @@ void StripLights_Start()
     StripLights_CONTROL = StripLights_ENABLE;
     StripLights_MemClear(StripLights_OFF);
     StripLights_CONTROL = StripLights_DISABLE;
-    
-    StripLights_SetFont( StripLights_FONT_5X7);
     
     /* Set no dimming, full brightness */
     StripLights_Dim(0); 
