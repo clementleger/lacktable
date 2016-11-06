@@ -122,7 +122,7 @@ blink_mode()
 
 	do {
 		
-		h += (get_rot2_dir() * 5);
+		h += (get_rot2_dir() * 10);
 		FILTER_VALUE(h, 255);
 		max_blink_count += get_rot1_dir();
 		FILTER_VALUE(max_blink_count, MAX_BLINK_COUNT);

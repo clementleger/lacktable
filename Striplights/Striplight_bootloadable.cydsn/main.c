@@ -14,10 +14,9 @@
 enum disp_mode {
 	MODE_DRAW = 0,
 	MODE_BLINK,
-	MODE_SNAKE,
-	MODE_MATRIX,
 	MODE_RAINBOW,
 	MODE_WINDINGS,
+	MODE_TEA,
 	MODE_COUNT,
 };
 
@@ -56,10 +55,13 @@ myprintf(const char *fmt , ...)
 }
 
 void
-set_pixel(int i, int j, uint32_t color)
+set_pixel(int x, int y, uint32_t color)
 {
-        int row = i / 2;
-        int column =  ((i % 2) * LED_HEIGHT) + j;
+	x = (LED_WIDTH - 1 - x);
+	y = (LED_HEIGHT - 1 - y);
+
+        int row = x / 2;
+        int column =  ((x % 2) * LED_HEIGHT) + y;
          
         StripLights_Pixel(column, row, color);
 }
@@ -111,7 +113,7 @@ get_rot1_dir()
 
 	if (cur == rot1_pos)
 		ret = 0;
-	else if (cur < rot1_pos)
+	else if (cur > rot1_pos)
 		ret = -1;
 	else
 		ret = 1;
@@ -193,13 +195,6 @@ drawing_mode()
 	} while(reg_status != 0);
 }
 
-static void
-star_mode()
-{
-	
-}
-
-
 /* TODO: add square raindow mode */
 
 static void
@@ -213,7 +208,7 @@ rainbow_mode()
 	uint32_t last_ms = 0;
 
 	do {
-		sleep_time += (get_rot1_dir() * 5);
+		sleep_time += (get_rot1_dir() * 10);
 		FILTER_VALUE(sleep_time, INT_MAX - 20);
 
 		if ((ms_count - last_ms) > sleep_time) {
@@ -235,76 +230,9 @@ rainbow_mode()
 	} while(reg_status != 0);
 }
 
-#define MAX_FALLING_PIX		4
-
 static void
-gen_fall(uint8_t led[LED_WIDTH][LED_HEIGHT])
+tea_mode()
 {
-	int count_of_falling = randr(0, MAX_FALLING_PIX);
-	int x, i;
-
-	for (i = 0; i < count_of_falling; i++) {
-		while(1) {
-			x = randr(0, LED_WIDTH - 1);
-			
-			if (led[x][0] != 0 || led[x][1] != 0)
-				continue;
-
-			break;
-		}
-		led[x][0] = 1;	
-	}
-}
-
-
-static void
-draw_fall(uint8_t led[LED_WIDTH][LED_HEIGHT], int fading)
-{
-	int x, y;
-
-	while(StripLights_Ready() == 0);
-
-	for (x = 0; x < LED_WIDTH; x++) {
-		for (y = LED_HEIGHT - 1; y >= 0 ; y--) {
-			if (!led[x][y])
-				set_pixel(x, y, RGB_TO_STRIP(0, 255, 0));
-			else                         
-				set_pixel(x, y, RGB_TO_STRIP(0, 0, 0));
-
-			if (y < (LED_HEIGHT - 1)) {
-				led[x][y + 1] = 1;
-				led[x][y] = 0;
-			}
-		}
-	}
-
-	StripLights_Trigger(1);
-}
-
-
-static void
-matrix_mode()
-{
-	uint8_t leds_state[LED_WIDTH][LED_HEIGHT] = {{0}};
-
-	int sleep_time = 200;
-	uint8_t reg_status;
-	uint32_t last_ms = 0;
-	int fading = 3;
-
-	do {
-		sleep_time += (get_rot1_dir() * 10);
-		FILTER_VALUE(sleep_time, INT_MAX - 20);
-
-		if ((ms_count - last_ms) > sleep_time) {
-			gen_fall(leds_state);
-			draw_fall(leds_state, fading);
-
-			last_ms = ms_count;
-		}
-
-		reg_status = RotSWReg_Read();
-	} while(reg_status != 0);
 }
 
 struct mode_description {
@@ -317,10 +245,9 @@ struct mode_description mode_desc[] =
 {
 	[MODE_DRAW] = { 'D', drawing_mode, 0xFF9D1D},
 	[MODE_BLINK] = { 'E', blink_mode, 0xE84C27},
-	[MODE_SNAKE] = { 'S', star_mode, 0xFF2AB0},
-	[MODE_MATRIX] = { 'M', matrix_mode, 0x8827E8},
 	[MODE_RAINBOW] = { 'A', rainbow_mode, 0x2A53FF},
-	[MODE_WINDINGS] = { 'W', symbol_mode, 0xFF9D1D},
+	[MODE_WINDINGS] = { 'S', symbol_mode, 0xFF9D1D},
+	[MODE_TEA] = { 'T', tea_mode, RGB_TO_STRIP(0, 155, 41)},
 };
 
 static int
@@ -374,7 +301,6 @@ int
 main()
 {
 	int mode;
-	uint32_t c;
 	StripLights_Start();
 	ESP_Start();
 	PC_Uart_Start();
@@ -403,10 +329,10 @@ main()
 	// Enable global interrupts, required for StripLights
 	CyGlobalIntEnable;
 
-	CapSense_Start();
+	//~ CapSense_Start();
 
 	/* Initialize baselines */ 
-	CapSense_InitializeAllBaselines();
+	//~ CapSense_InitializeAllBaselines();
 
         clear_pixels(0x000000);
 
