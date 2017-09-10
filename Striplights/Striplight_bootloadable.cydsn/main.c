@@ -15,9 +15,7 @@ enum disp_mode {
 	MODE_DRAW = 0,
 	MODE_BLINK,
 	MODE_RAINBOW,
-	MODE_WINDINGS,
-	MODE_TEA,
-	MODE_COUNT,
+	MODE_WIFI,
 };
 
 uint32_t ms_count = 0;
@@ -29,6 +27,7 @@ CY_ISR_PROTO( ResetISR_Handler );
 CY_ISR( ResetISR_Handler )
 {
     PC_Uart_Stop();
+    ESP_Stop();
     Bootloadable_Load();        /* Force a bootloader restart */
 }
 
@@ -57,6 +56,9 @@ myprintf(const char *fmt , ...)
 void
 set_pixel(int x, int y, uint32_t color)
 {
+	if (x >= LED_WIDTH || y > LED_HEIGHT)
+		return;
+
 	x = (LED_WIDTH - 1 - x);
 	y = (LED_HEIGHT - 1 - y);
 
@@ -64,6 +66,103 @@ set_pixel(int x, int y, uint32_t color)
         int column =  ((x % 2) * LED_HEIGHT) + y;
          
         StripLights_Pixel(column, row, color);
+}
+
+void draw_line(int32 x0, int32 y0, int32 x1, int32 y1, uint32 color)
+{
+	int32 dy = y1 - y0; /* Difference between y0 and y1 */
+	int32 dx = x1 - x0; /* Difference between x0 and x1 */
+	int32 stepx, stepy;
+
+	if (dy < 0)
+	{
+		dy = -dy;
+		stepy = -1;
+	}
+	else
+	{
+		stepy = 1;
+	}
+
+	if (dx < 0)
+	{
+		dx = -dx;
+		stepx = -1;
+	}
+	else
+	{
+		stepx = 1;
+	}
+
+	dy <<= 1; /* dy is now 2*dy  */
+	dx <<= 1; /* dx is now 2*dx  */
+	set_pixel(x0, y0, color);
+
+	if (dx > dy) 
+	{
+		int fraction = dy - (dx >> 1);
+		while (x0 != x1)
+		{
+			if (fraction >= 0)
+			{
+				y0 += stepy;
+				fraction -= dx;
+			}
+			x0 += stepx;
+			fraction += dy;
+			set_pixel(x0, y0, color);
+		}
+	}
+	else
+	{
+		int fraction = dx - (dy >> 1);
+		while (y0 != y1)
+		{
+			if (fraction >= 0)
+			{
+				x0 += stepx;
+				fraction -= dy;
+			}
+			y0 += stepy;
+			fraction += dx;
+			set_pixel( x0, y0, color);
+		}
+	}
+}
+
+void
+draw_rect(int32 x0, int32 y0, int32 x1, int32 y1, int32 fill, uint32 color)
+{	
+	int xDiff;
+	/* Check if the rectangle is to be filled    */
+	if (fill != 0)
+	{	
+		/* Find the difference between the x vars */
+		if(x0 > x1) {
+			xDiff = x0 - x1; 
+		} else {
+			xDiff = x1 - x0;
+		}
+
+		/* Fill it with lines  */
+		while(xDiff >= 0) {
+			draw_line(x0, y0, x0, y1, color);
+
+			if(x0 > x1)
+				x0--;
+			else
+				x0++;
+
+			xDiff--;
+		}
+
+	} else {
+		/* Draw the four sides of the rectangle */
+		draw_line(x0, y0, x1, y0, color);
+		draw_line(x0, y1, x1, y1, color);
+		draw_line(x0, y0, x0, y1, color);
+		draw_line(x1, y0, x1, y1, color);
+	}
 }
 
 void
@@ -195,44 +294,85 @@ drawing_mode()
 	} while(reg_status != 0);
 }
 
+enum rainbow_modes {
+	CLASSIC_RAINBOW = 0,
+	SQUARE_RAINBOW,
+	RAINBOW_MODES_COUNT,
+};
+
+static uint8_t starth = 0;
+
+void 
+classic_rainbow_mode()
+{
+	uint32_t color;
+	int increment = 255 / LED_HEIGHT;
+	int x, y;
+
+	while(StripLights_Ready() == 0);
+	color = hsv_to_rgb(starth, 200, 200);
+	for (x = 0; x < LED_WIDTH; x++) {
+		for (y = 0; y < LED_HEIGHT; y++) {
+			set_pixel(x, y, color);
+		}
+		color = hsv_to_rgb(starth + x * increment, 200, 200);
+	}
+	StripLights_Trigger(1);
+
+	starth += increment;
+}
+
+void 
+square_rainbow_mode()
+{
+	uint32_t color;
+	int increment = 255 / LED_HEIGHT;
+	int x, y = LED_WIDTH - 1;
+
+	while(StripLights_Ready() == 0);
+	color = hsv_to_rgb(starth, 200, 200);
+	for (x = 0; x < LED_WIDTH/2; x++) {
+		color = hsv_to_rgb(starth + x * increment, 200, 200);
+		draw_rect(x, x, y, y, 0, color);
+		y -= 2;
+		y ++;
+	}
+	StripLights_Trigger(1);
+
+	starth += increment;
+}
+
 /* TODO: add square raindow mode */
 
 static void
 rainbow_mode()
 {
 	int sleep_time = 400;
-	int increment = 255 / LED_HEIGHT;
-	int x, y;
-	uint8_t reg_status, starth = 0;
-	uint32_t color;
+	uint8_t reg_status;
 	uint32_t last_ms = 0;
+	int mode = CLASSIC_RAINBOW;
 
 	do {
-		sleep_time += (get_rot1_dir() * 10);
+		sleep_time -= (get_rot1_dir() * 10);
 		FILTER_VALUE(sleep_time, INT_MAX - 20);
 
 		if ((ms_count - last_ms) > sleep_time) {
-			while(StripLights_Ready() == 0);
-			color = hsv_to_rgb(starth, 200, 200);
-			for (x = 0; x < LED_WIDTH; x++) {
-				for (y = 0; y < LED_HEIGHT; y++) {
-					set_pixel(x, y, color);
-				}
-				color = hsv_to_rgb(starth + x * increment, 200, 200);
+			if (mode == CLASSIC_RAINBOW) {
+				classic_rainbow_mode();
+			} else if (mode == SQUARE_RAINBOW) {
+				square_rainbow_mode();
 			}
-			StripLights_Trigger(1);
-
-			starth += increment;
 			last_ms = ms_count;
 		}
 
 		reg_status = RotSWReg_Read();
+		
+		if (BUTTON_1_PRESSED(reg_status)) {
+			mode++;
+			if (mode >= RAINBOW_MODES_COUNT)
+				mode = CLASSIC_RAINBOW;
+		}
 	} while(reg_status != 0);
-}
-
-static void
-tea_mode()
-{
 }
 
 struct mode_description {
@@ -246,8 +386,7 @@ struct mode_description mode_desc[] =
 	[MODE_DRAW] = { 'D', drawing_mode, 0xFF9D1D},
 	[MODE_BLINK] = { 'E', blink_mode, 0xE84C27},
 	[MODE_RAINBOW] = { 'A', rainbow_mode, 0x2A53FF},
-	[MODE_WINDINGS] = { 'S', symbol_mode, 0xFF9D1D},
-	[MODE_TEA] = { 'T', tea_mode, RGB_TO_STRIP(0, 155, 41)},
+	[MODE_WIFI] = { 'W', wifi_mode, 0xFF9D1D},
 };
 
 static int
@@ -261,7 +400,7 @@ select_mode()
 	do {
 		reg_status = RotSWReg_Read();
 		mode += get_rot1_dir();
-		FILTER_VALUE(mode, MODE_COUNT - 1);
+		FILTER_VALUE(mode, ARRAY_SIZE(mode_desc) - 1);
 
 		if (mode != old_mode) {
 			
@@ -339,6 +478,7 @@ main()
 	rot1_pos = Rot1_ReadCounter();
 	rot2_pos = Rot2_ReadCounter();
 
+	myprintf("Starting main_loop\n");
         while(1) {
 		mode = select_mode();
 

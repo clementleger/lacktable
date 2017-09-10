@@ -7,6 +7,13 @@
 #define LED_HEIGHT	12
 #define LED_WIDTH	12
 
+#define BUTTON_1	0x1
+#define BUTTON_2	0x2
+#define BUTTON_ALL	(BUTTON_1 | BUTTON_2)
+
+#define BUTTON_1_PRESSED(__reg_status)	(!(__reg_status & BUTTON_1))
+#define BUTTON_2_PRESSED(__reg_status)	(!(__reg_status & BUTTON_2))
+
 #define RGB_TO_STRIP(_r, _g, _b)  (((_b) << 16) | ((_r) << 8) | (_g))
 
 #define FILTER_VALUE(_value, _max) \
@@ -27,6 +34,9 @@ symbol_mode();
 
 void
 blink_mode();
+
+void
+wifi_mode();
 
 void
 myprintf(const char *fmt , ...);
