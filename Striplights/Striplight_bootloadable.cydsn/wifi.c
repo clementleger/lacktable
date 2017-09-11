@@ -20,7 +20,7 @@ static uint32_t frame_buffer[LED_HEIGHT][LED_WIDTH];
 static void handle_get_info()
 {
 	char buffer[20];
-	sprintf(buffer, "%dx%d", LED_WIDTH, LED_HEIGHT);
+	sprintf(buffer, "%dx%d\n", LED_WIDTH, LED_HEIGHT);
 	ESP_UartPutString(buffer);
 }
 
@@ -32,13 +32,16 @@ static void handle_get_info()
 static void handle_set_pixel()
 {
 	char buffer[MAX_SET_PIXEL_SIZE] = {0};
-	int index;
+	char *ptr;
 	char tmp;
+	int index = 0, x, y;
+	uint8_t r,g,b;
 	uint8_t reg_status;
+	myprintf("Entering set_pixel\n");
 
 	do {
 		reg_status = RotSWReg_Read();
-		if (reg_status != 0)
+		if (reg_status != 0x3)
 			return;
 
 		tmp = ESP_UartGetChar();
@@ -46,9 +49,32 @@ static void handle_set_pixel()
 			continue;
 		buffer[index] = tmp;
 		index++;
+		if (tmp == '\n')
+			buffer[index] = 0;
 	} while (tmp != '\n' || index == MAX_SET_PIXEL_SIZE);
-	
-	myprintf("Received string %s\n", buffer);
+	x = atoi(buffer);
+	ptr = strchr(buffer, ',');
+	if (ptr == buffer)
+		return;
+	y = atoi(++ptr);
+	ptr = strchr(ptr, ':');
+	if (ptr == ptr)
+		return;
+	r = atoi(++ptr);
+	ptr = strchr(ptr, ',');
+	if (ptr == ptr)
+		return;
+	g = atoi(++ptr);
+	ptr = strchr(ptr, ',');
+	if (ptr == ptr)
+		return;
+	b = atoi(++ptr);
+
+	if (x > (LED_WIDTH - 1)|| y > (LED_HEIGHT - 1))
+		return;
+
+	set_pixel(x, y, RGB_TO_STRIP(r, g, b));
+	StripLights_Trigger(1);
 }
 
 void
@@ -59,6 +85,9 @@ wifi_mode()
 	do {
 		reg_status = RotSWReg_Read();
 		uint8_t byte = ESP_UartGetChar();
+		if (byte) {
+			myprintf("Recefived '%c'\n", byte);
+		}
 		switch(byte) {
 		case GET_INFO:
 			handle_get_info(0);

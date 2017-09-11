@@ -16,6 +16,7 @@ enum disp_mode {
 	MODE_BLINK,
 	MODE_RAINBOW,
 	MODE_WIFI,
+	MODE_COUNT,
 };
 
 uint32_t ms_count = 0;
@@ -383,10 +384,10 @@ struct mode_description {
 
 struct mode_description mode_desc[] = 
 {
-	[MODE_DRAW] = { 'D', drawing_mode, 0xFF9D1D},
-	[MODE_BLINK] = { 'E', blink_mode, 0xE84C27},
-	[MODE_RAINBOW] = { 'A', rainbow_mode, 0x2A53FF},
-	[MODE_WIFI] = { 'W', wifi_mode, 0xFF9D1D},
+	[MODE_DRAW] = { 'D', drawing_mode, RGB_TO_STRIP(0xFF, 0x80, 0x00)},
+	[MODE_BLINK] = { 'E', blink_mode, RGB_TO_STRIP(0x00, 0xCC, 0x00)},
+	[MODE_RAINBOW] = { 'A', rainbow_mode, RGB_TO_STRIP(0x00, 0x80, 0xFF)},
+	[MODE_WIFI] = { 'W', wifi_mode, RGB_TO_STRIP(0xCC, 0x00, 0xCC)},
 };
 
 static int
@@ -395,15 +396,17 @@ select_mode()
 	uint8_t reg_status;
 	int mode = 0, old_mode = -1;
 
-	myprintf("Entering mode selection\n");
 	CyDelay(200);
 	do {
 		reg_status = RotSWReg_Read();
 		mode += get_rot1_dir();
-		FILTER_VALUE(mode, ARRAY_SIZE(mode_desc) - 1);
+		if (mode > (MODE_COUNT - 1))
+			mode = 0;
+
+		if (mode < 0)
+			mode = MODE_COUNT - 1;
 
 		if (mode != old_mode) {
-			
 			draw_char(mode_desc[mode].sign, 3, 2, mode_desc[mode].color);
 			myprintf("Mode change: %c\n", mode_desc[mode].sign);
 		}
@@ -411,7 +414,6 @@ select_mode()
 		old_mode = mode;
 	} while (reg_status == 0x3 );
 
-	myprintf("Mode selected: %s\n", mode_desc[mode].sign);
 	CyDelay(200);
 
 	return mode;
